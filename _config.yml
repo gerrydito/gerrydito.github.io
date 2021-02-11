@@ -1,8 +1,7 @@
 # Site Settings
-name: Jekflix
-title: Jekflix | A blog theme for Jekyll
-description: Jekflix is a template for Jekyll inspired by Netflix and made by
-  Thiago Rossener.
+name: gerrydito
+title: gerrydito | Personal Blog
+description: This is my Personal Blog for Data Science
 tags:
   - blog
   - template
@@ -19,18 +18,18 @@ menu:
     url: /contact
   - title: Feed
     url: /feed.xml
-email: youremail@test.com
+email: gdito@apps.ipb.ac.id
 disqus_username: disqus_username
 
 
 # Social Media Settings
 # Remove the item if you don't need it
-github_username: github_username
-facebook_username: facebook_username
-twitter_username: twitter_username
-instagram_username: instagram_username
-linkedin_username: linkedin_username
-medium_username: medium_username
+github_username: https://github.com/gerrydito
+facebook_username: https://web.facebook.com/gerry.dito
+twitter_username: https://twitter.com/gerrydito
+instagram_username: https://www.instagram.com/gerry_dito_/
+linkedin_username: https://www.linkedin.com/in/gerrydito/
+medium_username: https://medium.com/@gerrydito
 
 
 # Posts Settings
