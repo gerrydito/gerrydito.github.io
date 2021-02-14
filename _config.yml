@@ -11,13 +11,13 @@ baseurl: ''
 lang: en-US
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Asia/Shanghai
+timezone: Asia/Jakarta
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # --------------------------
-title: Chirpy                          # the main title
+title: gerrydito                       # the main title
 
-tagline: A text-focused Jekyll theme   # it will display as the sub-title
+tagline: Personal blog about data science   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   A minimal, portfolio, sidebar,
@@ -27,24 +27,24 @@ description: >-                        # used by seo meta and the atom feed
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: ''
 
-author: your_full_name                  # change to your full name
+author: Gerry Alfa Dito                 # change to your full name
 
 github:
-  username: github_username             # change to your github username
+  username: gerrydito           # change to your github username
 
 twitter:
-  username: twitter_username            # change to your twitter username
+  username: gerrydito            # change to your twitter username
 
 social:
-  name: your_full_name                  # it will shows as the copyright owner in Footer
-  email: example@doamin.com             # change to your email address
+  name: Gerry Alfa Dito                  # it will shows as the copyright owner in Footer
+  email: gerryalfadito@gmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/username       # change to your github homepage
+    - https://twitter.com/gerrydito      # change to your twitter homepage
+    - https://github.com/gerrydito       # change to your github homepage
     # Uncomment below to add more social links
-    # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    - https://www.facebook.com/gerry.dito
+    - https://www.linkedin.com/in/gerrydito
 
 google_site_verification: google_meta_tag_verification # change to your verification string
 # --------------------------
@@ -71,7 +71,7 @@ google_analytics:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode:   # [light|dark]
+theme_mode:   dark
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
