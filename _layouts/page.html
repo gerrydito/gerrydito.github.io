@@ -1,11 +1,17 @@
----
-layout: default
----
+<!DOCTYPE html>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
 
-<div class="post">
+{% include head.html %}
 
-  <article class="post-content fullwidth">
-    {{ content }}
-  </article>
+<body>
 
-</div>
+    {% include header.html %} {{ content }} {% include footer.html %}
+
+</body>
+
+</html>
