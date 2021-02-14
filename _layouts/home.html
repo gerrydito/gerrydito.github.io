@@ -1,55 +1,96 @@
-<!DOCTYPE html>
-<!--
-	Forty by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
+---
+layout: page
+# The Home page layout
+---
 
-{% include head.html %}
 
-<body>
+{% assign pinned = site.posts | where_exp: "item", "item.pin == true"  %}
+{% assign default = site.posts | where_exp: "item", "item.pin != true"  %}
+{% assign posts = "" | split: "" %}
 
-    {% include header.html %}
+<!-- Get pinned posts -->
 
-    <!-- Banner -->
-    <section id="banner" class="major">
-        <div class="inner">
-            <header class="major">
-                <h1>{{ page.landing-title }}</h1>
-            </header>
-            <div class="content">
-                <p style="text-transform: uppercase;">{{ site.description }}</p>
-                <ul class="actions">
-                    <li><a href="#one" class="button next scrolly">Get Started</a></li>
-                </ul>
-            </div>
-        </div>
-    </section>
+{% assign offset = paginator.page | minus: 1 | times: paginator.per_page %}
+{% assign pinned_num = pinned.size | minus: offset %}
 
-    <!-- Main -->
-    <div id="main">
+{% if pinned_num > 0 %}
+  {% for i in (offset..pinned.size) limit: pinned_num %}
+    {% assign posts = posts | push: pinned[i] %}
+  {% endfor %}
+{% else %}
+  {% assign pinned_num = 0 %}
+{% endif %}
 
-        <!-- One -->
-        {% include tiles.html %}
 
-        <!-- Two -->
-        <section id="two">
-            <div class="inner">
-                <header class="major">
-                    <h2>Massa libero</h2>
-                </header>
-                <p>{{ content }}</p>
-                <ul class="actions">
-                    <li><a href="landing.html" class="button next">Get Started</a></li>
-                </ul>
-            </div>
-        </section>
+<!-- Get default posts -->
 
+{% assign default_beg = offset | minus: pinned.size %}
+
+{% if default_beg < 0 %}
+  {% assign default_beg = 0 %}
+{% endif %}
+
+{% assign default_num = paginator.posts | size | minus: pinned_num  %}
+{% assign default_end = default_beg | plus: default_num | minus: 1 %}
+
+{% if default_num > 0 %}
+  {% for i in (default_beg..default_end) %}
+    {% assign posts = posts | push: default[i] %}
+  {% endfor %}
+{% endif %}
+
+
+<div id="post-list">
+
+{% for post in posts %}
+
+  <div class="post-preview">
+    <h1>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    </h1>
+
+    <div class="post-content">
+      <p>
+        {% include no-linenos.html content=post.content %}
+        {{ content | markdownify | strip_html | truncate: 200 }}
+      </p>
     </div>
 
-    {% include footer.html %}
+    <div class="post-meta text-muted d-flex justify-content-between">
 
-</body>
+      <div>
+        <!-- posted date -->
+        <i class="far fa-calendar fa-fw"></i>
+        {% include timeago.html date=post.date tooltip=true %}
 
-</html>
+        <!-- time to read -->
+        <i class="far fa-clock fa-fw"></i>
+        {% include read-time.html content=post.content %}
+
+        <!-- page views -->
+        {% if site.google_analytics.pv.enabled %}
+        <i class="far fa-eye fa-fw"></i>
+        <span id="pv_{{-post.title-}}" class="pageviews">
+          <i class="fas fa-spinner fa-spin fa-fw"></i>
+        </span>
+        {% endif %}
+      </div>
+
+      {% if post.pin %}
+      <div class="pin">
+        <i class="fas fa-thumbtack fa-fw"></i>
+        <span>{{ site.data.label.pin_prompt | default: 'Pinned' }}</span>
+      </div>
+      {% endif %}
+
+    </div> <!-- .post-meta -->
+
+  </div> <!-- .post-review -->
+
+{% endfor %}
+
+</div> <!-- #post-list -->
+
+{% if paginator.total_pages > 0 %}
+  {% include post-paginator.html %}
+{% endif %}
