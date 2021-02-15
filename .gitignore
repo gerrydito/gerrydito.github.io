@@ -1,16 +1,12 @@
-# hidden files
-.*
-!.github
-
-# jekyll cache
 _site
-vendor
-
-# rubygem
-*.gem
-# yard docs
-doc
-
-# npm dependencies
+.DS_Store
+.jekyll
+.jekyll-metadata
+.bundle
+.sass-cache
+Gemfile.lock
 node_modules
-package-lock.json
+package.json
+*.gem
+*.gemspec
+.jekyll-cache
