@@ -2,6 +2,7 @@
 layout: post
 title:  Supervised Regression dengan mlr3
 categories: [Machine Learning,Supervised,mlr3]
+excerpt: mlr3 merupakan salah satu ekosistem di R yang digunakan untuk Machine Learning. Pada Praktikum 1 Pembelajaran Mesin Statistika ini, dibahas tentang penggunaan mlr3 untuk model Supervised Regression.
 ---
 Package
 =======
@@ -11,8 +12,8 @@ Silahkan install jika belum ada
 ``` r
 install.packages("tidyverse")
 install.packages("mlr3verse")
-install.packages("kknn")
-install.packages("e1071")
+install.packages("glmnet")
+install.packages("xgboost")
 install.packages("ranger")
 install.packages("rpart.plot")
 ```
