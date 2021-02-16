@@ -4,7 +4,7 @@ title: Publications
 permalink: /publications/
 ---
 
->Dito, Gerry Alfa. 2020. **Kajian Pengembangan Super Learner dengan Cuckoo Search untuk Peningkatan Performa Klasifikasi. Bogor: IPB University**. [access here](https://repository.ipb.ac.id/handle/123456789/102924)
+>Dito, Gerry Alfa. 2020. **Kajian Pengembangan Super Learner dengan Cuckoo Search untuk Peningkatan Performa Klasifikasi**. Bogor: IPB University. [access here](https://repository.ipb.ac.id/handle/123456789/102924)
 
 >Dito, Gerry Alfa, Bagus Sartono, and Annisa. 2020. **Super Learner for Predicting Stock Market Trends: A Case Study of Jakarta Islamic Index Stock Exchange**. 1st International Conference on Statistics and Analytics, ICSA 2019. Bogor: EAI.
 Sartono, Bagus, Dewi Kiswani Bodro, and Gerry Alfa Dito. 2020. Teknik Eksplorasi Data yang harus dikuasai data scientist. Bogor: IPB Press. [access here](https://eudl.eu/pdf/10.4108/eai.2-8-2019.2290523)
