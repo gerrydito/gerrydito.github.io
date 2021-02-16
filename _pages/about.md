@@ -19,7 +19,8 @@ Hi! I am a lecturer of Departement of Statistics at IPB University. My research 
 ## Papers
 
 >Dito, Gerry Alfa, Bagus Sartono, and Annisa. 2020. [**Super Learner for Predicting Stock Market Trends: A Case Study of Jakarta Islamic Index Stock Exchange**](https://eudl.eu/pdf/10.4108/eai.2-8-2019.2290523). 1st International Conference on Statistics and Analytics, ICSA 2019. Bogor: EAI.
-Sartono, Bagus, Dewi Kiswani Bodro, and Gerry Alfa Dito. 2020. Teknik Eksplorasi Data yang harus dikuasai data scientist. Bogor: IPB Press.
+
+>Sartono, Bagus, Dewi Kiswani Bodro, and Gerry Alfa Dito. 2020. Teknik Eksplorasi Data yang harus dikuasai data scientist. Bogor: IPB Press.
 
 >Dito, Gerry Alfa, Ani Safitri, Bagus Sartono, Rahma Anisa, Farit Mochamad Afendi, and Agus Salim. 2019. [**Graphical user interface (GUI) for the least absolute shrinkage and selection operator (LASSO) regression**](https://iopscience.iop.org/article/10.1088/1755-1315/299/1/012031/pdf). The 5th International Seminar on Sciences. Bogor: IOP Publishing.
 
