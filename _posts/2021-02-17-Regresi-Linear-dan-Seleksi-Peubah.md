@@ -162,7 +162,7 @@ plot_intro(data = data_house,
            geom_label_args = list(size=2.5))
 ```
 
-![](https://github.com/gerrydito/gerrydito.github.io/_posts/Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-113-1.png)
+![](https://github.com/gerrydito/gerrydito.github.io/tree/main/_posts/Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-113-1.png)
 Catatan:
 
 -   `plot_intro` merupakan fungsi yang berasal dari package
