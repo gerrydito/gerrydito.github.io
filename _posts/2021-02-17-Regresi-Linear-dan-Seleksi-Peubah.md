@@ -264,23 +264,23 @@ plot_histogram(data = data_house1,nrow=3,ncol = 3,
 
     ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 
-![](/_posts/Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-116-1.png)
+![](https://raw.githubusercontent.com/gerrydito/gerrydito.github.io/main/_posts/Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-116-1.png)
 
     ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 
-![](/_posts/Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-116-2.png)
+![](https://raw.githubusercontent.com/gerrydito/gerrydito.github.io/main/_posts/Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-116-2.png)
 
     ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 
-![](/_posts/Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-116-3.png)
+![](https://raw.githubusercontent.com/gerrydito/gerrydito.github.io/main/_posts/Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-116-3.png)
 
     ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 
-![](/_posts/Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-116-4.png)
+![](https://raw.githubusercontent.com/gerrydito/gerrydito.github.io/main/_posts/Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-116-4.png)
 
     ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 
-![](/_posts/Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-116-5.png)
+![](https://raw.githubusercontent.com/gerrydito/gerrydito.github.io/main/_posts/Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-116-5.png)
 
 1.  Memeriksa Korelasi Peubah
 
@@ -288,7 +288,7 @@ plot_histogram(data = data_house1,nrow=3,ncol = 3,
 plot_scatterplot(data = data_house1,by="SalePrice",geom_point_args = list(color="steelblue") )
 ```
 
-![](Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-117-1.png)![](Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-117-2.png)![](Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-117-3.png)![](Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-117-4.png)
+![](https://raw.githubusercontent.com/gerrydito/gerrydito.github.io/main/_posts/Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-117-1.png)![](https://raw.githubusercontent.com/gerrydito/gerrydito.github.io/main/_posts/Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-117-2.png)![](https://raw.githubusercontent.com/gerrydito/gerrydito.github.io/main/_posts/Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-117-3.png)![](https://raw.githubusercontent.com/gerrydito/gerrydito.github.io/main/_posts/Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-117-4.png)
 
 ``` r
 cor_mat <- cor(data_house1,method = "spearman")
@@ -449,7 +449,7 @@ ggplot(plot_subset,aes(subset,BIC))+
   theme_bw()
 ```
 
-![](Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-123-1.png)
+![](https://raw.githubusercontent.com/gerrydito/gerrydito.github.io/main/_posts/Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-123-1.png)
 
 1.  Forward Selection
 
@@ -504,7 +504,7 @@ ggplot(plot_forward,aes(subset,BIC))+
   theme_bw()
 ```
 
-![](Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-127-1.png)
+![](https://raw.githubusercontent.com/gerrydito/gerrydito.github.io/main/_posts/Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-127-1.png)
 
 1.  Backward Selection
 
@@ -559,4 +559,4 @@ ggplot(plot_backward,aes(subset,BIC))+
   theme_bw()
 ```
 
-![](Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-131-1.png)
+![](https://raw.githubusercontent.com/gerrydito/gerrydito.github.io/main/_posts/Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-131-1.png)
