@@ -162,7 +162,7 @@ plot_intro(data = data_house,
            geom_label_args = list(size=2.5))
 ```
 
-![](Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-113-1.png)
+![](/_posts/Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-113-1.png)
 Catatan:
 
 -   `plot_intro` merupakan fungsi yang berasal dari package
@@ -264,23 +264,23 @@ plot_histogram(data = data_house1,nrow=3,ncol = 3,
 
     ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 
-![](Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-116-1.png)
+![](/_posts/Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-116-1.png)
 
     ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 
-![](Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-116-2.png)
+![](/_posts/Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-116-2.png)
 
     ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 
-![](Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-116-3.png)
+![](/_posts/Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-116-3.png)
 
     ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 
-![](Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-116-4.png)
+![](/_posts/Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-116-4.png)
 
     ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 
-![](Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-116-5.png)
+![](/_posts/Regresi-Linear-dan-Seleksi-Peubah_files/figure-markdown_github/unnamed-chunk-116-5.png)
 
 1.  Memeriksa Korelasi Peubah
 
