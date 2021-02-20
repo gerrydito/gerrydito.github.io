@@ -295,8 +295,11 @@ Nama
 ### String Indexing
 
 String dapat dianggap sebagai suatu barisan terurut. Setiap elemen dapat diakses dengan menggunakan index yang berupa bilangan terurut:
+```
 |G|e|r|r|y| |A|l|f|a|  |D |i |t |o |
 |0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|
+```
+
 **Sebagai catatan di python indexing selalu dimulai dari nol (0)**
 
 
@@ -326,8 +329,10 @@ Nama[11]
 
 
 Dalam python kita juga bisa menggunakan **negative index** sebagai berikut:
+```
 |G  |e  |r  |r  |y  |   |A |l |f |a |  |D |i |t |o |
 |-15|-14|-13|-12|-11|-10|-9|-8|-7|-6|-5|-4|-3|-2|-1|
+```
 Berikut adalah beberapa contohnya
 
 
