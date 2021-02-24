@@ -285,7 +285,7 @@ learner_tree$train(task = task_diabetes)
 rpart.plot::rpart.plot(learner_tree$model,roundint = F,type = 5,tweak = 1.75)
 ```
 
-![](https://raw.githubusercontent.com/gerrydito/gerrydito.github.io/main/_posts/Regresi-Linear-dan-Seleksi-Peubah_files/Statistical-Learning_files/figure-markdown_github/unnamed-chunk-9-1.png)
+![](https://raw.githubusercontent.com/gerrydito/gerrydito.github.io/main/_posts/Statistical-Learning_files/figure-markdown_github/unnamed-chunk-9-1.png)
 
 ``` r
 # Random Forest
