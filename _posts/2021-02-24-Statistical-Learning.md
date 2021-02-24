@@ -55,7 +55,7 @@ Society Press.
 data ini bisa diperoleh di link berikut ini
 <a href="https://github.com/gerrydito/Model-Klasifikasi/tree/master/Praktikum/KNN" class="uri">https://github.com/gerrydito/Model-Klasifikasi/tree/master/Praktikum/KNN</a>
 
-Statistical Learning di R
+Statistical Machine Learning di R
 -------------------------
 
 Di R ada beberapa ekosistem yang bisa digunakan untuk menerapkan
