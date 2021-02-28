@@ -9,7 +9,7 @@ excerpt: Pada pengenalan python part 2 ini akan membahas tentang dasar-dasar pem
 <html>
 <head><meta charset="utf-8" />
 
-
+<title>Pengenalan Python (part 2)</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
@@ -15686,4 +15686,3 @@ FILE
  
 
 
-</html>
