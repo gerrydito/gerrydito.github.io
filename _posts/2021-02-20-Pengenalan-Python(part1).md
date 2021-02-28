@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Pengenalan Python (part 1)
-categories: Basic Python
+categories: [Basic Python]
 excerpt: Python adalah bahasa pemrograman tingkat tinggi yang ditafsirkan, berorientasi objek, dengan semantik dinamis. Struktur data bawaan tingkat tinggi, dikombinasikan dengan pengetikan dinamis dan pengikatan dinamis, membuatnya sangat menarik untuk Pengembangan Aplikasi Cepat, serta untuk digunakan sebagai bahasa skrip atau perekat untuk menghubungkan komponen yang ada bersama-sama 
 ---
 
@@ -15682,4 +15682,3 @@ the same element using negative and positive indexing:
 </body>
 
  
-
