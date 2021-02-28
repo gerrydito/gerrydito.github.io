@@ -32,14 +32,9 @@ a == 6
 ```
 
 
-
-
-
-
-
-
-    False
-    
+```
+ False
+```    
 
 
 ```python
@@ -65,10 +60,9 @@ i != 6
 ```
 
 
-
-
+```
     True
-
+```
 
 
 Operasi pertidaksamaan juga digunakan untuk membandingkan huruf / kata / simbol sesuai dengan nilai huruf ASCII. Nilai desimal yang diperlihatkan dalam tabel berikut ini mewakili urutan karakter: 
@@ -86,9 +80,9 @@ Demikian pula, nilai untuk <b> A </b> adalah 65, dan karena itu nilai untuk <b> 
 
 
 
-
+```
     True
-
+```
 
 
 Jika ada beberapa huruf, huruf pertama diutamakan dalam urutan:
