@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Pengenalan Python (part 2)
-categories: Basic Python
+categories: [Basic Python]
 excerpt: Pada pengenalan python part 2 ini akan membahas tentang dasar-dasar pemrograman python dan package di python
 ---
 
