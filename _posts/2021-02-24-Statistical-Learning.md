@@ -1559,46 +1559,43 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    background-color: #ffffff;
-    color: #a0a0a0;
+    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  { color: #1f1c1b; background-color: #ffffff; }
+  {   }
 @media screen {
 code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span. { color: #1f1c1b; } /* Normal */
-code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
-code span.an { color: #ca60ca; } /* Annotation */
-code span.at { color: #0057ae; } /* Attribute */
-code span.bn { color: #b08000; } /* BaseN */
-code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
-code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #924c9d; } /* Char */
-code span.cn { color: #aa5500; } /* Constant */
-code span.co { color: #898887; } /* Comment */
-code span.cv { color: #0095ff; } /* CommentVar */
-code span.do { color: #607880; } /* Documentation */
-code span.dt { color: #0057ae; } /* DataType */
-code span.dv { color: #b08000; } /* DecVal */
-code span.er { color: #bf0303; text-decoration: underline; } /* Error */
-code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
-code span.fl { color: #b08000; } /* Float */
-code span.fu { color: #644a9b; } /* Function */
-code span.im { color: #ff5500; } /* Import */
-code span.in { color: #b08000; } /* Information */
-code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
-code span.op { color: #1f1c1b; } /* Operator */
-code span.ot { color: #006e28; } /* Other */
-code span.pp { color: #006e28; } /* Preprocessor */
-code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
-code span.sc { color: #3daee9; } /* SpecialChar */
-code span.ss { color: #ff5500; } /* SpecialString */
-code span.st { color: #bf0303; } /* String */
-code span.va { color: #0057ae; } /* Variable */
-code span.vs { color: #bf0303; } /* VerbatimString */
-code span.wa { color: #bf0303; } /* Warning */
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 
 </style>
 <script>
@@ -1761,8 +1758,6 @@ summary {
 
 
 <div class="fluid-row" id="header">
-
-
 
 
 </div>
@@ -1935,11 +1930,11 @@ summary {
 <span id="cb14-2"><a href="#cb14-2"></a>learner_rf<span class="op">$</span><span class="kw">train</span>(<span class="dt">task =</span> task_diabetes)</span>
 <span id="cb14-3"><a href="#cb14-3"></a>learner_rf<span class="op">$</span>model<span class="op">$</span>variable.importance</span></code></pre></div>
 <pre><code>##                      Age                      BMI            BloodPressure 
-##                 47.49636                 56.19118                 30.52531 
+##                 48.41005                 55.52854                 30.82335 
 ## DiabetesPedigreeFunction                  Glucose                  Insulin 
-##                 42.19377                 85.95227                 24.59484 
+##                 43.28235                 84.78158                 24.25060 
 ##              Pregnancies            SkinThickness 
-##                 28.83722                 23.29907</code></pre>
+##                 28.01531                 23.51132</code></pre>
 <p>Catatan:</p>
 <ol style="list-style-type: decimal">
 <li>Data yang digunakan untuk menjalankan model-model tanpa pembagian data (training dan testing)</li>
@@ -1956,7 +1951,7 @@ summary {
 <span id="cb16-6"><a href="#cb16-6"></a>importance <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(impurity))</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Predictors"],"name":[1],"type":["chr"],"align":["left"]},{"label":["impurity"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"Glucose","2":"85.95227"},{"1":"BMI","2":"56.19118"},{"1":"Age","2":"47.49636"},{"1":"DiabetesPedigreeFunction","2":"42.19377"},{"1":"BloodPressure","2":"30.52531"},{"1":"Pregnancies","2":"28.83722"},{"1":"Insulin","2":"24.59484"},{"1":"SkinThickness","2":"23.29907"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["Predictors"],"name":[1],"type":["chr"],"align":["left"]},{"label":["impurity"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"Glucose","2":"84.78158"},{"1":"BMI","2":"55.52854"},{"1":"Age","2":"48.41005"},{"1":"DiabetesPedigreeFunction","2":"43.28235"},{"1":"BloodPressure","2":"30.82335"},{"1":"Pregnancies","2":"28.01531"},{"1":"Insulin","2":"24.25060"},{"1":"SkinThickness","2":"23.51132"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -1968,26 +1963,26 @@ summary {
 <span id="cb17-3"><a href="#cb17-3"></a>                               <span class="dt">resampling =</span> resample_diabetes1,</span>
 <span id="cb17-4"><a href="#cb17-4"></a>                               <span class="dt">store_models =</span> <span class="ot">TRUE</span></span>
 <span id="cb17-5"><a href="#cb17-5"></a>                               )</span></code></pre></div>
-<pre><code>## INFO  [19:19:03.382] Applying learner &#39;classif.kknn&#39; on task &#39;diabetes&#39; (iter 1/1)</code></pre>
+<pre><code>## INFO  [19:32:49.306] Applying learner &#39;classif.kknn&#39; on task &#39;diabetes&#39; (iter 1/1)</code></pre>
 <p>Berdasarkan sintaks diatas kita melakukan training untuk model KNN, jika ingin melakukan training untuk model lainnya cukup ganti <code>learner=learner_knn</code> dengan <code>learner_logreg</code>,<code>learner_nb</code>,<code>learner_tree</code> dan <code>learner_rf</code>.</p>
 <p>Jika kita ingin mengeluarkan hasil prediksi pada data testing bisa menggunakan sintaks dibawah ini.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>prediksi_test =<span class="st"> </span><span class="kw">as.data.table</span>(train_test_diabetes<span class="op">$</span><span class="kw">prediction</span>())</span>
 <span id="cb19-2"><a href="#cb19-2"></a><span class="kw">head</span>(prediksi_test)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["row_id"],"name":[1],"type":["int"],"align":["right"]},{"label":["truth"],"name":[2],"type":["fct"],"align":["left"]},{"label":["response"],"name":[3],"type":["fct"],"align":["left"]}],"data":[{"1":"1","2":"Case","3":"Control"},{"1":"14","2":"Case","3":"Case"},{"1":"20","2":"Control","3":"Control"},{"1":"23","2":"Case","3":"Control"},{"1":"26","2":"Case","3":"Case"},{"1":"28","2":"Control","3":"Control"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["row_id"],"name":[1],"type":["int"],"align":["right"]},{"label":["truth"],"name":[2],"type":["fct"],"align":["left"]},{"label":["response"],"name":[3],"type":["fct"],"align":["left"]}],"data":[{"1":"7","2":"Case","3":"Control"},{"1":"11","2":"Case","3":"Case"},{"1":"17","2":"Case","3":"Control"},{"1":"18","2":"Control","3":"Control"},{"1":"21","2":"Control","3":"Control"},{"1":"25","2":"Case","3":"Control"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Confusion matrix bisa dikeluarkan dengan sintaks dibawah ini</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>train_test_diabetes<span class="op">$</span><span class="kw">prediction</span>()<span class="op">$</span>confusion</span></code></pre></div>
 <pre><code>##          truth
 ## response  Case Control
-##   Case      33      15
-##   Control   22      80</code></pre>
+##   Case      30      16
+##   Control   26      78</code></pre>
 <p>Untuk menghitung performa model dengan menggunakan ukuran akurasi bisa menggunakan sintaks dibawah ini. Fungsi <code>msr</code> merupakan fungsi yang dapat mengakses ukuran-ukuran kebaikan model yang ada di dalam package <code>mlr3</code>.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>train_test_diabetes<span class="op">$</span><span class="kw">aggregate</span>(<span class="kw">msr</span>(<span class="st">&quot;classif.acc&quot;</span>))</span></code></pre></div>
 <pre><code>## classif.acc 
-##   0.7533333</code></pre>
+##        0.72</code></pre>
 <p>Ukuran kebaikan model yang ada di package <code>mlr3</code> bisa dilihat di link <a href="https://mlr3.mlr-org.com/reference/mlr_measures.html" class="uri">https://mlr3.mlr-org.com/reference/mlr_measures.html</a>. Sebagai catatan, terdapat beberapa ukuran yang membutuhkan prediksi yang dikeluarkan berupa peluang bukan berupa kelas.</p>
 <p>Kemudian jika ada lebih dari satu ukuran kebaikan model yang ingin kita gunakan, kita bisa melakukannya dengan sintaks dibawah ini.</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>train_test_diabetes<span class="op">$</span><span class="kw">aggregate</span>(<span class="kw">list</span>(<span class="kw">msr</span>(<span class="st">&quot;classif.acc&quot;</span>),</span>
@@ -1995,7 +1990,7 @@ summary {
 <span id="cb24-3"><a href="#cb24-3"></a>                                   <span class="kw">msr</span>(<span class="st">&quot;classif.sensitivity&quot;</span>)</span>
 <span id="cb24-4"><a href="#cb24-4"></a>                                   ))</span></code></pre></div>
 <pre><code>##         classif.acc classif.specificity classif.sensitivity 
-##           0.7533333           0.8421053           0.6000000</code></pre>
+##           0.7200000           0.8297872           0.5357143</code></pre>
 </div>
 <div id="komparasi-model" class="section level3">
 <h3>Komparasi model</h3>
@@ -2012,58 +2007,58 @@ summary {
 <span id="cb28-4"><a href="#cb28-4"></a>                         )</span></code></pre></div>
 <p>Kemudian fungsi <code>benchmark</code> digunakan untuk menjalankan/ running komparasi model berdasarkan desain yang sudah dirancang.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>bmr =<span class="st"> </span><span class="kw">benchmark</span>(design,<span class="dt">store_models =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
-<pre><code>## INFO  [19:19:04.030] Benchmark with 50 resampling iterations 
-## INFO  [19:19:04.049] Applying learner &#39;classif.rpart&#39; on task &#39;diabetes&#39; (iter 9/10) 
-## INFO  [19:19:04.075] Applying learner &#39;classif.ranger&#39; on task &#39;diabetes&#39; (iter 8/10) 
-## INFO  [19:19:04.165] Applying learner &#39;classif.log_reg&#39; on task &#39;diabetes&#39; (iter 5/10) 
-## INFO  [19:19:04.194] Applying learner &#39;classif.kknn&#39; on task &#39;diabetes&#39; (iter 10/10) 
-## INFO  [19:19:04.232] Applying learner &#39;classif.ranger&#39; on task &#39;diabetes&#39; (iter 4/10) 
-## INFO  [19:19:04.326] Applying learner &#39;classif.naive_bayes&#39; on task &#39;diabetes&#39; (iter 2/10) 
-## INFO  [19:19:04.400] Applying learner &#39;classif.rpart&#39; on task &#39;diabetes&#39; (iter 10/10) 
-## INFO  [19:19:04.428] Applying learner &#39;classif.kknn&#39; on task &#39;diabetes&#39; (iter 8/10) 
-## INFO  [19:19:04.458] Applying learner &#39;classif.ranger&#39; on task &#39;diabetes&#39; (iter 9/10) 
-## INFO  [19:19:04.583] Applying learner &#39;classif.ranger&#39; on task &#39;diabetes&#39; (iter 3/10) 
-## INFO  [19:19:04.703] Applying learner &#39;classif.log_reg&#39; on task &#39;diabetes&#39; (iter 1/10) 
-## INFO  [19:19:04.741] Applying learner &#39;classif.ranger&#39; on task &#39;diabetes&#39; (iter 10/10) 
-## INFO  [19:19:04.892] Applying learner &#39;classif.rpart&#39; on task &#39;diabetes&#39; (iter 3/10) 
-## INFO  [19:19:04.910] Applying learner &#39;classif.rpart&#39; on task &#39;diabetes&#39; (iter 1/10) 
-## INFO  [19:19:04.929] Applying learner &#39;classif.kknn&#39; on task &#39;diabetes&#39; (iter 2/10) 
-## INFO  [19:19:05.179] Applying learner &#39;classif.naive_bayes&#39; on task &#39;diabetes&#39; (iter 8/10) 
-## INFO  [19:19:05.200] Applying learner &#39;classif.kknn&#39; on task &#39;diabetes&#39; (iter 6/10) 
-## INFO  [19:19:05.222] Applying learner &#39;classif.log_reg&#39; on task &#39;diabetes&#39; (iter 4/10) 
-## INFO  [19:19:05.236] Applying learner &#39;classif.kknn&#39; on task &#39;diabetes&#39; (iter 3/10) 
-## INFO  [19:19:05.258] Applying learner &#39;classif.naive_bayes&#39; on task &#39;diabetes&#39; (iter 10/10) 
-## INFO  [19:19:05.280] Applying learner &#39;classif.log_reg&#39; on task &#39;diabetes&#39; (iter 9/10) 
-## INFO  [19:19:05.294] Applying learner &#39;classif.log_reg&#39; on task &#39;diabetes&#39; (iter 6/10) 
-## INFO  [19:19:05.308] Applying learner &#39;classif.naive_bayes&#39; on task &#39;diabetes&#39; (iter 6/10) 
-## INFO  [19:19:05.330] Applying learner &#39;classif.log_reg&#39; on task &#39;diabetes&#39; (iter 10/10) 
-## INFO  [19:19:05.346] Applying learner &#39;classif.naive_bayes&#39; on task &#39;diabetes&#39; (iter 3/10) 
-## INFO  [19:19:05.368] Applying learner &#39;classif.naive_bayes&#39; on task &#39;diabetes&#39; (iter 4/10) 
-## INFO  [19:19:05.389] Applying learner &#39;classif.kknn&#39; on task &#39;diabetes&#39; (iter 4/10) 
-## INFO  [19:19:05.414] Applying learner &#39;classif.rpart&#39; on task &#39;diabetes&#39; (iter 4/10) 
-## INFO  [19:19:05.428] Applying learner &#39;classif.rpart&#39; on task &#39;diabetes&#39; (iter 7/10) 
-## INFO  [19:19:05.443] Applying learner &#39;classif.kknn&#39; on task &#39;diabetes&#39; (iter 1/10) 
-## INFO  [19:19:05.472] Applying learner &#39;classif.log_reg&#39; on task &#39;diabetes&#39; (iter 3/10) 
-## INFO  [19:19:05.488] Applying learner &#39;classif.rpart&#39; on task &#39;diabetes&#39; (iter 2/10) 
-## INFO  [19:19:05.519] Applying learner &#39;classif.rpart&#39; on task &#39;diabetes&#39; (iter 8/10) 
-## INFO  [19:19:05.541] Applying learner &#39;classif.naive_bayes&#39; on task &#39;diabetes&#39; (iter 5/10) 
-## INFO  [19:19:05.563] Applying learner &#39;classif.kknn&#39; on task &#39;diabetes&#39; (iter 5/10) 
-## INFO  [19:19:05.585] Applying learner &#39;classif.kknn&#39; on task &#39;diabetes&#39; (iter 7/10) 
-## INFO  [19:19:05.606] Applying learner &#39;classif.log_reg&#39; on task &#39;diabetes&#39; (iter 2/10) 
-## INFO  [19:19:05.620] Applying learner &#39;classif.rpart&#39; on task &#39;diabetes&#39; (iter 5/10) 
-## INFO  [19:19:05.635] Applying learner &#39;classif.log_reg&#39; on task &#39;diabetes&#39; (iter 7/10) 
-## INFO  [19:19:05.653] Applying learner &#39;classif.ranger&#39; on task &#39;diabetes&#39; (iter 7/10) 
-## INFO  [19:19:05.756] Applying learner &#39;classif.ranger&#39; on task &#39;diabetes&#39; (iter 2/10) 
-## INFO  [19:19:05.830] Applying learner &#39;classif.naive_bayes&#39; on task &#39;diabetes&#39; (iter 9/10) 
-## INFO  [19:19:05.850] Applying learner &#39;classif.ranger&#39; on task &#39;diabetes&#39; (iter 5/10) 
-## INFO  [19:19:05.921] Applying learner &#39;classif.naive_bayes&#39; on task &#39;diabetes&#39; (iter 7/10) 
-## INFO  [19:19:05.940] Applying learner &#39;classif.naive_bayes&#39; on task &#39;diabetes&#39; (iter 1/10) 
-## INFO  [19:19:05.963] Applying learner &#39;classif.log_reg&#39; on task &#39;diabetes&#39; (iter 8/10) 
-## INFO  [19:19:05.978] Applying learner &#39;classif.kknn&#39; on task &#39;diabetes&#39; (iter 9/10) 
-## INFO  [19:19:06.000] Applying learner &#39;classif.rpart&#39; on task &#39;diabetes&#39; (iter 6/10) 
-## INFO  [19:19:06.023] Applying learner &#39;classif.ranger&#39; on task &#39;diabetes&#39; (iter 1/10) 
-## INFO  [19:19:06.100] Applying learner &#39;classif.ranger&#39; on task &#39;diabetes&#39; (iter 6/10) 
-## INFO  [19:19:06.201] Finished benchmark</code></pre>
+<pre><code>## INFO  [19:32:49.942] Benchmark with 50 resampling iterations 
+## INFO  [19:32:49.967] Applying learner &#39;classif.log_reg&#39; on task &#39;diabetes&#39; (iter 9/10) 
+## INFO  [19:32:50.001] Applying learner &#39;classif.log_reg&#39; on task &#39;diabetes&#39; (iter 5/10) 
+## INFO  [19:32:50.025] Applying learner &#39;classif.ranger&#39; on task &#39;diabetes&#39; (iter 1/10) 
+## INFO  [19:32:50.142] Applying learner &#39;classif.rpart&#39; on task &#39;diabetes&#39; (iter 6/10) 
+## INFO  [19:32:50.185] Applying learner &#39;classif.log_reg&#39; on task &#39;diabetes&#39; (iter 1/10) 
+## INFO  [19:32:50.207] Applying learner &#39;classif.ranger&#39; on task &#39;diabetes&#39; (iter 7/10) 
+## INFO  [19:32:50.306] Applying learner &#39;classif.naive_bayes&#39; on task &#39;diabetes&#39; (iter 4/10) 
+## INFO  [19:32:50.380] Applying learner &#39;classif.log_reg&#39; on task &#39;diabetes&#39; (iter 10/10) 
+## INFO  [19:32:50.402] Applying learner &#39;classif.ranger&#39; on task &#39;diabetes&#39; (iter 10/10) 
+## INFO  [19:32:50.504] Applying learner &#39;classif.rpart&#39; on task &#39;diabetes&#39; (iter 4/10) 
+## INFO  [19:32:50.526] Applying learner &#39;classif.rpart&#39; on task &#39;diabetes&#39; (iter 8/10) 
+## INFO  [19:32:50.549] Applying learner &#39;classif.log_reg&#39; on task &#39;diabetes&#39; (iter 7/10) 
+## INFO  [19:32:50.571] Applying learner &#39;classif.rpart&#39; on task &#39;diabetes&#39; (iter 10/10) 
+## INFO  [19:32:50.593] Applying learner &#39;classif.rpart&#39; on task &#39;diabetes&#39; (iter 3/10) 
+## INFO  [19:32:50.617] Applying learner &#39;classif.log_reg&#39; on task &#39;diabetes&#39; (iter 8/10) 
+## INFO  [19:32:50.696] Applying learner &#39;classif.kknn&#39; on task &#39;diabetes&#39; (iter 1/10) 
+## INFO  [19:32:50.735] Applying learner &#39;classif.kknn&#39; on task &#39;diabetes&#39; (iter 3/10) 
+## INFO  [19:32:50.780] Applying learner &#39;classif.log_reg&#39; on task &#39;diabetes&#39; (iter 3/10) 
+## INFO  [19:32:50.801] Applying learner &#39;classif.kknn&#39; on task &#39;diabetes&#39; (iter 4/10) 
+## INFO  [19:32:51.094] Applying learner &#39;classif.kknn&#39; on task &#39;diabetes&#39; (iter 5/10) 
+## INFO  [19:32:51.142] Applying learner &#39;classif.rpart&#39; on task &#39;diabetes&#39; (iter 7/10) 
+## INFO  [19:32:51.163] Applying learner &#39;classif.ranger&#39; on task &#39;diabetes&#39; (iter 8/10) 
+## INFO  [19:32:51.257] Applying learner &#39;classif.naive_bayes&#39; on task &#39;diabetes&#39; (iter 5/10) 
+## INFO  [19:32:51.288] Applying learner &#39;classif.log_reg&#39; on task &#39;diabetes&#39; (iter 4/10) 
+## INFO  [19:32:51.309] Applying learner &#39;classif.ranger&#39; on task &#39;diabetes&#39; (iter 6/10) 
+## INFO  [19:32:51.400] Applying learner &#39;classif.naive_bayes&#39; on task &#39;diabetes&#39; (iter 10/10) 
+## INFO  [19:32:51.429] Applying learner &#39;classif.kknn&#39; on task &#39;diabetes&#39; (iter 8/10) 
+## INFO  [19:32:51.460] Applying learner &#39;classif.kknn&#39; on task &#39;diabetes&#39; (iter 9/10) 
+## INFO  [19:32:51.489] Applying learner &#39;classif.naive_bayes&#39; on task &#39;diabetes&#39; (iter 6/10) 
+## INFO  [19:32:51.522] Applying learner &#39;classif.kknn&#39; on task &#39;diabetes&#39; (iter 7/10) 
+## INFO  [19:32:51.554] Applying learner &#39;classif.ranger&#39; on task &#39;diabetes&#39; (iter 3/10) 
+## INFO  [19:32:51.643] Applying learner &#39;classif.ranger&#39; on task &#39;diabetes&#39; (iter 4/10) 
+## INFO  [19:32:51.738] Applying learner &#39;classif.ranger&#39; on task &#39;diabetes&#39; (iter 9/10) 
+## INFO  [19:32:51.843] Applying learner &#39;classif.naive_bayes&#39; on task &#39;diabetes&#39; (iter 2/10) 
+## INFO  [19:32:51.867] Applying learner &#39;classif.naive_bayes&#39; on task &#39;diabetes&#39; (iter 3/10) 
+## INFO  [19:32:52.120] Applying learner &#39;classif.naive_bayes&#39; on task &#39;diabetes&#39; (iter 9/10) 
+## INFO  [19:32:52.142] Applying learner &#39;classif.rpart&#39; on task &#39;diabetes&#39; (iter 9/10) 
+## INFO  [19:32:52.158] Applying learner &#39;classif.ranger&#39; on task &#39;diabetes&#39; (iter 2/10) 
+## INFO  [19:32:52.234] Applying learner &#39;classif.kknn&#39; on task &#39;diabetes&#39; (iter 6/10) 
+## INFO  [19:32:52.258] Applying learner &#39;classif.kknn&#39; on task &#39;diabetes&#39; (iter 10/10) 
+## INFO  [19:32:52.282] Applying learner &#39;classif.log_reg&#39; on task &#39;diabetes&#39; (iter 6/10) 
+## INFO  [19:32:52.297] Applying learner &#39;classif.rpart&#39; on task &#39;diabetes&#39; (iter 5/10) 
+## INFO  [19:32:52.312] Applying learner &#39;classif.rpart&#39; on task &#39;diabetes&#39; (iter 1/10) 
+## INFO  [19:32:52.329] Applying learner &#39;classif.rpart&#39; on task &#39;diabetes&#39; (iter 2/10) 
+## INFO  [19:32:52.344] Applying learner &#39;classif.log_reg&#39; on task &#39;diabetes&#39; (iter 2/10) 
+## INFO  [19:32:52.360] Applying learner &#39;classif.kknn&#39; on task &#39;diabetes&#39; (iter 2/10) 
+## INFO  [19:32:52.385] Applying learner &#39;classif.naive_bayes&#39; on task &#39;diabetes&#39; (iter 1/10) 
+## INFO  [19:32:52.409] Applying learner &#39;classif.naive_bayes&#39; on task &#39;diabetes&#39; (iter 8/10) 
+## INFO  [19:32:52.431] Applying learner &#39;classif.ranger&#39; on task &#39;diabetes&#39; (iter 5/10) 
+## INFO  [19:32:52.508] Applying learner &#39;classif.naive_bayes&#39; on task &#39;diabetes&#39; (iter 7/10) 
+## INFO  [19:32:52.552] Finished benchmark</code></pre>
 <p>Karena terdapat 5 model dan masing-masing model menjalankan 10-folds cross-validation maka iterasi yang dilakukan ada sebanyak 50 kali.</p>
 </div>
 <div id="hasil-komparasi-model" class="section level3">
@@ -2079,11 +2074,11 @@ summary {
 ## 4:  4 &lt;ResampleResult[21]&gt; diabetes classif.naive_bayes            cv    10
 ## 5:  5 &lt;ResampleResult[21]&gt; diabetes      classif.ranger            cv    10
 ##    classif.acc
-## 1:   0.7699298
-## 2:   0.7353860
-## 3:   0.7526842
-## 4:   0.7473860
-## 5:   0.7566140</code></pre>
+## 1:   0.7738070
+## 2:   0.7472982
+## 3:   0.7446491
+## 4:   0.7631228
+## 5:   0.7658596</code></pre>
 <p>Berdasarkan nilai akurasi model yang memiliki performa prediksi terbaik adalah model regresi logistik.</p>
 </div>
 <div id="memprediksi-respon-pada-data-baru-jika-tersedia" class="section level3">
