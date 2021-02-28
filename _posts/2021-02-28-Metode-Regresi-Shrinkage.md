@@ -1762,7 +1762,8 @@ summary {
 
 </div>
 
-
+<br>
+<br>
 <p>Regresi Shrinkage merupakan model regresi yang menggunakan suatu penalty tertentu saat melakukan estimasi koefisienya. Penalti tersebut berperan untuk seleksi peubah ataupun mengatasi kolinear yang tinggi antar peubah prediktor. Model-model untuk yang termasuk dalam regresi shirnkage antara lain:</p>
 <ol style="list-style-type: decimal">
 <li>Regresi LASSO</li>
