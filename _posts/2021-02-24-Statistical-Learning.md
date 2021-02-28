@@ -4,22 +4,9 @@ title:  Statistical Machine Learning dengan mlr3
 categories: [Machine Learning,Supervised Learning,mlr3]
 excerpt: Di R ada beberapa ekosistem yang bisa digunakan untuk menerapkan statistical learning atau machine learning, yang paling terkenal antara lain adalah juga <code>mlr3</code>
 ---
-<!DOCTYPE html>
 
 <html>
 
-<head>
-
-<meta charset="utf-8" />
-<meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
-
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-
-<meta name="author" content="Gerry Alfa Dito" />
-
-
-<title>Statistical Machine Learning dengan R</title>
 
 <script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
 // v0.0.1
