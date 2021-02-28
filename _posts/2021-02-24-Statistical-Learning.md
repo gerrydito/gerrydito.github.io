@@ -1764,23 +1764,13 @@ summary {
 
 
 <div id="statistical-learning-di-r" class="section level2">
-<h2>Statistical Learning di R</h2>
+
 <p>Di R ada beberapa ekosistem yang bisa digunakan untuk menerapkan statistical learning atau machine learning, yang paling terkenal adalah ekosistem <code>caret</code> dan juga <code>mlr</code>. Jika ingin mempelajari ekosistem <code>caret</code> secara lebih lengkap bisa mengakses link berikut <a href="https://topepo.github.io/caret/" class="uri">https://topepo.github.io/caret/</a>. Pada tutorial kali ini kita akan menggunakan ekosistem <code>mlr</code> (atau sekarang berubah nama menjadi <code>mlr3</code>). Jika tertarik belajar lebih lanjut tentang ekosistem ini bisa mengakses link-link berikut:</p>
 <ol style="list-style-type: decimal">
 <li><a href="https://mlr3.mlr-org.com/" class="uri">https://mlr3.mlr-org.com/</a></li>
 <li><a href="https://mlr3book.mlr-org.com/" class="uri">https://mlr3book.mlr-org.com/</a></li>
 <li><a href="https://mlr3gallery.mlr-org.com/" class="uri">https://mlr3gallery.mlr-org.com/</a></li>
-</ol>
-<p>Proses pemodelan (learning) menggunakan ekosistem mlr3:</p>
-<ol style="list-style-type: decimal">
-<li>Import data di R</li>
-<li>Import data ke ekosistem mlr3</li>
-<li>Menentukan model yang digunakan</li>
-<li>Menentukan cara pembagian data</li>
-<li>Melakukan interpretasi model (jika diperlukan)</li>
-<li>Melakukan training dan menghitung performa model/ Komparasi model</li>
-<li>Memprediksi respon pada data baru (jika tersedia)</li>
-</ol>
+
 </div>
 <div id="package" class="section level2">
 <h2>Package</h2>
@@ -1803,6 +1793,18 @@ summary {
 <p>Acknowledgements Smith, J.W., Everhart, J.E., Dickson, W.C., Knowler, W.C., &amp; Johannes, R.S. (1988). Using the ADAP learning algorithm to forecast the onset of diabetes mellitus. In Proceedings of the Symposium on Computer Applications and Medical Care (pp. 261–265). IEEE Computer Society Press.</p>
 <p>data ini bisa diperoleh di link berikut ini <a href="https://github.com/gerrydito/Model-Klasifikasi/tree/master/Praktikum/KNN" class="uri">https://github.com/gerrydito/Model-Klasifikasi/tree/master/Praktikum/KNN</a></p>
 <div id="import-data-di-r" class="section level3">
+<h2>Statistical Learning di R</h2>
+</ol>
+<p>Proses pemodelan (learning) menggunakan ekosistem mlr3:</p>
+<ol style="list-style-type: decimal">
+<li>Import data di R</li>
+<li>Import data ke ekosistem mlr3</li>
+<li>Menentukan model yang digunakan</li>
+<li>Menentukan cara pembagian data</li>
+<li>Melakukan interpretasi model (jika diperlukan)</li>
+<li>Melakukan training dan menghitung performa model/ Komparasi model</li>
+<li>Memprediksi respon pada data baru (jika tersedia)</li>
+</ol>
 <h3>Import data di R</h3>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>data_diabetes &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;diabetes.csv&quot;</span>,<span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>)</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="kw">head</span>(data_diabetes)</span></code></pre></div>
