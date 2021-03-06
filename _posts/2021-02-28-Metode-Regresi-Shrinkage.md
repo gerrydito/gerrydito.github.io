@@ -4,6 +4,7 @@ title:  Metode Regresi Shrinkage
 categories: [Machine Learning,Supervised Learning,High-dimensional data,Selection Model, Regression]
 excerpt: Regresi Shrinkage merupakan model regresi yang menggunakan suatu penalty tertentu saat melakukan estimasi koefisienya. Penalti tersebut berperan untuk seleksi peubah ataupun mengatasi kolinear yang tinggi antar peubah prediktor 
 ---
+
 <html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
 
 <head>
@@ -14,9 +15,7 @@ excerpt: Regresi Shrinkage merupakan model regresi yang menggunakan suatu penalt
 
   <style type="text/css">
   /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
-  body {
-    visibility: hidden;
-  }
+
   </style>
 
  <!--radix_placeholder_import_source-->
