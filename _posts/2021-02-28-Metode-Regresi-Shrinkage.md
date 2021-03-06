@@ -1450,9 +1450,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <!--radix_placeholder_front_matter-->
 
-<script id="distill-front-matter" type="text/json">
-{"title":"Metode Regresi Shrinkage","authors":[]}
-</script>
+
 
 <!--/radix_placeholder_front_matter-->
 <!--radix_placeholder_navigation_before_body-->
@@ -1460,12 +1458,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!--radix_placeholder_site_before_body-->
 <!--/radix_placeholder_site_before_body-->
 
-<div class="d-title">
-<h1>Metode Regresi Shrinkage</h1>
-<!--radix_placeholder_categories-->
-<!--/radix_placeholder_categories-->
 
-</div>
 
 
 <div class="d-article">
