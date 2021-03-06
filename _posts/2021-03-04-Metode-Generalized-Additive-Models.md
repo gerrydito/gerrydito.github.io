@@ -1753,17 +1753,6 @@ summary {
 <body>
 
 
-<div class="container-fluid main-container">
-
-
-
-
-<div class="fluid-row" id="header">
-
-
-
-
-</div>
 
 
 <p>GAM (Generalized Additive Model) merupakan model yang dapat memberikan kerangka umum untuk memperluas model linier standar dengan mengizinkan fungsi non-linier dari masing-masing variabel, sambil mempertahankan aditivitas. Sama seperti model linier, GAM dapat diterapkan dengan respon kuantitatif dan kualitatif. Untuk response kontinu, Model GAM bisa ditulis sebagai:</p>
