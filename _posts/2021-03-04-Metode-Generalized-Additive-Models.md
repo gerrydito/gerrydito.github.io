@@ -1,10 +1,11 @@
-
 ---
 layout: post
 title:  Metode Generalized Additive Models (GAM)
 categories: [Nonlinear Regression,Supervised]
 excerpt: GAM (Generalized Additive Model) merupakan model yang dapat memberikan kerangka umum untuk memperluas model linier standar dengan mengizinkan fungsi non-linier dari masing-masing variabel, sambil mempertahankan aditivitas.
 ---
+
+
 <html>
 
 <head>
