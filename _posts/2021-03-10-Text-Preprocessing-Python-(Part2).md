@@ -1,14 +1,13 @@
 ---
 layout: post
-title:  Text Prepocessing dalam Python (part 1)
+title:  Text Prepocessing dalam Python (part 2)
 categories: [Natural Language Processing,Text Analytics,python]
 excerpt: Text Preprocessing merupakan praktik membersihkan dan menyiapkan data teks.
 ---
 
-<html>
 <head><meta charset="utf-8" />
 
-<title>Text Preprocessing part1</title>
+<title>Text Preprocessing Python part2</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13083,27 +13082,6 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Text Preprocessing merupakan praktik membersihkan dan menyiapkan data teks. Adapun tahapan untu text preprocessing antara lain:</p>
-<ul>
-<li><p>Noise Removal</p>
-<ul>
-<li>Case Folding</li>
-<li>Menghilangkan Tanda Baca (punctuation removal)</li>
-<li>Menghapus whitepace (Whitespace removal)</li>
-</ul>
-</li>
-<li>Tokenisasi (Tokenization)</li>
-<li>Menghapus Stop Word (Stop Word Removal)</li>
-<li>Normalization</li>
-<li>Stemming</li>
-<li>Lemmatization</li>
-</ul>
 
 </div>
 </div>
@@ -13111,20 +13089,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Di python, ada beberapa package (modul) yang dapat membantu kita untuk menangani masalah teks ini, sepeti</p>
-<ul>
-<li><a href="https://spacy.io/">Spacy</a></li>
-<li><a href="https://www.nltk.org/">NLTK</a></li>
-<li><a href="https://radimrehurek.com/gensim/">Gensim</a></li>
-<li><a href="https://textblob.readthedocs.io/en/dev/">TextBlob</a></li>
-<li><a href="https://github.com/har07/PySastrawi">PySastrawi (Khusus Bahasa Indonesia)</a></li>
-</ul>
-<p>Dalam tutorial ini kita akan fokus menggunakan <strong>Spacy</strong>,<strong>NLTK</strong> dan <strong>PySastrawi</strong>. Selain package diatas, ada beberapa sumber lain yang dapat membantu kita untuk pengolahan teks ini seperti</p>
-<ul>
-<li><a href="https://github.com/masdevid/ID-Stopwords">Indonesian stopwords only</a></li>
-<li><a href="http://kakakpintar.com/daftar-kata-baku-dan-tidak-baku-a-z-dalam-bahasa-indonesia/">Daftar Kata Baku-Tidak Baku</a>
-*<a href="https://github.com/nasalsabila/kamus-alay">Kamus Alay</a></li>
-</ul>
+<p>Pada Text Preprocessing part 2 ini akan dibahas penerapan text preprocessing saat kita memiliki banyak data text. Untuk keperluan data pada ilustrasi ini dapat di download pada link <a href="https://drive.google.com/drive/folders/1-lU0T9UU7sWD8lKKvAakmCpEhOKY2BU-?usp=sharing">ini</a></p>
 
 </div>
 </div>
@@ -13134,41 +13099,23 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">doc1_asli</span> <span class="o">=</span> <span class="s1">&#39;Kepulauan Indonesia menjadi wilayah perdagangan penting sejak abad ke 7, yaitu sejak berdirinya Kerajaan Sriwijaya, sebuah kemaharajaan Hindu yang berpusat di Palembang. &#39;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">doc1_asli</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">doc2_asli</span> <span class="o">=</span> <span class="s1">&#39;&quot;Bersama ini saya sampaikan, saya putuskan lampiran Perpres terkait pembukaan investasi baru dalam industri minuman keras yang mengandung alkohol saya nyatakan dicabut,&quot; kata Jokowi dalam tayangan video YouTube Sekretariat Presiden.&#39;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">doc2_asli</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">tweet1_asli</span> <span class="o">=</span> <span class="s1">&#39;Aku cuma pengen tatap muka sama mereka, belajar di kelas seperti biasa. Covid19 di Indonesia pergi ajaaa.. ga usah balik lagi yaa&#39;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tweet1_asli</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">tweet2_asli</span> <span class="o">=</span> <span class="s1">&#39;Covid19 di Indonesia plus banjir. Kombinasi yang lengkap.</span><span class="se">\t</span><span class="s1">Tapi yang bikin gue ngeri banjir lagi woy&#39;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tweet2_asli</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Kepulauan Indonesia menjadi wilayah perdagangan penting sejak abad ke 7, yaitu sejak berdirinya Kerajaan Sriwijaya, sebuah kemaharajaan Hindu yang berpusat di Palembang.  
-
-&#34;Bersama ini saya sampaikan, saya putuskan lampiran Perpres terkait pembukaan investasi baru dalam industri minuman keras yang mengandung alkohol saya nyatakan dicabut,&#34; kata Jokowi dalam tayangan video YouTube Sekretariat Presiden. 
-
-Aku cuma pengen tatap muka sama mereka, belajar di kelas seperti biasa. Covid19 di Indonesia pergi ajaaa.. ga usah balik lagi yaa 
-
-Covid19 di Indonesia plus banjir. Kombinasi yang lengkap.	Tapi yang bikin gue ngeri banjir lagi woy
-</pre>
 </div>
-</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tempo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;tempo_small.csv&quot;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;|&quot;</span><span class="p">,</span><span class="n">infer_datetime_format</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
 
+    </div>
 </div>
 </div>
 
@@ -13176,104 +13123,30 @@ Covid19 di Indonesia plus banjir. Kombinasi yang lengkap.	Tapi yang bikin gue ng
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Noise-Removal">Noise Removal<a class="anchor-link" href="#Noise-Removal">&#182;</a></h2>
+<h2 id="Text-Preprocessing">Text Preprocessing<a class="anchor-link" href="#Text-Preprocessing">&#182;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Case Folding</span>
-<span class="n">doc1</span> <span class="o">=</span> <span class="n">doc1_asli</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">doc1</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">doc2</span> <span class="o">=</span> <span class="n">doc2_asli</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">doc2</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">tweet1</span> <span class="o">=</span> <span class="n">tweet1_asli</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tweet1</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">tweet2</span> <span class="o">=</span> <span class="n">tweet2_asli</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tweet2</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Noise-Removal">Noise Removal<a class="anchor-link" href="#Noise-Removal">&#182;</a></h3>
 </div>
 </div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>kepulauan indonesia menjadi wilayah perdagangan penting sejak abad ke 7, yaitu sejak berdirinya kerajaan sriwijaya, sebuah kemaharajaan hindu yang berpusat di palembang.  
-
-&#34;bersama ini saya sampaikan, saya putuskan lampiran perpres terkait pembukaan investasi baru dalam industri minuman keras yang mengandung alkohol saya nyatakan dicabut,&#34; kata jokowi dalam tayangan video youtube sekretariat presiden. 
-
-aku cuma pengen tatap muka sama mereka, belajar di kelas seperti biasa. covid19 di indonesia pergi ajaaa.. ga usah balik lagi yaa 
-
-covid19 di indonesia plus banjir. kombinasi yang lengkap.	tapi yang bikin gue ngeri banjir lagi woy 
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Punctuation removal</span>
-<span class="kn">import</span> <span class="nn">string</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Berikut tanda baca yang akan dibuang: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="c1"># doc1 dan mengandung angka yang kemudian kita buang</span>
-<span class="n">doc1</span> <span class="o">=</span> <span class="n">doc1</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">string</span><span class="o">.</span><span class="n">punctuation</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">doc1</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">doc2</span> <span class="o">=</span> <span class="n">doc2</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">doc2</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">tweet1</span> <span class="o">=</span> <span class="n">tweet1</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tweet1</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">tweet2</span> <span class="o">=</span> <span class="n">tweet2</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tweet2</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">string</span>
+<span class="k">def</span> <span class="nf">noise_removal</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="n">words</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">string</span><span class="o">.</span><span class="n">punctuation</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span><span class="p">))</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="n">words</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">words</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Berikut tanda baca yang akan dibuang: 
- !&#34;#$%&amp;&#39;()*+,-./:;&lt;=&gt;?@[\]^_`{|}~ 
-
-kepulauan indonesia menjadi wilayah perdagangan penting sejak abad ke  yaitu sejak berdirinya kerajaan sriwijaya sebuah kemaharajaan hindu yang berpusat di palembang  
-
-bersama ini saya sampaikan saya putuskan lampiran perpres terkait pembukaan investasi baru dalam industri minuman keras yang mengandung alkohol saya nyatakan dicabut kata jokowi dalam tayangan video youtube sekretariat presiden 
-
-aku cuma pengen tatap muka sama mereka belajar di kelas seperti biasa covid19 di indonesia pergi ajaaa ga usah balik lagi yaa 
-
-covid19 di indonesia plus banjir kombinasi yang lengkap	tapi yang bikin gue ngeri banjir lagi woy 
-
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -13283,164 +13156,34 @@ covid19 di indonesia plus banjir kombinasi yang lengkap	tapi yang bikin gue nger
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Whitespace Removal</span>
-<span class="n">tweet2</span><span class="o">=</span><span class="n">tweet2</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tweet2</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tempo_clean</span> <span class="o">=</span> <span class="n">tempo</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span>
+<span class="n">tempo_clean</span> <span class="o">=</span> <span class="n">tempo_clean</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>covid19 di indonesia plus banjir kombinasi yang lengkap	tapi yang bikin gue ngeri banjir lagi woy 
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Tokenisasi">Tokenisasi<a class="anchor-link" href="#Tokenisasi">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Tokenisasi merupakan cara memisahkan teks menjadi unit-unit yang lebih kecil. Unit-unit ini disebut juga dengan <strong>token</strong>. Di sini, token dapat berupa kata, karakter, atau subkata. Oleh karena itu, tokenisasi secara luas dapat diklasifikasikan menjadi 3 jenis yaitu tokenisasi (word) kata, tokenisasi karakter(character), dan tokenisasi suku kata (karakter n-gram).</p>
-<blockquote><p>Membuat Kosakata adalah tujuan akhir dari Tokenisasi.</p>
-</blockquote>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Misalkan saja, kalimat: <strong>Aku cinta bahasa Indonesia</strong>.</p>
-<p>Cara paling umum untuk membentuk token didasarkan pada spasi. Dengan asumsi spasi sebagai pemisah, tokenisasi kalimat <strong>Aku cinta bahasa Indonesia</strong> menghasilkan 4 token yaitu  <strong>Aku-cinta-bahasa-Indonesia</strong>. Karena setiap token adalah sebuah kata, itu menjadi contoh tokenisasi kata.</p>
-<p>Demikian pula, token dapat berupa karakter atau subkata. Misalnya, kata <strong>menghasilkan</strong>:</p>
-<ul>
-<li>Token karakter: <strong>m-e-n-g-h-a-s-i-l-k-a-n</strong></li>
-<li>Token sub kata: <strong>meng-hasil-kan</strong></li>
-</ul>
-<p>Tutorial ini akan fokus pada tokenisasi kata saja.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Menggunakan-perintah-bawaan-python">Menggunakan perintah bawaan python<a class="anchor-link" href="#Menggunakan-perintah-bawaan-python">&#182;</a></h3>
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">token_doc1</span> <span class="o">=</span> <span class="n">doc1</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;teks 1 </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_doc1</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">token_doc2</span> <span class="o">=</span> <span class="n">doc2</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;teks 2 </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_doc2</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">token_tweet1</span> <span class="o">=</span> <span class="n">tweet1</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;teks 3 </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_tweet1</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">token_tweet2</span> <span class="o">=</span> <span class="n">tweet2</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;teks 4 </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_tweet2</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tempo_clean</span> <span class="o">=</span> <span class="n">tempo_clean</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">noise_removal</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>teks 1 
- [&#39;kepulauan&#39;, &#39;indonesia&#39;, &#39;menjadi&#39;, &#39;wilayah&#39;, &#39;perdagangan&#39;, &#39;penting&#39;, &#39;sejak&#39;, &#39;abad&#39;, &#39;ke&#39;, &#39;yaitu&#39;, &#39;sejak&#39;, &#39;berdirinya&#39;, &#39;kerajaan&#39;, &#39;sriwijaya&#39;, &#39;sebuah&#39;, &#39;kemaharajaan&#39;, &#39;hindu&#39;, &#39;yang&#39;, &#39;berpusat&#39;, &#39;di&#39;, &#39;palembang&#39;] 
-
-teks 2 
- [&#39;bersama&#39;, &#39;ini&#39;, &#39;saya&#39;, &#39;sampaikan&#39;, &#39;saya&#39;, &#39;putuskan&#39;, &#39;lampiran&#39;, &#39;perpres&#39;, &#39;terkait&#39;, &#39;pembukaan&#39;, &#39;investasi&#39;, &#39;baru&#39;, &#39;dalam&#39;, &#39;industri&#39;, &#39;minuman&#39;, &#39;keras&#39;, &#39;yang&#39;, &#39;mengandung&#39;, &#39;alkohol&#39;, &#39;saya&#39;, &#39;nyatakan&#39;, &#39;dicabut&#39;, &#39;kata&#39;, &#39;jokowi&#39;, &#39;dalam&#39;, &#39;tayangan&#39;, &#39;video&#39;, &#39;youtube&#39;, &#39;sekretariat&#39;, &#39;presiden&#39;] 
-
-teks 3 
- [&#39;aku&#39;, &#39;cuma&#39;, &#39;pengen&#39;, &#39;tatap&#39;, &#39;muka&#39;, &#39;sama&#39;, &#39;mereka&#39;, &#39;belajar&#39;, &#39;di&#39;, &#39;kelas&#39;, &#39;seperti&#39;, &#39;biasa&#39;, &#39;covid19&#39;, &#39;di&#39;, &#39;indonesia&#39;, &#39;pergi&#39;, &#39;ajaaa&#39;, &#39;ga&#39;, &#39;usah&#39;, &#39;balik&#39;, &#39;lagi&#39;, &#39;yaa&#39;] 
-
-teks 4 
- [&#39;covid19&#39;, &#39;di&#39;, &#39;indonesia&#39;, &#39;plus&#39;, &#39;banjir&#39;, &#39;kombinasi&#39;, &#39;yang&#39;, &#39;lengkap&#39;, &#39;tapi&#39;, &#39;yang&#39;, &#39;bikin&#39;, &#39;gue&#39;, &#39;ngeri&#39;, &#39;banjir&#39;, &#39;lagi&#39;, &#39;woy&#39;]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Menggunakan-Spacy">Menggunakan Spacy<a class="anchor-link" href="#Menggunakan-Spacy">&#182;</a></h3>
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">spacy.lang.id</span> <span class="kn">import</span> <span class="n">Indonesian</span>
-<span class="kn">import</span> <span class="nn">spacy</span>
-<span class="n">nlp</span> <span class="o">=</span> <span class="n">Indonesian</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">doc1_spacy</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">doc1</span><span class="p">)</span>
-<span class="n">token_doc1_spacy</span> <span class="o">=</span> <span class="p">[</span><span class="n">token</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">doc1_spacy</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;token teks 1 </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_doc1_spacy</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="n">doc2_spacy</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">doc2</span><span class="p">)</span>
-<span class="n">token_doc2_spacy</span> <span class="o">=</span> <span class="p">[</span><span class="n">token</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">doc2_spacy</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;token teks 2 </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_doc2_spacy</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="n">tweet1_spacy</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">tweet1</span><span class="p">)</span>
-<span class="n">token_tweet1_spacy</span> <span class="o">=</span> <span class="p">[</span><span class="n">token</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tweet1_spacy</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;token teks 3 </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_tweet1_spacy</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="n">tweet2_spacy</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">tweet2</span><span class="p">)</span>
-<span class="n">token_tweet2_spacy</span> <span class="o">=</span> <span class="p">[</span><span class="n">token</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tweet2_spacy</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;token teks 3 </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_tweet2_spacy</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tempo_clean</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -13453,24 +13196,20 @@ teks 4
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[6]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>token teks 1 
- [&#39;kepulauan&#39;, &#39;indonesia&#39;, &#39;menjadi&#39;, &#39;wilayah&#39;, &#39;perdagangan&#39;, &#39;penting&#39;, &#39;sejak&#39;, &#39;abad&#39;, &#39;ke&#39;, &#39; &#39;, &#39;yaitu&#39;, &#39;sejak&#39;, &#39;berdirinya&#39;, &#39;kerajaan&#39;, &#39;sriwijaya&#39;, &#39;sebuah&#39;, &#39;kemaharajaan&#39;, &#39;hindu&#39;, &#39;yang&#39;, &#39;berpusat&#39;, &#39;di&#39;, &#39;palembang&#39;] 
 
-token teks 2 
- [&#39;bersama&#39;, &#39;ini&#39;, &#39;saya&#39;, &#39;sampaikan&#39;, &#39;saya&#39;, &#39;putuskan&#39;, &#39;lampiran&#39;, &#39;perpres&#39;, &#39;terkait&#39;, &#39;pembukaan&#39;, &#39;investasi&#39;, &#39;baru&#39;, &#39;dalam&#39;, &#39;industri&#39;, &#39;minuman&#39;, &#39;keras&#39;, &#39;yang&#39;, &#39;mengandung&#39;, &#39;alkohol&#39;, &#39;saya&#39;, &#39;nyatakan&#39;, &#39;dicabut&#39;, &#39;kata&#39;, &#39;jokowi&#39;, &#39;dalam&#39;, &#39;tayangan&#39;, &#39;video&#39;, &#39;youtube&#39;, &#39;sekretariat&#39;, &#39;presiden&#39;] 
 
-token teks 3 
- [&#39;aku&#39;, &#39;cuma&#39;, &#39;pengen&#39;, &#39;tatap&#39;, &#39;muka&#39;, &#39;sama&#39;, &#39;mereka&#39;, &#39;belajar&#39;, &#39;di&#39;, &#39;kelas&#39;, &#39;seperti&#39;, &#39;biasa&#39;, &#39;covid19&#39;, &#39;di&#39;, &#39;indonesia&#39;, &#39;pergi&#39;, &#39;ajaaa&#39;, &#39;ga&#39;, &#39;usah&#39;, &#39;balik&#39;, &#39;lagi&#39;, &#39;yaa&#39;] 
-
-token teks 3 
- [&#39;covid19&#39;, &#39;di&#39;, &#39;indonesia&#39;, &#39;plus&#39;, &#39;banjir&#39;, &#39;kombinasi&#39;, &#39;yang&#39;, &#39;lengkap&#39;, &#39;\t&#39;, &#39;tapi&#39;, &#39;yang&#39;, &#39;bikin&#39;, &#39;gue&#39;, &#39;ngeri&#39;, &#39;banjir&#39;, &#39;lagi&#39;, &#39;woy&#39;] 
-
-</pre>
+<div class="output_text output_subarea output_execute_result">
+<pre>0    buntut kasus reksa dana sinarmas presdir bibit...
+1    nikita mirzani jelaskan kronologi dugaan penga...
+2    asosiasi media siber kecam doxingintimidasi te...
+3    remdesivir obat darurat covid di as ini hasil ...
+4    wali kota peru purapura mati usai ketahuan lan...
+Name: title, dtype: object</pre>
 </div>
+
 </div>
 
 </div>
@@ -13480,17 +13219,16 @@ token teks 3
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Menggunakan-NLTK">Menggunakan NLTK<a class="anchor-link" href="#Menggunakan-NLTK">&#182;</a></h3>
+<h3 id="Tokenization">Tokenization<a class="anchor-link" href="#Tokenization">&#182;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">word_tokenize</span> 
-<span class="kn">import</span> <span class="nn">nltk</span>
 </pre></div>
 
     </div>
@@ -13498,20 +13236,13 @@ token teks 3
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>jika kita mennggunakan nltk pertama kali kita perlu menginstall <code>'punk'</code> dibawah ini</p>
-
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">tokenize_fun</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13524,17 +13255,8 @@ token teks 3
 <div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">token_doc1_nltk</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">doc1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;token teks 1 </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_doc1_nltk</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="n">token_doc2_nltk</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">doc2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;token teks 2 </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_doc2_nltk</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="n">token_tweet1_nltk</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">tweet1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;token teks 3 </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_tweet1_nltk</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="n">token_tweet2_nltk</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">tweet2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;token teks 4 </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_tweet2_nltk</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tempo_clean</span> <span class="o">=</span> <span class="n">tempo_clean</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">tokenize_fun</span><span class="p">)</span>
+<span class="n">tempo_clean</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -13547,23 +13269,20 @@ token teks 3
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[9]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>token teks 1 
- [&#39;kepulauan&#39;, &#39;indonesia&#39;, &#39;menjadi&#39;, &#39;wilayah&#39;, &#39;perdagangan&#39;, &#39;penting&#39;, &#39;sejak&#39;, &#39;abad&#39;, &#39;ke&#39;, &#39;yaitu&#39;, &#39;sejak&#39;, &#39;berdirinya&#39;, &#39;kerajaan&#39;, &#39;sriwijaya&#39;, &#39;sebuah&#39;, &#39;kemaharajaan&#39;, &#39;hindu&#39;, &#39;yang&#39;, &#39;berpusat&#39;, &#39;di&#39;, &#39;palembang&#39;] 
 
-token teks 2 
- [&#39;bersama&#39;, &#39;ini&#39;, &#39;saya&#39;, &#39;sampaikan&#39;, &#39;saya&#39;, &#39;putuskan&#39;, &#39;lampiran&#39;, &#39;perpres&#39;, &#39;terkait&#39;, &#39;pembukaan&#39;, &#39;investasi&#39;, &#39;baru&#39;, &#39;dalam&#39;, &#39;industri&#39;, &#39;minuman&#39;, &#39;keras&#39;, &#39;yang&#39;, &#39;mengandung&#39;, &#39;alkohol&#39;, &#39;saya&#39;, &#39;nyatakan&#39;, &#39;dicabut&#39;, &#39;kata&#39;, &#39;jokowi&#39;, &#39;dalam&#39;, &#39;tayangan&#39;, &#39;video&#39;, &#39;youtube&#39;, &#39;sekretariat&#39;, &#39;presiden&#39;] 
 
-token teks 3 
- [&#39;aku&#39;, &#39;cuma&#39;, &#39;pengen&#39;, &#39;tatap&#39;, &#39;muka&#39;, &#39;sama&#39;, &#39;mereka&#39;, &#39;belajar&#39;, &#39;di&#39;, &#39;kelas&#39;, &#39;seperti&#39;, &#39;biasa&#39;, &#39;covid19&#39;, &#39;di&#39;, &#39;indonesia&#39;, &#39;pergi&#39;, &#39;ajaaa&#39;, &#39;ga&#39;, &#39;usah&#39;, &#39;balik&#39;, &#39;lagi&#39;, &#39;yaa&#39;] 
-
-token teks 4 
- [&#39;covid19&#39;, &#39;di&#39;, &#39;indonesia&#39;, &#39;plus&#39;, &#39;banjir&#39;, &#39;kombinasi&#39;, &#39;yang&#39;, &#39;lengkap&#39;, &#39;tapi&#39;, &#39;yang&#39;, &#39;bikin&#39;, &#39;gue&#39;, &#39;ngeri&#39;, &#39;banjir&#39;, &#39;lagi&#39;, &#39;woy&#39;]
-</pre>
+<div class="output_text output_subarea output_execute_result">
+<pre>0    [buntut, kasus, reksa, dana, sinarmas, presdir...
+1    [nikita, mirzani, jelaskan, kronologi, dugaan,...
+2    [asosiasi, media, siber, kecam, doxingintimida...
+3    [remdesivir, obat, darurat, covid, di, as, ini...
+4    [wali, kota, peru, purapura, mati, usai, ketah...
+Name: title, dtype: object</pre>
 </div>
+
 </div>
 
 </div>
@@ -13573,23 +13292,7 @@ token teks 4
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Menghapus-StopWord">Menghapus StopWord<a class="anchor-link" href="#Menghapus-StopWord">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Stopword</strong> merupakan kumpulan kata-kata yang sangat sering digunakan dalam suatu bahasa dan tidak memiliki makna khusus. Dalam python, stopword Bahasa Indonesia bisa diperoleh dari package Spacy dan NLTK.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Untuk keperluan menghapus stopword dari text, kita akan mendefinisikan fungsi baru agar memudahkan perocess penghapusan</p>
-
+<h2 id="Menghapus-Stopwrods">Menghapus Stopwrods<a class="anchor-link" href="#Menghapus-Stopwrods">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -13598,9 +13301,8 @@ token teks 4
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#fungsi menghapus stopword</span>
-<span class="k">def</span> <span class="nf">stopwords_removal</span><span class="p">(</span><span class="n">words</span><span class="p">,</span><span class="n">stopword</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span> <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stopword</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="n">indo_stopwords</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;indonesian&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13608,31 +13310,14 @@ token teks 4
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>fungsi <code>stopword_removal</code> membutuhkan dua parameter untuk dimasukan yaitu</p>
-<ul>
-<li>words : teks yang akan dihapus stopword-nya</li>
-<li>stopword: kumpulan stopwords </li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Menggunakan-Spacy">Menggunakan Spacy<a class="anchor-link" href="#Menggunakan-Spacy">&#182;</a></h3>
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">spacy.lang.id.stop_words</span> <span class="kn">import</span> <span class="n">STOP_WORDS</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#fungsi menghapus stopword</span>
+<span class="k">def</span> <span class="nf">stopwords_removal</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span> <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">indo_stopwords</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -13645,7 +13330,8 @@ token teks 4
 <div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">STOP_WORDS</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tempo_clean</span> <span class="o">=</span> <span class="n">tempo_clean</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">stopwords_removal</span><span class="p">)</span>
+<span class="n">tempo_clean</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -13664,7 +13350,12 @@ token teks 4
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>757</pre>
+<pre>0    [buntut, reksa, dana, sinarmas, presdir, bibit...
+1    [nikita, mirzani, kronologi, dugaan, penganiay...
+2    [asosiasi, media, siber, kecam, doxingintimida...
+3    [remdesivir, obat, darurat, covid, as, hasil, ...
+4    [wali, kota, peru, purapura, mati, ketahuan, l...
+Name: title, dtype: object</pre>
 </div>
 
 </div>
@@ -13672,15 +13363,21 @@ token teks 4
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Menghapus-Normalization">Menghapus Normalization<a class="anchor-link" href="#Menghapus-Normalization">&#182;</a></h2>
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">token_doc1_spacy1</span> <span class="o">=</span> <span class="n">stopwords_removal</span><span class="p">(</span><span class="n">token_doc1_spacy</span><span class="p">,</span><span class="n">STOP_WORDS</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sebelum menghapus stopword&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_doc1_spacy</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setelah menghapus stopword&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_doc1_spacy1</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">indo_slang_words</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/nasalsabila/kamus-alay/master/colloquial-indonesian-lexicon.csv&quot;</span><span class="p">)</span>
+<span class="n">indo_slang_words</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -13693,406 +13390,7 @@ token teks 4
 
 <div class="output_area">
 
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Sebelum menghapus stopword 
- [&#39;kepulauan&#39;, &#39;indonesia&#39;, &#39;menjadi&#39;, &#39;wilayah&#39;, &#39;perdagangan&#39;, &#39;penting&#39;, &#39;sejak&#39;, &#39;abad&#39;, &#39;ke&#39;, &#39; &#39;, &#39;yaitu&#39;, &#39;sejak&#39;, &#39;berdirinya&#39;, &#39;kerajaan&#39;, &#39;sriwijaya&#39;, &#39;sebuah&#39;, &#39;kemaharajaan&#39;, &#39;hindu&#39;, &#39;yang&#39;, &#39;berpusat&#39;, &#39;di&#39;, &#39;palembang&#39;] 
-
-Setelah menghapus stopword 
- [&#39;kepulauan&#39;, &#39;indonesia&#39;, &#39;wilayah&#39;, &#39;perdagangan&#39;, &#39;abad&#39;, &#39; &#39;, &#39;berdirinya&#39;, &#39;kerajaan&#39;, &#39;sriwijaya&#39;, &#39;kemaharajaan&#39;, &#39;hindu&#39;, &#39;berpusat&#39;, &#39;palembang&#39;]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">token_doc2_spacy1</span> <span class="o">=</span> <span class="n">stopwords_removal</span><span class="p">(</span><span class="n">token_doc2_spacy</span><span class="p">,</span><span class="n">STOP_WORDS</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sebelum menghapus stopword&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_doc2_spacy</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setelah menghapus stopword&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_doc2_spacy1</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Sebelum menghapus stopword 
- [&#39;bersama&#39;, &#39;ini&#39;, &#39;saya&#39;, &#39;sampaikan&#39;, &#39;saya&#39;, &#39;putuskan&#39;, &#39;lampiran&#39;, &#39;perpres&#39;, &#39;terkait&#39;, &#39;pembukaan&#39;, &#39;investasi&#39;, &#39;baru&#39;, &#39;dalam&#39;, &#39;industri&#39;, &#39;minuman&#39;, &#39;keras&#39;, &#39;yang&#39;, &#39;mengandung&#39;, &#39;alkohol&#39;, &#39;saya&#39;, &#39;nyatakan&#39;, &#39;dicabut&#39;, &#39;kata&#39;, &#39;jokowi&#39;, &#39;dalam&#39;, &#39;tayangan&#39;, &#39;video&#39;, &#39;youtube&#39;, &#39;sekretariat&#39;, &#39;presiden&#39;] 
-
-Setelah menghapus stopword 
- [&#39;putuskan&#39;, &#39;lampiran&#39;, &#39;perpres&#39;, &#39;terkait&#39;, &#39;pembukaan&#39;, &#39;investasi&#39;, &#39;industri&#39;, &#39;minuman&#39;, &#39;keras&#39;, &#39;mengandung&#39;, &#39;alkohol&#39;, &#39;nyatakan&#39;, &#39;dicabut&#39;, &#39;jokowi&#39;, &#39;tayangan&#39;, &#39;video&#39;, &#39;youtube&#39;, &#39;sekretariat&#39;, &#39;presiden&#39;]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">token_tweet1_spacy1</span> <span class="o">=</span> <span class="n">stopwords_removal</span><span class="p">(</span><span class="n">token_tweet1_spacy</span><span class="p">,</span><span class="n">STOP_WORDS</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sebelum menghapus stopword&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_tweet1_spacy</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setelah menghapus stopword&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_tweet1_spacy1</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Sebelum menghapus stopword 
- [&#39;aku&#39;, &#39;cuma&#39;, &#39;pengen&#39;, &#39;tatap&#39;, &#39;muka&#39;, &#39;sama&#39;, &#39;mereka&#39;, &#39;belajar&#39;, &#39;di&#39;, &#39;kelas&#39;, &#39;seperti&#39;, &#39;biasa&#39;, &#39;covid19&#39;, &#39;di&#39;, &#39;indonesia&#39;, &#39;pergi&#39;, &#39;ajaaa&#39;, &#39;ga&#39;, &#39;usah&#39;, &#39;balik&#39;, &#39;lagi&#39;, &#39;yaa&#39;] 
-
-Setelah menghapus stopword 
- [&#39;pengen&#39;, &#39;tatap&#39;, &#39;muka&#39;, &#39;belajar&#39;, &#39;kelas&#39;, &#39;covid19&#39;, &#39;indonesia&#39;, &#39;pergi&#39;, &#39;ajaaa&#39;, &#39;ga&#39;, &#39;yaa&#39;]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">token_tweet2_spacy1</span> <span class="o">=</span> <span class="n">stopwords_removal</span><span class="p">(</span><span class="n">token_tweet2_spacy</span><span class="p">,</span><span class="n">STOP_WORDS</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sebelum menghapus stopword&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_tweet2_spacy</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setelah menghapus stopword&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_tweet2_spacy1</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Sebelum menghapus stopword 
- [&#39;covid19&#39;, &#39;di&#39;, &#39;indonesia&#39;, &#39;plus&#39;, &#39;banjir&#39;, &#39;kombinasi&#39;, &#39;yang&#39;, &#39;lengkap&#39;, &#39;\t&#39;, &#39;tapi&#39;, &#39;yang&#39;, &#39;bikin&#39;, &#39;gue&#39;, &#39;ngeri&#39;, &#39;banjir&#39;, &#39;lagi&#39;, &#39;woy&#39;] 
-
-Setelah menghapus stopword 
- [&#39;covid19&#39;, &#39;indonesia&#39;, &#39;plus&#39;, &#39;banjir&#39;, &#39;kombinasi&#39;, &#39;lengkap&#39;, &#39;\t&#39;, &#39;bikin&#39;, &#39;gue&#39;, &#39;ngeri&#39;, &#39;banjir&#39;, &#39;woy&#39;]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Menggunakan-NLTK">Menggunakan NLTK<a class="anchor-link" href="#Menggunakan-NLTK">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;stopwords&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># mendapatkan stopword bahasa indonesia</span>
-<span class="n">indo_stopwords</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;indonesian&#39;</span><span class="p">)</span>
-<span class="nb">len</span><span class="p">(</span><span class="n">indo_stopwords</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[18]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>758</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">token_doc1_nltk1</span> <span class="o">=</span> <span class="n">stopwords_removal</span><span class="p">(</span><span class="n">token_doc1_nltk</span><span class="p">,</span><span class="n">indo_stopwords</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sebelum menghapus stopword&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_doc1_nltk</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setelah menghapus stopword&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_doc1_nltk1</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Sebelum menghapus stopword 
- [&#39;kepulauan&#39;, &#39;indonesia&#39;, &#39;menjadi&#39;, &#39;wilayah&#39;, &#39;perdagangan&#39;, &#39;penting&#39;, &#39;sejak&#39;, &#39;abad&#39;, &#39;ke&#39;, &#39;yaitu&#39;, &#39;sejak&#39;, &#39;berdirinya&#39;, &#39;kerajaan&#39;, &#39;sriwijaya&#39;, &#39;sebuah&#39;, &#39;kemaharajaan&#39;, &#39;hindu&#39;, &#39;yang&#39;, &#39;berpusat&#39;, &#39;di&#39;, &#39;palembang&#39;] 
-
-Setelah menghapus stopword 
- [&#39;kepulauan&#39;, &#39;indonesia&#39;, &#39;wilayah&#39;, &#39;perdagangan&#39;, &#39;abad&#39;, &#39;berdirinya&#39;, &#39;kerajaan&#39;, &#39;sriwijaya&#39;, &#39;kemaharajaan&#39;, &#39;hindu&#39;, &#39;berpusat&#39;, &#39;palembang&#39;]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">token_doc2_nltk1</span> <span class="o">=</span> <span class="n">stopwords_removal</span><span class="p">(</span><span class="n">token_doc2_nltk</span><span class="p">,</span><span class="n">indo_stopwords</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sebelum menghapus stopword&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_doc2_nltk</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setelah menghapus stopword&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_doc2_nltk1</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Sebelum menghapus stopword 
- [&#39;bersama&#39;, &#39;ini&#39;, &#39;saya&#39;, &#39;sampaikan&#39;, &#39;saya&#39;, &#39;putuskan&#39;, &#39;lampiran&#39;, &#39;perpres&#39;, &#39;terkait&#39;, &#39;pembukaan&#39;, &#39;investasi&#39;, &#39;baru&#39;, &#39;dalam&#39;, &#39;industri&#39;, &#39;minuman&#39;, &#39;keras&#39;, &#39;yang&#39;, &#39;mengandung&#39;, &#39;alkohol&#39;, &#39;saya&#39;, &#39;nyatakan&#39;, &#39;dicabut&#39;, &#39;kata&#39;, &#39;jokowi&#39;, &#39;dalam&#39;, &#39;tayangan&#39;, &#39;video&#39;, &#39;youtube&#39;, &#39;sekretariat&#39;, &#39;presiden&#39;] 
-
-Setelah menghapus stopword 
- [&#39;putuskan&#39;, &#39;lampiran&#39;, &#39;perpres&#39;, &#39;terkait&#39;, &#39;pembukaan&#39;, &#39;investasi&#39;, &#39;industri&#39;, &#39;minuman&#39;, &#39;keras&#39;, &#39;mengandung&#39;, &#39;alkohol&#39;, &#39;nyatakan&#39;, &#39;dicabut&#39;, &#39;jokowi&#39;, &#39;tayangan&#39;, &#39;video&#39;, &#39;youtube&#39;, &#39;sekretariat&#39;, &#39;presiden&#39;]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">token_tweet1_nltk1</span> <span class="o">=</span> <span class="n">stopwords_removal</span><span class="p">(</span><span class="n">token_tweet1_nltk</span><span class="p">,</span><span class="n">indo_stopwords</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sebelum menghapus stopword&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_tweet1_nltk</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setelah menghapus stopword&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_tweet1_nltk1</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Sebelum menghapus stopword 
- [&#39;aku&#39;, &#39;cuma&#39;, &#39;pengen&#39;, &#39;tatap&#39;, &#39;muka&#39;, &#39;sama&#39;, &#39;mereka&#39;, &#39;belajar&#39;, &#39;di&#39;, &#39;kelas&#39;, &#39;seperti&#39;, &#39;biasa&#39;, &#39;covid19&#39;, &#39;di&#39;, &#39;indonesia&#39;, &#39;pergi&#39;, &#39;ajaaa&#39;, &#39;ga&#39;, &#39;usah&#39;, &#39;balik&#39;, &#39;lagi&#39;, &#39;yaa&#39;] 
-
-Setelah menghapus stopword 
- [&#39;pengen&#39;, &#39;tatap&#39;, &#39;muka&#39;, &#39;belajar&#39;, &#39;kelas&#39;, &#39;covid19&#39;, &#39;indonesia&#39;, &#39;pergi&#39;, &#39;ajaaa&#39;, &#39;ga&#39;, &#39;yaa&#39;]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">token_tweet2_nltk1</span> <span class="o">=</span> <span class="n">stopwords_removal</span><span class="p">(</span><span class="n">token_tweet2_nltk</span><span class="p">,</span><span class="n">indo_stopwords</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sebelum menghapus stopword&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_tweet2_nltk</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setelah menghapus stopword&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_tweet2_nltk1</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Sebelum menghapus stopword 
- [&#39;covid19&#39;, &#39;di&#39;, &#39;indonesia&#39;, &#39;plus&#39;, &#39;banjir&#39;, &#39;kombinasi&#39;, &#39;yang&#39;, &#39;lengkap&#39;, &#39;tapi&#39;, &#39;yang&#39;, &#39;bikin&#39;, &#39;gue&#39;, &#39;ngeri&#39;, &#39;banjir&#39;, &#39;lagi&#39;, &#39;woy&#39;] 
-
-Setelah menghapus stopword 
- [&#39;covid19&#39;, &#39;indonesia&#39;, &#39;plus&#39;, &#39;banjir&#39;, &#39;kombinasi&#39;, &#39;lengkap&#39;, &#39;bikin&#39;, &#39;gue&#39;, &#39;ngeri&#39;, &#39;banjir&#39;, &#39;woy&#39;]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Normalization">Normalization<a class="anchor-link" href="#Normalization">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Text Normalization merupakan process mengubah kata-kata tidak baku dengan kata-kata baku.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Untuk melakukan hal ini kita akan menggunakan daftar kata-kata tidak baku dan baku dari <a href="https://github.com/nasalsabila/kamus-alay">Kamus Alay</a> yang sudah dalam bentuk file <code>csv</code>.. Kita akan mengimport file ini ke python dalam bentuk <code>DataFrame</code></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">indo_slang_word</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/nasalsabila/kamus-alay/master/colloquial-indonesian-lexicon.csv&quot;</span><span class="p">)</span>
-<span class="n">indo_slang_word</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[24]:</div>
+    <div class="prompt output_prompt">Out[13]:</div>
 
 
 
@@ -14186,23 +13484,15 @@ Setelah menghapus stopword
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Fungsi dibawah ini akan membantuk kita untuk mengganti kata-kata tidak baku menjadi kata baku.</p>
-
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">replace_slang_word</span><span class="p">(</span><span class="n">words</span><span class="p">,</span><span class="n">slang_words</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">replace_slang_word</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span>  <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="n">index_slang</span> <span class="o">=</span> <span class="n">slang_words</span><span class="o">.</span><span class="n">slang</span><span class="o">==</span><span class="n">words</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
-        <span class="n">formal</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">slang_words</span><span class="p">[</span><span class="n">index_slang</span><span class="p">]</span><span class="o">.</span><span class="n">formal</span><span class="p">))</span>
+        <span class="n">index_slang</span> <span class="o">=</span> <span class="n">indo_slang_words</span><span class="o">.</span><span class="n">slang</span><span class="o">==</span><span class="n">words</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+        <span class="n">formal</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">indo_slang_words</span><span class="p">[</span><span class="n">index_slang</span><span class="p">]</span><span class="o">.</span><span class="n">formal</span><span class="p">))</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">formal</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
             <span class="n">words</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">=</span><span class="n">formal</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">words</span>
@@ -14213,22 +13503,13 @@ Setelah menghapus stopword
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Dibawah ini adalah proses penerapannya</p>
-
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">token_doc1_normal</span> <span class="o">=</span> <span class="n">replace_slang_word</span><span class="p">(</span><span class="n">token_doc1_nltk1</span><span class="p">,</span><span class="n">indo_slang_word</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sebelum normalization&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_doc1_nltk1</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setelah normalization&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_doc1_normal</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tempo_clean</span> <span class="o">=</span> <span class="n">tempo_clean</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">replace_slang_word</span><span class="p">)</span>
+<span class="n">tempo_clean</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -14241,128 +13522,20 @@ Setelah menghapus stopword
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[15]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Sebelum normalization 
- [&#39;kepulauan&#39;, &#39;indonesia&#39;, &#39;wilayah&#39;, &#39;perdagangan&#39;, &#39;abad&#39;, &#39;berdirinya&#39;, &#39;kerajaan&#39;, &#39;sriwijaya&#39;, &#39;kemaharajaan&#39;, &#39;hindu&#39;, &#39;berpusat&#39;, &#39;palembang&#39;] 
 
-Setelah normalization 
- [&#39;kepulauan&#39;, &#39;indonesia&#39;, &#39;wilayah&#39;, &#39;perdagangan&#39;, &#39;abad&#39;, &#39;berdirinya&#39;, &#39;kerajaan&#39;, &#39;sriwijaya&#39;, &#39;kemaharajaan&#39;, &#39;hindu&#39;, &#39;berpusat&#39;, &#39;palembang&#39;]
-</pre>
-</div>
-</div>
 
-</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>0    [buntut, reksa, dana, sinarmas, presdir, bibit...
+1    [nikita, mirzani, kronologi, dugaan, penganiay...
+2    [asosiasi, media, siber, kecam, doxingintimida...
+3    [remdesivir, obat, darurat, covid, as, hasil, ...
+4    [wali, kota, peru, purapura, mati, ketahuan, l...
+Name: title, dtype: object</pre>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">token_doc2_normal</span> <span class="o">=</span> <span class="n">replace_slang_word</span><span class="p">(</span><span class="n">token_doc2_nltk1</span><span class="p">,</span><span class="n">indo_slang_word</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sebelum normalization&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_doc2_nltk1</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setelah normalization&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_doc2_normal</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Sebelum normalization 
- [&#39;putuskan&#39;, &#39;lampiran&#39;, &#39;perpres&#39;, &#39;terkait&#39;, &#39;pembukaan&#39;, &#39;investasi&#39;, &#39;industri&#39;, &#39;minuman&#39;, &#39;keras&#39;, &#39;mengandung&#39;, &#39;alkohol&#39;, &#39;menyatakan&#39;, &#39;dicabut&#39;, &#39;jokowi&#39;, &#39;tayangan&#39;, &#39;video&#39;, &#39;youtube&#39;, &#39;sekretariat&#39;, &#39;presiden&#39;] 
-
-Setelah normalization 
- [&#39;putuskan&#39;, &#39;lampiran&#39;, &#39;perpres&#39;, &#39;terkait&#39;, &#39;pembukaan&#39;, &#39;investasi&#39;, &#39;industri&#39;, &#39;minuman&#39;, &#39;keras&#39;, &#39;mengandung&#39;, &#39;alkohol&#39;, &#39;menyatakan&#39;, &#39;dicabut&#39;, &#39;jokowi&#39;, &#39;tayangan&#39;, &#39;video&#39;, &#39;youtube&#39;, &#39;sekretariat&#39;, &#39;presiden&#39;]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">token_tweet1_normal</span> <span class="o">=</span> <span class="n">replace_slang_word</span><span class="p">(</span><span class="n">token_tweet1_nltk1</span><span class="p">,</span><span class="n">indo_slang_word</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sebelum normalization&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_tweet1_nltk1</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setelah normalization&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_tweet1_normal</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Sebelum normalization 
- [&#39;pengin&#39;, &#39;tatap&#39;, &#39;muka&#39;, &#39;belajar&#39;, &#39;kelas&#39;, &#39;covid19&#39;, &#39;indonesia&#39;, &#39;pergi&#39;, &#39;saja&#39;, &#39;enggak&#39;, &#39;yaa&#39;] 
-
-Setelah normalization 
- [&#39;pengin&#39;, &#39;tatap&#39;, &#39;muka&#39;, &#39;belajar&#39;, &#39;kelas&#39;, &#39;covid19&#39;, &#39;indonesia&#39;, &#39;pergi&#39;, &#39;saja&#39;, &#39;enggak&#39;, &#39;yaa&#39;]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">token_tweet2_normal</span> <span class="o">=</span> <span class="n">replace_slang_word</span><span class="p">(</span><span class="n">token_tweet2_nltk1</span><span class="p">,</span><span class="n">indo_slang_word</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sebelum normalization&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_tweet2_nltk1</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setelah normalization&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_tweet2_normal</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Sebelum normalization 
- [&#39;covid19&#39;, &#39;indonesia&#39;, &#39;plus&#39;, &#39;banjir&#39;, &#39;kombinasi&#39;, &#39;lengkap&#39;, &#39;bikin&#39;, &#39;gue&#39;, &#39;ngeri&#39;, &#39;banjir&#39;, &#39;woy&#39;] 
-
-Setelah normalization 
- [&#39;covid19&#39;, &#39;indonesia&#39;, &#39;plus&#39;, &#39;banjir&#39;, &#39;kombinasi&#39;, &#39;lengkap&#39;, &#39;bikin&#39;, &#39;gue&#39;, &#39;ngeri&#39;, &#39;banjir&#39;, &#39;woy&#39;]
-</pre>
-</div>
 </div>
 
 </div>
@@ -14376,38 +13549,9 @@ Setelah normalization
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Stemming adalah proses menghasilkan varian morfologi dari kata dasar / dasar. Program stemming biasanya disebut sebagai algoritma stemming atau stemmer. Algoritme stemming mereduksi kata-kata <strong>menghasilkan</strong>  menjadi <strong>hasil</strong>  dan <strong>percintaan</strong>  menjadi <strong>cinta</strong>.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Saat ini package yang mendukung untuk melakukan steeming dalam Bahasa Indonesia adalah <strong>Pysastrawi</strong></p>
-
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pip install Pysastrawi
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">Sastrawi.Stemmer.StemmerFactory</span> <span class="kn">import</span> <span class="n">StemmerFactory</span>
@@ -14423,7 +13567,7 @@ Setelah normalization
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">stemmer_func</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
@@ -14437,12 +13581,47 @@ Setelah normalization
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">token_doc1_final</span> <span class="o">=</span> <span class="p">[</span><span class="n">stemmer_func</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">token_doc1_nltk1</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sebelum Stmeming&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_doc1_nltk1</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setelah Stemming&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_doc1_final</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">word_dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">document</span> <span class="ow">in</span> <span class="n">tempo_clean</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">document</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">word_dict</span><span class="p">:</span>
+            <span class="n">word_dict</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span>
+
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">word_dict</span><span class="p">:</span>
+    <span class="n">word_dict</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="n">stemmer_func</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_stemmer_word</span><span class="p">(</span><span class="n">document</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">word_dict</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">document</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tempo_clean</span> <span class="o">=</span> <span class="n">tempo_clean</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_stemmer_word</span><span class="p">)</span>
+<span class="n">tempo_clean</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -14455,17 +13634,20 @@ Setelah normalization
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[20]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Sebelum Stmeming 
- [&#39;kepulauan&#39;, &#39;indonesia&#39;, &#39;wilayah&#39;, &#39;perdagangan&#39;, &#39;abad&#39;, &#39;berdirinya&#39;, &#39;kerajaan&#39;, &#39;sriwijaya&#39;, &#39;kemaharajaan&#39;, &#39;hindu&#39;, &#39;berpusat&#39;, &#39;palembang&#39;] 
 
-Setelah Stemming 
- [&#39;pulau&#39;, &#39;indonesia&#39;, &#39;wilayah&#39;, &#39;dagang&#39;, &#39;abad&#39;, &#39;diri&#39;, &#39;raja&#39;, &#39;sriwijaya&#39;, &#39;maharaja&#39;, &#39;hindu&#39;, &#39;pusat&#39;, &#39;palembang&#39;]
-</pre>
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0    [buntut, reksa, dana, sinarmas, presdir, bibit...
+1    [nikita, mirzani, kronologi, duga, aniaya, dip...
+2    [asosiasi, media, siber, kecam, doxingintimida...
+3    [remdesivir, obat, darurat, covid, as, hasil, ...
+4    [wali, kota, peru, purapura, mati, tahu, langg...
+Name: title, dtype: object</pre>
 </div>
+
 </div>
 
 </div>
@@ -14474,12 +13656,38 @@ Setelah Stemming
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">token_doc2_final</span> <span class="o">=</span> <span class="p">[</span><span class="n">stemmer_func</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">token_doc2_nltk1</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sebelum Stmeming&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_doc2_nltk1</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setelah Stemming&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_doc2_final</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">list_to_text</span><span class="p">(</span><span class="n">token</span><span class="p">):</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span>
+    <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tempo_clean</span> <span class="o">=</span> <span class="n">tempo_clean</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">list_to_text</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tempo_clean</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -14492,31 +13700,62 @@ Setelah Stemming
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[23]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Sebelum Stmeming 
- [&#39;putuskan&#39;, &#39;lampiran&#39;, &#39;perpres&#39;, &#39;terkait&#39;, &#39;pembukaan&#39;, &#39;investasi&#39;, &#39;industri&#39;, &#39;minuman&#39;, &#39;keras&#39;, &#39;mengandung&#39;, &#39;alkohol&#39;, &#39;menyatakan&#39;, &#39;dicabut&#39;, &#39;jokowi&#39;, &#39;tayangan&#39;, &#39;video&#39;, &#39;youtube&#39;, &#39;sekretariat&#39;, &#39;presiden&#39;] 
 
-Setelah Stemming 
- [&#39;putus&#39;, &#39;lampir&#39;, &#39;pres&#39;, &#39;kait&#39;, &#39;buka&#39;, &#39;investasi&#39;, &#39;industri&#39;, &#39;minum&#39;, &#39;keras&#39;, &#39;kandung&#39;, &#39;alkohol&#39;, &#39;nyata&#39;, &#39;cabut&#39;, &#39;jokowi&#39;, &#39;tayang&#39;, &#39;video&#39;, &#39;youtube&#39;, &#39;sekretariat&#39;, &#39;presiden&#39;]
-</pre>
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0       buntut reksa dana sinarmas presdir bibit ganti
+1     nikita mirzani kronologi duga aniaya dipo latief
+2    asosiasi media siber kecam doxingintimidasi wa...
+3      remdesivir obat darurat covid as hasil uji baru
+4    wali kota peru purapura mati tahu langgar lock...
+Name: title, dtype: object</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Term-Weighting">Term Weighting<a class="anchor-link" href="#Term-Weighting">&#182;</a></h2>
 </div>
-
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">token_tweet1_final</span> <span class="o">=</span> <span class="p">[</span><span class="n">stemmer_func</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">token_tweet1_nltk1</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sebelum Stmeming&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_tweet1_nltk1</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setelah Stemming&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_tweet1_final</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span><span class="p">,</span><span class="n">CountVectorizer</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Term-Frequency-(TF)">Term Frequency (TF)<a class="anchor-link" href="#Term-Frequency-(TF)">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tf_vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">()</span>
+<span class="n">tf_result</span> <span class="o">=</span> <span class="n">tf_vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">tempo_clean</span><span class="p">)</span>
+<span class="n">tf_result_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">tf_result</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span><span class="n">columns</span><span class="o">=</span><span class="n">tf_vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">())</span>
+<span class="n">tf_result_df</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14529,31 +13768,48 @@ Setelah Stemming
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[25]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Sebelum Stmeming 
- [&#39;pengin&#39;, &#39;tatap&#39;, &#39;muka&#39;, &#39;belajar&#39;, &#39;kelas&#39;, &#39;covid19&#39;, &#39;indonesia&#39;, &#39;pergi&#39;, &#39;saja&#39;, &#39;enggak&#39;, &#39;yaa&#39;] 
 
-Setelah Stemming 
- [&#39;pengin&#39;, &#39;tatap&#39;, &#39;muka&#39;, &#39;ajar&#39;, &#39;kelas&#39;, &#39;covid19&#39;, &#39;indonesia&#39;, &#39;pergi&#39;, &#39;saja&#39;, &#39;enggak&#39;, &#39;yaa&#39;]
-</pre>
+
+<div class="output_text output_subarea output_execute_result">
+<pre>new        18
+normal     18
+covid      10
+buka        7
+mal         7
+           ..
+panitia     1
+pantau      1
+papar       1
+papua       1
+adil        1
+Length: 473, dtype: int64</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="TF-IDF">TF-IDF<a class="anchor-link" href="#TF-IDF">&#182;</a></h3>
 </div>
-
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">token_tweet2_final</span> <span class="o">=</span> <span class="p">[</span><span class="n">stemmer_func</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">token_tweet2_nltk1</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sebelum Stmeming&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_tweet2_nltk1</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setelah Stemming&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">token_tweet2_final</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tf_idf_vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">()</span>
+<span class="n">tf_idf_result</span> <span class="o">=</span> <span class="n">tf_idf_vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">tempo_clean</span><span class="p">)</span>
+<span class="n">tf_idf_result_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">tf_idf_result</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span><span class="n">columns</span><span class="o">=</span><span class="n">tf_idf_vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">())</span>
+<span class="n">tf_idf_result_df</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14566,201 +13822,26 @@ Setelah Stemming
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[26]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Sebelum Stmeming 
- [&#39;covid19&#39;, &#39;indonesia&#39;, &#39;plus&#39;, &#39;banjir&#39;, &#39;kombinasi&#39;, &#39;lengkap&#39;, &#39;bikin&#39;, &#39;gue&#39;, &#39;ngeri&#39;, &#39;banjir&#39;, &#39;woy&#39;] 
-
-Setelah Stemming 
- [&#39;covid19&#39;, &#39;indonesia&#39;, &#39;plus&#39;, &#39;banjir&#39;, &#39;kombinasi&#39;, &#39;lengkap&#39;, &#39;bikin&#39;, &#39;gue&#39;, &#39;ngeri&#39;, &#39;banjir&#39;, &#39;woy&#39;]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Lemmatization">Lemmatization<a class="anchor-link" href="#Lemmatization">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Berbeda dengan <strong>stemming</strong>, <strong>lemmatization</strong> mempertimbangkan kosakata(vocabulary) lengkap suatu bahasa untuk menerapkan <strong>analisis morfologi</strong> pada kata-kata. Lemma dari 'was' adalah 'be' dan lemma dari 'mice' adalah 'mouse'. Selanjutnya, lemma 'meeting' bisa berupa 'meet' atau 'meeting' bergantung pada penggunaannya dalam sebuah kalimat.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Lemmatization bisa diajalankan dengan menggunakan package spacy atau nltk</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Lemmatization-dengan-Spacy">Lemmatization dengan Spacy<a class="anchor-link" href="#Lemmatization-dengan-Spacy">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Pertama kita perlu mendownload Bahasa Inggris di Spacy</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>python -m spacy download en
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">spacy</span>
-<span class="n">nlp_en</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;en_core_web_sm&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">doc_en_spacy1</span> <span class="o">=</span> <span class="n">nlp_en</span><span class="p">(</span><span class="s2">&quot;I am a runner running in a race because I love to run since I ran today&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Lemma dari setiap kata bisa diakses dengan menggunakan <code>lemma_</code></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">doc_en_spacy1</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">text</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1"> </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">token</span><span class="o">.</span><span class="n">lemma_</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
 
 
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>I 	 	 I
-am 	 	 be
-a 	 	 a
-runner 	 	 runner
-running 	 	 run
-in 	 	 in
-a 	 	 a
-race 	 	 race
-because 	 	 because
-I 	 	 I
-love 	 	 love
-to 	 	 to
-run 	 	 run
-since 	 	 since
-I 	 	 I
-ran 	 	 run
-today 	 	 today
-</pre>
-</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>new            4.297526
+normal         4.297526
+covid          2.802911
+mal            2.431809
+juni           2.336880
+                 ...   
+sertifikasi    0.339355
+baju           0.339355
+who            0.339355
+level          0.339355
+produk         0.339355
+Length: 473, dtype: float64</pre>
 </div>
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">doc_en_spacy2</span><span class="o">=</span> <span class="n">nlp_en</span><span class="p">(</span><span class="s2">&quot;I saw eighteen mice today!&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">doc_en_spacy2</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">text</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1"> </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">token</span><span class="o">.</span><span class="n">lemma_</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>I 	 	 I
-saw 	 	 see
-eighteen 	 	 eighteen
-mice 	 	 mouse
-today 	 	 today
-! 	 	 !
-</pre>
-</div>
 </div>
 
 </div>
