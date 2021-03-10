@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  Model Berbasis Pohon Regresi (part 2)
+title:  Model Berbasis Pohon Regresi
 categories: [Supervised,Tree,Tuning Hyperparameter,R]
-excerpt: Text Preprocessing merupakan praktik membersihkan dan menyiapkan data teks.
+excerpt: ohon regresi merupakan salah satu model Supervised Machine Learning response nya merupakan peubah numerik. Model ini melakukan partisi pada data yang kemudian dilakukan prediksi berdasarkan hasil partisi tersebut.
 ---
 
 <html>
