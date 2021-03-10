@@ -250,15 +250,10 @@ pre code {
 
 
 
-<div id="header">
 
 
-
-<h1 class="title toc-ignore">Model Berbasis Pohon Regresi dengan mlr3</h1>
-
-</div>
-
-
+<br>
+<br>
 <p>Pohon regresi merupakan salah satu model Supervised Machine Learning response nya merupakan peubah numerik. Model ini melakukan partisi pada data yang kemudian dilakukan prediksi berdasarkan hasil partisi tersebut. Pohon regresi mengalami pengembangan seperti Random Forest, AdaBoost, XGboost, ExtraTrees dan masih banyak lagi. Dalam tutorial ini, secara khusus, kita akan membahas Pohon regresi dan Random Forest.</p>
 <div id="package" class="section level2">
 <h2>Package</h2>
