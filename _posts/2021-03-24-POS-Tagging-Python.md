@@ -13083,6 +13083,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+
 </div>
 </div>
 </div>
@@ -13333,13 +13334,13 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">text2</span> <span class="o">=</span> <span class="s2">&quot;Aku pasti bisa mendapatkan nilai 100 dalam pelajaran matematika&quot;</span>
-<span class="n">post_tag2</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">tag_sents</span><span class="p">([</span><span class="n">text2</span><span class="o">.</span><span class="n">split</span><span class="p">()])</span> <span class="c1"># Hati-hati ... Stuktur Data ini adalah &quot;List-of-Lists&quot;!!!...</span>
-<span class="n">post_tag2</span> <span class="o">=</span> <span class="n">post_tag2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">post_tag2</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">text3</span> <span class="o">=</span> <span class="s2">&quot;Temanku terkena bisa ular&quot;</span>
+<span class="n">post_tag3</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">tag_sents</span><span class="p">([</span><span class="n">text3</span><span class="o">.</span><span class="n">split</span><span class="p">()])</span> <span class="c1"># Hati-hati ... Stuktur Data ini adalah &quot;List-of-Lists&quot;!!!...</span>
+<span class="n">post_tag3</span> <span class="o">=</span> <span class="n">post_tag3</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">post_tag3</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13356,7 +13357,7 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[(&#39;Aku&#39;, &#39;NN&#39;), (&#39;pasti&#39;, &#39;RB&#39;), (&#39;bisa&#39;, &#39;MD&#39;), (&#39;mendapatkan&#39;, &#39;VB&#39;), (&#39;nilai&#39;, &#39;NN&#39;), (&#39;100&#39;, &#39;CD&#39;), (&#39;dalam&#39;, &#39;IN&#39;), (&#39;pelajaran&#39;, &#39;NN&#39;), (&#39;matematika&#39;, &#39;SC&#39;)]
+<pre>[(&#39;Temanku&#39;, &#39;NN&#39;), (&#39;terkena&#39;, &#39;SC&#39;), (&#39;bisa&#39;, &#39;MD&#39;), (&#39;ular&#39;, &#39;VB&#39;)]
 </pre>
 </div>
 </div>
@@ -13368,8 +13369,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>POS Tag Bahasa Inggris</p>
-
+<h1 id="POS-Tag-Bahasa-Inggris">POS Tag Bahasa Inggris<a class="anchor-link" href="#POS-Tag-Bahasa-Inggris">&#182;</a></h1>
 </div>
 </div>
 </div>
