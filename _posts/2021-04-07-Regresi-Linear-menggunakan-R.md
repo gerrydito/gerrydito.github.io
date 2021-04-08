@@ -177,7 +177,7 @@ install.packages(&quot;openxlsx&quot;)
 install.packages(&quot;mlr3measure&quot;)</code></pre>
 </div>
 <div id="memanggil-package" class="section level1">
-<h1>Memanggil Package</h1>
+<h2>Memanggil Package</h2>
 <pre class="r"><code>library(rsample)
 library(DataExplorer)
 library(sjPlot)
