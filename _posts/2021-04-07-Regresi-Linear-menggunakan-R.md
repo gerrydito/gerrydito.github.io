@@ -172,9 +172,11 @@ pre code {
 <p>Silahkan install jika belum ada</p>
 <pre class="r"><code>install.packages(&quot;rsample&quot;)
 install.packages(&quot;DataExplorer&quot;)
-install.packages(&quot;sjplot&quot;)
+install.packages(&quot;sjPlot&quot;)
 install.packages(&quot;openxlsx&quot;)
-install.packages(&quot;mlr3measure&quot;)</code></pre>
+install.packages(&quot;lmtest&quot;)
+install.packages(&quot;fBasics&quot;)
+install.packages(&quot;mlr3measures&quot;)</code></pre>
 </div>
 <div id="memanggil-package" class="section level1">
 <h2>Memanggil Package</h2>
