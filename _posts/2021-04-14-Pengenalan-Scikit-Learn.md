@@ -14265,11 +14265,11 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+
 <br>
 <br>
 <p>Scikit-learn (Sklearn) adalah salah satu package paling berguna  untuk machine learning  dengan Python. Package ini menyediakan pilihan alat yang efisien untuk machine learning seperti  klasifikasi, regresi, clustering, dan dimension reduction melalui antarmuka konsistensi dengan Python. Package  in  sebagian besar dibangun di atas NumPy, SciPy dan Matplotlib.</p>
