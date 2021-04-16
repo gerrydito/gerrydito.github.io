@@ -588,7 +588,7 @@ y= \beta_{0}+\beta_{1}b_{1}x+\beta_{2}b_{2}+\ldots+\beta_{K+3}b_{K+3}+\epsilon
 b_{2},b_{3},\ldots,b_{K+3}
 \]</span> Kemudian, fungsi basisnya bisa didefinisikan</p>
 <p><span class="math display">\[
-h(x,\xi) = \left\{ \begin{array}{cc} 
+h(x,\xi) = \{ \begin{array}{cc} 
 (x-\xi)^3 &amp; \text{jika  }x&gt;\eta \\
 0 &amp; \text{selainnya}
 \end{array}
