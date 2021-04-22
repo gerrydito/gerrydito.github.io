@@ -16110,10 +16110,10 @@ Length: 1191, dtype: float64</pre>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Berdasarkan Grafik diatas Interpretasi dari masing-masing cluster:</p>
 <ul>
-<li>Cluster 0 : Lokasi dekat Mall (positive)</li>
-<li>Cluster 1 : Pelayanan Oke (positive)</li>
-<li>Cluster 2 : Fasilitas Oke (positive)</li>
-<li>Cluster 3 : Tempat Nyaman (positive)</li>
+<li>Cluster 0 : Fasilitas Oke (positive)</li>
+<li>Cluster 1 : Lokasi dekat Mall (positive)</li>
+<li>Cluster 2 : Tempat Nyaman dan Bersih(positive)</li>
+<li>Cluster 3 : Parkir Sempit (positive)</li>
 </ul>
 
 </div>
