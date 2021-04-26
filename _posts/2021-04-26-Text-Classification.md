@@ -13118,6 +13118,12 @@ div#notebook {
 </div>
 
 </div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Data yang akan dipakai pada tutorial kali ini adalah data tentang <strong>Hate Speech</strong> dari twitter. Berikut adalah link downloadnya <a href="https://drive.google.com/file/d/1pDkr0viHOOfIOmO_LXRuy6M5t2I8V-7-/view?usp=sharing">Twitter Hate Speech</a></p>
+
+</div>
+
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[85]:</div>
