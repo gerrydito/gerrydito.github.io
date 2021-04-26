@@ -4,6 +4,7 @@ title: Text Classification
 categories: [Machine Learning,Natural Language Processing,python]
 excerpt: 
 ---
+
 <html>
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13101,6 +13102,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+
 </div>
 </div>
 </div>
@@ -13118,12 +13120,14 @@ div#notebook {
 </div>
 
 </div>
-
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Data yang akan dipakai pada tutorial kali ini adalah data tentang <strong>Hate Speech</strong> dari twitter. Berikut adalah link downloadnya <a href="https://drive.google.com/file/d/1pDkr0viHOOfIOmO_LXRuy6M5t2I8V-7-/view?usp=sharing">Twitter Hate Speech</a></p>
 
 </div>
-
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[85]:</div>
@@ -13427,19 +13431,22 @@ Name: Tweet, dtype: object</pre>
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Untuk</span> <span class="n">mengidentifikasi</span> <span class="n">emoji</span> <span class="n">kita</span> <span class="n">harus</span> 
-</pre></div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Untuk mengidentifikasi emoji kita harus menginstall package berikut</p>
 
-    </div>
 </div>
 </div>
-
 </div>! pip install emoji
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>mendefinisikan fungsi cleaning untuk text twitter</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[74]:</div>
