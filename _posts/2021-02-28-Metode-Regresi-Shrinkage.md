@@ -281,7 +281,7 @@ pre code {
 <p>Ask a home buyer to describe their dream house, and they probably won’t begin with the height of the basement ceiling or the proximity to an east-west railroad. But this playground competition’s dataset proves that much more influences price negotiations than the number of bedrooms or a white-picket fence.</p>
 <p>With 79 explanatory variables describing (almost) every aspect of residential homes in Ames, Iowa, this competition challenges you to predict the final price of each home.</p>
 <p>data ini bisa diperoleh di link berikut ini</p>
-<p><a href="https://drive.google.com/drive/folders/1oUczt7jnJq0XXxrVwOsUtBUc7l2pYCYf?usp=sharing">Data House Price</a></p>
+<p><a href="https://drive.google.com/drive/u/2/folders/1TNlpMfcAWHOY2RcUWutMZ4QXgr5NKv8b">Data House Price</a></p>
 <div id="import-data" class="section level2">
 <h2>Import Data</h2>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>data_house <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;house_price1.csv&quot;</span>,<span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span>
