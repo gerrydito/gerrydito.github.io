@@ -301,7 +301,7 @@ $ Outcome                  &lt;fct&gt; Case, Control, Case, Control, C~</code></
 <p>Pada tahap ini fungsi yang digunakan adalah <code>lrn</code> yang memiliki argumen utama <strong>nama model</strong> yang ingin digunakan. Berikut adalah model-model yang akan digunakan beserta argumen di dalam fungsi <code>lrn</code> dan asal packagenya:</p>
 <ol style="list-style-type: decimal">
 <li>Regresi Logistik - <code>&quot;classif.log_reg&quot;</code> - <code>library(stats)</code></li>
-<li>Random Forest - <code>&quot;classif.kknn&quot;</code> - <code>library(kknn)</code></li>
+<li>KNN - <code>&quot;classif.kknn&quot;</code> - <code>library(kknn)</code></li>
 </ol>
 <p>Sebagai catatan, untuk model-model yang digunakan dalam <code>mlr3</code> berasal dari package-package lain sehingga package-package tersebut perlu install terlebih dahulu. Kemudian, untuk model klasifikasi (respon biner atau multiclass) selalu diawali dengan kata <code>&quot;classif.&quot;</code>. Sedangkan model regresi(respon numerik) diawali dengan kata <code>regr</code>. Selain itu, fungsi <code>lrn</code> juga memungkinkan untuk memasukan argumen-argumen dari package asalnya (termasuk hiperparameter).</p>
 <!-- rnb-text-end -->
