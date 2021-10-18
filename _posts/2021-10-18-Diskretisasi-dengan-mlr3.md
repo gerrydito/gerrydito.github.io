@@ -4,6 +4,7 @@ title:  Diskretisasi dengan mlr3
 categories: [R, Supervised,Machine Learning, Model Klasifikasi]
 excerpt:
 ---
+
 <html>
 
 <head>
@@ -170,6 +171,7 @@ pre code {
 
 
 
+
 </div>
 
 
@@ -183,7 +185,8 @@ install.packages(&quot;paradox&quot;)
 install.packages(&quot;scorecard&quot;)</code></pre>
 <pre class="r"><code>library(tidyverse)
 library(mlr3verse)
-library(mlr3pipelines)</code></pre>
+library(mlr3pipelines)
+library(paradox)</code></pre>
 </div>
 <div id="deskripsi-singkat-data" class="section level2">
 <h2>Deskripsi singkat data</h2>
