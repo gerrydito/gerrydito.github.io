@@ -170,9 +170,6 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">Diskretisasi dengan mlr3</h1>
-<h4 class="author">Gerry Alfa Dito</h4>
-
 </div>
 
 
