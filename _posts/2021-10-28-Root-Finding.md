@@ -255,9 +255,11 @@ while ((err &gt; tol) &amp;&amp; (iter &lt; max.iter)) {
 # iter digunakan untuk menyimpan banyaknya iterasi
     iter &lt;- iter + 1
 #menyimpan semua hasil pada iterasi tertentu
-    all_res &lt;- rbind(all_res,data.frame(iteration=iter,                                    x_old=xold,                                           x_new=xnew,
-                      `f(x)`=fx(xnew),
-                      error=err))
+    all_res &lt;- rbind(all_res,data.frame(iteration=iter,
+                                           x_old=xold,                                           
+                                           x_new=xnew,
+                                           `f(x)`=fx(xnew),
+                                           error=err))
   }
 # output bergantung pada kesuksesan algoritma
   if (err&gt; tol) {
