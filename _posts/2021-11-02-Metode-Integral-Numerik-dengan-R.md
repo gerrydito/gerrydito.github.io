@@ -213,7 +213,6 @@ pre code {
 </div>
 
 
-
 </div>
 
 
@@ -292,884 +291,6 @@ pre code {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-
-<!-- rnb-html-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInNoaW55LnRhZyJdLCJzaXppbmdQb2xpY3kiOltdfX0= -->
-
-<div id="mhbfwqngmh" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-  <style>html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
-}
-
-#mhbfwqngmh .gt_table {
-  display: table;
-  border-collapse: collapse;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#mhbfwqngmh .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#mhbfwqngmh .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#mhbfwqngmh .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 6px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#mhbfwqngmh .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#mhbfwqngmh .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#mhbfwqngmh .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#mhbfwqngmh .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#mhbfwqngmh .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#mhbfwqngmh .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#mhbfwqngmh .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#mhbfwqngmh .gt_group_heading {
-  padding: 8px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#mhbfwqngmh .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#mhbfwqngmh .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#mhbfwqngmh .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#mhbfwqngmh .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#mhbfwqngmh .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 12px;
-}
-
-#mhbfwqngmh .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#mhbfwqngmh .gt_first_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-}
-
-#mhbfwqngmh .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#mhbfwqngmh .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#mhbfwqngmh .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#mhbfwqngmh .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#mhbfwqngmh .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#mhbfwqngmh .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding: 4px;
-}
-
-#mhbfwqngmh .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#mhbfwqngmh .gt_sourcenote {
-  font-size: 90%;
-  padding: 4px;
-}
-
-#mhbfwqngmh .gt_left {
-  text-align: left;
-}
-
-#mhbfwqngmh .gt_center {
-  text-align: center;
-}
-
-#mhbfwqngmh .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#mhbfwqngmh .gt_font_normal {
-  font-weight: normal;
-}
-
-#mhbfwqngmh .gt_font_bold {
-  font-weight: bold;
-}
-
-#mhbfwqngmh .gt_font_italic {
-  font-style: italic;
-}
-
-#mhbfwqngmh .gt_super {
-  font-size: 65%;
-}
-
-#mhbfwqngmh .gt_footnote_marks {
-  font-style: italic;
-  font-weight: normal;
-  font-size: 65%;
-}
-</style>
-  <table class="gt_table">
-  
-  <thead class="gt_col_headings">
-    <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">n</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Koefisien Ci</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Titik Gauss xi</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td class="gt_row gt_right">2</td>
-<td class="gt_row gt_left">C1 = 1,
-                                           C2 = 1</td>
-<td class="gt_row gt_left">x1 = - 0.57735027,
-                                          x2 = 0.57735027</td></tr>
-    <tr><td class="gt_row gt_right">3</td>
-<td class="gt_row gt_left">C1 = 0.5555556,
-                                           C2 = 0.8888889,
-                                           C3 = 0.5555556</td>
-<td class="gt_row gt_left">x1 = -0.77459667,
-                                          x2 = 0,
-                                          x3 = 0.77459667</td></tr>
-    <tr><td class="gt_row gt_right">4</td>
-<td class="gt_row gt_left">C1 = 0.3478548,
-                                           C2 = 0.6521452,
-                                           C3 = 0.6521452,
-                                           C4 = 0.3478548</td>
-<td class="gt_row gt_left">x1 = -0.86113631,
-                                          x2 = -0.33998104,
-                                          x3 = 0.33998104,
-                                          x4 = 0.86113631</td></tr>
-    <tr><td class="gt_row gt_right">5</td>
-<td class="gt_row gt_left">C1 = 0.2369269,
-                                           C2 = 0.4786287,
-                                           C3 = 0.5688889,
-                                           C4 = 0.4786287,
-                                           C5 = 0.2369269</td>
-<td class="gt_row gt_left">x1 = -0.90617985,
-                                          x2 = -0.53846931,
-                                          x3 = 0,
-                                          x4 = 0.53846931,
-                                          x5 = 0.90617985</td></tr>
-    <tr><td class="gt_row gt_right">6</td>
-<td class="gt_row gt_left">C1 = 0.1713245,
-                                           C2 = 0.3607616,
-                                           C3 = 0.4679139,
-                                           C4 = 0.4679139,
-                                           C5 = 0.3607616,
-                                           C6 = 0.1713245</td>
-<td class="gt_row gt_left">x1 = -0.93246951,
-                                          x2 = -0.66120938,
-                                          x3 = -0.23861919,
-                                          x4 = 0.23861919,
-                                          x5 = 0.66120938,
-                                          x6 = 0.93246951</td></tr>
-  </tbody>
-  
-  
-</table>
-</div>
-
-
-<!-- rnb-html-end -->
-
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Nilai-nilai pada tabel ini juga bisa diakses dengan menggunakan fungsi <code>gaussLegendre</code> dari package <code>pracma</code>. Simbol <code>w</code> pada output dibawah ini merupakan bobot <span class="math inline">\(C_{i}\)</span>. Selain itu, nilai <span class="math inline">\(n\)</span> pada fungsi <code>gaussLegendre</code> bisa lebih dari 6.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB1bnR1ayBuPTJcbmdhdXNzTGVnZW5kcmUobj0yLGE9LTEsYj0xKVxuYGBgIn0= -->
-<pre class="r"><code># untuk n=2
-gaussLegendre(n=2,a=-1,b=1)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiJHhcblsxXSAtMC41NzczNTAzICAwLjU3NzM1MDNcblxuJHdcblsxXSAxIDFcbiJ9 -->
-<pre><code>$x
-[1] -0.5773503  0.5773503
-
-$w
-[1] 1 1</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB1bnR1ayBuPTNcbmdhdXNzTGVnZW5kcmUobj0zLGE9LTEsYj0xKVxuYGBgIn0= -->
-<pre class="r"><code># untuk n=3
-gaussLegendre(n=3,a=-1,b=1)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiJHhcblsxXSAtNy43NDU5NjdlLTAxICA4Ljg4MTc4NGUtMTYgIDcuNzQ1OTY3ZS0wMVxuXG4kd1xuWzFdIDAuNTU1NTU1NiAwLjg4ODg4ODkgMC41NTU1NTU2XG4ifQ== -->
-<pre><code>$x
-[1] -7.745967e-01  8.881784e-16  7.745967e-01
-
-$w
-[1] 0.5555556 0.8888889 0.5555556</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB1bnR1ayBuPTRcbmdhdXNzTGVnZW5kcmUobj00LGE9LTEsYj0xKVxuYGBgIn0= -->
-<pre class="r"><code># untuk n=4
-gaussLegendre(n=4,a=-1,b=1)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiJHhcblsxXSAtMC44NjExMzYzIC0wLjMzOTk4MTAgIDAuMzM5OTgxMCAgMC44NjExMzYzXG5cbiR3XG5bMV0gMC4zNDc4NTQ4IDAuNjUyMTQ1MiAwLjY1MjE0NTIgMC4zNDc4NTQ4XG4ifQ== -->
-<pre><code>$x
-[1] -0.8611363 -0.3399810  0.3399810  0.8611363
-
-$w
-[1] 0.3478548 0.6521452 0.6521452 0.3478548</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB1bnR1ayBuPTVcbmdhdXNzTGVnZW5kcmUobj01LGE9LTEsYj0xKVxuYGBgIn0= -->
-<pre class="r"><code># untuk n=5
-gaussLegendre(n=5,a=-1,b=1)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiJHhcblsxXSAtOS4wNjE3OThlLTAxIC01LjM4NDY5M2UtMDEgIDUuNTUxMTE1ZS0xNlxuWzRdICA1LjM4NDY5M2UtMDEgIDkuMDYxNzk4ZS0wMVxuXG4kd1xuWzFdIDAuMjM2OTI2OSAwLjQ3ODYyODcgMC41Njg4ODg5IDAuNDc4NjI4N1xuWzVdIDAuMjM2OTI2OVxuIn0= -->
-<pre><code>$x
-[1] -9.061798e-01 -5.384693e-01  5.551115e-16
-[4]  5.384693e-01  9.061798e-01
-
-$w
-[1] 0.2369269 0.4786287 0.5688889 0.4786287
-[5] 0.2369269</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB1bnR1ayBuPTZcbmdhdXNzTGVnZW5kcmUobj02LGE9LTEsYj0xKVxuYGBgIn0= -->
-<pre class="r"><code># untuk n=6
-gaussLegendre(n=6,a=-1,b=1)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiJHhcblsxXSAtMC45MzI0Njk1IC0wLjY2MTIwOTQgLTAuMjM4NjE5MiAgMC4yMzg2MTkyXG5bNV0gIDAuNjYxMjA5NCAgMC45MzI0Njk1XG5cbiR3XG5bMV0gMC4xNzEzMjQ1IDAuMzYwNzYxNiAwLjQ2NzkxMzkgMC40Njc5MTM5XG5bNV0gMC4zNjA3NjE2IDAuMTcxMzI0NVxuIn0= -->
-<pre><code>$x
-[1] -0.9324695 -0.6612094 -0.2386192  0.2386192
-[5]  0.6612094  0.9324695
-
-$w
-[1] 0.1713245 0.3607616 0.4679139 0.4679139
-[5] 0.3607616 0.1713245</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB1bnR1ayBuPTdcbmdhdXNzTGVnZW5kcmUobj03LGE9LTEsYj0xKVxuYGBgIn0= -->
-<pre class="r"><code># untuk n=7
-gaussLegendre(n=7,a=-1,b=1)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiJHhcblsxXSAtOS40OTEwNzllLTAxIC03LjQxNTMxMmUtMDEgLTQuMDU4NDUyZS0wMVxuWzRdICA5Ljk5MjAwN2UtMTYgIDQuMDU4NDUyZS0wMSAgNy40MTUzMTJlLTAxXG5bN10gIDkuNDkxMDc5ZS0wMVxuXG4kd1xuWzFdIDAuMTI5NDg1MCAwLjI3OTcwNTQgMC4zODE4MzAxIDAuNDE3OTU5MlxuWzVdIDAuMzgxODMwMSAwLjI3OTcwNTQgMC4xMjk0ODUwXG4ifQ== -->
-<pre><code>$x
-[1] -9.491079e-01 -7.415312e-01 -4.058452e-01
-[4]  9.992007e-16  4.058452e-01  7.415312e-01
-[7]  9.491079e-01
-
-$w
-[1] 0.1294850 0.2797054 0.3818301 0.4179592
-[5] 0.3818301 0.2797054 0.1294850</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Jika domain integral berupa <span class="math inline">\([a,b]\)</span>, maka perlu ada transformasi sedemikian sehingga domain integral nya menjadi <span class="math inline">\([-1,1]\)</span></p>
-<p><span class="math display">\[\int_{a}^{b}f(x)dx \space \rightarrow \space \int_{-1}^{1}f(t)dt \]</span> Transformasi ini dilakukan dengan mengubah variabel sebagai berikut</p>
-<p><span class="math display">\[x=\frac{1}{2}[t(b-a)+a+b]\]</span></p>
-<p>dan</p>
-<p><span class="math display">\[dx=\frac{1}{2}(b-a)dt\]</span></p>
-<p>Sehingga integralnya menjadi</p>
-<p><span class="math display">\[
-\int_{a}^{b}f(x)dx = \int_{-1}^{1}f \left( \frac{1}{2}[t(b-a)+a+b] \right)\frac{1}{2}(b-a)dt
-\]</span></p>
-</div>
-<div id="metode-integral-monte-carlo" class="section level3">
-<h3>Metode Integral Monte Carlo</h3>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWNfaW50ZWdyYWwgPC0gZnVuY3Rpb24oZnRuLCBhLCBiLG09MTAwMCl7XG4gICNNZW1iYW5na2l0a2FuIHggYmVyZGlzdHJpYnVzaSBVKGEsYilcbiAgeCA8LSBydW5pZihtLGEsYilcbiAgIyBNZW5naGl0dW5nIHJhdGEtcmF0YSBkYXJpIG91dHB1dCBmdW5nc2lcbiAgR3ggPC0gZnRuKHgpXG4gIEd4X20gPC0gbWVhbihHeClcbiAgdGhldGEuaGF0IDwtIChiLWEpKkd4X21cbiAgcmV0dXJuKHRoZXRhLmhhdClcbn1cbmBgYCJ9 -->
-<pre class="r"><code>mc_integral &lt;- function(ftn, a, b,m=1000){
-  #Membangkitkan x berdistribusi U(a,b)
-  x &lt;- runif(m,a,b)
-  # Menghitung rata-rata dari output fungsi
-  Gx &lt;- ftn(x)
-  Gx_m &lt;- mean(Gx)
-  theta.hat &lt;- (b-a)*Gx_m
-  return(theta.hat)
-}</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="integral-numerik-dengan-package-di-r" class="section level3">
-<h3>Integral numerik dengan package di R</h3>
-<p>Selain <strong>user-defined function</strong> diatas terdapat beberapa fungsi yang bisa langsung digunakan, yaitu</p>
-<ol style="list-style-type: decimal">
-<li>Metode Trapezoidal menggunakan fungsi <code>trapzfun</code> dari package <code>pracma</code></li>
-<li>Metode Simpson belum ada fungsi secara khusus</li>
-<li>Metode Adaptive Quadrature menggunakan fungsi <code>integrate</code></li>
-<li>Metode Monte Carlo belum ada fungsi secara khusus.</li>
-</ol>
-</div>
-</div>
-<div id="soal-dan-pembahasan" class="section level2">
-<h2>Soal dan Pembahasan</h2>
-<div id="soal-1" class="section level3">
-<h3>Soal 1</h3>
-<p>Gunakan metode trapezoidal untuk mengintegralkan fungsi berikut untuk <span class="math inline">\(n=4\)</span></p>
-<p><span class="math display">\[\int_{1}^{5} \frac{1}{x} dx \]</span> a. Hitunglah tanpa menggunakan software b. Hitunglah menggunakan R dengan <strong>user-defined function</strong> c. Hitunglah menggunakan R fungsi <code>trapzfun</code> dari package <code>pracma</code> d. Hitunglah menggunakan R dengan <strong>user-defined function</strong> hingga hasil integral mendekati hasil exact-nya dengan toleransi <span class="math inline">\(0.0005\)</span></p>
-<p>Jawab:</p>
-<ol style="list-style-type: lower-alpha">
-<li>Hitunglah tanpa menggunakan software</li>
-</ol>
-<p>Diketahui</p>
-<p><span class="math display">\[f(x)=\frac{1}{x}, a=1,b=5\]</span></p>
-<p>Panjang setiap sub interval adalah sebagai berikut:</p>
-<p><span class="math display">\[h=\frac{b-a}{n}=\frac{5-1}{4}=\frac{4}{4}=1\]</span> Karena <span class="math inline">\(n=4\)</span> maka bentuk dari metode trapezoidal adalah</p>
-<p><span class="math display">\[T_{4} = \frac{h}{2} [f(x_{0})+2f(x_{1})+2f(x_{2})+2f(x_{3})+f(x_{4})]\]</span></p>
-<p>Menghitung fungsi <span class="math inline">\(f(x)\)</span> pada setiap <span class="math inline">\(x_{i}\)</span></p>
-<p><span class="math display">\[f(x_{0})=f(1)=\frac{1}{1}=1\]</span> <span class="math display">\[f(x_{1})=f(2)=\frac{1}{2}\]</span></p>
-<p><span class="math display">\[f(x_{2})=f(3)=\frac{1}{3}\]</span> <span class="math display">\[f(x_{3})=f(4)=\frac{1}{4}\]</span></p>
-<p><span class="math display">\[f(x_{4})=f(5)=\frac{1}{5}\]</span></p>
-<p>karena <span class="math inline">\(h=1\)</span> diperoleh</p>
-<p><span class="math display">\[T_{4} = \frac{1}{2} [1+2 \cdot \frac{1}{2}+2 \cdot \frac{1}{3}+2 \cdot \frac{1}{4}+ \frac{1}{5}]=\frac{101}{60}=1.683333\]</span> Sehingga</p>
-<p><span class="math display">\[\int_{1}^{5} \frac{1}{x} dx \approx T_{4}=1.683333 \]</span></p>
-<p>Jika kita bandingkan dengan hasil yang didapatkan secara exact adalah sebagai berikut:</p>
-<p><span class="math display">\[\int_{1}^{5} \frac{1}{x} dx=\log{x}|_{1}^{5}=\log{5}-\log{1}=1.609\]</span></p>
-<ol start="2" style="list-style-type: lower-alpha">
-<li>Hitunglah menggunakan R dengan <strong>user-defined function</strong></li>
-</ol>
-<p>mendefinisikan fungsi <span class="math inline">\(f(x)\)</span></p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZiA8LSBmdW5jdGlvbih4KXtcbiAgMS94XG59XG5gYGAifQ== -->
-<pre class="r"><code>f &lt;- function(x){
-  1/x
-}</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Menghitung integral menggunakan fungsi <code>trapezoid</code></p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudHJhcGV6b2lkKGYsMSw1LG4gPSA0KVxuYGBgIn0= -->
-<pre class="r"><code>trapezoid(f,1,5,n = 4)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEuNjgzMzMzXG4ifQ== -->
-<pre><code>[1] 1.683333</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<ol start="3" style="list-style-type: lower-alpha">
-<li>Hitunglah menggunakan R fungsi <code>trapzfun</code> dari package <code>pracma</code></li>
-</ol>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudHJhcHpmdW4oZiwxLDUsbWF4aXQgPSAgNClcbmBgYCJ9 -->
-<pre class="r"><code>trapzfun(f,1,5,maxit =  4)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiJHZhbHVlXG5bMV0gMS42MTQ0MDZcblxuJGl0ZXJcblsxXSA0XG5cbiRyZWwuZXJyXG5bMV0gMC4wMTQ1NjE5M1xuIn0= -->
-<pre><code>$value
-[1] 1.614406
-
-$iter
-[1] 4
-
-$rel.err
-[1] 0.01456193</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<ol start="4" style="list-style-type: lower-alpha">
-<li>Hitunglah menggunakan R hingga hasil integral mendekati hasil exact-nya dengan toleransi <span class="math inline">\(0.0005\)</span></li>
-</ol>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZXhhY3RfdmFsdWU9MS42MDlcbnRvbCA8LSAgMC4wMDA1XG5lcnIgPC0gMVxubiA9IDRcblxud2hpbGUoZXJyPnRvbCl7XG4gIHJlc190cmFwIDwtIHRyYXBlem9pZChmLDEsNSxuID0gbilcbiAgXG4gIGVyciA8LSBhYnMocmVzX3RyYXAtZXhhY3RfdmFsdWUpXG4gIFxuICBjYXQoXCJuPVwiLG4sXCIsIHJlc3VsdD1cIixyZXNfdHJhcCxcIiwgZXJyb3I9XCIsZXJyLFwiXFxuXCIsc2VwID0gXCJcIilcbiAgXG4gIG49bisxXG4gIGlmKG49PTEwMDApe1xuICAgIGJyZWFrXG4gIH1cbiAgXG59XG5gYGAifQ== -->
-<pre class="r"><code>exact_value=1.609
-tol &lt;-  0.0005
-err &lt;- 1
-n = 4
-
-while(err&gt;tol){
-  res_trap &lt;- trapezoid(f,1,5,n = n)
-  
-  err &lt;- abs(res_trap-exact_value)
-  
-  cat(&quot;n=&quot;,n,&quot;, result=&quot;,res_trap,&quot;, error=&quot;,err,&quot;\n&quot;,sep = &quot;&quot;)
-  
-  n=n+1
-  if(n==1000){
-    break
-  }
-  
-}</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoibj00LCByZXN1bHQ9MS42ODMzMzMsIGVycm9yPTAuMDc0MzMzMzNcbm49NSwgcmVzdWx0PTEuNjU3OTA3LCBlcnJvcj0wLjA0ODkwNzA2XG5uPTYsIHJlc3VsdD0xLjY0MzYwMSwgZXJyb3I9MC4wMzQ2MDA4NFxubj03LCByZXN1bHQ9MS42MzQ3OCwgZXJyb3I9MC4wMjU3Nzk5NFxubj04LCByZXN1bHQ9MS42Mjg5NjgsIGVycm9yPTAuMDE5OTY4MjVcbm49OSwgcmVzdWx0PTEuNjI0OTQyLCBlcnJvcj0wLjAxNTk0MTUyXG5uPTEwLCByZXN1bHQ9MS42MjIwMzksIGVycm9yPTAuMDEzMDM5MDFcbm49MTEsIHJlc3VsdD0xLjYxOTg3OSwgZXJyb3I9MC4wMTA4NzkwOFxubj0xMiwgcmVzdWx0PTEuNjE4MjI5LCBlcnJvcj0wLjAwOTIyODk5M1xubj0xMywgcmVzdWx0PTEuNjE2OTQsIGVycm9yPTAuMDA3OTQwMzgxXG5uPTE0LCByZXN1bHQ9MS42MTU5MTUsIGVycm9yPTAuMDA2OTE1MDc3XG5uPTE1LCByZXN1bHQ9MS42MTUwODYsIGVycm9yPTAuMDA2MDg2MDYxXG5uPTE2LCByZXN1bHQ9MS42MTQ0MDYsIGVycm9yPTAuMDA1NDA2MzI0XG5uPTE3LCByZXN1bHQ9MS42MTM4NDIsIGVycm9yPTAuMDA0ODQyMTE0XG5uPTE4LCByZXN1bHQ9MS42MTMzNjksIGVycm9yPTAuMDA0MzY4Njk1XG5uPTE5LCByZXN1bHQ9MS42MTI5NjgsIGVycm9yPTAuMDAzOTY3NjA2XG5uPTIwLCByZXN1bHQ9MS42MTI2MjUsIGVycm9yPTAuMDAzNjI0ODQ0XG5uPTIxLCByZXN1bHQ9MS42MTIzMywgZXJyb3I9MC4wMDMzMjk2Mzhcbm49MjIsIHJlc3VsdD0xLjYxMjA3NCwgZXJyb3I9MC4wMDMwNzM1ODdcbm49MjMsIHJlc3VsdD0xLjYxMTg1LCBlcnJvcj0wLjAwMjg1MDA2N1xubj0yNCwgcmVzdWx0PTEuNjExNjU0LCBlcnJvcj0wLjAwMjY1Mzc5OFxubj0yNSwgcmVzdWx0PTEuNjExNDgxLCBlcnJvcj0wLjAwMjQ4MDUyNVxubj0yNiwgcmVzdWx0PTEuNjExMzI3LCBlcnJvcj0wLjAwMjMyNjc5NFxubj0yNywgcmVzdWx0PTEuNjExMTksIGVycm9yPTAuMDAyMTg5Nzc2XG5uPTI4LCByZXN1bHQ9MS42MTEwNjcsIGVycm9yPTAuMDAyMDY3MTMzXG5uPTI5LCByZXN1bHQ9MS42MTA5NTcsIGVycm9yPTAuMDAxOTU2OTI1XG5uPTMwLCByZXN1bHQ9MS42MTA4NTgsIGVycm9yPTAuMDAxODU3NTI3XG5uPTMxLCByZXN1bHQ9MS42MTA3NjgsIGVycm9yPTAuMDAxNzY3NTdcbm49MzIsIHJlc3VsdD0xLjYxMDY4NiwgZXJyb3I9MC4wMDE2ODU4OTZcbm49MzMsIHJlc3VsdD0xLjYxMDYxMiwgZXJyb3I9MC4wMDE2MTE1MTlcbm49MzQsIHJlc3VsdD0xLjYxMDU0NCwgZXJyb3I9MC4wMDE1NDM1OTVcbm49MzUsIHJlc3VsdD0xLjYxMDQ4MSwgZXJyb3I9MC4wMDE0ODE0XG5uPTM2LCByZXN1bHQ9MS42MTA0MjQsIGVycm9yPTAuMDAxNDI0MzA2XG5uPTM3LCByZXN1bHQ9MS42MTAzNzIsIGVycm9yPTAuMDAxMzcxNzcxXG5uPTM4LCByZXN1bHQ9MS42MTAzMjMsIGVycm9yPTAuMDAxMzIzMzIzXG5uPTM5LCByZXN1bHQ9MS42MTAyNzksIGVycm9yPTAuMDAxMjc4NTQ4XG5uPTQwLCByZXN1bHQ9MS42MTAyMzcsIGVycm9yPTAuMDAxMjM3MDg0XG5uPTQxLCByZXN1bHQ9MS42MTAxOTksIGVycm9yPTAuMDAxMTk4NjE0XG5uPTQyLCByZXN1bHQ9MS42MTAxNjMsIGVycm9yPTAuMDAxMTYyODU0XG5uPTQzLCByZXN1bHQ9MS42MTAxMywgZXJyb3I9MC4wMDExMjk1NThcbm49NDQsIHJlc3VsdD0xLjYxMDA5OSwgZXJyb3I9MC4wMDEwOTg1MDNcbm49NDUsIHJlc3VsdD0xLjYxMDA2OSwgZXJyb3I9MC4wMDEwNjk0OTRcbm49NDYsIHJlc3VsdD0xLjYxMDA0MiwgZXJyb3I9MC4wMDEwNDIzNTNcbm49NDcsIHJlc3VsdD0xLjYxMDAxNywgZXJyb3I9MC4wMDEwMTY5MjVcbm49NDgsIHJlc3VsdD0xLjYwOTk5MywgZXJyb3I9MC4wMDA5OTMwNjgxXG5uPTQ5LCByZXN1bHQ9MS42MDk5NzEsIGVycm9yPTAuMDAwOTcwNjU1M1xubj01MCwgcmVzdWx0PTEuNjA5OTUsIGVycm9yPTAuMDAwOTQ5NTcyN1xubj01MSwgcmVzdWx0PTEuNjA5OTMsIGVycm9yPTAuMDAwOTI5NzE2OVxubj01MiwgcmVzdWx0PTEuNjA5OTExLCBlcnJvcj0wLjAwMDkxMDk5NDdcbm49NTMsIHJlc3VsdD0xLjYwOTg5MywgZXJyb3I9MC4wMDA4OTMzMjE0XG5uPTU0LCByZXN1bHQ9MS42MDk4NzcsIGVycm9yPTAuMDAwODc2NjIwMVxubj01NSwgcmVzdWx0PTEuNjA5ODYxLCBlcnJvcj0wLjAwMDg2MDgyMDhcbm49NTYsIHJlc3VsdD0xLjYwOTg0NiwgZXJyb3I9MC4wMDA4NDU4NTk2XG5uPTU3LCByZXN1bHQ9MS42MDk4MzIsIGVycm9yPTAuMDAwODMxNjc4NVxubj01OCwgcmVzdWx0PTEuNjA5ODE4LCBlcnJvcj0wLjAwMDgxODIyNDFcbm49NTksIHJlc3VsdD0xLjYwOTgwNSwgZXJyb3I9MC4wMDA4MDU0NDc1XG5uPTYwLCByZXN1bHQ9MS42MDk3OTMsIGVycm9yPTAuMDAwNzkzMzA0XG5uPTYxLCByZXN1bHQ9MS42MDk3ODIsIGVycm9yPTAuMDAwNzgxNzUyNVxubj02MiwgcmVzdWx0PTEuNjA5NzcxLCBlcnJvcj0wLjAwMDc3MDc1NVxubj02MywgcmVzdWx0PTEuNjA5NzYsIGVycm9yPTAuMDAwNzYwMjc2OVxubj02NCwgcmVzdWx0PTEuNjA5NzUsIGVycm9yPTAuMDAwNzUwMjg1N1xubj02NSwgcmVzdWx0PTEuNjA5NzQxLCBlcnJvcj0wLjAwMDc0MDc1MTlcbm49NjYsIHJlc3VsdD0xLjYwOTczMiwgZXJyb3I9MC4wMDA3MzE2NDc5XG5uPTY3LCByZXN1bHQ9MS42MDk3MjMsIGVycm9yPTAuMDAwNzIyOTQ4NFxubj02OCwgcmVzdWx0PTEuNjA5NzE1LCBlcnJvcj0wLjAwMDcxNDYyOTZcbm49NjksIHJlc3VsdD0xLjYwOTcwNywgZXJyb3I9MC4wMDA3MDY2Njk3XG5uPTcwLCByZXN1bHQ9MS42MDk2OTksIGVycm9yPTAuMDAwNjk5MDQ4NFxubj03MSwgcmVzdWx0PTEuNjA5NjkyLCBlcnJvcj0wLjAwMDY5MTc0NjZcbm49NzIsIHJlc3VsdD0xLjYwOTY4NSwgZXJyb3I9MC4wMDA2ODQ3NDY5XG5uPTczLCByZXN1bHQ9MS42MDk2NzgsIGVycm9yPTAuMDAwNjc4MDMyN1xubj03NCwgcmVzdWx0PTEuNjA5NjcyLCBlcnJvcj0wLjAwMDY3MTU4ODhcbm49NzUsIHJlc3VsdD0xLjYwOTY2NSwgZXJyb3I9MC4wMDA2NjU0MDA4XG5uPTc2LCByZXN1bHQ9MS42MDk2NTksIGVycm9yPTAuMDAwNjU5NDU1M1xubj03NywgcmVzdWx0PTEuNjA5NjU0LCBlcnJvcj0wLjAwMDY1MzczOTlcbm49NzgsIHJlc3VsdD0xLjYwOTY0OCwgZXJyb3I9MC4wMDA2NDgyNDI5XG5uPTc5LCByZXN1bHQ9MS42MDk2NDMsIGVycm9yPTAuMDAwNjQyOTUzMlxubj04MCwgcmVzdWx0PTEuNjA5NjM4LCBlcnJvcj0wLjAwMDYzNzg2MDVcbm49ODEsIHJlc3VsdD0xLjYwOTYzMywgZXJyb3I9MC4wMDA2MzI5NTUyXG5uPTgyLCByZXN1bHQ9MS42MDk2MjgsIGVycm9yPTAuMDAwNjI4MjI4M1xubj04MywgcmVzdWx0PTEuNjA5NjI0LCBlcnJvcj0wLjAwMDYyMzY3MTFcbm49ODQsIHJlc3VsdD0xLjYwOTYxOSwgZXJyb3I9MC4wMDA2MTkyNzU2XG5uPTg1LCByZXN1bHQ9MS42MDk2MTUsIGVycm9yPTAuMDAwNjE1MDM0M1xubj04NiwgcmVzdWx0PTEuNjA5NjExLCBlcnJvcj0wLjAwMDYxMDk0MDFcbm49ODcsIHJlc3VsdD0xLjYwOTYwNywgZXJyb3I9MC4wMDA2MDY5ODYxXG5uPTg4LCByZXN1bHQ9MS42MDk2MDMsIGVycm9yPTAuMDAwNjAzMTY2Mlxubj04OSwgcmVzdWx0PTEuNjA5NTk5LCBlcnJvcj0wLjAwMDU5OTQ3NDNcbm49OTAsIHJlc3VsdD0xLjYwOTU5NiwgZXJyb3I9MC4wMDA1OTU5MDQ3XG5uPTkxLCByZXN1bHQ9MS42MDk1OTIsIGVycm9yPTAuMDAwNTkyNDUyMVxubj05MiwgcmVzdWx0PTEuNjA5NTg5LCBlcnJvcj0wLjAwMDU4OTExMTVcbm49OTMsIHJlc3VsdD0xLjYwOTU4NiwgZXJyb3I9MC4wMDA1ODU4Nzhcbm49OTQsIHJlc3VsdD0xLjYwOTU4MywgZXJyb3I9MC4wMDA1ODI3NDcxXG5uPTk1LCByZXN1bHQ9MS42MDk1OCwgZXJyb3I9MC4wMDA1Nzk3MTQ2XG5uPTk2LCByZXN1bHQ9MS42MDk1NzcsIGVycm9yPTAuMDAwNTc2Nzc2M1xubj05NywgcmVzdWx0PTEuNjA5NTc0LCBlcnJvcj0wLjAwMDU3MzkyODRcbm49OTgsIHJlc3VsdD0xLjYwOTU3MSwgZXJyb3I9MC4wMDA1NzExNjcyXG5uPTk5LCByZXN1bHQ9MS42MDk1NjgsIGVycm9yPTAuMDAwNTY4NDg5Mlxubj0xMDAsIHJlc3VsdD0xLjYwOTU2NiwgZXJyb3I9MC4wMDA1NjU4OTEyXG5uPTEwMSwgcmVzdWx0PTEuNjA5NTYzLCBlcnJvcj0wLjAwMDU2MzM2OTlcbm49MTAyLCByZXN1bHQ9MS42MDk1NjEsIGVycm9yPTAuMDAwNTYwOTIyNFxubj0xMDMsIHJlc3VsdD0xLjYwOTU1OSwgZXJyb3I9MC4wMDA1NTg1NDU4XG5uPTEwNCwgcmVzdWx0PTEuNjA5NTU2LCBlcnJvcj0wLjAwMDU1NjIzNzRcbm49MTA1LCByZXN1bHQ9MS42MDk1NTQsIGVycm9yPTAuMDAwNTUzOTk0N1xubj0xMDYsIHJlc3VsdD0xLjYwOTU1MiwgZXJyb3I9MC4wMDA1NTE4MTUxXG5uPTEwNywgcmVzdWx0PTEuNjA5NTUsIGVycm9yPTAuMDAwNTQ5Njk2NFxubj0xMDgsIHJlc3VsdD0xLjYwOTU0OCwgZXJyb3I9MC4wMDA1NDc2MzYyXG5uPTEwOSwgcmVzdWx0PTEuNjA5NTQ2LCBlcnJvcj0wLjAwMDU0NTYzMjRcbm49MTEwLCByZXN1bHQ9MS42MDk1NDQsIGVycm9yPTAuMDAwNTQzNjgzXG5uPTExMSwgcmVzdWx0PTEuNjA5NTQyLCBlcnJvcj0wLjAwMDU0MTc4NjFcbm49MTEyLCByZXN1bHQ9MS42MDk1NCwgZXJyb3I9MC4wMDA1Mzk5Mzk3XG5uPTExMywgcmVzdWx0PTEuNjA5NTM4LCBlcnJvcj0wLjAwMDUzODE0MjJcbm49MTE0LCByZXN1bHQ9MS42MDk1MzYsIGVycm9yPTAuMDAwNTM2MzkxN1xubj0xMTUsIHJlc3VsdD0xLjYwOTUzNSwgZXJyb3I9MC4wMDA1MzQ2ODY3XG5uPTExNiwgcmVzdWx0PTEuNjA5NTMzLCBlcnJvcj0wLjAwMDUzMzAyNTVcbm49MTE3LCByZXN1bHQ9MS42MDk1MzEsIGVycm9yPTAuMDAwNTMxNDA2OFxubj0xMTgsIHJlc3VsdD0xLjYwOTUzLCBlcnJvcj0wLjAwMDUyOTgyOTFcbm49MTE5LCByZXN1bHQ9MS42MDk1MjgsIGVycm9yPTAuMDAwNTI4MjkwOVxubj0xMjAsIHJlc3VsdD0xLjYwOTUyNywgZXJyb3I9MC4wMDA1MjY3OTExXG5uPTEyMSwgcmVzdWx0PTEuNjA5NTI1LCBlcnJvcj0wLjAwMDUyNTMyODJcbm49MTIyLCByZXN1bHQ9MS42MDk1MjQsIGVycm9yPTAuMDAwNTIzOTAxMlxubj0xMjMsIHJlc3VsdD0xLjYwOTUyMywgZXJyb3I9MC4wMDA1MjI1MDg5XG5uPTEyNCwgcmVzdWx0PTEuNjA5NTIxLCBlcnJvcj0wLjAwMDUyMTE1XG5uPTEyNSwgcmVzdWx0PTEuNjA5NTIsIGVycm9yPTAuMDAwNTE5ODIzN1xubj0xMjYsIHJlc3VsdD0xLjYwOTUxOSwgZXJyb3I9MC4wMDA1MTg1Mjg4XG5uPTEyNywgcmVzdWx0PTEuNjA5NTE3LCBlcnJvcj0wLjAwMDUxNzI2NDRcbm49MTI4LCByZXN1bHQ9MS42MDk1MTYsIGVycm9yPTAuMDAwNTE2MDI5NVxubj0xMjksIHJlc3VsdD0xLjYwOTUxNSwgZXJyb3I9MC4wMDA1MTQ4MjMyXG5uPTEzMCwgcmVzdWx0PTEuNjA5NTE0LCBlcnJvcj0wLjAwMDUxMzY0NDZcbm49MTMxLCByZXN1bHQ9MS42MDk1MTIsIGVycm9yPTAuMDAwNTEyNDkyOVxubj0xMzIsIHJlc3VsdD0xLjYwOTUxMSwgZXJyb3I9MC4wMDA1MTEzNjczXG5uPTEzMywgcmVzdWx0PTEuNjA5NTEsIGVycm9yPTAuMDAwNTEwMjY3XG5uPTEzNCwgcmVzdWx0PTEuNjA5NTA5LCBlcnJvcj0wLjAwMDUwOTE5MTJcbm49MTM1LCByZXN1bHQ9MS42MDk1MDgsIGVycm9yPTAuMDAwNTA4MTM5Mlxubj0xMzYsIHJlc3VsdD0xLjYwOTUwNywgZXJyb3I9MC4wMDA1MDcxMTA0XG5uPTEzNywgcmVzdWx0PTEuNjA5NTA2LCBlcnJvcj0wLjAwMDUwNjEwNFxubj0xMzgsIHJlc3VsdD0xLjYwOTUwNSwgZXJyb3I9MC4wMDA1MDUxMTkzXG5uPTEzOSwgcmVzdWx0PTEuNjA5NTA0LCBlcnJvcj0wLjAwMDUwNDE1NTlcbm49MTQwLCByZXN1bHQ9MS42MDk1MDMsIGVycm9yPTAuMDAwNTAzMjEzXG5uPTE0MSwgcmVzdWx0PTEuNjA5NTAyLCBlcnJvcj0wLjAwMDUwMjI5MDFcbm49MTQyLCByZXN1bHQ9MS42MDk1MDEsIGVycm9yPTAuMDAwNTAxMzg2N1xubj0xNDMsIHJlc3VsdD0xLjYwOTUwMSwgZXJyb3I9MC4wMDA1MDA1MDIxXG5uPTE0NCwgcmVzdWx0PTEuNjA5NSwgZXJyb3I9MC4wMDA0OTk2MzU5XG4ifQ== -->
-<pre><code>n=4, result=1.683333, error=0.07433333
-n=5, result=1.657907, error=0.04890706
-n=6, result=1.643601, error=0.03460084
-n=7, result=1.63478, error=0.02577994
-n=8, result=1.628968, error=0.01996825
-n=9, result=1.624942, error=0.01594152
-n=10, result=1.622039, error=0.01303901
-n=11, result=1.619879, error=0.01087908
-n=12, result=1.618229, error=0.009228993
-n=13, result=1.61694, error=0.007940381
-n=14, result=1.615915, error=0.006915077
-n=15, result=1.615086, error=0.006086061
-n=16, result=1.614406, error=0.005406324
-n=17, result=1.613842, error=0.004842114
-n=18, result=1.613369, error=0.004368695
-n=19, result=1.612968, error=0.003967606
-n=20, result=1.612625, error=0.003624844
-n=21, result=1.61233, error=0.003329638
-n=22, result=1.612074, error=0.003073587
-n=23, result=1.61185, error=0.002850067
-n=24, result=1.611654, error=0.002653798
-n=25, result=1.611481, error=0.002480525
-n=26, result=1.611327, error=0.002326794
-n=27, result=1.61119, error=0.002189776
-n=28, result=1.611067, error=0.002067133
-n=29, result=1.610957, error=0.001956925
-n=30, result=1.610858, error=0.001857527
-n=31, result=1.610768, error=0.00176757
-n=32, result=1.610686, error=0.001685896
-n=33, result=1.610612, error=0.001611519
-n=34, result=1.610544, error=0.001543595
-n=35, result=1.610481, error=0.0014814
-n=36, result=1.610424, error=0.001424306
-n=37, result=1.610372, error=0.001371771
-n=38, result=1.610323, error=0.001323323
-n=39, result=1.610279, error=0.001278548
-n=40, result=1.610237, error=0.001237084
-n=41, result=1.610199, error=0.001198614
-n=42, result=1.610163, error=0.001162854
-n=43, result=1.61013, error=0.001129558
-n=44, result=1.610099, error=0.001098503
-n=45, result=1.610069, error=0.001069494
-n=46, result=1.610042, error=0.001042353
-n=47, result=1.610017, error=0.001016925
-n=48, result=1.609993, error=0.0009930681
-n=49, result=1.609971, error=0.0009706553
-n=50, result=1.60995, error=0.0009495727
-n=51, result=1.60993, error=0.0009297169
-n=52, result=1.609911, error=0.0009109947
-n=53, result=1.609893, error=0.0008933214
-n=54, result=1.609877, error=0.0008766201
-n=55, result=1.609861, error=0.0008608208
-n=56, result=1.609846, error=0.0008458596
-n=57, result=1.609832, error=0.0008316785
-n=58, result=1.609818, error=0.0008182241
-n=59, result=1.609805, error=0.0008054475
-n=60, result=1.609793, error=0.000793304
-n=61, result=1.609782, error=0.0007817525
-n=62, result=1.609771, error=0.000770755
-n=63, result=1.60976, error=0.0007602769
-n=64, result=1.60975, error=0.0007502857
-n=65, result=1.609741, error=0.0007407519
-n=66, result=1.609732, error=0.0007316479
-n=67, result=1.609723, error=0.0007229484
-n=68, result=1.609715, error=0.0007146296
-n=69, result=1.609707, error=0.0007066697
-n=70, result=1.609699, error=0.0006990484
-n=71, result=1.609692, error=0.0006917466
-n=72, result=1.609685, error=0.0006847469
-n=73, result=1.609678, error=0.0006780327
-n=74, result=1.609672, error=0.0006715888
-n=75, result=1.609665, error=0.0006654008
-n=76, result=1.609659, error=0.0006594553
-n=77, result=1.609654, error=0.0006537399
-n=78, result=1.609648, error=0.0006482429
-n=79, result=1.609643, error=0.0006429532
-n=80, result=1.609638, error=0.0006378605
-n=81, result=1.609633, error=0.0006329552
-n=82, result=1.609628, error=0.0006282283
-n=83, result=1.609624, error=0.0006236711
-n=84, result=1.609619, error=0.0006192756
-n=85, result=1.609615, error=0.0006150343
-n=86, result=1.609611, error=0.0006109401
-n=87, result=1.609607, error=0.0006069861
-n=88, result=1.609603, error=0.0006031662
-n=89, result=1.609599, error=0.0005994743
-n=90, result=1.609596, error=0.0005959047
-n=91, result=1.609592, error=0.0005924521
-n=92, result=1.609589, error=0.0005891115
-n=93, result=1.609586, error=0.000585878
-n=94, result=1.609583, error=0.0005827471
-n=95, result=1.60958, error=0.0005797146
-n=96, result=1.609577, error=0.0005767763
-n=97, result=1.609574, error=0.0005739284
-n=98, result=1.609571, error=0.0005711672
-n=99, result=1.609568, error=0.0005684892
-n=100, result=1.609566, error=0.0005658912
-n=101, result=1.609563, error=0.0005633699
-n=102, result=1.609561, error=0.0005609224
-n=103, result=1.609559, error=0.0005585458
-n=104, result=1.609556, error=0.0005562374
-n=105, result=1.609554, error=0.0005539947
-n=106, result=1.609552, error=0.0005518151
-n=107, result=1.60955, error=0.0005496964
-n=108, result=1.609548, error=0.0005476362
-n=109, result=1.609546, error=0.0005456324
-n=110, result=1.609544, error=0.000543683
-n=111, result=1.609542, error=0.0005417861
-n=112, result=1.60954, error=0.0005399397
-n=113, result=1.609538, error=0.0005381422
-n=114, result=1.609536, error=0.0005363917
-n=115, result=1.609535, error=0.0005346867
-n=116, result=1.609533, error=0.0005330255
-n=117, result=1.609531, error=0.0005314068
-n=118, result=1.60953, error=0.0005298291
-n=119, result=1.609528, error=0.0005282909
-n=120, result=1.609527, error=0.0005267911
-n=121, result=1.609525, error=0.0005253282
-n=122, result=1.609524, error=0.0005239012
-n=123, result=1.609523, error=0.0005225089
-n=124, result=1.609521, error=0.00052115
-n=125, result=1.60952, error=0.0005198237
-n=126, result=1.609519, error=0.0005185288
-n=127, result=1.609517, error=0.0005172644
-n=128, result=1.609516, error=0.0005160295
-n=129, result=1.609515, error=0.0005148232
-n=130, result=1.609514, error=0.0005136446
-n=131, result=1.609512, error=0.0005124929
-n=132, result=1.609511, error=0.0005113673
-n=133, result=1.60951, error=0.000510267
-n=134, result=1.609509, error=0.0005091912
-n=135, result=1.609508, error=0.0005081392
-n=136, result=1.609507, error=0.0005071104
-n=137, result=1.609506, error=0.000506104
-n=138, result=1.609505, error=0.0005051193
-n=139, result=1.609504, error=0.0005041559
-n=140, result=1.609503, error=0.000503213
-n=141, result=1.609502, error=0.0005022901
-n=142, result=1.609501, error=0.0005013867
-n=143, result=1.609501, error=0.0005005021
-n=144, result=1.6095, error=0.0004996359</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-</div>
-<div id="soal-2" class="section level2">
-<h2>Soal 2</h2>
-<p>Gunakan metode simpson untuk mengintegralkan fungsi berikut untuk n=4, dengan</p>
-<p><span class="math display">\[\int_{-2}^{2} 3^{x} dx \]</span></p>
-<ol style="list-style-type: lower-alpha">
-<li>Hitunglah tanpa menggunakan software</li>
-<li>Hitunglah menggunakan R</li>
-<li>Hitunglah menggunakan R hingga hasil integral mendekati hasil exact-nya dengan toleransi <span class="math inline">\(0.0001\)</span></li>
-</ol>
-<p>Jawab:</p>
-<ol style="list-style-type: lower-alpha">
-<li>Hitunglah tanpa menggunakan software</li>
-</ol>
-<p>Diketahui</p>
-<p><span class="math display">\[f(x)=3^{x}, a=-2,b=2\]</span></p>
-<p>Panjang setiap sub interval adalah sebagai berikut:</p>
-<p><span class="math display">\[h=\frac{b-a}{n}=\frac{2-(-2)}{4}=\frac{4}{4}=1\]</span></p>
-<p>Karena <span class="math inline">\(n=4\)</span> maka bentuk dari metode Simpson adalah</p>
-<p><span class="math display">\[S_{4} = \frac{h}{3} [f(x_{0})+4f(x_{1})+2f(x_{2})+4f(x_{3})+f(x_{4})]\]</span></p>
-<p>Menghitung fungsi <span class="math inline">\(f(x)\)</span> pada setiap <span class="math inline">\(x_{i}\)</span></p>
-<p><span class="math display">\[f(x_{0})=f(1)=3^{-2}=\frac{1}{9}\]</span> <span class="math display">\[f(x_{1})=f(2)=3^{-1}=\frac{1}{3}\]</span></p>
-<p><span class="math display">\[f(x_{2})=f(3)=3^{0}=1\]</span> <span class="math display">\[f(x_{3})=f(4)=3^{1}=3\]</span></p>
-<p><span class="math display">\[f(x_{4})=f(5)=3^{2}=9\]</span></p>
-<p>karena <span class="math inline">\(h=1\)</span> diperoleh</p>
-<p><span class="math display">\[S_{4} = \frac{1}{3} \left[\frac{1}{9}+4 \cdot \frac{1}{3}+2 \cdot 1+4 \cdot 3+9 \right]=\frac{220}{27}=8.148\]</span> Sehingga</p>
-<p><span class="math display">\[\int_{-2}^{2} 3^{x} dx \approx S_{4}=8.148 \]</span></p>
-<p>Jika kita bandingkan dengan hasil yang didapatkan secara exact adalah sebagai berikut:</p>
-<p><span class="math display">\[\int_{-2}^{2} 3^{x} dx=\frac{3^{x}}{\log{3}}  |_{-2}^{2}=\frac{3^{2}}{\log{3}}-\frac{3^{-2}}{\log{3}}=\frac{80}{9\log{3}}=8.091\]</span></p>
-<ol start="2" style="list-style-type: lower-alpha">
-<li>Hitunglah menggunakan R</li>
-</ol>
-<p>mendefinisikan fungsi <span class="math inline">\(f(x)\)</span></p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZjIgPC0gZnVuY3Rpb24oeCl7XG4gIDNee3h9XG59XG5gYGAifQ== -->
-<pre class="r"><code>f2 &lt;- function(x){
-  3^{x}
-}</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Menghitung integral menggunakan metode simpson</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2ltcHNvbl9uKGYyLC0yLDIsbiA9IDQpXG5gYGAifQ== -->
-<pre class="r"><code>simpson_n(f2,-2,2,n = 4)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDguMTQ4MTQ4XG4ifQ== -->
-<pre><code>[1] 8.148148</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<ol start="3" style="list-style-type: lower-alpha">
-<li>Hitunglah menggunakan R hingga hasil integral mendekati hasil exact-nya dengan toleransi <span class="math inline">\(0.0001\)</span></li>
-</ol>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZXhhY3RfdmFsdWU9OC4wOTFcbnRvbCA8LSAgMC4wMDAxXG5lcnIgPC0gMVxubiA9IDRcblxud2hpbGUoZXJyPnRvbCl7XG4gIHJlc19zaW1wIDwtIHNpbXBzb25fbihmMiwtMiwyLG4gPSBuKVxuICBcbiAgZXJyIDwtIGFicyhyZXNfc2ltcC1leGFjdF92YWx1ZSlcbiAgXG4gIGNhdChcIm49XCIsbixcIiwgcmVzdWx0PVwiLHJlc19zaW1wLFwiLCBlcnJvcj1cIixlcnIsXCJcXG5cIixzZXAgPSBcIlwiKVxuICBcbiAgbj1uKzFcbiAgaWYobj09MTAwMCl7XG4gICAgYnJlYWtcbiAgfVxuICBcbn1cbmBgYCJ9 -->
-<pre class="r"><code>exact_value=8.091
-tol &lt;-  0.0001
-err &lt;- 1
-n = 4
-
-while(err&gt;tol){
-  res_simp &lt;- simpson_n(f2,-2,2,n = n)
-  
-  err &lt;- abs(res_simp-exact_value)
-  
-  cat(&quot;n=&quot;,n,&quot;, result=&quot;,res_simp,&quot;, error=&quot;,err,&quot;\n&quot;,sep = &quot;&quot;)
-  
-  n=n+1
-  if(n==1000){
-    break
-  }
-  
-}</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoibj00LCByZXN1bHQ9OC4xNDgxNDgsIGVycm9yPTAuMDU3MTQ4MTVcbm49NSwgcmVzdWx0PTguMTQ4MTQ4LCBlcnJvcj0wLjA1NzE0ODE1XG5uPTYsIHJlc3VsdD04LjEwMzE2OCwgZXJyb3I9MC4wMTIxNjc3OFxubj03LCByZXN1bHQ9OC4xMDMxNjgsIGVycm9yPTAuMDEyMTY3Nzhcbm49OCwgcmVzdWx0PTguMDk0OTY1LCBlcnJvcj0wLjAwMzk2NTM1Nlxubj05LCByZXN1bHQ9OC4wOTQ5NjUsIGVycm9yPTAuMDAzOTY1MzU2XG5uPTEwLCByZXN1bHQ9OC4wOTI2NTQsIGVycm9yPTAuMDAxNjUzODY0XG5uPTExLCByZXN1bHQ9OC4wOTI2NTQsIGVycm9yPTAuMDAxNjUzODY0XG5uPTEyLCByZXN1bHQ9OC4wOTE4MTEsIGVycm9yPTAuMDAwODExMDE1NVxubj0xMywgcmVzdWx0PTguMDkxODExLCBlcnJvcj0wLjAwMDgxMTAxNTVcbm49MTQsIHJlc3VsdD04LjA5MTQ0NywgZXJyb3I9MC4wMDA0NDY2MzMzXG5uPTE1LCByZXN1bHQ9OC4wOTE0NDcsIGVycm9yPTAuMDAwNDQ2NjMzM1xubj0xNiwgcmVzdWx0PTguMDkxMjY5LCBlcnJvcj0wLjAwMDI2ODg0OTlcbm49MTcsIHJlc3VsdD04LjA5MTI2OSwgZXJyb3I9MC4wMDAyNjg4NDk5XG5uPTE4LCByZXN1bHQ9OC4wOTExNzQsIGVycm9yPTAuMDAwMTczOTA0N1xubj0xOSwgcmVzdWx0PTguMDkxMTc0LCBlcnJvcj0wLjAwMDE3MzkwNDdcbm49MjAsIHJlc3VsdD04LjA5MTEyLCBlcnJvcj0wLjAwMDExOTUxNjZcbm49MjEsIHJlc3VsdD04LjA5MTEyLCBlcnJvcj0wLjAwMDExOTUxNjZcbm49MjIsIHJlc3VsdD04LjA5MTA4NywgZXJyb3I9OC42NTY3MjJlLTA1XG4ifQ== -->
-<pre><code>n=4, result=8.148148, error=0.05714815
-n=5, result=8.148148, error=0.05714815
-n=6, result=8.103168, error=0.01216778
-n=7, result=8.103168, error=0.01216778
-n=8, result=8.094965, error=0.003965356
-n=9, result=8.094965, error=0.003965356
-n=10, result=8.092654, error=0.001653864
-n=11, result=8.092654, error=0.001653864
-n=12, result=8.091811, error=0.0008110155
-n=13, result=8.091811, error=0.0008110155
-n=14, result=8.091447, error=0.0004466333
-n=15, result=8.091447, error=0.0004466333
-n=16, result=8.091269, error=0.0002688499
-n=17, result=8.091269, error=0.0002688499
-n=18, result=8.091174, error=0.0001739047
-n=19, result=8.091174, error=0.0001739047
-n=20, result=8.09112, error=0.0001195166
-n=21, result=8.09112, error=0.0001195166
-n=22, result=8.091087, error=8.656722e-05</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<div id="soal-3" class="section level3">
-<h3>Soal 3</h3>
-<p>Gunakan metode four-point gaussian quadratur untuk mengintegralkan fungsi berikut</p>
-<p><span class="math display">\[\int_{0}^{3} \exp(-x^2) dx \]</span> a. Hitunglah tanpa menggunakan software b. Hitunglah menggunakan R dengan fungsi <code>gaussLegendre</code> dengan menggunakan domain <span class="math inline">\([-1,1]\)</span> c. Hitunglah menggunakan R dengan fungsi <code>gaussLegendre</code> dengan menggunakan domain asal d. Hitunglah menggunakan R hingga hasil integral mendekati hasil exact-nya dengan toleransi <span class="math inline">\(0.00001\)</span></p>
-<ol style="list-style-type: lower-alpha">
-<li>Hitunglah tanpa menggunakan software</li>
-</ol>
-<p>Diketahui</p>
-<p><span class="math display">\[f(x)=\exp(-x^2), a=0,b=3\]</span> Karena pada soal yang diinginkan adalah metode four-point gaussian quadratur, berarti nilai <span class="math inline">\(n=4\)</span>. Berdasarkan tabel gaussian quadratur nilai-nilai koefisien dan titik gauss adalah sebagai berikut:</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ3Q6Omd0KGRhdGEgPSBib2JvdF9nY1szLF0pXG5gYGAifQ== -->
-<pre class="r"><code>gt::gt(data = bobot_gc[3,])</code></pre>
-<!-- rnb-source-end -->
 
 <!-- rnb-html-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInNoaW55LnRhZyJdLCJzaXppbmdQb2xpY3kiOltdfX0= -->
 
@@ -1521,6 +642,894 @@ n=22, result=8.091087, error=8.656722e-05</code></pre>
     </tr>
   </thead>
   <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_right">2</td>
+<td class="gt_row gt_left">C1 = 1,
+                                           C2 = 1</td>
+<td class="gt_row gt_left">x1 = - 0.57735027,
+                                          x2 = 0.57735027</td></tr>
+    <tr><td class="gt_row gt_right">3</td>
+<td class="gt_row gt_left">C1 = 0.5555556,
+                                           C2 = 0.8888889,
+                                           C3 = 0.5555556</td>
+<td class="gt_row gt_left">x1 = -0.77459667,
+                                          x2 = 0,
+                                          x3 = 0.77459667</td></tr>
+    <tr><td class="gt_row gt_right">4</td>
+<td class="gt_row gt_left">C1 = 0.3478548,
+                                           C2 = 0.6521452,
+                                           C3 = 0.6521452,
+                                           C4 = 0.3478548</td>
+<td class="gt_row gt_left">x1 = -0.86113631,
+                                          x2 = -0.33998104,
+                                          x3 = 0.33998104,
+                                          x4 = 0.86113631</td></tr>
+    <tr><td class="gt_row gt_right">5</td>
+<td class="gt_row gt_left">C1 = 0.2369269,
+                                           C2 = 0.4786287,
+                                           C3 = 0.5688889,
+                                           C4 = 0.4786287,
+                                           C5 = 0.2369269</td>
+<td class="gt_row gt_left">x1 = -0.90617985,
+                                          x2 = -0.53846931,
+                                          x3 = 0,
+                                          x4 = 0.53846931,
+                                          x5 = 0.90617985</td></tr>
+    <tr><td class="gt_row gt_right">6</td>
+<td class="gt_row gt_left">C1 = 0.1713245,
+                                           C2 = 0.3607616,
+                                           C3 = 0.4679139,
+                                           C4 = 0.4679139,
+                                           C5 = 0.3607616,
+                                           C6 = 0.1713245</td>
+<td class="gt_row gt_left">x1 = -0.93246951,
+                                          x2 = -0.66120938,
+                                          x3 = -0.23861919,
+                                          x4 = 0.23861919,
+                                          x5 = 0.66120938,
+                                          x6 = 0.93246951</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+
+
+<!-- rnb-html-end -->
+
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Nilai-nilai pada tabel ini juga bisa diakses dengan menggunakan fungsi <code>gaussLegendre</code> dari package <code>pracma</code>. Simbol <code>w</code> pada output dibawah ini merupakan bobot <span class="math inline">\(C_{i}\)</span>. Selain itu, nilai <span class="math inline">\(n\)</span> pada fungsi <code>gaussLegendre</code> bisa lebih dari 6.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB1bnR1ayBuPTJcbmdhdXNzTGVnZW5kcmUobj0yLGE9LTEsYj0xKVxuYGBgIn0= -->
+<pre class="r"><code># untuk n=2
+gaussLegendre(n=2,a=-1,b=1)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiJHhcblsxXSAtMC41NzczNTAzICAwLjU3NzM1MDNcblxuJHdcblsxXSAxIDFcbiJ9 -->
+<pre><code>$x
+[1] -0.5773503  0.5773503
+
+$w
+[1] 1 1</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB1bnR1ayBuPTNcbmdhdXNzTGVnZW5kcmUobj0zLGE9LTEsYj0xKVxuYGBgIn0= -->
+<pre class="r"><code># untuk n=3
+gaussLegendre(n=3,a=-1,b=1)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiJHhcblsxXSAtNy43NDU5NjdlLTAxICA4Ljg4MTc4NGUtMTYgIDcuNzQ1OTY3ZS0wMVxuXG4kd1xuWzFdIDAuNTU1NTU1NiAwLjg4ODg4ODkgMC41NTU1NTU2XG4ifQ== -->
+<pre><code>$x
+[1] -7.745967e-01  8.881784e-16  7.745967e-01
+
+$w
+[1] 0.5555556 0.8888889 0.5555556</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB1bnR1ayBuPTRcbmdhdXNzTGVnZW5kcmUobj00LGE9LTEsYj0xKVxuYGBgIn0= -->
+<pre class="r"><code># untuk n=4
+gaussLegendre(n=4,a=-1,b=1)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiJHhcblsxXSAtMC44NjExMzYzIC0wLjMzOTk4MTAgIDAuMzM5OTgxMCAgMC44NjExMzYzXG5cbiR3XG5bMV0gMC4zNDc4NTQ4IDAuNjUyMTQ1MiAwLjY1MjE0NTIgMC4zNDc4NTQ4XG4ifQ== -->
+<pre><code>$x
+[1] -0.8611363 -0.3399810  0.3399810  0.8611363
+
+$w
+[1] 0.3478548 0.6521452 0.6521452 0.3478548</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB1bnR1ayBuPTVcbmdhdXNzTGVnZW5kcmUobj01LGE9LTEsYj0xKVxuYGBgIn0= -->
+<pre class="r"><code># untuk n=5
+gaussLegendre(n=5,a=-1,b=1)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiJHhcblsxXSAtOS4wNjE3OThlLTAxIC01LjM4NDY5M2UtMDEgIDUuNTUxMTE1ZS0xNlxuWzRdICA1LjM4NDY5M2UtMDEgIDkuMDYxNzk4ZS0wMVxuXG4kd1xuWzFdIDAuMjM2OTI2OSAwLjQ3ODYyODcgMC41Njg4ODg5IDAuNDc4NjI4N1xuWzVdIDAuMjM2OTI2OVxuIn0= -->
+<pre><code>$x
+[1] -9.061798e-01 -5.384693e-01  5.551115e-16
+[4]  5.384693e-01  9.061798e-01
+
+$w
+[1] 0.2369269 0.4786287 0.5688889 0.4786287
+[5] 0.2369269</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB1bnR1ayBuPTZcbmdhdXNzTGVnZW5kcmUobj02LGE9LTEsYj0xKVxuYGBgIn0= -->
+<pre class="r"><code># untuk n=6
+gaussLegendre(n=6,a=-1,b=1)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiJHhcblsxXSAtMC45MzI0Njk1IC0wLjY2MTIwOTQgLTAuMjM4NjE5MiAgMC4yMzg2MTkyXG5bNV0gIDAuNjYxMjA5NCAgMC45MzI0Njk1XG5cbiR3XG5bMV0gMC4xNzEzMjQ1IDAuMzYwNzYxNiAwLjQ2NzkxMzkgMC40Njc5MTM5XG5bNV0gMC4zNjA3NjE2IDAuMTcxMzI0NVxuIn0= -->
+<pre><code>$x
+[1] -0.9324695 -0.6612094 -0.2386192  0.2386192
+[5]  0.6612094  0.9324695
+
+$w
+[1] 0.1713245 0.3607616 0.4679139 0.4679139
+[5] 0.3607616 0.1713245</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB1bnR1ayBuPTdcbmdhdXNzTGVnZW5kcmUobj03LGE9LTEsYj0xKVxuYGBgIn0= -->
+<pre class="r"><code># untuk n=7
+gaussLegendre(n=7,a=-1,b=1)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiJHhcblsxXSAtOS40OTEwNzllLTAxIC03LjQxNTMxMmUtMDEgLTQuMDU4NDUyZS0wMVxuWzRdICA5Ljk5MjAwN2UtMTYgIDQuMDU4NDUyZS0wMSAgNy40MTUzMTJlLTAxXG5bN10gIDkuNDkxMDc5ZS0wMVxuXG4kd1xuWzFdIDAuMTI5NDg1MCAwLjI3OTcwNTQgMC4zODE4MzAxIDAuNDE3OTU5MlxuWzVdIDAuMzgxODMwMSAwLjI3OTcwNTQgMC4xMjk0ODUwXG4ifQ== -->
+<pre><code>$x
+[1] -9.491079e-01 -7.415312e-01 -4.058452e-01
+[4]  9.992007e-16  4.058452e-01  7.415312e-01
+[7]  9.491079e-01
+
+$w
+[1] 0.1294850 0.2797054 0.3818301 0.4179592
+[5] 0.3818301 0.2797054 0.1294850</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Jika domain integral berupa <span class="math inline">\([a,b]\)</span>, maka perlu ada transformasi sedemikian sehingga domain integral nya menjadi <span class="math inline">\([-1,1]\)</span></p>
+<p><span class="math display">\[\int_{a}^{b}f(x)dx \space \rightarrow \space \int_{-1}^{1}f(t)dt \]</span> Transformasi ini dilakukan dengan mengubah variabel sebagai berikut</p>
+<p><span class="math display">\[x=\frac{1}{2}[t(b-a)+a+b]\]</span></p>
+<p>dan</p>
+<p><span class="math display">\[dx=\frac{1}{2}(b-a)dt\]</span></p>
+<p>Sehingga integralnya menjadi</p>
+<p><span class="math display">\[
+\int_{a}^{b}f(x)dx = \int_{-1}^{1}f \left( \frac{1}{2}[t(b-a)+a+b] \right)\frac{1}{2}(b-a)dt
+\]</span></p>
+</div>
+<div id="metode-integral-monte-carlo" class="section level3">
+<h3>Metode Integral Monte Carlo</h3>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWNfaW50ZWdyYWwgPC0gZnVuY3Rpb24oZnRuLCBhLCBiLG09MTAwMCl7XG4gICNNZW1iYW5na2l0a2FuIHggYmVyZGlzdHJpYnVzaSBVKGEsYilcbiAgeCA8LSBydW5pZihtLGEsYilcbiAgIyBNZW5naGl0dW5nIHJhdGEtcmF0YSBkYXJpIG91dHB1dCBmdW5nc2lcbiAgR3ggPC0gZnRuKHgpXG4gIEd4X20gPC0gbWVhbihHeClcbiAgdGhldGEuaGF0IDwtIChiLWEpKkd4X21cbiAgcmV0dXJuKHRoZXRhLmhhdClcbn1cbmBgYCJ9 -->
+<pre class="r"><code>mc_integral &lt;- function(ftn, a, b,m=1000){
+  #Membangkitkan x berdistribusi U(a,b)
+  x &lt;- runif(m,a,b)
+  # Menghitung rata-rata dari output fungsi
+  Gx &lt;- ftn(x)
+  Gx_m &lt;- mean(Gx)
+  theta.hat &lt;- (b-a)*Gx_m
+  return(theta.hat)
+}</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="integral-numerik-dengan-package-di-r" class="section level3">
+<h3>Integral numerik dengan package di R</h3>
+<p>Selain <strong>user-defined function</strong> diatas terdapat beberapa fungsi yang bisa langsung digunakan, yaitu</p>
+<ol style="list-style-type: decimal">
+<li>Metode Trapezoidal menggunakan fungsi <code>trapzfun</code> dari package <code>pracma</code></li>
+<li>Metode Simpson belum ada fungsi secara khusus</li>
+<li>Metode Adaptive Quadrature menggunakan fungsi <code>integrate</code></li>
+<li>Metode Monte Carlo belum ada fungsi secara khusus.</li>
+</ol>
+</div>
+</div>
+<div id="soal-dan-pembahasan" class="section level2">
+<h2>Soal dan Pembahasan</h2>
+<div id="soal-1" class="section level3">
+<h3>Soal 1</h3>
+<p>Gunakan metode trapezoidal untuk mengintegralkan fungsi berikut untuk <span class="math inline">\(n=4\)</span></p>
+<p><span class="math display">\[\int_{1}^{5} \frac{1}{x} dx \]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li>Hitunglah tanpa menggunakan software</li>
+<li>Hitunglah menggunakan R dengan <strong>user-defined function</strong></li>
+<li>Hitunglah menggunakan R fungsi <code>trapzfun</code> dari package <code>pracma</code></li>
+<li>Hitunglah menggunakan R dengan <strong>user-defined function</strong> hingga hasil integral mendekati hasil exact-nya dengan toleransi <span class="math inline">\(0.0005\)</span></li>
+</ol>
+<p>Jawab:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Hitunglah tanpa menggunakan software</li>
+</ol>
+<p>Diketahui</p>
+<p><span class="math display">\[f(x)=\frac{1}{x}, a=1,b=5\]</span></p>
+<p>Panjang setiap sub interval adalah sebagai berikut:</p>
+<p><span class="math display">\[h=\frac{b-a}{n}=\frac{5-1}{4}=\frac{4}{4}=1\]</span> Karena <span class="math inline">\(n=4\)</span> maka bentuk dari metode trapezoidal adalah</p>
+<p><span class="math display">\[T_{4} = \frac{h}{2} [f(x_{0})+2f(x_{1})+2f(x_{2})+2f(x_{3})+f(x_{4})]\]</span></p>
+<p>Menghitung fungsi <span class="math inline">\(f(x)\)</span> pada setiap <span class="math inline">\(x_{i}\)</span></p>
+<p><span class="math display">\[f(x_{0})=f(1)=\frac{1}{1}=1\]</span> <span class="math display">\[f(x_{1})=f(2)=\frac{1}{2}\]</span></p>
+<p><span class="math display">\[f(x_{2})=f(3)=\frac{1}{3}\]</span> <span class="math display">\[f(x_{3})=f(4)=\frac{1}{4}\]</span></p>
+<p><span class="math display">\[f(x_{4})=f(5)=\frac{1}{5}\]</span></p>
+<p>karena <span class="math inline">\(h=1\)</span> diperoleh</p>
+<p><span class="math display">\[T_{4} = \frac{1}{2} [1+2 \cdot \frac{1}{2}+2 \cdot \frac{1}{3}+2 \cdot \frac{1}{4}+ \frac{1}{5}]=\frac{101}{60}=1.683333\]</span> Sehingga</p>
+<p><span class="math display">\[\int_{1}^{5} \frac{1}{x} dx \approx T_{4}=1.683333 \]</span></p>
+<p>Jika kita bandingkan dengan hasil yang didapatkan secara exact adalah sebagai berikut:</p>
+<p><span class="math display">\[\int_{1}^{5} \frac{1}{x} dx=\log{x}|_{1}^{5}=\log{5}-\log{1}=1.609\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Hitunglah menggunakan R dengan <strong>user-defined function</strong></li>
+</ol>
+<p>mendefinisikan fungsi <span class="math inline">\(f(x)\)</span></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZiA8LSBmdW5jdGlvbih4KXtcbiAgMS94XG59XG5gYGAifQ== -->
+<pre class="r"><code>f &lt;- function(x){
+  1/x
+}</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Menghitung integral menggunakan fungsi <code>trapezoid</code></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudHJhcGV6b2lkKGYsMSw1LG4gPSA0KVxuYGBgIn0= -->
+<pre class="r"><code>trapezoid(f,1,5,n = 4)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEuNjgzMzMzXG4ifQ== -->
+<pre><code>[1] 1.683333</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Hitunglah menggunakan R fungsi <code>trapzfun</code> dari package <code>pracma</code></li>
+</ol>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudHJhcHpmdW4oZiwxLDUsbWF4aXQgPSAgNClcbmBgYCJ9 -->
+<pre class="r"><code>trapzfun(f,1,5,maxit =  4)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiJHZhbHVlXG5bMV0gMS42MTQ0MDZcblxuJGl0ZXJcblsxXSA0XG5cbiRyZWwuZXJyXG5bMV0gMC4wMTQ1NjE5M1xuIn0= -->
+<pre><code>$value
+[1] 1.614406
+
+$iter
+[1] 4
+
+$rel.err
+[1] 0.01456193</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Hitunglah menggunakan R hingga hasil integral mendekati hasil exact-nya dengan toleransi <span class="math inline">\(0.0005\)</span></li>
+</ol>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZXhhY3RfdmFsdWU9MS42MDlcbnRvbCA8LSAgMC4wMDA1XG5lcnIgPC0gMVxubiA9IDRcblxud2hpbGUoZXJyPnRvbCl7XG4gIHJlc190cmFwIDwtIHRyYXBlem9pZChmLDEsNSxuID0gbilcbiAgXG4gIGVyciA8LSBhYnMocmVzX3RyYXAtZXhhY3RfdmFsdWUpXG4gIFxuICBjYXQoXCJuPVwiLG4sXCIsIHJlc3VsdD1cIixyZXNfdHJhcCxcIiwgZXJyb3I9XCIsZXJyLFwiXFxuXCIsc2VwID0gXCJcIilcbiAgXG4gIG49bisxXG4gIGlmKG49PTEwMDApe1xuICAgIGJyZWFrXG4gIH1cbiAgXG59XG5gYGAifQ== -->
+<pre class="r"><code>exact_value=1.609
+tol &lt;-  0.0005
+err &lt;- 1
+n = 4
+
+while(err&gt;tol){
+  res_trap &lt;- trapezoid(f,1,5,n = n)
+  
+  err &lt;- abs(res_trap-exact_value)
+  
+  cat(&quot;n=&quot;,n,&quot;, result=&quot;,res_trap,&quot;, error=&quot;,err,&quot;\n&quot;,sep = &quot;&quot;)
+  
+  n=n+1
+  if(n==1000){
+    break
+  }
+  
+}</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoibj00LCByZXN1bHQ9MS42ODMzMzMsIGVycm9yPTAuMDc0MzMzMzNcbm49NSwgcmVzdWx0PTEuNjU3OTA3LCBlcnJvcj0wLjA0ODkwNzA2XG5uPTYsIHJlc3VsdD0xLjY0MzYwMSwgZXJyb3I9MC4wMzQ2MDA4NFxubj03LCByZXN1bHQ9MS42MzQ3OCwgZXJyb3I9MC4wMjU3Nzk5NFxubj04LCByZXN1bHQ9MS42Mjg5NjgsIGVycm9yPTAuMDE5OTY4MjVcbm49OSwgcmVzdWx0PTEuNjI0OTQyLCBlcnJvcj0wLjAxNTk0MTUyXG5uPTEwLCByZXN1bHQ9MS42MjIwMzksIGVycm9yPTAuMDEzMDM5MDFcbm49MTEsIHJlc3VsdD0xLjYxOTg3OSwgZXJyb3I9MC4wMTA4NzkwOFxubj0xMiwgcmVzdWx0PTEuNjE4MjI5LCBlcnJvcj0wLjAwOTIyODk5M1xubj0xMywgcmVzdWx0PTEuNjE2OTQsIGVycm9yPTAuMDA3OTQwMzgxXG5uPTE0LCByZXN1bHQ9MS42MTU5MTUsIGVycm9yPTAuMDA2OTE1MDc3XG5uPTE1LCByZXN1bHQ9MS42MTUwODYsIGVycm9yPTAuMDA2MDg2MDYxXG5uPTE2LCByZXN1bHQ9MS42MTQ0MDYsIGVycm9yPTAuMDA1NDA2MzI0XG5uPTE3LCByZXN1bHQ9MS42MTM4NDIsIGVycm9yPTAuMDA0ODQyMTE0XG5uPTE4LCByZXN1bHQ9MS42MTMzNjksIGVycm9yPTAuMDA0MzY4Njk1XG5uPTE5LCByZXN1bHQ9MS42MTI5NjgsIGVycm9yPTAuMDAzOTY3NjA2XG5uPTIwLCByZXN1bHQ9MS42MTI2MjUsIGVycm9yPTAuMDAzNjI0ODQ0XG5uPTIxLCByZXN1bHQ9MS42MTIzMywgZXJyb3I9MC4wMDMzMjk2Mzhcbm49MjIsIHJlc3VsdD0xLjYxMjA3NCwgZXJyb3I9MC4wMDMwNzM1ODdcbm49MjMsIHJlc3VsdD0xLjYxMTg1LCBlcnJvcj0wLjAwMjg1MDA2N1xubj0yNCwgcmVzdWx0PTEuNjExNjU0LCBlcnJvcj0wLjAwMjY1Mzc5OFxubj0yNSwgcmVzdWx0PTEuNjExNDgxLCBlcnJvcj0wLjAwMjQ4MDUyNVxubj0yNiwgcmVzdWx0PTEuNjExMzI3LCBlcnJvcj0wLjAwMjMyNjc5NFxubj0yNywgcmVzdWx0PTEuNjExMTksIGVycm9yPTAuMDAyMTg5Nzc2XG5uPTI4LCByZXN1bHQ9MS42MTEwNjcsIGVycm9yPTAuMDAyMDY3MTMzXG5uPTI5LCByZXN1bHQ9MS42MTA5NTcsIGVycm9yPTAuMDAxOTU2OTI1XG5uPTMwLCByZXN1bHQ9MS42MTA4NTgsIGVycm9yPTAuMDAxODU3NTI3XG5uPTMxLCByZXN1bHQ9MS42MTA3NjgsIGVycm9yPTAuMDAxNzY3NTdcbm49MzIsIHJlc3VsdD0xLjYxMDY4NiwgZXJyb3I9MC4wMDE2ODU4OTZcbm49MzMsIHJlc3VsdD0xLjYxMDYxMiwgZXJyb3I9MC4wMDE2MTE1MTlcbm49MzQsIHJlc3VsdD0xLjYxMDU0NCwgZXJyb3I9MC4wMDE1NDM1OTVcbm49MzUsIHJlc3VsdD0xLjYxMDQ4MSwgZXJyb3I9MC4wMDE0ODE0XG5uPTM2LCByZXN1bHQ9MS42MTA0MjQsIGVycm9yPTAuMDAxNDI0MzA2XG5uPTM3LCByZXN1bHQ9MS42MTAzNzIsIGVycm9yPTAuMDAxMzcxNzcxXG5uPTM4LCByZXN1bHQ9MS42MTAzMjMsIGVycm9yPTAuMDAxMzIzMzIzXG5uPTM5LCByZXN1bHQ9MS42MTAyNzksIGVycm9yPTAuMDAxMjc4NTQ4XG5uPTQwLCByZXN1bHQ9MS42MTAyMzcsIGVycm9yPTAuMDAxMjM3MDg0XG5uPTQxLCByZXN1bHQ9MS42MTAxOTksIGVycm9yPTAuMDAxMTk4NjE0XG5uPTQyLCByZXN1bHQ9MS42MTAxNjMsIGVycm9yPTAuMDAxMTYyODU0XG5uPTQzLCByZXN1bHQ9MS42MTAxMywgZXJyb3I9MC4wMDExMjk1NThcbm49NDQsIHJlc3VsdD0xLjYxMDA5OSwgZXJyb3I9MC4wMDEwOTg1MDNcbm49NDUsIHJlc3VsdD0xLjYxMDA2OSwgZXJyb3I9MC4wMDEwNjk0OTRcbm49NDYsIHJlc3VsdD0xLjYxMDA0MiwgZXJyb3I9MC4wMDEwNDIzNTNcbm49NDcsIHJlc3VsdD0xLjYxMDAxNywgZXJyb3I9MC4wMDEwMTY5MjVcbm49NDgsIHJlc3VsdD0xLjYwOTk5MywgZXJyb3I9MC4wMDA5OTMwNjgxXG5uPTQ5LCByZXN1bHQ9MS42MDk5NzEsIGVycm9yPTAuMDAwOTcwNjU1M1xubj01MCwgcmVzdWx0PTEuNjA5OTUsIGVycm9yPTAuMDAwOTQ5NTcyN1xubj01MSwgcmVzdWx0PTEuNjA5OTMsIGVycm9yPTAuMDAwOTI5NzE2OVxubj01MiwgcmVzdWx0PTEuNjA5OTExLCBlcnJvcj0wLjAwMDkxMDk5NDdcbm49NTMsIHJlc3VsdD0xLjYwOTg5MywgZXJyb3I9MC4wMDA4OTMzMjE0XG5uPTU0LCByZXN1bHQ9MS42MDk4NzcsIGVycm9yPTAuMDAwODc2NjIwMVxubj01NSwgcmVzdWx0PTEuNjA5ODYxLCBlcnJvcj0wLjAwMDg2MDgyMDhcbm49NTYsIHJlc3VsdD0xLjYwOTg0NiwgZXJyb3I9MC4wMDA4NDU4NTk2XG5uPTU3LCByZXN1bHQ9MS42MDk4MzIsIGVycm9yPTAuMDAwODMxNjc4NVxubj01OCwgcmVzdWx0PTEuNjA5ODE4LCBlcnJvcj0wLjAwMDgxODIyNDFcbm49NTksIHJlc3VsdD0xLjYwOTgwNSwgZXJyb3I9MC4wMDA4MDU0NDc1XG5uPTYwLCByZXN1bHQ9MS42MDk3OTMsIGVycm9yPTAuMDAwNzkzMzA0XG5uPTYxLCByZXN1bHQ9MS42MDk3ODIsIGVycm9yPTAuMDAwNzgxNzUyNVxubj02MiwgcmVzdWx0PTEuNjA5NzcxLCBlcnJvcj0wLjAwMDc3MDc1NVxubj02MywgcmVzdWx0PTEuNjA5NzYsIGVycm9yPTAuMDAwNzYwMjc2OVxubj02NCwgcmVzdWx0PTEuNjA5NzUsIGVycm9yPTAuMDAwNzUwMjg1N1xubj02NSwgcmVzdWx0PTEuNjA5NzQxLCBlcnJvcj0wLjAwMDc0MDc1MTlcbm49NjYsIHJlc3VsdD0xLjYwOTczMiwgZXJyb3I9MC4wMDA3MzE2NDc5XG5uPTY3LCByZXN1bHQ9MS42MDk3MjMsIGVycm9yPTAuMDAwNzIyOTQ4NFxubj02OCwgcmVzdWx0PTEuNjA5NzE1LCBlcnJvcj0wLjAwMDcxNDYyOTZcbm49NjksIHJlc3VsdD0xLjYwOTcwNywgZXJyb3I9MC4wMDA3MDY2Njk3XG5uPTcwLCByZXN1bHQ9MS42MDk2OTksIGVycm9yPTAuMDAwNjk5MDQ4NFxubj03MSwgcmVzdWx0PTEuNjA5NjkyLCBlcnJvcj0wLjAwMDY5MTc0NjZcbm49NzIsIHJlc3VsdD0xLjYwOTY4NSwgZXJyb3I9MC4wMDA2ODQ3NDY5XG5uPTczLCByZXN1bHQ9MS42MDk2NzgsIGVycm9yPTAuMDAwNjc4MDMyN1xubj03NCwgcmVzdWx0PTEuNjA5NjcyLCBlcnJvcj0wLjAwMDY3MTU4ODhcbm49NzUsIHJlc3VsdD0xLjYwOTY2NSwgZXJyb3I9MC4wMDA2NjU0MDA4XG5uPTc2LCByZXN1bHQ9MS42MDk2NTksIGVycm9yPTAuMDAwNjU5NDU1M1xubj03NywgcmVzdWx0PTEuNjA5NjU0LCBlcnJvcj0wLjAwMDY1MzczOTlcbm49NzgsIHJlc3VsdD0xLjYwOTY0OCwgZXJyb3I9MC4wMDA2NDgyNDI5XG5uPTc5LCByZXN1bHQ9MS42MDk2NDMsIGVycm9yPTAuMDAwNjQyOTUzMlxubj04MCwgcmVzdWx0PTEuNjA5NjM4LCBlcnJvcj0wLjAwMDYzNzg2MDVcbm49ODEsIHJlc3VsdD0xLjYwOTYzMywgZXJyb3I9MC4wMDA2MzI5NTUyXG5uPTgyLCByZXN1bHQ9MS42MDk2MjgsIGVycm9yPTAuMDAwNjI4MjI4M1xubj04MywgcmVzdWx0PTEuNjA5NjI0LCBlcnJvcj0wLjAwMDYyMzY3MTFcbm49ODQsIHJlc3VsdD0xLjYwOTYxOSwgZXJyb3I9MC4wMDA2MTkyNzU2XG5uPTg1LCByZXN1bHQ9MS42MDk2MTUsIGVycm9yPTAuMDAwNjE1MDM0M1xubj04NiwgcmVzdWx0PTEuNjA5NjExLCBlcnJvcj0wLjAwMDYxMDk0MDFcbm49ODcsIHJlc3VsdD0xLjYwOTYwNywgZXJyb3I9MC4wMDA2MDY5ODYxXG5uPTg4LCByZXN1bHQ9MS42MDk2MDMsIGVycm9yPTAuMDAwNjAzMTY2Mlxubj04OSwgcmVzdWx0PTEuNjA5NTk5LCBlcnJvcj0wLjAwMDU5OTQ3NDNcbm49OTAsIHJlc3VsdD0xLjYwOTU5NiwgZXJyb3I9MC4wMDA1OTU5MDQ3XG5uPTkxLCByZXN1bHQ9MS42MDk1OTIsIGVycm9yPTAuMDAwNTkyNDUyMVxubj05MiwgcmVzdWx0PTEuNjA5NTg5LCBlcnJvcj0wLjAwMDU4OTExMTVcbm49OTMsIHJlc3VsdD0xLjYwOTU4NiwgZXJyb3I9MC4wMDA1ODU4Nzhcbm49OTQsIHJlc3VsdD0xLjYwOTU4MywgZXJyb3I9MC4wMDA1ODI3NDcxXG5uPTk1LCByZXN1bHQ9MS42MDk1OCwgZXJyb3I9MC4wMDA1Nzk3MTQ2XG5uPTk2LCByZXN1bHQ9MS42MDk1NzcsIGVycm9yPTAuMDAwNTc2Nzc2M1xubj05NywgcmVzdWx0PTEuNjA5NTc0LCBlcnJvcj0wLjAwMDU3MzkyODRcbm49OTgsIHJlc3VsdD0xLjYwOTU3MSwgZXJyb3I9MC4wMDA1NzExNjcyXG5uPTk5LCByZXN1bHQ9MS42MDk1NjgsIGVycm9yPTAuMDAwNTY4NDg5Mlxubj0xMDAsIHJlc3VsdD0xLjYwOTU2NiwgZXJyb3I9MC4wMDA1NjU4OTEyXG5uPTEwMSwgcmVzdWx0PTEuNjA5NTYzLCBlcnJvcj0wLjAwMDU2MzM2OTlcbm49MTAyLCByZXN1bHQ9MS42MDk1NjEsIGVycm9yPTAuMDAwNTYwOTIyNFxubj0xMDMsIHJlc3VsdD0xLjYwOTU1OSwgZXJyb3I9MC4wMDA1NTg1NDU4XG5uPTEwNCwgcmVzdWx0PTEuNjA5NTU2LCBlcnJvcj0wLjAwMDU1NjIzNzRcbm49MTA1LCByZXN1bHQ9MS42MDk1NTQsIGVycm9yPTAuMDAwNTUzOTk0N1xubj0xMDYsIHJlc3VsdD0xLjYwOTU1MiwgZXJyb3I9MC4wMDA1NTE4MTUxXG5uPTEwNywgcmVzdWx0PTEuNjA5NTUsIGVycm9yPTAuMDAwNTQ5Njk2NFxubj0xMDgsIHJlc3VsdD0xLjYwOTU0OCwgZXJyb3I9MC4wMDA1NDc2MzYyXG5uPTEwOSwgcmVzdWx0PTEuNjA5NTQ2LCBlcnJvcj0wLjAwMDU0NTYzMjRcbm49MTEwLCByZXN1bHQ9MS42MDk1NDQsIGVycm9yPTAuMDAwNTQzNjgzXG5uPTExMSwgcmVzdWx0PTEuNjA5NTQyLCBlcnJvcj0wLjAwMDU0MTc4NjFcbm49MTEyLCByZXN1bHQ9MS42MDk1NCwgZXJyb3I9MC4wMDA1Mzk5Mzk3XG5uPTExMywgcmVzdWx0PTEuNjA5NTM4LCBlcnJvcj0wLjAwMDUzODE0MjJcbm49MTE0LCByZXN1bHQ9MS42MDk1MzYsIGVycm9yPTAuMDAwNTM2MzkxN1xubj0xMTUsIHJlc3VsdD0xLjYwOTUzNSwgZXJyb3I9MC4wMDA1MzQ2ODY3XG5uPTExNiwgcmVzdWx0PTEuNjA5NTMzLCBlcnJvcj0wLjAwMDUzMzAyNTVcbm49MTE3LCByZXN1bHQ9MS42MDk1MzEsIGVycm9yPTAuMDAwNTMxNDA2OFxubj0xMTgsIHJlc3VsdD0xLjYwOTUzLCBlcnJvcj0wLjAwMDUyOTgyOTFcbm49MTE5LCByZXN1bHQ9MS42MDk1MjgsIGVycm9yPTAuMDAwNTI4MjkwOVxubj0xMjAsIHJlc3VsdD0xLjYwOTUyNywgZXJyb3I9MC4wMDA1MjY3OTExXG5uPTEyMSwgcmVzdWx0PTEuNjA5NTI1LCBlcnJvcj0wLjAwMDUyNTMyODJcbm49MTIyLCByZXN1bHQ9MS42MDk1MjQsIGVycm9yPTAuMDAwNTIzOTAxMlxubj0xMjMsIHJlc3VsdD0xLjYwOTUyMywgZXJyb3I9MC4wMDA1MjI1MDg5XG5uPTEyNCwgcmVzdWx0PTEuNjA5NTIxLCBlcnJvcj0wLjAwMDUyMTE1XG5uPTEyNSwgcmVzdWx0PTEuNjA5NTIsIGVycm9yPTAuMDAwNTE5ODIzN1xubj0xMjYsIHJlc3VsdD0xLjYwOTUxOSwgZXJyb3I9MC4wMDA1MTg1Mjg4XG5uPTEyNywgcmVzdWx0PTEuNjA5NTE3LCBlcnJvcj0wLjAwMDUxNzI2NDRcbm49MTI4LCByZXN1bHQ9MS42MDk1MTYsIGVycm9yPTAuMDAwNTE2MDI5NVxubj0xMjksIHJlc3VsdD0xLjYwOTUxNSwgZXJyb3I9MC4wMDA1MTQ4MjMyXG5uPTEzMCwgcmVzdWx0PTEuNjA5NTE0LCBlcnJvcj0wLjAwMDUxMzY0NDZcbm49MTMxLCByZXN1bHQ9MS42MDk1MTIsIGVycm9yPTAuMDAwNTEyNDkyOVxubj0xMzIsIHJlc3VsdD0xLjYwOTUxMSwgZXJyb3I9MC4wMDA1MTEzNjczXG5uPTEzMywgcmVzdWx0PTEuNjA5NTEsIGVycm9yPTAuMDAwNTEwMjY3XG5uPTEzNCwgcmVzdWx0PTEuNjA5NTA5LCBlcnJvcj0wLjAwMDUwOTE5MTJcbm49MTM1LCByZXN1bHQ9MS42MDk1MDgsIGVycm9yPTAuMDAwNTA4MTM5Mlxubj0xMzYsIHJlc3VsdD0xLjYwOTUwNywgZXJyb3I9MC4wMDA1MDcxMTA0XG5uPTEzNywgcmVzdWx0PTEuNjA5NTA2LCBlcnJvcj0wLjAwMDUwNjEwNFxubj0xMzgsIHJlc3VsdD0xLjYwOTUwNSwgZXJyb3I9MC4wMDA1MDUxMTkzXG5uPTEzOSwgcmVzdWx0PTEuNjA5NTA0LCBlcnJvcj0wLjAwMDUwNDE1NTlcbm49MTQwLCByZXN1bHQ9MS42MDk1MDMsIGVycm9yPTAuMDAwNTAzMjEzXG5uPTE0MSwgcmVzdWx0PTEuNjA5NTAyLCBlcnJvcj0wLjAwMDUwMjI5MDFcbm49MTQyLCByZXN1bHQ9MS42MDk1MDEsIGVycm9yPTAuMDAwNTAxMzg2N1xubj0xNDMsIHJlc3VsdD0xLjYwOTUwMSwgZXJyb3I9MC4wMDA1MDA1MDIxXG5uPTE0NCwgcmVzdWx0PTEuNjA5NSwgZXJyb3I9MC4wMDA0OTk2MzU5XG4ifQ== -->
+<pre><code>n=4, result=1.683333, error=0.07433333
+n=5, result=1.657907, error=0.04890706
+n=6, result=1.643601, error=0.03460084
+n=7, result=1.63478, error=0.02577994
+n=8, result=1.628968, error=0.01996825
+n=9, result=1.624942, error=0.01594152
+n=10, result=1.622039, error=0.01303901
+n=11, result=1.619879, error=0.01087908
+n=12, result=1.618229, error=0.009228993
+n=13, result=1.61694, error=0.007940381
+n=14, result=1.615915, error=0.006915077
+n=15, result=1.615086, error=0.006086061
+n=16, result=1.614406, error=0.005406324
+n=17, result=1.613842, error=0.004842114
+n=18, result=1.613369, error=0.004368695
+n=19, result=1.612968, error=0.003967606
+n=20, result=1.612625, error=0.003624844
+n=21, result=1.61233, error=0.003329638
+n=22, result=1.612074, error=0.003073587
+n=23, result=1.61185, error=0.002850067
+n=24, result=1.611654, error=0.002653798
+n=25, result=1.611481, error=0.002480525
+n=26, result=1.611327, error=0.002326794
+n=27, result=1.61119, error=0.002189776
+n=28, result=1.611067, error=0.002067133
+n=29, result=1.610957, error=0.001956925
+n=30, result=1.610858, error=0.001857527
+n=31, result=1.610768, error=0.00176757
+n=32, result=1.610686, error=0.001685896
+n=33, result=1.610612, error=0.001611519
+n=34, result=1.610544, error=0.001543595
+n=35, result=1.610481, error=0.0014814
+n=36, result=1.610424, error=0.001424306
+n=37, result=1.610372, error=0.001371771
+n=38, result=1.610323, error=0.001323323
+n=39, result=1.610279, error=0.001278548
+n=40, result=1.610237, error=0.001237084
+n=41, result=1.610199, error=0.001198614
+n=42, result=1.610163, error=0.001162854
+n=43, result=1.61013, error=0.001129558
+n=44, result=1.610099, error=0.001098503
+n=45, result=1.610069, error=0.001069494
+n=46, result=1.610042, error=0.001042353
+n=47, result=1.610017, error=0.001016925
+n=48, result=1.609993, error=0.0009930681
+n=49, result=1.609971, error=0.0009706553
+n=50, result=1.60995, error=0.0009495727
+n=51, result=1.60993, error=0.0009297169
+n=52, result=1.609911, error=0.0009109947
+n=53, result=1.609893, error=0.0008933214
+n=54, result=1.609877, error=0.0008766201
+n=55, result=1.609861, error=0.0008608208
+n=56, result=1.609846, error=0.0008458596
+n=57, result=1.609832, error=0.0008316785
+n=58, result=1.609818, error=0.0008182241
+n=59, result=1.609805, error=0.0008054475
+n=60, result=1.609793, error=0.000793304
+n=61, result=1.609782, error=0.0007817525
+n=62, result=1.609771, error=0.000770755
+n=63, result=1.60976, error=0.0007602769
+n=64, result=1.60975, error=0.0007502857
+n=65, result=1.609741, error=0.0007407519
+n=66, result=1.609732, error=0.0007316479
+n=67, result=1.609723, error=0.0007229484
+n=68, result=1.609715, error=0.0007146296
+n=69, result=1.609707, error=0.0007066697
+n=70, result=1.609699, error=0.0006990484
+n=71, result=1.609692, error=0.0006917466
+n=72, result=1.609685, error=0.0006847469
+n=73, result=1.609678, error=0.0006780327
+n=74, result=1.609672, error=0.0006715888
+n=75, result=1.609665, error=0.0006654008
+n=76, result=1.609659, error=0.0006594553
+n=77, result=1.609654, error=0.0006537399
+n=78, result=1.609648, error=0.0006482429
+n=79, result=1.609643, error=0.0006429532
+n=80, result=1.609638, error=0.0006378605
+n=81, result=1.609633, error=0.0006329552
+n=82, result=1.609628, error=0.0006282283
+n=83, result=1.609624, error=0.0006236711
+n=84, result=1.609619, error=0.0006192756
+n=85, result=1.609615, error=0.0006150343
+n=86, result=1.609611, error=0.0006109401
+n=87, result=1.609607, error=0.0006069861
+n=88, result=1.609603, error=0.0006031662
+n=89, result=1.609599, error=0.0005994743
+n=90, result=1.609596, error=0.0005959047
+n=91, result=1.609592, error=0.0005924521
+n=92, result=1.609589, error=0.0005891115
+n=93, result=1.609586, error=0.000585878
+n=94, result=1.609583, error=0.0005827471
+n=95, result=1.60958, error=0.0005797146
+n=96, result=1.609577, error=0.0005767763
+n=97, result=1.609574, error=0.0005739284
+n=98, result=1.609571, error=0.0005711672
+n=99, result=1.609568, error=0.0005684892
+n=100, result=1.609566, error=0.0005658912
+n=101, result=1.609563, error=0.0005633699
+n=102, result=1.609561, error=0.0005609224
+n=103, result=1.609559, error=0.0005585458
+n=104, result=1.609556, error=0.0005562374
+n=105, result=1.609554, error=0.0005539947
+n=106, result=1.609552, error=0.0005518151
+n=107, result=1.60955, error=0.0005496964
+n=108, result=1.609548, error=0.0005476362
+n=109, result=1.609546, error=0.0005456324
+n=110, result=1.609544, error=0.000543683
+n=111, result=1.609542, error=0.0005417861
+n=112, result=1.60954, error=0.0005399397
+n=113, result=1.609538, error=0.0005381422
+n=114, result=1.609536, error=0.0005363917
+n=115, result=1.609535, error=0.0005346867
+n=116, result=1.609533, error=0.0005330255
+n=117, result=1.609531, error=0.0005314068
+n=118, result=1.60953, error=0.0005298291
+n=119, result=1.609528, error=0.0005282909
+n=120, result=1.609527, error=0.0005267911
+n=121, result=1.609525, error=0.0005253282
+n=122, result=1.609524, error=0.0005239012
+n=123, result=1.609523, error=0.0005225089
+n=124, result=1.609521, error=0.00052115
+n=125, result=1.60952, error=0.0005198237
+n=126, result=1.609519, error=0.0005185288
+n=127, result=1.609517, error=0.0005172644
+n=128, result=1.609516, error=0.0005160295
+n=129, result=1.609515, error=0.0005148232
+n=130, result=1.609514, error=0.0005136446
+n=131, result=1.609512, error=0.0005124929
+n=132, result=1.609511, error=0.0005113673
+n=133, result=1.60951, error=0.000510267
+n=134, result=1.609509, error=0.0005091912
+n=135, result=1.609508, error=0.0005081392
+n=136, result=1.609507, error=0.0005071104
+n=137, result=1.609506, error=0.000506104
+n=138, result=1.609505, error=0.0005051193
+n=139, result=1.609504, error=0.0005041559
+n=140, result=1.609503, error=0.000503213
+n=141, result=1.609502, error=0.0005022901
+n=142, result=1.609501, error=0.0005013867
+n=143, result=1.609501, error=0.0005005021
+n=144, result=1.6095, error=0.0004996359</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+</div>
+<div id="soal-2" class="section level2">
+<h2>Soal 2</h2>
+<p>Gunakan metode simpson untuk mengintegralkan fungsi berikut untuk n=4, dengan</p>
+<p><span class="math display">\[\int_{-2}^{2} 3^{x} dx \]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li>Hitunglah tanpa menggunakan software</li>
+<li>Hitunglah menggunakan R</li>
+<li>Hitunglah menggunakan R hingga hasil integral mendekati hasil exact-nya dengan toleransi <span class="math inline">\(0.0001\)</span></li>
+</ol>
+<p>Jawab:</p>
+<ol style="list-style-type: lower-alpha">
+<li>Hitunglah tanpa menggunakan software</li>
+</ol>
+<p>Diketahui</p>
+<p><span class="math display">\[f(x)=3^{x}, a=-2,b=2\]</span></p>
+<p>Panjang setiap sub interval adalah sebagai berikut:</p>
+<p><span class="math display">\[h=\frac{b-a}{n}=\frac{2-(-2)}{4}=\frac{4}{4}=1\]</span></p>
+<p>Karena <span class="math inline">\(n=4\)</span> maka bentuk dari metode Simpson adalah</p>
+<p><span class="math display">\[S_{4} = \frac{h}{3} [f(x_{0})+4f(x_{1})+2f(x_{2})+4f(x_{3})+f(x_{4})]\]</span></p>
+<p>Menghitung fungsi <span class="math inline">\(f(x)\)</span> pada setiap <span class="math inline">\(x_{i}\)</span></p>
+<p><span class="math display">\[f(x_{0})=f(1)=3^{-2}=\frac{1}{9}\]</span> <span class="math display">\[f(x_{1})=f(2)=3^{-1}=\frac{1}{3}\]</span></p>
+<p><span class="math display">\[f(x_{2})=f(3)=3^{0}=1\]</span> <span class="math display">\[f(x_{3})=f(4)=3^{1}=3\]</span></p>
+<p><span class="math display">\[f(x_{4})=f(5)=3^{2}=9\]</span></p>
+<p>karena <span class="math inline">\(h=1\)</span> diperoleh</p>
+<p><span class="math display">\[S_{4} = \frac{1}{3} \left[\frac{1}{9}+4 \cdot \frac{1}{3}+2 \cdot 1+4 \cdot 3+9 \right]=\frac{220}{27}=8.148\]</span> Sehingga</p>
+<p><span class="math display">\[\int_{-2}^{2} 3^{x} dx \approx S_{4}=8.148 \]</span></p>
+<p>Jika kita bandingkan dengan hasil yang didapatkan secara exact adalah sebagai berikut:</p>
+<p><span class="math display">\[\int_{-2}^{2} 3^{x} dx=\frac{3^{x}}{\log{3}}  |_{-2}^{2}=\frac{3^{2}}{\log{3}}-\frac{3^{-2}}{\log{3}}=\frac{80}{9\log{3}}=8.091\]</span></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Hitunglah menggunakan R</li>
+</ol>
+<p>mendefinisikan fungsi <span class="math inline">\(f(x)\)</span></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZjIgPC0gZnVuY3Rpb24oeCl7XG4gIDNee3h9XG59XG5gYGAifQ== -->
+<pre class="r"><code>f2 &lt;- function(x){
+  3^{x}
+}</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Menghitung integral menggunakan metode simpson</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2ltcHNvbl9uKGYyLC0yLDIsbiA9IDQpXG5gYGAifQ== -->
+<pre class="r"><code>simpson_n(f2,-2,2,n = 4)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDguMTQ4MTQ4XG4ifQ== -->
+<pre><code>[1] 8.148148</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Hitunglah menggunakan R hingga hasil integral mendekati hasil exact-nya dengan toleransi <span class="math inline">\(0.0001\)</span></li>
+</ol>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZXhhY3RfdmFsdWU9OC4wOTFcbnRvbCA8LSAgMC4wMDAxXG5lcnIgPC0gMVxubiA9IDRcblxud2hpbGUoZXJyPnRvbCl7XG4gIHJlc19zaW1wIDwtIHNpbXBzb25fbihmMiwtMiwyLG4gPSBuKVxuICBcbiAgZXJyIDwtIGFicyhyZXNfc2ltcC1leGFjdF92YWx1ZSlcbiAgXG4gIGNhdChcIm49XCIsbixcIiwgcmVzdWx0PVwiLHJlc19zaW1wLFwiLCBlcnJvcj1cIixlcnIsXCJcXG5cIixzZXAgPSBcIlwiKVxuICBcbiAgbj1uKzFcbiAgaWYobj09MTAwMCl7XG4gICAgYnJlYWtcbiAgfVxuICBcbn1cbmBgYCJ9 -->
+<pre class="r"><code>exact_value=8.091
+tol &lt;-  0.0001
+err &lt;- 1
+n = 4
+
+while(err&gt;tol){
+  res_simp &lt;- simpson_n(f2,-2,2,n = n)
+  
+  err &lt;- abs(res_simp-exact_value)
+  
+  cat(&quot;n=&quot;,n,&quot;, result=&quot;,res_simp,&quot;, error=&quot;,err,&quot;\n&quot;,sep = &quot;&quot;)
+  
+  n=n+1
+  if(n==1000){
+    break
+  }
+  
+}</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoibj00LCByZXN1bHQ9OC4xNDgxNDgsIGVycm9yPTAuMDU3MTQ4MTVcbm49NSwgcmVzdWx0PTguMTQ4MTQ4LCBlcnJvcj0wLjA1NzE0ODE1XG5uPTYsIHJlc3VsdD04LjEwMzE2OCwgZXJyb3I9MC4wMTIxNjc3OFxubj03LCByZXN1bHQ9OC4xMDMxNjgsIGVycm9yPTAuMDEyMTY3Nzhcbm49OCwgcmVzdWx0PTguMDk0OTY1LCBlcnJvcj0wLjAwMzk2NTM1Nlxubj05LCByZXN1bHQ9OC4wOTQ5NjUsIGVycm9yPTAuMDAzOTY1MzU2XG5uPTEwLCByZXN1bHQ9OC4wOTI2NTQsIGVycm9yPTAuMDAxNjUzODY0XG5uPTExLCByZXN1bHQ9OC4wOTI2NTQsIGVycm9yPTAuMDAxNjUzODY0XG5uPTEyLCByZXN1bHQ9OC4wOTE4MTEsIGVycm9yPTAuMDAwODExMDE1NVxubj0xMywgcmVzdWx0PTguMDkxODExLCBlcnJvcj0wLjAwMDgxMTAxNTVcbm49MTQsIHJlc3VsdD04LjA5MTQ0NywgZXJyb3I9MC4wMDA0NDY2MzMzXG5uPTE1LCByZXN1bHQ9OC4wOTE0NDcsIGVycm9yPTAuMDAwNDQ2NjMzM1xubj0xNiwgcmVzdWx0PTguMDkxMjY5LCBlcnJvcj0wLjAwMDI2ODg0OTlcbm49MTcsIHJlc3VsdD04LjA5MTI2OSwgZXJyb3I9MC4wMDAyNjg4NDk5XG5uPTE4LCByZXN1bHQ9OC4wOTExNzQsIGVycm9yPTAuMDAwMTczOTA0N1xubj0xOSwgcmVzdWx0PTguMDkxMTc0LCBlcnJvcj0wLjAwMDE3MzkwNDdcbm49MjAsIHJlc3VsdD04LjA5MTEyLCBlcnJvcj0wLjAwMDExOTUxNjZcbm49MjEsIHJlc3VsdD04LjA5MTEyLCBlcnJvcj0wLjAwMDExOTUxNjZcbm49MjIsIHJlc3VsdD04LjA5MTA4NywgZXJyb3I9OC42NTY3MjJlLTA1XG4ifQ== -->
+<pre><code>n=4, result=8.148148, error=0.05714815
+n=5, result=8.148148, error=0.05714815
+n=6, result=8.103168, error=0.01216778
+n=7, result=8.103168, error=0.01216778
+n=8, result=8.094965, error=0.003965356
+n=9, result=8.094965, error=0.003965356
+n=10, result=8.092654, error=0.001653864
+n=11, result=8.092654, error=0.001653864
+n=12, result=8.091811, error=0.0008110155
+n=13, result=8.091811, error=0.0008110155
+n=14, result=8.091447, error=0.0004466333
+n=15, result=8.091447, error=0.0004466333
+n=16, result=8.091269, error=0.0002688499
+n=17, result=8.091269, error=0.0002688499
+n=18, result=8.091174, error=0.0001739047
+n=19, result=8.091174, error=0.0001739047
+n=20, result=8.09112, error=0.0001195166
+n=21, result=8.09112, error=0.0001195166
+n=22, result=8.091087, error=8.656722e-05</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<div id="soal-3" class="section level3">
+<h3>Soal 3</h3>
+<p>Gunakan metode four-point gaussian quadratur untuk mengintegralkan fungsi berikut</p>
+<p><span class="math display">\[\int_{0}^{3} \exp(-x^2) dx \]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Hitunglah tanpa menggunakan software</p></li>
+<li><p>Hitunglah menggunakan R dengan fungsi <code>gaussLegendre</code> dengan menggunakan domain <span class="math inline">\([-1,1]\)</span></p></li>
+<li><p>Hitunglah menggunakan R dengan fungsi <code>gaussLegendre</code> dengan menggunakan domain asal</p></li>
+<li><p>Hitunglah menggunakan R hingga hasil integral mendekati hasil exact-nya dengan toleransi <span class="math inline">\(0.00001\)</span></p></li>
+<li><p>Hitunglah tanpa menggunakan software</p></li>
+</ol>
+<p>Diketahui</p>
+<p><span class="math display">\[f(x)=\exp(-x^2), a=0,b=3\]</span> Karena pada soal yang diinginkan adalah metode four-point gaussian quadratur, berarti nilai <span class="math inline">\(n=4\)</span>. Berdasarkan tabel gaussian quadratur nilai-nilai koefisien dan titik gauss adalah sebagai berikut:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ3Q6Omd0KGRhdGEgPSBib2JvdF9nY1szLF0pXG5gYGAifQ== -->
+<pre class="r"><code>gt::gt(data = bobot_gc[3,])</code></pre>
+<!-- rnb-source-end -->
+
+<!-- rnb-html-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInNoaW55LnRhZyJdLCJzaXppbmdQb2xpY3kiOltdfX0= -->
+
+<div id="onnzqarrtj" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+  <style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#onnzqarrtj .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#onnzqarrtj .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#onnzqarrtj .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#onnzqarrtj .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#onnzqarrtj .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#onnzqarrtj .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#onnzqarrtj .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#onnzqarrtj .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#onnzqarrtj .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#onnzqarrtj .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#onnzqarrtj .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#onnzqarrtj .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#onnzqarrtj .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#onnzqarrtj .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#onnzqarrtj .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#onnzqarrtj .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#onnzqarrtj .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#onnzqarrtj .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#onnzqarrtj .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#onnzqarrtj .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#onnzqarrtj .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#onnzqarrtj .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#onnzqarrtj .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#onnzqarrtj .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#onnzqarrtj .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#onnzqarrtj .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#onnzqarrtj .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#onnzqarrtj .gt_left {
+  text-align: left;
+}
+
+#onnzqarrtj .gt_center {
+  text-align: center;
+}
+
+#onnzqarrtj .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#onnzqarrtj .gt_font_normal {
+  font-weight: normal;
+}
+
+#onnzqarrtj .gt_font_bold {
+  font-weight: bold;
+}
+
+#onnzqarrtj .gt_font_italic {
+  font-style: italic;
+}
+
+#onnzqarrtj .gt_super {
+  font-size: 65%;
+}
+
+#onnzqarrtj .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+  <table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">n</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Koefisien Ci</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Titik Gauss xi</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
     <tr><td class="gt_row gt_right">4</td>
 <td class="gt_row gt_left">C1 = 0.3478548,
                                            C2 = 0.6521452,
@@ -1576,7 +1585,7 @@ I = 0.347858 \cdot 1.436311+0.6521452 \cdot 0.5628787+0.6521452 \cdot 0.02639659
 \int_{0}^{3}\exp(-x^2)dx
 \]</span> <span class="math display">\[
 = \frac{\sqrt\pi}{2} \int_{0}^{3}\frac{2\exp(-x^2)}{\sqrt\pi}dx
-\]</span> bentuk <span class="math inline">\(\int_{0}^{z}\frac{2\exp(-x^2)}{\sqrt\pi}dx\)</span> merupakan bentuk integral khusus yang bernama Gauss error function $ (z)$</p>
+\]</span> bentuk <span class="math inline">\(\int_{0}^{z}\frac{2\exp(-x^2)}{\sqrt\pi}dx\)</span> merupakan bentuk integral khusus yang bernama Gauss error function <span class="math inline">\(\text{erf}(z)\)</span></p>
 <p><span class="math display">\[
 =\frac{\sqrt\pi}{2} \text{erf}(3) = 0.886207
 \]</span></p>
@@ -1691,7 +1700,7 @@ I</code></pre>
 </ol>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZXhhY3RfdmFsdWU9MC44ODYyMDdcbnRvbCA8LSAgMC4wMDAwMVxuZXJyIDwtIDFcbm4gPSA0XG5cbndoaWxlKGVycj50b2wpe1xuICBcbiAgZ0wgPC0gZ2F1c3NMZWdlbmRyZShuID0gbixhID0gMCwzKVxuICBcbiAgcmVzX2dsIDwtIHN1bShDaSAqIGYzKHhpKSlcbiBDaSA8LSBnTCR3ICMga29lZmlzaWVuXG4geGkgPC0gZ0wkeCAjIGdhdXNzIHBvaW50XG4gIGVyciA8LSBhYnMocmVzX2dsLWV4YWN0X3ZhbHVlKVxuICBcbiAgY2F0KFwibj1cIixuLFwiLCByZXN1bHQ9XCIscmVzX2dsLFwiLCBlcnJvcj1cIixlcnIsXCJcXG5cIixzZXAgPSBcIlwiKVxuICBcbiAgbj1uKzFcbiAgaWYobj09MTAwMCl7XG4gICAgYnJlYWtcbiAgfVxuICBcbn1cbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZXhhY3RfdmFsdWU9MC44ODYyMDdcbnRvbCA8LSAgMC4wMDAwMVxuZXJyIDwtIDFcbm4gPSA0XG5cbndoaWxlKGVycj50b2wpe1xuICBcbiAgZ0wgPC0gZ2F1c3NMZWdlbmRyZShuID0gbixhID0gMCwzKVxuXG4gQ2kgPC0gZ0wkdyAjIGtvZWZpc2llblxuIHhpIDwtIGdMJHggIyBnYXVzcyBwb2ludFxuICBcbiAgcmVzX2dsIDwtIHN1bShDaSAqIGYzKHhpKSlcblxuICBlcnIgPC0gYWJzKHJlc19nbC1leGFjdF92YWx1ZSlcbiAgXG4gIGNhdChcIm49XCIsbixcIiwgcmVzdWx0PVwiLHJlc19nbCxcIiwgZXJyb3I9XCIsZXJyLFwiXFxuXCIsc2VwID0gXCJcIilcbiAgXG4gIG49bisxXG4gIGlmKG49PTEwMDApe1xuICAgIGJyZWFrXG4gIH1cbiAgXG59XG5gYGAifQ== -->
 <pre class="r"><code>exact_value=0.886207
 tol &lt;-  0.00001
 err &lt;- 1
@@ -1700,10 +1709,12 @@ n = 4
 while(err&gt;tol){
   
   gL &lt;- gaussLegendre(n = n,a = 0,3)
-  
-  res_gl &lt;- sum(Ci * f3(xi))
+
  Ci &lt;- gL$w # koefisien
  xi &lt;- gL$x # gauss point
+  
+  res_gl &lt;- sum(Ci * f3(xi))
+
   err &lt;- abs(res_gl-exact_value)
   
   cat(&quot;n=&quot;,n,&quot;, result=&quot;,res_gl,&quot;, error=&quot;,err,&quot;\n&quot;,sep = &quot;&quot;)
@@ -1715,12 +1726,11 @@ while(err&gt;tol){
   
 }</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoibj00LCByZXN1bHQ9MC44ODQxMzU5LCBlcnJvcj0wLjAwMjA3MTA3XG5uPTUsIHJlc3VsdD0wLjg4NDEzNTksIGVycm9yPTAuMDAyMDcxMDdcbm49NiwgcmVzdWx0PTAuODg2NTI5MiwgZXJyb3I9MC4wMDAzMjIxNzM4XG5uPTcsIHJlc3VsdD0wLjg4NjE4MjgsIGVycm9yPTIuNDE2ODAyZS0wNVxubj04LCByZXN1bHQ9MC44ODYyMDgyLCBlcnJvcj0xLjIyMjc0ZS0wNlxuIn0= -->
+<!-- rnb-output-begin eyJkYXRhIjoibj00LCByZXN1bHQ9MC44ODQxMzU5LCBlcnJvcj0wLjAwMjA3MTA3XG5uPTUsIHJlc3VsdD0wLjg4NjUyOTIsIGVycm9yPTAuMDAwMzIyMTczOFxubj02LCByZXN1bHQ9MC44ODYxODI4LCBlcnJvcj0yLjQxNjgwMmUtMDVcbm49NywgcmVzdWx0PTAuODg2MjA4MiwgZXJyb3I9MS4yMjI3NGUtMDZcbiJ9 -->
 <pre><code>n=4, result=0.8841359, error=0.00207107
-n=5, result=0.8841359, error=0.00207107
-n=6, result=0.8865292, error=0.0003221738
-n=7, result=0.8861828, error=2.416802e-05
-n=8, result=0.8862082, error=1.22274e-06</code></pre>
+n=5, result=0.8865292, error=0.0003221738
+n=6, result=0.8861828, error=2.416802e-05
+n=7, result=0.8862082, error=1.22274e-06</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1738,7 +1748,7 @@ F(x) = \int_{-\infty}^{x} f(t) dt
 \]</span></p>
 <p>sehingga cdf dari distribusi <span class="math inline">\(N(30,5)\)</span> untuk <span class="math inline">\(x=32\)</span> adalah</p>
 <p><span class="math display">\[
-F(x=32|30,5) = \int_{-\infty}^{50} \frac{1}{5\sqrt{2\pi}} \exp{\left[-\frac{1}{2} \left( \frac{t-30}{5} \right)^{2}\right]} dt
+F(x=32|30,5) = \int_{-\infty}^{32} \frac{1}{5\sqrt{2\pi}} \exp{\left[-\frac{1}{2} \left( \frac{t-30}{5} \right)^{2}\right]} dt
 \]</span></p>
 <p>karena batas bawah integral tersebut <span class="math inline">\(-\infty\)</span>, kita harus melakukan transformasi sedimikian sehingga batas bawah-nya terbatas di nilai tertentu. Menurut <strong>Chapra dan Canale (2015)</strong>, jika batas atas dan bawah integral memiliki tanda berbeda (positive/negative) maka perlu dilakukan pembagian terlebih dahulu agar batas atas dan bawah integral memiliki tanda yang sama sebelum dilakukan transformasi</p>
 <p><span class="math display">\[
@@ -1766,17 +1776,17 @@ dt =-\left(\frac{1}{s}\right)^{2} ds
 dt =-\frac{1}{s^{2}} ds
 \]</span></p>
 <p>sehingga domain integralnya pun berubah</p>
-<p><span class="math display">\[t=-\infty \rightarrow s=\frac{1}{t}=\frac{1}{-\infty}=0 \]</span> <span class="math display">\[t=50 \rightarrow s=\frac{1}{t}=\frac{1}{-1}=-1 \]</span> jadi integral yang akan kita cari adalah</p>
+<p><span class="math display">\[t=-\infty \rightarrow s=\frac{1}{t}=\frac{1}{-\infty}=0 \]</span> <span class="math display">\[t=-1 \rightarrow s=\frac{1}{t}=\frac{1}{-1}=-1 \]</span> jadi integral yang akan kita cari adalah</p>
 <p><span class="math display">\[
 \int_{0}^{-1} \frac{1}{5\sqrt{2\pi}} \exp{\left[-\frac{1}{2} \left( \frac{s-30}{5} \right)^{2}\right]} \left(-\frac{1}{s^{2}}\right) ds
 \]</span></p>
 <p>batas atas dan bawah integral atas bisa dipertukarkan dengan mengalikan dengan <span class="math inline">\(-1\)</span> agar memudahkan perhitungan</p>
 <p><span class="math display">\[
-\int_{-1}^{0} \frac{1}{5\sqrt{2\pi}} \exp{\left[-\frac{1}{2} \left( \frac{s-30}{5} \right)^{2}\right]} \left(-\frac{1}{s^{2}}\right) ds
+\int_{-1}^{0} \frac{1}{5\sqrt{2\pi}} \exp{\left[-\frac{1}{2} \left( \frac{s-30}{5} \right)^{2}\right]} \left(\frac{1}{s^{2}}\right) ds
 \]</span></p>
 <p>Selanjutnya kita akan menghitung cdf dengan</p>
 <p><span class="math display">\[
-F(x=32|30,5) = \int_{-1}^{0} \frac{1}{5\sqrt{2\pi}} \exp{\left[-\frac{1}{2} \left( \frac{s-30}{5} \right)^{2}\right]} \left(-\frac{1}{s^{2}}\right) ds + \int_{-1}^{32} \frac{1}{5\sqrt{2\pi}} \exp{\left[-\frac{1}{2} \left( \frac{t-30}{5} \right)^{2}\right]} dt
+F(x=32|30,5) = \int_{-1}^{0} \frac{1}{5\sqrt{2\pi}} \exp{\left[-\frac{1}{2} \left( \frac{s-30}{5} \right)^{2}\right]} \left(\frac{1}{s^{2}}\right) ds + \int_{-1}^{32} \frac{1}{5\sqrt{2\pi}} \exp{\left[-\frac{1}{2} \left( \frac{t-30}{5} \right)^{2}\right]} dt
 \]</span></p>
 <p>Membuat fungsi di R berdasarkan hasil diatas</p>
 <!-- rnb-text-end -->
@@ -1847,7 +1857,7 @@ F(x=32|30,5) \approx 0.6437716
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIk1ldG9kZSBJbnRlZ3JhbCBOdW1lcmlrIGRlbmdhbiBSIg0Kb3V0cHV0OiBodG1sX25vdGVib29rDQotLS0NCg0KDQojIyBQYWNrYWdlDQoNClBhY2thZ2UgeWFuZyBkaWd1bmFrYW4NCg0KYGBge3J9DQpsaWJyYXJ5KHByYWNtYSkNCmBgYA0KDQoNCiMjIE1ldG9kZSBJbnRlZ3JhbCBOdW1lcmlrDQoNCkJlcmlrdXQgYWRhbGFoICoqdXNlci1kZWZpbmVkIGZ1bmN0aW9uKiogZGFyaSBtZXRvZGUtbWV0b2RlIEludGVncmFsIE51bWVyaWsNCg0KIyMjIE1ldG9kZSBUcmFwZXpvaWRhbCAgDQoNCk1ldG9kZSBUcmFwZXpvaWRhbCB5YW5nIGRpZ3VuYWthbiB1bnR1ayBtZW5kZWthdGkgJFxpbnRfe2F9XntifWYoeClkeCQgZGlkZWZpbmlzaWthbiBzZWJhZ2FpDQoNCg0KJCQNClxpbnRfe2F9XntifWYoeClkeCBcYXBwcm94IFRfe259ID0gXGZyYWN7aH17Mn0gW2YoeF97MH0pKzJmKHhfezF9KSsyZih4X3syfSkrXGxkb3RzKzJmKHhfe24tMX0pK2YoeF97bn0pXQ0KJCQNCmRpbWFuYSAkaD1cZnJhY3tiLWF9e259JCBkYW4gJHhfe2l9PWEraWgkDQoNCmppa2EgJG4gXHJpZ2h0YXJyb3cgXGluZnR5JCwgbWFrYSBoYXNpbCBkYXJpICRcaW50X3thfV57Yn1mKHgpZHgkIHNhbWEgZGVuZ2FuIG5pbGFpIGludGVncmFsIGRlZmluaXQuDQoNCg0KQmVyaWt1dCBhZGFsYWggKip1c2VyLWRlZmluZWQgZnVuY3Rpb24qKiB1bnR1ayBtZXRvZGUgVHJhcGV6b2lkYWwNCg0KYGBge3J9DQp0cmFwZXpvaWQgPC0gZnVuY3Rpb24oZnRuLCBhLCBiLCBuID0gMTAwKSB7DQogICAgIGggPC0gKGItYSkvbg0KICAgICB4LnZlYyA8LSBzZXEoYSwgYiwgYnkgPSBoKQ0KICAgICBmLnZlYyA8LSBzYXBwbHkoeC52ZWMsIGZ0bikgICAgICMgZnRuKHgudmVjKQ0KICAgICBUcmFwIDwtIGgqKGYudmVjWzFdLzIgKyBzdW0oZi52ZWNbMjpuXSkgKyBmLnZlY1tuKzFdLzIpDQogICAgIHJldHVybihUcmFwKQ0KfQ0KDQpgYGANCg0KIyMjIE1ldG9kZSBTaW1wc29uDQoNCk1ldG9kZSBTaW1wc29uIHlhbmcgZGlndW5ha2FuIHVudHVrIG1lbmRla2F0aSAkXGludF97YX1ee2J9Zih4KWR4JCBkaWRlZmluaXNpa2FuIHNlYmFnYWkNCg0KDQokJA0KXGludF97YX1ee2J9Zih4KWR4IFxhcHByb3ggU197bn0gPSBcZnJhY3tofXszfSBbZih4X3swfSkrNGYoeF97MX0pKzJmKHhfezJ9KSs0Zih4X3szfSkrMmYoeF97NH0pK1xsZG90cys0Zih4X3tuLTF9KStmKHhfe259KV0NCiQkDQpkaW1hbmEgJGg9XGZyYWN7Yi1hfXtufSQgZGFuIGtvZWZpc2llbiBkYXJpIG1ldG9kZSBzaW1wc29uIG1lbmdpa3V0aSBwb2xhIGJlcmlrdXQ6DQoNCiQkXHVuZGVyYnJhY2V7MSw0LDIsNCwyLFxsZG90cyw0LDIsNCwxfV97bisxIFxzcGFjZSBcdGV4dHt0aXRpa319JCQNCkJlcmlrdXQgYWRhbGFoICoqdXNlci1kZWZpbmVkIGZ1bmN0aW9uKiogdW50dWsgbWV0b2RlIFNpbXBzb24NCg0KYGBge3J9DQpzaW1wc29uX24gPC0gZnVuY3Rpb24oZnRuLCBhLCBiLCBuID0gMTAwKSB7DQogICAgbiA8LSBtYXgoYygyKihuICUvJSAyKSwgNCkpDQogICAgaCA8LSAoYi1hKS9uDQogICAgeC52ZWMxIDwtIHNlcShhK2gsIGItaCwgYnkgPSAyKmgpCQkjIGdhbmppbA0KICAgIHgudmVjMiA8LSBzZXEoYSsyKmgsIGItMipoLCBieSA9IDIqaCkJIyBnZW5hcA0KICAgIGYudmVjMSA8LSBzYXBwbHkoeC52ZWMxLCBmdG4pIAkjIGdhbmppbA0KICAgIGYudmVjMiA8LSBzYXBwbHkoeC52ZWMyLCBmdG4pCSMgZ2VuYXANCiAgICBTIDwtIGgvMyooZnRuKGEpICsgZnRuKGIpICsgNCpzdW0oZi52ZWMxKSArIDIqc3VtKGYudmVjMikpDQogICAgcmV0dXJuKFMpDQp9DQoNCmBgYA0KDQojIyMgTWV0b2RlIEdhdXNzIFF1YWRyYXR1cmUNCg0KQmVudHVrIHVtdW0gZGFyaSBHYXVzcyBxdWFkcmF0dXJlIGFkYWxhaA0KDQokJFxpbnRfe2F9XntifWYoeClkeCBcYXBwcm94IEk9IFxzdW1fe2k9MX1ee259Q197aX1mKHhfe2l9KSQkDQoNCmRpbWFuYSBrb2VmaXNpZW4gJENfe2l9JCBtZXJ1cGFrYW4gYm9ib3QgZGFuICR4X3tpfSQgbWVydXBha2FuICoqdGl0aWsgR2F1c3MqKiB5YW5nIGJlcmFkYSBkYWxhbSBpbnRlcnZhbCAkWy0xLDFdJC4NCg0KTmlsYWkgQm9ib3QgJENfe2l9JCBkYW4gdGl0aWsgR2F1c3MgJHhfe2l9JCBkYXBhdCBkaXBlcm9sZWggc2FhdCBkb21haW4gaW50ZWdyYWxueWEgYWRhbGFoICRbLTEsMV0kIGRhbiAkZih4KSQgbWVydXBha2FuIHBvbHlub21pYWwgYmVyZGVyYWphdCAkbiQuIE5pbGFpLW5pbGFpIHRlcnNlYnV0IHNlY2FyYSBsZW5na2FwIGJpc2EgZGlsaWhhdCBwYWRhIHRhYmVsIGJlcmlrdXQ6DQoNCg0KYGBge3IgZWNobz0naGlkZSd9DQpib2JvdF9nYyA8LSBkcGx5cjo6dGliYmxlKGBuYD0yOjYsDQogICAgICAgICAgICAgICAgICAgICAgICAgIGBLb2VmaXNpZW4gQ2lgPWMoIkMxID0gMSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBDMiA9IDEiLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJDMSA9IDAuNTU1NTU1NiwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBDMiA9IDAuODg4ODg4OSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBDMyA9IDAuNTU1NTU1NiIsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIkMxID0gMC4zNDc4NTQ4LA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEMyID0gMC42NTIxNDUyLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEMzID0gMC42NTIxNDUyLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEM0ID0gMC4zNDc4NTQ4IiwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiQzEgPSAwLjIzNjkyNjksDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQzIgPSAwLjQ3ODYyODcsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQzMgPSAwLjU2ODg4ODksDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQzQgPSAwLjQ3ODYyODcsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQzUgPSAwLjIzNjkyNjkiLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJDMSA9IDAuMTcxMzI0NSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBDMiA9IDAuMzYwNzYxNiwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBDMyA9IDAuNDY3OTEzOSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBDNCA9IDAuNDY3OTEzOSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBDNSA9IDAuMzYwNzYxNiwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBDNiA9IDAuMTcxMzI0NSINCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICApLA0KICAgICAgICAgICAgICAgICAgICAgICAgICBgVGl0aWsgR2F1c3MgeGlgPWMoIngxID0gLSAwLjU3NzM1MDI3LA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgeDIgPSAwLjU3NzM1MDI3IiwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJ4MSA9IC0wLjc3NDU5NjY3LA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgeDIgPSAwLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgeDMgPSAwLjc3NDU5NjY3IiwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJ4MSA9IC0wLjg2MTEzNjMxLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgeDIgPSAtMC4zMzk5ODEwNCwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHgzID0gMC4zMzk5ODEwNCwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHg0ID0gMC44NjExMzYzMSIsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAieDEgPSAtMC45MDYxNzk4NSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHgyID0gLTAuNTM4NDY5MzEsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB4MyA9IDAsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB4NCA9IDAuNTM4NDY5MzEsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB4NSA9IDAuOTA2MTc5ODUiLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIngxID0gLTAuOTMyNDY5NTEsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB4MiA9IC0wLjY2MTIwOTM4LA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgeDMgPSAtMC4yMzg2MTkxOSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHg0ID0gMC4yMzg2MTkxOSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHg1ID0gMC42NjEyMDkzOCwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHg2ID0gMC45MzI0Njk1MSINCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICkpDQpgYGANCg0KDQpgYGB7ciBlY2hvPSdoaWRlJ30NCmd0OjpndChkYXRhID0gYm9ib3RfZ2MpDQpgYGANCg0KDQpOaWxhaS1uaWxhaSBwYWRhIHRhYmVsIGluaSBqdWdhIGJpc2EgZGlha3NlcyBkZW5nYW4gbWVuZ2d1bmFrYW4gZnVuZ3NpIGBnYXVzc0xlZ2VuZHJlYCBkYXJpIHBhY2thZ2UgYHByYWNtYWAuIFNpbWJvbCBgd2AgcGFkYSBvdXRwdXQgZGliYXdhaCBpbmkgbWVydXBha2FuIGJvYm90ICRDX3tpfSQuIFNlbGFpbiBpdHUsIG5pbGFpICRuJCBwYWRhIGZ1bmdzaSBgZ2F1c3NMZWdlbmRyZWAgYmlzYSBsZWJpaCBkYXJpIDYuDQoNCmBgYHtyfQ0KIyB1bnR1ayBuPTINCmdhdXNzTGVnZW5kcmUobj0yLGE9LTEsYj0xKQ0KIyB1bnR1ayBuPTMNCmdhdXNzTGVnZW5kcmUobj0zLGE9LTEsYj0xKQ0KIyB1bnR1ayBuPTQNCmdhdXNzTGVnZW5kcmUobj00LGE9LTEsYj0xKQ0KIyB1bnR1ayBuPTUNCmdhdXNzTGVnZW5kcmUobj01LGE9LTEsYj0xKQ0KIyB1bnR1ayBuPTYNCmdhdXNzTGVnZW5kcmUobj02LGE9LTEsYj0xKQ0KIyB1bnR1ayBuPTcNCmdhdXNzTGVnZW5kcmUobj03LGE9LTEsYj0xKQ0KYGBgDQoNCkppa2EgZG9tYWluIGludGVncmFsIGJlcnVwYSAkW2EsYl0kLCBtYWthIHBlcmx1IGFkYSB0cmFuc2Zvcm1hc2kgc2VkZW1pa2lhbiBzZWhpbmdnYSBkb21haW4gaW50ZWdyYWwgbnlhIG1lbmphZGkgJFstMSwxXSQNCg0KJCRcaW50X3thfV57Yn1mKHgpZHggXHNwYWNlIFxyaWdodGFycm93IFxzcGFjZSBcaW50X3stMX1eezF9Zih0KWR0ICQkDQpUcmFuc2Zvcm1hc2kgaW5pIGRpbGFrdWthbiBkZW5nYW4gbWVuZ3ViYWggdmFyaWFiZWwgc2ViYWdhaSBiZXJpa3V0DQoNCiQkeD1cZnJhY3sxfXsyfVt0KGItYSkrYStiXSQkDQoNCg0KZGFuDQoNCg0KJCRkeD1cZnJhY3sxfXsyfShiLWEpZHQkJA0KDQpTZWhpbmdnYSBpbnRlZ3JhbG55YSBtZW5qYWRpDQoNCg0KJCQNClxpbnRfe2F9XntifWYoeClkeCA9IFxpbnRfey0xfV57MX1mIFxsZWZ0KCBcZnJhY3sxfXsyfVt0KGItYSkrYStiXSBccmlnaHQpXGZyYWN7MX17Mn0oYi1hKWR0DQokJA0KDQoNCg0KIyMjIE1ldG9kZSBJbnRlZ3JhbCBNb250ZSBDYXJsbyANCg0KDQpgYGB7cn0NCm1jX2ludGVncmFsIDwtIGZ1bmN0aW9uKGZ0biwgYSwgYixtPTEwMDApew0KICAjTWVtYmFuZ2tpdGthbiB4IGJlcmRpc3RyaWJ1c2kgVShhLGIpDQogIHggPC0gcnVuaWYobSxhLGIpDQogICMgTWVuZ2hpdHVuZyByYXRhLXJhdGEgZGFyaSBvdXRwdXQgZnVuZ3NpDQogIEd4IDwtIGZ0bih4KQ0KICBHeF9tIDwtIG1lYW4oR3gpDQogIHRoZXRhLmhhdCA8LSAoYi1hKSpHeF9tDQogIHJldHVybih0aGV0YS5oYXQpDQp9DQpgYGANCg0KIyMjIEludGVncmFsIG51bWVyaWsgZGVuZ2FuIHBhY2thZ2UgZGkgUg0KDQpTZWxhaW4gKip1c2VyLWRlZmluZWQgZnVuY3Rpb24qKiBkaWF0YXMgdGVyZGFwYXQgYmViZXJhcGEgZnVuZ3NpIHlhbmcgYmlzYSBsYW5nc3VuZyBkaWd1bmFrYW4sIHlhaXR1DQoNCjEuIE1ldG9kZSBUcmFwZXpvaWRhbCBtZW5nZ3VuYWthbiBmdW5nc2kgYHRyYXB6ZnVuYCBkYXJpIHBhY2thZ2UgYHByYWNtYWANCjIuIE1ldG9kZSBTaW1wc29uIGJlbHVtIGFkYSBmdW5nc2kgc2VjYXJhIGtodXN1cw0KMy4gTWV0b2RlIEFkYXB0aXZlIFF1YWRyYXR1cmUgbWVuZ2d1bmFrYW4gZnVuZ3NpIGBpbnRlZ3JhdGVgDQo0LiBNZXRvZGUgTW9udGUgQ2FybG8gYmVsdW0gYWRhIGZ1bmdzaSBzZWNhcmEga2h1c3VzLg0KDQojIyBTb2FsIGRhbiBQZW1iYWhhc2FuDQoNCiMjIyBTb2FsIDEgDQoNCkd1bmFrYW4gbWV0b2RlIHRyYXBlem9pZGFsIHVudHVrIG1lbmdpbnRlZ3JhbGthbiBmdW5nc2kgYmVyaWt1dCB1bnR1ayAkbj00JA0KDQokJFxpbnRfezF9Xns1fSBcZnJhY3sxfXt4fSBkeCAkJA0KYS4gSGl0dW5nbGFoIHRhbnBhIG1lbmdndW5ha2FuIHNvZnR3YXJlDQpiLiBIaXR1bmdsYWggbWVuZ2d1bmFrYW4gUiBkZW5nYW4gKip1c2VyLWRlZmluZWQgZnVuY3Rpb24qKg0KYy4gSGl0dW5nbGFoIG1lbmdndW5ha2FuIFIgZnVuZ3NpIGB0cmFwemZ1bmAgZGFyaSBwYWNrYWdlIGBwcmFjbWFgDQpkLiBIaXR1bmdsYWggbWVuZ2d1bmFrYW4gUiBkZW5nYW4gKip1c2VyLWRlZmluZWQgZnVuY3Rpb24qKiBoaW5nZ2EgaGFzaWwgaW50ZWdyYWwgbWVuZGVrYXRpIGhhc2lsIGV4YWN0LW55YSBkZW5nYW4gdG9sZXJhbnNpICQwLjAwMDUkDQoNCkphd2FiOg0KDQphLiBIaXR1bmdsYWggdGFucGEgbWVuZ2d1bmFrYW4gc29mdHdhcmUNCg0KRGlrZXRhaHVpDQoNCiQkZih4KT1cZnJhY3sxfXt4fSwgYT0xLGI9NSQkDQoNClBhbmphbmcgc2V0aWFwIHN1YiBpbnRlcnZhbCBhZGFsYWggc2ViYWdhaSBiZXJpa3V0Og0KDQokJGg9XGZyYWN7Yi1hfXtufT1cZnJhY3s1LTF9ezR9PVxmcmFjezR9ezR9PTEkJA0KS2FyZW5hICRuPTQkIG1ha2EgYmVudHVrIGRhcmkgbWV0b2RlIHRyYXBlem9pZGFsIGFkYWxhaA0KDQokJFRfezR9ID0gXGZyYWN7aH17Mn0gW2YoeF97MH0pKzJmKHhfezF9KSsyZih4X3syfSkrMmYoeF97M30pK2YoeF97NH0pXSQkDQoNCk1lbmdoaXR1bmcgZnVuZ3NpICRmKHgpJCBwYWRhIHNldGlhcCAkeF97aX0kDQoNCiQkZih4X3swfSk9ZigxKT1cZnJhY3sxfXsxfT0xJCQNCiQkZih4X3sxfSk9ZigyKT1cZnJhY3sxfXsyfSQkDQoNCiQkZih4X3syfSk9ZigzKT1cZnJhY3sxfXszfSQkDQokJGYoeF97M30pPWYoNCk9XGZyYWN7MX17NH0kJA0KDQokJGYoeF97NH0pPWYoNSk9XGZyYWN7MX17NX0kJA0KDQprYXJlbmEgJGg9MSQgZGlwZXJvbGVoDQoNCiQkVF97NH0gPSBcZnJhY3sxfXsyfSBbMSsyIFxjZG90IFxmcmFjezF9ezJ9KzIgXGNkb3QgXGZyYWN7MX17M30rMiBcY2RvdCBcZnJhY3sxfXs0fSsgXGZyYWN7MX17NX1dPVxmcmFjezEwMX17NjB9PTEuNjgzMzMzJCQNClNlaGluZ2dhDQoNCiQkXGludF97MX1eezV9IFxmcmFjezF9e3h9IGR4IFxhcHByb3ggVF97NH09MS42ODMzMzMgJCQNCg0KSmlrYSBraXRhIGJhbmRpbmdrYW4gZGVuZ2FuIGhhc2lsIHlhbmcgZGlkYXBhdGthbiBzZWNhcmEgZXhhY3QgYWRhbGFoIHNlYmFnYWkgYmVyaWt1dDoNCg0KJCRcaW50X3sxfV57NX0gXGZyYWN7MX17eH0gZHg9XGxvZ3t4fXxfezF9Xns1fT1cbG9nezV9LVxsb2d7MX09MS42MDkkJA0KDQoNCmIuIEhpdHVuZ2xhaCBtZW5nZ3VuYWthbiBSIGRlbmdhbiAqKnVzZXItZGVmaW5lZCBmdW5jdGlvbioqDQoNCm1lbmRlZmluaXNpa2FuIGZ1bmdzaSAkZih4KSQNCg0KYGBge3J9DQpmIDwtIGZ1bmN0aW9uKHgpew0KICAxL3gNCn0NCmBgYA0KDQoNCk1lbmdoaXR1bmcgaW50ZWdyYWwgbWVuZ2d1bmFrYW4gZnVuZ3NpIGB0cmFwZXpvaWRgDQoNCg0KYGBge3J9DQp0cmFwZXpvaWQoZiwxLDUsbiA9IDQpDQpgYGANCg0KYy4gSGl0dW5nbGFoIG1lbmdndW5ha2FuIFIgZnVuZ3NpIGB0cmFwemZ1bmAgZGFyaSBwYWNrYWdlIGBwcmFjbWFgDQoNCmBgYHtyfQ0KdHJhcHpmdW4oZiwxLDUsbWF4aXQgPSAgNCkNCmBgYA0KDQoNCmQuIEhpdHVuZ2xhaCBtZW5nZ3VuYWthbiBSIGhpbmdnYSBoYXNpbCBpbnRlZ3JhbCBtZW5kZWthdGkgaGFzaWwgZXhhY3QtbnlhIGRlbmdhbiB0b2xlcmFuc2kgJDAuMDAwNSQNCg0KYGBge3J9DQpleGFjdF92YWx1ZT0xLjYwOQ0KdG9sIDwtICAwLjAwMDUNCmVyciA8LSAxDQpuID0gNA0KDQp3aGlsZShlcnI+dG9sKXsNCiAgcmVzX3RyYXAgPC0gdHJhcGV6b2lkKGYsMSw1LG4gPSBuKQ0KICANCiAgZXJyIDwtIGFicyhyZXNfdHJhcC1leGFjdF92YWx1ZSkNCiAgDQogIGNhdCgibj0iLG4sIiwgcmVzdWx0PSIscmVzX3RyYXAsIiwgZXJyb3I9IixlcnIsIlxuIixzZXAgPSAiIikNCiAgDQogIG49bisxDQogIGlmKG49PTEwMDApew0KICAgIGJyZWFrDQogIH0NCiAgDQp9DQpgYGANCg0KDQojIyBTb2FsIDINCg0KR3VuYWthbiBtZXRvZGUgc2ltcHNvbiB1bnR1ayBtZW5naW50ZWdyYWxrYW4gZnVuZ3NpIGJlcmlrdXQgdW50dWsgbj00LCBkZW5nYW4NCg0KJCRcaW50X3stMn1eezJ9IDNee3h9IGR4ICQkDQoNCg0KDQphLiBIaXR1bmdsYWggdGFucGEgbWVuZ2d1bmFrYW4gc29mdHdhcmUNCmIuIEhpdHVuZ2xhaCBtZW5nZ3VuYWthbiBSIA0KYy4gSGl0dW5nbGFoIG1lbmdndW5ha2FuIFIgaGluZ2dhIGhhc2lsIGludGVncmFsIG1lbmRla2F0aSBoYXNpbCBleGFjdC1ueWEgZGVuZ2FuIHRvbGVyYW5zaSAkMC4wMDAxJA0KDQoNCkphd2FiOg0KDQphLiBIaXR1bmdsYWggdGFucGEgbWVuZ2d1bmFrYW4gc29mdHdhcmUNCg0KRGlrZXRhaHVpDQoNCiQkZih4KT0zXnt4fSwgYT0tMixiPTIkJA0KDQpQYW5qYW5nIHNldGlhcCBzdWIgaW50ZXJ2YWwgYWRhbGFoIHNlYmFnYWkgYmVyaWt1dDoNCg0KJCRoPVxmcmFje2ItYX17bn09XGZyYWN7Mi0oLTIpfXs0fT1cZnJhY3s0fXs0fT0xJCQNCg0KS2FyZW5hICRuPTQkIG1ha2EgYmVudHVrIGRhcmkgbWV0b2RlIFNpbXBzb24gYWRhbGFoDQoNCiQkU197NH0gPSBcZnJhY3tofXszfSBbZih4X3swfSkrNGYoeF97MX0pKzJmKHhfezJ9KSs0Zih4X3szfSkrZih4X3s0fSldJCQNCg0KTWVuZ2hpdHVuZyBmdW5nc2kgJGYoeCkkIHBhZGEgc2V0aWFwICR4X3tpfSQNCg0KJCRmKHhfezB9KT1mKDEpPTNeey0yfT1cZnJhY3sxfXs5fSQkDQokJGYoeF97MX0pPWYoMik9M157LTF9PVxmcmFjezF9ezN9JCQNCg0KJCRmKHhfezJ9KT1mKDMpPTNeezB9PTEkJA0KJCRmKHhfezN9KT1mKDQpPTNeezF9PTMkJA0KDQokJGYoeF97NH0pPWYoNSk9M157Mn09OSQkDQoNCmthcmVuYSAkaD0xJCBkaXBlcm9sZWgNCg0KJCRTX3s0fSA9IFxmcmFjezF9ezN9IFxsZWZ0W1xmcmFjezF9ezl9KzQgXGNkb3QgXGZyYWN7MX17M30rMiBcY2RvdCAxKzQgXGNkb3QgMys5IFxyaWdodF09XGZyYWN7MjIwfXsyN309OC4xNDgkJA0KU2VoaW5nZ2ENCg0KJCRcaW50X3stMn1eezJ9IDNee3h9IGR4IFxhcHByb3ggU197NH09OC4xNDggJCQNCg0KSmlrYSBraXRhIGJhbmRpbmdrYW4gZGVuZ2FuIGhhc2lsIHlhbmcgZGlkYXBhdGthbiBzZWNhcmEgZXhhY3QgYWRhbGFoIHNlYmFnYWkgYmVyaWt1dDoNCg0KJCRcaW50X3stMn1eezJ9IDNee3h9IGR4PVxmcmFjezNee3h9fXtcbG9nezN9fSAgfF97LTJ9XnsyfT1cZnJhY3szXnsyfX17XGxvZ3szfX0tXGZyYWN7M157LTJ9fXtcbG9nezN9fT1cZnJhY3s4MH17OVxsb2d7M319PTguMDkxJCQNCg0KDQoNCmIuIEhpdHVuZ2xhaCBtZW5nZ3VuYWthbiBSIA0KDQoNCm1lbmRlZmluaXNpa2FuIGZ1bmdzaSAkZih4KSQNCg0KDQpgYGB7cn0NCmYyIDwtIGZ1bmN0aW9uKHgpew0KICAzXnt4fQ0KfQ0KYGBgDQoNCg0KTWVuZ2hpdHVuZyBpbnRlZ3JhbCBtZW5nZ3VuYWthbiBtZXRvZGUgc2ltcHNvbg0KDQoNCmBgYHtyfQ0Kc2ltcHNvbl9uKGYyLC0yLDIsbiA9IDQpDQpgYGANCg0KDQpjLiBIaXR1bmdsYWggbWVuZ2d1bmFrYW4gUiBoaW5nZ2EgaGFzaWwgaW50ZWdyYWwgbWVuZGVrYXRpIGhhc2lsIGV4YWN0LW55YSBkZW5nYW4gdG9sZXJhbnNpICQwLjAwMDEkDQoNCmBgYHtyfQ0KZXhhY3RfdmFsdWU9OC4wOTENCnRvbCA8LSAgMC4wMDAxDQplcnIgPC0gMQ0KbiA9IDQNCg0Kd2hpbGUoZXJyPnRvbCl7DQogIHJlc19zaW1wIDwtIHNpbXBzb25fbihmMiwtMiwyLG4gPSBuKQ0KICANCiAgZXJyIDwtIGFicyhyZXNfc2ltcC1leGFjdF92YWx1ZSkNCiAgDQogIGNhdCgibj0iLG4sIiwgcmVzdWx0PSIscmVzX3NpbXAsIiwgZXJyb3I9IixlcnIsIlxuIixzZXAgPSAiIikNCiAgDQogIG49bisxDQogIGlmKG49PTEwMDApew0KICAgIGJyZWFrDQogIH0NCiAgDQp9DQpgYGANCg0KDQoNCiMjIyBTb2FsIDMNCg0KR3VuYWthbiBtZXRvZGUgZm91ci1wb2ludCBnYXVzc2lhbiBxdWFkcmF0dXIgdW50dWsgbWVuZ2ludGVncmFsa2FuIGZ1bmdzaSBiZXJpa3V0DQoNCiQkXGludF97MH1eezN9IFxleHAoLXheMikgZHggJCQNCmEuIEhpdHVuZ2xhaCB0YW5wYSBtZW5nZ3VuYWthbiBzb2Z0d2FyZQ0KYi4gSGl0dW5nbGFoIG1lbmdndW5ha2FuIFIgZGVuZ2FuIGZ1bmdzaSBgZ2F1c3NMZWdlbmRyZWAgZGVuZ2FuIG1lbmdndW5ha2FuIGRvbWFpbiAkWy0xLDFdJA0KYy4gSGl0dW5nbGFoIG1lbmdndW5ha2FuIFIgZGVuZ2FuIGZ1bmdzaSBgZ2F1c3NMZWdlbmRyZWAgZGVuZ2FuIG1lbmdndW5ha2FuIGRvbWFpbiBhc2FsDQpkLiBIaXR1bmdsYWggbWVuZ2d1bmFrYW4gUiBoaW5nZ2EgaGFzaWwgaW50ZWdyYWwgbWVuZGVrYXRpIGhhc2lsIGV4YWN0LW55YSBkZW5nYW4gdG9sZXJhbnNpICQwLjAwMDAxJA0KDQoNCg0KYS4gSGl0dW5nbGFoIHRhbnBhIG1lbmdndW5ha2FuIHNvZnR3YXJlDQoNCkRpa2V0YWh1aQ0KDQokJGYoeCk9XGV4cCgteF4yKSwgYT0wLGI9MyQkDQpLYXJlbmEgcGFkYSBzb2FsIHlhbmcgZGlpbmdpbmthbiBhZGFsYWggbWV0b2RlIGZvdXItcG9pbnQgZ2F1c3NpYW4gcXVhZHJhdHVyLCBiZXJhcnRpIG5pbGFpICRuPTQkLiBCZXJkYXNhcmthbiB0YWJlbCBnYXVzc2lhbiBxdWFkcmF0dXIgbmlsYWktbmlsYWkga29lZmlzaWVuIGRhbiB0aXRpayBnYXVzcyBhZGFsYWggc2ViYWdhaSBiZXJpa3V0Og0KDQpgYGB7cn0NCmd0OjpndChkYXRhID0gYm9ib3RfZ2NbMyxdKQ0KYGBgDQoNCioqbGFuZ2thaCAxKioNCg0KU2ViZWx1bSBraXRhIG1lbmdndW5ha2FuIG5pbGFpLW5pbGFpIGtvZWZpc2llbiBkYW4gdGl0aWsgZ2F1c3MsIHBlcmx1IGRpbGFrdWthbiB0cmFuc2Zvcm1hc2kgc2VoaW5nZ2EgZG9tYWluIGludGVncmFsIG1lbmphZGkgJFstMSwxXSQuDQoNCg0KJCR4PVxmcmFjezF9ezJ9W3QoYi1hKSthK2JdJCQNCiQkeD1cZnJhY3sxfXsyfVt0KDMtMCkrMyswXSQkDQoNCiQkeD1cZnJhY3sxfXsyfVszdCszXT1cZnJhY3szfXsyfVt0KzFdJCQNCg0KDQpkYW4NCg0KDQokJGR4PVxmcmFjezF9ezJ9KGItYSlkdCQkDQokJGR4PVxmcmFjezF9ezJ9KDMtMClkdD1cZnJhY3szfXsyfWR0JCQNCg0KDQoNCg0KU2VoaW5nZ2EgaW50ZWdyYWxueWEgbWVuamFkaQ0KDQokJA0KXGludF97MH1eezN9XGV4cCgteF4yKWR4ID0gXGludF97LTF9XnsxfVxleHBcbGVmdCgtXGxlZnRbXGZyYWN7M317Mn1bdCsxXVxyaWdodF1eezJ9XHJpZ2h0KVxmcmFjezN9ezJ9ZHQNCiQkDQoNCg0KDQoNCioqbGFuZ2thaCAyKioNCg0KDQoNCktlbXVkaWFuLCBraXRhIG1lbmdndW5ha2FuIG5pbGFpLW5pbGFpIGtvZWZpc2llbiBkYW4gdGl0aWsgZ2F1c3Mgc2FhdCAkbj00JA0KDQokJA0KXGludF97LTF9XnsxfVxmcmFjezN9ezJ9XGV4cFxsZWZ0KC1cbGVmdFtcZnJhY3szfXsyfVt0KzFdXHJpZ2h0XV57Mn1ccmlnaHQpXGFwcHJveCBJID0gQ197MX1mKHRfezF9KStDX3syfWYodF97Mn0pK0NfezN9Zih0X3szfSkrQ197NH1mKHRfezR9KQ0KJCQNCg0KJCQNCkkgPSBDX3sxfWYodF97MX0pK0NfezJ9Zih0X3syfSkrQ197M31mKHRfezN9KStDX3s0fWYodF97NH0pDQokJA0KDQokJA0KST0gMC4zNDc4NTQ4ZigtMC44NjExMzYzKSswLjY1MjE0NTJmKC0wLjMzOTk4MTApKzAuNjUyMTQ1MmYoMC4zMzk5ODEwKSswLjM0Nzg1NDhmKDAuODYxMTM2MykNCiQkDQpNZW5naGl0dW5nIGZ1bmdzaSAkZih4KSQgcGFkYSBzZXRpYXAgJHhfe2l9JA0KDQokJGYoLTAuODYxMTM2Myk9XGZyYWN7M317Mn1cZXhwXGxlZnQoLVxsZWZ0W1xmcmFjezN9ezJ9Wy0wLjg2MTEzNjMrMV1ccmlnaHRdXnsyfVxyaWdodCk9MS40MzYzMTEkJA0KDQokJGYoLTAuMzM5OTgxMCk9XGZyYWN7M317Mn1cZXhwXGxlZnQoLVxsZWZ0W1xmcmFjezN9ezJ9Wy0wLjMzOTk4MTArMV1ccmlnaHRdXnsyfVxyaWdodCk9MC41NjI4Nzg3JCQNCg0KJCRmKDAuMzM5OTgxMCk9XGZyYWN7M317Mn1cZXhwXGxlZnQoLVxsZWZ0W1xmcmFjezN9ezJ9WzAuMzM5OTgxMCsxXVxyaWdodF1eezJ9XHJpZ2h0KT0wLjAyNjM5NjU5JCQNCg0KJCRmKDAuODYxMTM2Myk9XGZyYWN7M317Mn1cZXhwXGxlZnQoLVxsZWZ0W1xmcmFjezN9ezJ9WzAuODYxMTM2MysxXVxyaWdodF1eezJ9XHJpZ2h0KT0wLjAwMDYxODUkJA0KDQpzZWhpbmdnYQ0KDQokJA0KSSA9IDAuMzQ3ODU4IFxjZG90IDEuNDM2MzExKzAuNjUyMTQ1MiBcY2RvdCAwLjU2Mjg3ODcrMC42NTIxNDUyIFxjZG90IDAuMDI2Mzk2NTkrIDAuMzQ3ODU4IFxjZG90IDAuMDAwNjE4NSA9IDAuODg0MTM1OQ0KJCQNCiQkDQpcaW50X3swfV57M31cZXhwKC14XjIpZHggXGFwcHJveCBJID0gMC44ODQxMzU5DQokJA0KamlrYSBraXRhIGJhbmRpbmdrYW4gZGVuZ2FuIGhhc2lsIHlhbmcgZGlkYXBhdGthbiBzZWNhcmEgZXhhY3QgYWRhbGFoIHNlYmFnYWkgYmVyaWt1dDoNCg0KDQokJA0KXGludF97MH1eezN9XGV4cCgteF4yKWR4DQokJA0KJCQNCj0gXGZyYWN7XHNxcnRccGl9ezJ9IFxpbnRfezB9XnszfVxmcmFjezJcZXhwKC14XjIpfXtcc3FydFxwaX1keA0KJCQNCmJlbnR1ayAkXGludF97MH1ee3p9XGZyYWN7MlxleHAoLXheMil9e1xzcXJ0XHBpfWR4JCBtZXJ1cGFrYW4gYmVudHVrIGludGVncmFsIGtodXN1cyB5YW5nIGJlcm5hbWEgR2F1c3MgZXJyb3IgZnVuY3Rpb24gJCBcdGV4dHtlcmZ9KHopJA0KDQokJA0KPVxmcmFje1xzcXJ0XHBpfXsyfSBcdGV4dHtlcmZ9KDMpID0gMC44ODYyMDcNCiQkDQoNCg0KDQpiLiBIaXR1bmdsYWggbWVuZ2d1bmFrYW4gUiBkZW5nYW4gZnVuZ3NpIGBnYXVzc0xlZ2VuZHJlYCBkZW5nYW4gbWVuZ2d1bmFrYW4gZG9tYWluICRbLTEsMV0kDQoNCm1lbmRlZmluaXNpa2FuIGZ1bmdzaSBoYXNpbCB0cmFuc2Zvcm1hc2kgJGYodCkkDQoNCmBgYHtyfQ0KZnQgPC0gZnVuY3Rpb24odCl7DQogICgzLzIpKmV4cCgoLSgzLzIqKHQrMSkpXjIpKQ0KfQ0KYGBgDQoNCkxlZ2VuZHJlIG9yZGVyIDQNCg0KYGBge3J9DQpnTCA8LSBnYXVzc0xlZ2VuZHJlKG4gPSA0LGEgPSAtMSwxKQ0KDQpgYGANCg0KbWVuZGVmaW5pc2lrYW4ga29lZmlzaWVuIGRhbiBnYXVzcyBwb2ludA0KDQpgYGB7cn0NCkNpIDwtIGdMJHcgIyBrb2VmaXNpZW4NCkNpDQp4aSA8LSBnTCR4ICMgZ2F1c3MgcG9pbnQNCnhpDQpgYGANCg0KTWVuZ2hpdHVuZyBpbnRlZ3JhbCANCg0KYGBge3J9DQpJIDwtIHN1bShDaSAqIGZ0KHhpKSkNCkkNCmBgYA0KDQpjLiBIaXR1bmdsYWggbWVuZ2d1bmFrYW4gUiBkZW5nYW4gZnVuZ3NpIGBnYXVzc0xlZ2VuZHJlYCBkZW5nYW4gbWVuZ2d1bmFrYW4gZG9tYWluIGFzYWwNCg0KbWVuZGVmaW5pc2lrYW4gZnVuZ3NpICAkZih4KSQNCg0KYGBge3J9DQpmMyA8LSBmdW5jdGlvbih4KXsNCiAgZXhwKC0oeF4yKSkNCn0NCmBgYA0KDQpMZWdlbmRyZSBvcmRlciA0IGRlbmdhbiBkb21haW4gJFswLDNdJA0KDQpgYGB7cn0NCmdMIDwtIGdhdXNzTGVnZW5kcmUobiA9IDQsYSA9IDAsMykNCg0KYGBgDQoNCm1lbmRlZmluaXNpa2FuIGtvZWZpc2llbiBkYW4gZ2F1c3MgcG9pbnQNCg0KYGBge3J9DQpDaSA8LSBnTCR3ICMga29lZmlzaWVuDQpDaQ0KeGkgPC0gZ0wkeCAjIGdhdXNzIHBvaW50DQp4aQ0KYGBgDQoNCk1lbmdoaXR1bmcgaW50ZWdyYWwgDQoNCmBgYHtyfQ0KSSA8LSBzdW0oQ2kgKiBmMyh4aSkpDQpJDQpgYGANCg0KZC4gSGl0dW5nbGFoIG1lbmdndW5ha2FuIFIgaGluZ2dhIGhhc2lsIGludGVncmFsIG1lbmRla2F0aSBoYXNpbCBleGFjdC1ueWEgZGVuZ2FuIHRvbGVyYW5zaSAkMC4wMDAwMSQNCg0KYGBge3J9DQpleGFjdF92YWx1ZT0wLjg4NjIwNw0KdG9sIDwtICAwLjAwMDAxDQplcnIgPC0gMQ0KbiA9IDQNCg0Kd2hpbGUoZXJyPnRvbCl7DQogIA0KICBnTCA8LSBnYXVzc0xlZ2VuZHJlKG4gPSBuLGEgPSAwLDMpDQogIA0KICByZXNfZ2wgPC0gc3VtKENpICogZjMoeGkpKQ0KIENpIDwtIGdMJHcgIyBrb2VmaXNpZW4NCiB4aSA8LSBnTCR4ICMgZ2F1c3MgcG9pbnQNCiAgZXJyIDwtIGFicyhyZXNfZ2wtZXhhY3RfdmFsdWUpDQogIA0KICBjYXQoIm49IixuLCIsIHJlc3VsdD0iLHJlc19nbCwiLCBlcnJvcj0iLGVyciwiXG4iLHNlcCA9ICIiKQ0KICANCiAgbj1uKzENCiAgaWYobj09MTAwMCl7DQogICAgYnJlYWsNCiAgfQ0KICANCn0NCmBgYA0KDQojIyMgU29hbCA0DQoNCkRpa2V0YWh1aSBwZGYgKHByb2JhYmlsaXR5IGRlbnNpdHkgZnVuY3Rpb24pIGRhcmkgZGlzdGlyYnVzaSBub3JtYWwgJE4oMzAsNSkkIGFkYWxhaCBzZWJhZ2FpIGJlcmlrdXQNCg0KJCQNCmYoeHwzMCw1KT0gXGZyYWN7MX17NVxzcXJ0ezJccGl9fSBcZXhwe1xsZWZ0Wy1cZnJhY3sxfXsyfSBcbGVmdCggXGZyYWN7eC0zMH17NX0gXHJpZ2h0KV57Mn1ccmlnaHRdfQ0KJCQNCkNhcmlsYWggY2RmIChjdW11bGF0aXZlIGRlbnNpdHkgZnVuY3Rpb24pIGRhcmkgZGlzdHJpYnVzaSAkTigzMCw1KSQgdW50dWsgJHg9MzIkIGRlbmdhbiBtZW5nZ3VuYWthbiBtZXRvZGUgTW9udGUgQ2FybG8gZGVuZ2FuIGJhbnlha255YSBzYW1wbGluZyAxMDAwLg0KDQpKYXdhYmFuOg0KDQpDREYgZGFyaSBzdWF0dSBkaXN0cmlidXNpIGRpZGVmaW5pc2lrYW4gc2ViYWdhaSBiZXJpa3V0DQoNCg0KJCQNCkYoeCkgPSBcaW50X3stXGluZnR5fV57eH0gZih0KSBkdA0KJCQNCg0Kc2VoaW5nZ2EgY2RmIGRhcmkgZGlzdHJpYnVzaSAkTigzMCw1KSQgdW50dWsgJHg9MzIkIGFkYWxhaA0KDQoNCiQkDQpGKHg9MzJ8MzAsNSkgPSBcaW50X3stXGluZnR5fV57NTB9IFxmcmFjezF9ezVcc3FydHsyXHBpfX0gXGV4cHtcbGVmdFstXGZyYWN7MX17Mn0gXGxlZnQoIFxmcmFje3QtMzB9ezV9IFxyaWdodCleezJ9XHJpZ2h0XX0gZHQNCiQkDQoNCmthcmVuYSBiYXRhcyBiYXdhaCBpbnRlZ3JhbCB0ZXJzZWJ1dCAkLVxpbmZ0eSQsIGtpdGEgaGFydXMgbWVsYWt1a2FuIHRyYW5zZm9ybWFzaSBzZWRpbWlraWFuIHNlaGluZ2dhIGJhdGFzIGJhd2FoLW55YSB0ZXJiYXRhcyBkaSBuaWxhaSB0ZXJ0ZW50dS4gTWVudXJ1dCAqKkNoYXByYSBkYW4gQ2FuYWxlICgyMDE1KSoqLCBqaWthIGJhdGFzIGF0YXMgZGFuIGJhd2FoIGludGVncmFsIG1lbWlsaWtpIHRhbmRhIGJlcmJlZGEgKHBvc2l0aXZlL25lZ2F0aXZlKSBtYWthIHBlcmx1IGRpbGFrdWthbiBwZW1iYWdpYW4gdGVybGViaWggZGFodWx1IGFnYXIgYmF0YXMgYXRhcyBkYW4gYmF3YWggaW50ZWdyYWwgbWVtaWxpa2kgdGFuZGEgeWFuZyBzYW1hIHNlYmVsdW0gZGlsYWt1a2FuIHRyYW5zZm9ybWFzaQ0KDQokJA0KRih4PTMyfDMwLDUpID0gXGludF97LVxpbmZ0eX1eey0xfSBcZnJhY3sxfXs1XHNxcnR7MlxwaX19IFxleHB7XGxlZnRbLVxmcmFjezF9ezJ9IFxsZWZ0KCBcZnJhY3t0LTMwfXs1fSBccmlnaHQpXnsyfVxyaWdodF19IGR0ICsgXGludF97LTF9XnszMn0gXGZyYWN7MX17NVxzcXJ0ezJccGl9fSBcZXhwe1xsZWZ0Wy1cZnJhY3sxfXsyfSBcbGVmdCggXGZyYWN7dC0zMH17NX0gXHJpZ2h0KV57Mn1ccmlnaHRdfSBkdA0KJCQNCg0KQmF0YXMgJC0xJCBiaXNhIGRpZ2FudGkgZGVuZ2FuIGJpbGFuZ2FuIG5lZ2F0aXZlIGFwYXB1biAoZGlhbmp1cmthbiB1bnR1ayBtZW5kZWthdGkgMCkgIA0KDQoNCktlbXVkaWFuIGludGVncmFsDQoNCg0KJCQNClxpbnRfey1caW5mdHl9XnstMX0gXGZyYWN7MX17NVxzcXJ0ezJccGl9fSBcZXhwe1xsZWZ0Wy1cZnJhY3sxfXsyfSBcbGVmdCggXGZyYWN7dC0zMH17NX0gXHJpZ2h0KV57Mn1ccmlnaHRdfSBkdA0KJCQNCg0KeWFuZyBha2FuIGtpdGEgbGFrdWthbiB0cmFuc2Zvcm1hc2kuDQoNCm1pc2Fsa2FuIA0KDQokJA0KcyA9IFxmcmFjezF9e3R9DQokJA0KDQoNCg0KJCQNCmRzID1cZnJhY3stMX17dF57Mn19IGR0DQokJA0KDQoNCiQkDQpkdCA9LXReezJ9IGRzDQokJA0KDQoNCiQkDQpkdCA9LVxsZWZ0KFxmcmFjezF9e3N9XHJpZ2h0KV57Mn0gZHMNCiQkDQokJA0KZHQgPS1cZnJhY3sxfXtzXnsyfX0gZHMNCiQkDQoNCg0Kc2VoaW5nZ2EgZG9tYWluIGludGVncmFsbnlhIHB1biBiZXJ1YmFoDQoNCg0KJCR0PS1caW5mdHkgXHJpZ2h0YXJyb3cgcz1cZnJhY3sxfXt0fT1cZnJhY3sxfXstXGluZnR5fT0wICQkDQokJHQ9NTAgXHJpZ2h0YXJyb3cgcz1cZnJhY3sxfXt0fT1cZnJhY3sxfXstMX09LTEgJCQNCmphZGkgaW50ZWdyYWwgeWFuZyBha2FuIGtpdGEgY2FyaSBhZGFsYWgNCg0KJCQNClxpbnRfezB9XnstMX0gXGZyYWN7MX17NVxzcXJ0ezJccGl9fSBcZXhwe1xsZWZ0Wy1cZnJhY3sxfXsyfSBcbGVmdCggXGZyYWN7cy0zMH17NX0gXHJpZ2h0KV57Mn1ccmlnaHRdfSBcbGVmdCgtXGZyYWN7MX17c157Mn19XHJpZ2h0KSBkcw0KJCQNCg0KYmF0YXMgYXRhcyBkYW4gYmF3YWggaW50ZWdyYWwgYXRhcyBiaXNhIGRpcGVydHVrYXJrYW4gZGVuZ2FuIG1lbmdhbGlrYW4gZGVuZ2FuICQtMSQgYWdhciBtZW11ZGFoa2FuIHBlcmhpdHVuZ2FuDQoNCg0KJCQNClxpbnRfey0xfV57MH0gXGZyYWN7MX17NVxzcXJ0ezJccGl9fSBcZXhwe1xsZWZ0Wy1cZnJhY3sxfXsyfSBcbGVmdCggXGZyYWN7cy0zMH17NX0gXHJpZ2h0KV57Mn1ccmlnaHRdfSBcbGVmdCgtXGZyYWN7MX17c157Mn19XHJpZ2h0KSBkcw0KJCQNCg0KDQoNClNlbGFuanV0bnlhIGtpdGEgYWthbiBtZW5naGl0dW5nIGNkZiBkZW5nYW4gDQoNCg0KJCQNCkYoeD0zMnwzMCw1KSA9IFxpbnRfey0xfV57MH0gXGZyYWN7MX17NVxzcXJ0ezJccGl9fSBcZXhwe1xsZWZ0Wy1cZnJhY3sxfXsyfSBcbGVmdCggXGZyYWN7cy0zMH17NX0gXHJpZ2h0KV57Mn1ccmlnaHRdfSBcbGVmdCgtXGZyYWN7MX17c157Mn19XHJpZ2h0KSBkcyArIFxpbnRfey0xfV57MzJ9IFxmcmFjezF9ezVcc3FydHsyXHBpfX0gXGV4cHtcbGVmdFstXGZyYWN7MX17Mn0gXGxlZnQoIFxmcmFje3QtMzB9ezV9IFxyaWdodCleezJ9XHJpZ2h0XX0gZHQNCiQkDQoNCg0KTWVtYnVhdCBmdW5nc2kgZGkgUiBiZXJkYXNhcmthbiBoYXNpbCBkaWF0YXMNCg0KDQpgYGB7cn0NCmcxIDwtIGZ1bmN0aW9uKHMpIHsNCiAgKDEvKDUqc3FydCgyKnBpKSkpKmV4cCgtKDEvMikqKChzLTMwKS81KV4oMikpKigxLyhzXjIpKQ0KfQ0KYGBgDQoNCmBgYHtyfQ0KZzIgPC0gZnVuY3Rpb24oeCkgew0KICAoMS8oNSpzcXJ0KDIqcGkpKSkqZXhwKC0oMS8yKSooKHgtMzApLzUpXigyKSkNCn0NCg0KYGBgDQoNCg0KDQpgYGB7cn0NCnNldC5zZWVkKDEyMykNCmludF9nMSA8LSBtY19pbnRlZ3JhbChnMSxhPS0xLGI9MCxtID0gMTAwMCkNCmludF9nMQ0KYGBgDQoNCmBgYHtyfQ0Kc2V0LnNlZWQoMTIzKQ0KaW50X2cyIDwtIG1jX2ludGVncmFsKGcyLGE9LTEsYj0zMixtID0gMTAwMCkNCmludF9nMg0KYGBgDQoNCmBgYHtyfQ0KaW50X2cgPC0gaW50X2cxICsgaW50X2cyDQppbnRfZw0KYGBgDQoNCmphZGkgbmlsYWkgY2RmIGRhcmkgJE4oMzAsNSkkIHVudHVrICR4PTMyJCBhZGFsYWgNCg0KJCQNCkYoeD0zMnwzMCw1KSBcYXBwcm94IDAuNjQzNzcxNg0KJCQNCg0KIyMgUmVmZXJlbnNpDQoNCkdpbGF0LCBBbW9zIGFuZCBTdWJyYW1hbmlhbSxWaXNoLjIwMTMuTnVtZXJpY2FsIE1ldGhvZHMgZm9yIEVuZ2luZWVycyBhbmQgU2NpZW50aXN0czogQW4gSW50cm9kdWN0aW9uIHdpdGggQXBwbGljYXRpb25zIFVzaW5nIE1BVExBQiAzcmQgRWQuIFdpbGV5DQoNCkNoYXByYSxTdGV2ZW4gYW5kIENhbmFsZSxSYXltb25kLjIwMTUuTnVtZXJpY2FsIE1ldGhvZHMgZm9yIEVuZ2luZWVycyA3dGggRWQuIE1jR3Jhdy1IaWxsIEVkdWNhdGlvbjpOZXcgWW9yaw0KDQpodHRwczovL21hdGgyNC5uZXQvDQo=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIk1ldG9kZSBJbnRlZ3JhbCBOdW1lcmlrIGRlbmdhbiBSIg0Kb3V0cHV0OiBodG1sX25vdGVib29rDQotLS0NCg0KDQojIyBQYWNrYWdlDQoNClBhY2thZ2UgeWFuZyBkaWd1bmFrYW4NCg0KYGBge3J9DQpsaWJyYXJ5KHByYWNtYSkNCmBgYA0KDQoNCiMjIE1ldG9kZSBJbnRlZ3JhbCBOdW1lcmlrDQoNCkJlcmlrdXQgYWRhbGFoICoqdXNlci1kZWZpbmVkIGZ1bmN0aW9uKiogZGFyaSBtZXRvZGUtbWV0b2RlIEludGVncmFsIE51bWVyaWsNCg0KIyMjIE1ldG9kZSBUcmFwZXpvaWRhbCAgDQoNCk1ldG9kZSBUcmFwZXpvaWRhbCB5YW5nIGRpZ3VuYWthbiB1bnR1ayBtZW5kZWthdGkgJFxpbnRfe2F9XntifWYoeClkeCQgZGlkZWZpbmlzaWthbiBzZWJhZ2FpDQoNCg0KJCQNClxpbnRfe2F9XntifWYoeClkeCBcYXBwcm94IFRfe259ID0gXGZyYWN7aH17Mn0gW2YoeF97MH0pKzJmKHhfezF9KSsyZih4X3syfSkrXGxkb3RzKzJmKHhfe24tMX0pK2YoeF97bn0pXQ0KJCQNCmRpbWFuYSAkaD1cZnJhY3tiLWF9e259JCBkYW4gJHhfe2l9PWEraWgkDQoNCmppa2EgJG4gXHJpZ2h0YXJyb3cgXGluZnR5JCwgbWFrYSBoYXNpbCBkYXJpICRcaW50X3thfV57Yn1mKHgpZHgkIHNhbWEgZGVuZ2FuIG5pbGFpIGludGVncmFsIGRlZmluaXQuDQoNCg0KQmVyaWt1dCBhZGFsYWggKip1c2VyLWRlZmluZWQgZnVuY3Rpb24qKiB1bnR1ayBtZXRvZGUgVHJhcGV6b2lkYWwNCg0KYGBge3J9DQp0cmFwZXpvaWQgPC0gZnVuY3Rpb24oZnRuLCBhLCBiLCBuID0gMTAwKSB7DQogICAgIGggPC0gKGItYSkvbg0KICAgICB4LnZlYyA8LSBzZXEoYSwgYiwgYnkgPSBoKQ0KICAgICBmLnZlYyA8LSBzYXBwbHkoeC52ZWMsIGZ0bikgICAgICMgZnRuKHgudmVjKQ0KICAgICBUcmFwIDwtIGgqKGYudmVjWzFdLzIgKyBzdW0oZi52ZWNbMjpuXSkgKyBmLnZlY1tuKzFdLzIpDQogICAgIHJldHVybihUcmFwKQ0KfQ0KDQpgYGANCg0KIyMjIE1ldG9kZSBTaW1wc29uDQoNCk1ldG9kZSBTaW1wc29uIHlhbmcgZGlndW5ha2FuIHVudHVrIG1lbmRla2F0aSAkXGludF97YX1ee2J9Zih4KWR4JCBkaWRlZmluaXNpa2FuIHNlYmFnYWkNCg0KDQokJA0KXGludF97YX1ee2J9Zih4KWR4IFxhcHByb3ggU197bn0gPSBcZnJhY3tofXszfSBbZih4X3swfSkrNGYoeF97MX0pKzJmKHhfezJ9KSs0Zih4X3szfSkrMmYoeF97NH0pK1xsZG90cys0Zih4X3tuLTF9KStmKHhfe259KV0NCiQkDQpkaW1hbmEgJGg9XGZyYWN7Yi1hfXtufSQgZGFuIGtvZWZpc2llbiBkYXJpIG1ldG9kZSBzaW1wc29uIG1lbmdpa3V0aSBwb2xhIGJlcmlrdXQ6DQoNCiQkXHVuZGVyYnJhY2V7MSw0LDIsNCwyLFxsZG90cyw0LDIsNCwxfV97bisxIFxzcGFjZSBcdGV4dHt0aXRpa319JCQNCkJlcmlrdXQgYWRhbGFoICoqdXNlci1kZWZpbmVkIGZ1bmN0aW9uKiogdW50dWsgbWV0b2RlIFNpbXBzb24NCg0KYGBge3J9DQpzaW1wc29uX24gPC0gZnVuY3Rpb24oZnRuLCBhLCBiLCBuID0gMTAwKSB7DQogICAgbiA8LSBtYXgoYygyKihuICUvJSAyKSwgNCkpDQogICAgaCA8LSAoYi1hKS9uDQogICAgeC52ZWMxIDwtIHNlcShhK2gsIGItaCwgYnkgPSAyKmgpCQkjIGdhbmppbA0KICAgIHgudmVjMiA8LSBzZXEoYSsyKmgsIGItMipoLCBieSA9IDIqaCkJIyBnZW5hcA0KICAgIGYudmVjMSA8LSBzYXBwbHkoeC52ZWMxLCBmdG4pIAkjIGdhbmppbA0KICAgIGYudmVjMiA8LSBzYXBwbHkoeC52ZWMyLCBmdG4pCSMgZ2VuYXANCiAgICBTIDwtIGgvMyooZnRuKGEpICsgZnRuKGIpICsgNCpzdW0oZi52ZWMxKSArIDIqc3VtKGYudmVjMikpDQogICAgcmV0dXJuKFMpDQp9DQoNCmBgYA0KDQojIyMgTWV0b2RlIEdhdXNzIFF1YWRyYXR1cmUNCg0KQmVudHVrIHVtdW0gZGFyaSBHYXVzcyBxdWFkcmF0dXJlIGFkYWxhaA0KDQokJFxpbnRfe2F9XntifWYoeClkeCBcYXBwcm94IEk9IFxzdW1fe2k9MX1ee259Q197aX1mKHhfe2l9KSQkDQoNCmRpbWFuYSBrb2VmaXNpZW4gJENfe2l9JCBtZXJ1cGFrYW4gYm9ib3QgZGFuICR4X3tpfSQgbWVydXBha2FuICoqdGl0aWsgR2F1c3MqKiB5YW5nIGJlcmFkYSBkYWxhbSBpbnRlcnZhbCAkWy0xLDFdJC4NCg0KTmlsYWkgQm9ib3QgJENfe2l9JCBkYW4gdGl0aWsgR2F1c3MgJHhfe2l9JCBkYXBhdCBkaXBlcm9sZWggc2FhdCBkb21haW4gaW50ZWdyYWxueWEgYWRhbGFoICRbLTEsMV0kIGRhbiAkZih4KSQgbWVydXBha2FuIHBvbHlub21pYWwgYmVyZGVyYWphdCAkbiQuIE5pbGFpLW5pbGFpIHRlcnNlYnV0IHNlY2FyYSBsZW5na2FwIGJpc2EgZGlsaWhhdCBwYWRhIHRhYmVsIGJlcmlrdXQ6DQoNCg0KYGBge3IgZWNobz0naGlkZSd9DQpib2JvdF9nYyA8LSBkcGx5cjo6dGliYmxlKGBuYD0yOjYsDQogICAgICAgICAgICAgICAgICAgICAgICAgIGBLb2VmaXNpZW4gQ2lgPWMoIkMxID0gMSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBDMiA9IDEiLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJDMSA9IDAuNTU1NTU1NiwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBDMiA9IDAuODg4ODg4OSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBDMyA9IDAuNTU1NTU1NiIsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIkMxID0gMC4zNDc4NTQ4LA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEMyID0gMC42NTIxNDUyLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEMzID0gMC42NTIxNDUyLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEM0ID0gMC4zNDc4NTQ4IiwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiQzEgPSAwLjIzNjkyNjksDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQzIgPSAwLjQ3ODYyODcsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQzMgPSAwLjU2ODg4ODksDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQzQgPSAwLjQ3ODYyODcsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQzUgPSAwLjIzNjkyNjkiLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJDMSA9IDAuMTcxMzI0NSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBDMiA9IDAuMzYwNzYxNiwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBDMyA9IDAuNDY3OTEzOSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBDNCA9IDAuNDY3OTEzOSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBDNSA9IDAuMzYwNzYxNiwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBDNiA9IDAuMTcxMzI0NSINCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICApLA0KICAgICAgICAgICAgICAgICAgICAgICAgICBgVGl0aWsgR2F1c3MgeGlgPWMoIngxID0gLSAwLjU3NzM1MDI3LA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgeDIgPSAwLjU3NzM1MDI3IiwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJ4MSA9IC0wLjc3NDU5NjY3LA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgeDIgPSAwLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgeDMgPSAwLjc3NDU5NjY3IiwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJ4MSA9IC0wLjg2MTEzNjMxLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgeDIgPSAtMC4zMzk5ODEwNCwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHgzID0gMC4zMzk5ODEwNCwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHg0ID0gMC44NjExMzYzMSIsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAieDEgPSAtMC45MDYxNzk4NSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHgyID0gLTAuNTM4NDY5MzEsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB4MyA9IDAsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB4NCA9IDAuNTM4NDY5MzEsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB4NSA9IDAuOTA2MTc5ODUiLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIngxID0gLTAuOTMyNDY5NTEsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB4MiA9IC0wLjY2MTIwOTM4LA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgeDMgPSAtMC4yMzg2MTkxOSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHg0ID0gMC4yMzg2MTkxOSwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHg1ID0gMC42NjEyMDkzOCwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHg2ID0gMC45MzI0Njk1MSINCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICkpDQpgYGANCg0KDQpgYGB7ciBlY2hvPUZBTFNFfQ0KZ3Q6Omd0KGRhdGEgPSBib2JvdF9nYykNCmBgYA0KDQoNCk5pbGFpLW5pbGFpIHBhZGEgdGFiZWwgaW5pIGp1Z2EgYmlzYSBkaWFrc2VzIGRlbmdhbiBtZW5nZ3VuYWthbiBmdW5nc2kgYGdhdXNzTGVnZW5kcmVgIGRhcmkgcGFja2FnZSBgcHJhY21hYC4gU2ltYm9sIGB3YCBwYWRhIG91dHB1dCBkaWJhd2FoIGluaSBtZXJ1cGFrYW4gYm9ib3QgJENfe2l9JC4gU2VsYWluIGl0dSwgbmlsYWkgJG4kIHBhZGEgZnVuZ3NpIGBnYXVzc0xlZ2VuZHJlYCBiaXNhIGxlYmloIGRhcmkgNi4NCg0KYGBge3J9DQojIHVudHVrIG49Mg0KZ2F1c3NMZWdlbmRyZShuPTIsYT0tMSxiPTEpDQojIHVudHVrIG49Mw0KZ2F1c3NMZWdlbmRyZShuPTMsYT0tMSxiPTEpDQojIHVudHVrIG49NA0KZ2F1c3NMZWdlbmRyZShuPTQsYT0tMSxiPTEpDQojIHVudHVrIG49NQ0KZ2F1c3NMZWdlbmRyZShuPTUsYT0tMSxiPTEpDQojIHVudHVrIG49Ng0KZ2F1c3NMZWdlbmRyZShuPTYsYT0tMSxiPTEpDQojIHVudHVrIG49Nw0KZ2F1c3NMZWdlbmRyZShuPTcsYT0tMSxiPTEpDQpgYGANCg0KSmlrYSBkb21haW4gaW50ZWdyYWwgYmVydXBhICRbYSxiXSQsIG1ha2EgcGVybHUgYWRhIHRyYW5zZm9ybWFzaSBzZWRlbWlraWFuIHNlaGluZ2dhIGRvbWFpbiBpbnRlZ3JhbCBueWEgbWVuamFkaSAkWy0xLDFdJA0KDQokJFxpbnRfe2F9XntifWYoeClkeCBcc3BhY2UgXHJpZ2h0YXJyb3cgXHNwYWNlIFxpbnRfey0xfV57MX1mKHQpZHQgJCQNClRyYW5zZm9ybWFzaSBpbmkgZGlsYWt1a2FuIGRlbmdhbiBtZW5ndWJhaCB2YXJpYWJlbCBzZWJhZ2FpIGJlcmlrdXQNCg0KJCR4PVxmcmFjezF9ezJ9W3QoYi1hKSthK2JdJCQNCg0KDQpkYW4NCg0KDQokJGR4PVxmcmFjezF9ezJ9KGItYSlkdCQkDQoNClNlaGluZ2dhIGludGVncmFsbnlhIG1lbmphZGkNCg0KDQokJA0KXGludF97YX1ee2J9Zih4KWR4ID0gXGludF97LTF9XnsxfWYgXGxlZnQoIFxmcmFjezF9ezJ9W3QoYi1hKSthK2JdIFxyaWdodClcZnJhY3sxfXsyfShiLWEpZHQNCiQkDQoNCg0KDQojIyMgTWV0b2RlIEludGVncmFsIE1vbnRlIENhcmxvIA0KDQoNCmBgYHtyfQ0KbWNfaW50ZWdyYWwgPC0gZnVuY3Rpb24oZnRuLCBhLCBiLG09MTAwMCl7DQogICNNZW1iYW5na2l0a2FuIHggYmVyZGlzdHJpYnVzaSBVKGEsYikNCiAgeCA8LSBydW5pZihtLGEsYikNCiAgIyBNZW5naGl0dW5nIHJhdGEtcmF0YSBkYXJpIG91dHB1dCBmdW5nc2kNCiAgR3ggPC0gZnRuKHgpDQogIEd4X20gPC0gbWVhbihHeCkNCiAgdGhldGEuaGF0IDwtIChiLWEpKkd4X20NCiAgcmV0dXJuKHRoZXRhLmhhdCkNCn0NCmBgYA0KDQojIyMgSW50ZWdyYWwgbnVtZXJpayBkZW5nYW4gcGFja2FnZSBkaSBSDQoNClNlbGFpbiAqKnVzZXItZGVmaW5lZCBmdW5jdGlvbioqIGRpYXRhcyB0ZXJkYXBhdCBiZWJlcmFwYSBmdW5nc2kgeWFuZyBiaXNhIGxhbmdzdW5nIGRpZ3VuYWthbiwgeWFpdHUNCg0KMS4gTWV0b2RlIFRyYXBlem9pZGFsIG1lbmdndW5ha2FuIGZ1bmdzaSBgdHJhcHpmdW5gIGRhcmkgcGFja2FnZSBgcHJhY21hYA0KMi4gTWV0b2RlIFNpbXBzb24gYmVsdW0gYWRhIGZ1bmdzaSBzZWNhcmEga2h1c3VzDQozLiBNZXRvZGUgQWRhcHRpdmUgUXVhZHJhdHVyZSBtZW5nZ3VuYWthbiBmdW5nc2kgYGludGVncmF0ZWANCjQuIE1ldG9kZSBNb250ZSBDYXJsbyBiZWx1bSBhZGEgZnVuZ3NpIHNlY2FyYSBraHVzdXMuDQoNCiMjIFNvYWwgZGFuIFBlbWJhaGFzYW4NCg0KIyMjIFNvYWwgMSANCg0KR3VuYWthbiBtZXRvZGUgdHJhcGV6b2lkYWwgdW50dWsgbWVuZ2ludGVncmFsa2FuIGZ1bmdzaSBiZXJpa3V0IHVudHVrICRuPTQkDQoNCiQkXGludF97MX1eezV9IFxmcmFjezF9e3h9IGR4ICQkDQoNCg0KYS4gSGl0dW5nbGFoIHRhbnBhIG1lbmdndW5ha2FuIHNvZnR3YXJlDQpiLiBIaXR1bmdsYWggbWVuZ2d1bmFrYW4gUiBkZW5nYW4gKip1c2VyLWRlZmluZWQgZnVuY3Rpb24qKg0KYy4gSGl0dW5nbGFoIG1lbmdndW5ha2FuIFIgZnVuZ3NpIGB0cmFwemZ1bmAgZGFyaSBwYWNrYWdlIGBwcmFjbWFgDQpkLiBIaXR1bmdsYWggbWVuZ2d1bmFrYW4gUiBkZW5nYW4gKip1c2VyLWRlZmluZWQgZnVuY3Rpb24qKiBoaW5nZ2EgaGFzaWwgaW50ZWdyYWwgbWVuZGVrYXRpIGhhc2lsIGV4YWN0LW55YSBkZW5nYW4gdG9sZXJhbnNpICQwLjAwMDUkDQoNCkphd2FiOg0KDQphLiBIaXR1bmdsYWggdGFucGEgbWVuZ2d1bmFrYW4gc29mdHdhcmUNCg0KRGlrZXRhaHVpDQoNCiQkZih4KT1cZnJhY3sxfXt4fSwgYT0xLGI9NSQkDQoNClBhbmphbmcgc2V0aWFwIHN1YiBpbnRlcnZhbCBhZGFsYWggc2ViYWdhaSBiZXJpa3V0Og0KDQokJGg9XGZyYWN7Yi1hfXtufT1cZnJhY3s1LTF9ezR9PVxmcmFjezR9ezR9PTEkJA0KS2FyZW5hICRuPTQkIG1ha2EgYmVudHVrIGRhcmkgbWV0b2RlIHRyYXBlem9pZGFsIGFkYWxhaA0KDQokJFRfezR9ID0gXGZyYWN7aH17Mn0gW2YoeF97MH0pKzJmKHhfezF9KSsyZih4X3syfSkrMmYoeF97M30pK2YoeF97NH0pXSQkDQoNCk1lbmdoaXR1bmcgZnVuZ3NpICRmKHgpJCBwYWRhIHNldGlhcCAkeF97aX0kDQoNCiQkZih4X3swfSk9ZigxKT1cZnJhY3sxfXsxfT0xJCQNCiQkZih4X3sxfSk9ZigyKT1cZnJhY3sxfXsyfSQkDQoNCiQkZih4X3syfSk9ZigzKT1cZnJhY3sxfXszfSQkDQokJGYoeF97M30pPWYoNCk9XGZyYWN7MX17NH0kJA0KDQokJGYoeF97NH0pPWYoNSk9XGZyYWN7MX17NX0kJA0KDQprYXJlbmEgJGg9MSQgZGlwZXJvbGVoDQoNCiQkVF97NH0gPSBcZnJhY3sxfXsyfSBbMSsyIFxjZG90IFxmcmFjezF9ezJ9KzIgXGNkb3QgXGZyYWN7MX17M30rMiBcY2RvdCBcZnJhY3sxfXs0fSsgXGZyYWN7MX17NX1dPVxmcmFjezEwMX17NjB9PTEuNjgzMzMzJCQNClNlaGluZ2dhDQoNCiQkXGludF97MX1eezV9IFxmcmFjezF9e3h9IGR4IFxhcHByb3ggVF97NH09MS42ODMzMzMgJCQNCg0KSmlrYSBraXRhIGJhbmRpbmdrYW4gZGVuZ2FuIGhhc2lsIHlhbmcgZGlkYXBhdGthbiBzZWNhcmEgZXhhY3QgYWRhbGFoIHNlYmFnYWkgYmVyaWt1dDoNCg0KJCRcaW50X3sxfV57NX0gXGZyYWN7MX17eH0gZHg9XGxvZ3t4fXxfezF9Xns1fT1cbG9nezV9LVxsb2d7MX09MS42MDkkJA0KDQoNCmIuIEhpdHVuZ2xhaCBtZW5nZ3VuYWthbiBSIGRlbmdhbiAqKnVzZXItZGVmaW5lZCBmdW5jdGlvbioqDQoNCm1lbmRlZmluaXNpa2FuIGZ1bmdzaSAkZih4KSQNCg0KYGBge3J9DQpmIDwtIGZ1bmN0aW9uKHgpew0KICAxL3gNCn0NCmBgYA0KDQoNCk1lbmdoaXR1bmcgaW50ZWdyYWwgbWVuZ2d1bmFrYW4gZnVuZ3NpIGB0cmFwZXpvaWRgDQoNCg0KYGBge3J9DQp0cmFwZXpvaWQoZiwxLDUsbiA9IDQpDQpgYGANCg0KYy4gSGl0dW5nbGFoIG1lbmdndW5ha2FuIFIgZnVuZ3NpIGB0cmFwemZ1bmAgZGFyaSBwYWNrYWdlIGBwcmFjbWFgDQoNCmBgYHtyfQ0KdHJhcHpmdW4oZiwxLDUsbWF4aXQgPSAgNCkNCmBgYA0KDQoNCmQuIEhpdHVuZ2xhaCBtZW5nZ3VuYWthbiBSIGhpbmdnYSBoYXNpbCBpbnRlZ3JhbCBtZW5kZWthdGkgaGFzaWwgZXhhY3QtbnlhIGRlbmdhbiB0b2xlcmFuc2kgJDAuMDAwNSQNCg0KYGBge3J9DQpleGFjdF92YWx1ZT0xLjYwOQ0KdG9sIDwtICAwLjAwMDUNCmVyciA8LSAxDQpuID0gNA0KDQp3aGlsZShlcnI+dG9sKXsNCiAgcmVzX3RyYXAgPC0gdHJhcGV6b2lkKGYsMSw1LG4gPSBuKQ0KICANCiAgZXJyIDwtIGFicyhyZXNfdHJhcC1leGFjdF92YWx1ZSkNCiAgDQogIGNhdCgibj0iLG4sIiwgcmVzdWx0PSIscmVzX3RyYXAsIiwgZXJyb3I9IixlcnIsIlxuIixzZXAgPSAiIikNCiAgDQogIG49bisxDQogIGlmKG49PTEwMDApew0KICAgIGJyZWFrDQogIH0NCiAgDQp9DQpgYGANCg0KDQojIyBTb2FsIDINCg0KR3VuYWthbiBtZXRvZGUgc2ltcHNvbiB1bnR1ayBtZW5naW50ZWdyYWxrYW4gZnVuZ3NpIGJlcmlrdXQgdW50dWsgbj00LCBkZW5nYW4NCg0KJCRcaW50X3stMn1eezJ9IDNee3h9IGR4ICQkDQoNCg0KDQphLiBIaXR1bmdsYWggdGFucGEgbWVuZ2d1bmFrYW4gc29mdHdhcmUNCmIuIEhpdHVuZ2xhaCBtZW5nZ3VuYWthbiBSIA0KYy4gSGl0dW5nbGFoIG1lbmdndW5ha2FuIFIgaGluZ2dhIGhhc2lsIGludGVncmFsIG1lbmRla2F0aSBoYXNpbCBleGFjdC1ueWEgZGVuZ2FuIHRvbGVyYW5zaSAkMC4wMDAxJA0KDQoNCkphd2FiOg0KDQphLiBIaXR1bmdsYWggdGFucGEgbWVuZ2d1bmFrYW4gc29mdHdhcmUNCg0KRGlrZXRhaHVpDQoNCiQkZih4KT0zXnt4fSwgYT0tMixiPTIkJA0KDQpQYW5qYW5nIHNldGlhcCBzdWIgaW50ZXJ2YWwgYWRhbGFoIHNlYmFnYWkgYmVyaWt1dDoNCg0KJCRoPVxmcmFje2ItYX17bn09XGZyYWN7Mi0oLTIpfXs0fT1cZnJhY3s0fXs0fT0xJCQNCg0KS2FyZW5hICRuPTQkIG1ha2EgYmVudHVrIGRhcmkgbWV0b2RlIFNpbXBzb24gYWRhbGFoDQoNCiQkU197NH0gPSBcZnJhY3tofXszfSBbZih4X3swfSkrNGYoeF97MX0pKzJmKHhfezJ9KSs0Zih4X3szfSkrZih4X3s0fSldJCQNCg0KTWVuZ2hpdHVuZyBmdW5nc2kgJGYoeCkkIHBhZGEgc2V0aWFwICR4X3tpfSQNCg0KJCRmKHhfezB9KT1mKDEpPTNeey0yfT1cZnJhY3sxfXs5fSQkDQokJGYoeF97MX0pPWYoMik9M157LTF9PVxmcmFjezF9ezN9JCQNCg0KJCRmKHhfezJ9KT1mKDMpPTNeezB9PTEkJA0KJCRmKHhfezN9KT1mKDQpPTNeezF9PTMkJA0KDQokJGYoeF97NH0pPWYoNSk9M157Mn09OSQkDQoNCmthcmVuYSAkaD0xJCBkaXBlcm9sZWgNCg0KJCRTX3s0fSA9IFxmcmFjezF9ezN9IFxsZWZ0W1xmcmFjezF9ezl9KzQgXGNkb3QgXGZyYWN7MX17M30rMiBcY2RvdCAxKzQgXGNkb3QgMys5IFxyaWdodF09XGZyYWN7MjIwfXsyN309OC4xNDgkJA0KU2VoaW5nZ2ENCg0KJCRcaW50X3stMn1eezJ9IDNee3h9IGR4IFxhcHByb3ggU197NH09OC4xNDggJCQNCg0KSmlrYSBraXRhIGJhbmRpbmdrYW4gZGVuZ2FuIGhhc2lsIHlhbmcgZGlkYXBhdGthbiBzZWNhcmEgZXhhY3QgYWRhbGFoIHNlYmFnYWkgYmVyaWt1dDoNCg0KJCRcaW50X3stMn1eezJ9IDNee3h9IGR4PVxmcmFjezNee3h9fXtcbG9nezN9fSAgfF97LTJ9XnsyfT1cZnJhY3szXnsyfX17XGxvZ3szfX0tXGZyYWN7M157LTJ9fXtcbG9nezN9fT1cZnJhY3s4MH17OVxsb2d7M319PTguMDkxJCQNCg0KDQoNCmIuIEhpdHVuZ2xhaCBtZW5nZ3VuYWthbiBSIA0KDQoNCm1lbmRlZmluaXNpa2FuIGZ1bmdzaSAkZih4KSQNCg0KDQpgYGB7cn0NCmYyIDwtIGZ1bmN0aW9uKHgpew0KICAzXnt4fQ0KfQ0KYGBgDQoNCg0KTWVuZ2hpdHVuZyBpbnRlZ3JhbCBtZW5nZ3VuYWthbiBtZXRvZGUgc2ltcHNvbg0KDQoNCmBgYHtyfQ0Kc2ltcHNvbl9uKGYyLC0yLDIsbiA9IDQpDQpgYGANCg0KDQpjLiBIaXR1bmdsYWggbWVuZ2d1bmFrYW4gUiBoaW5nZ2EgaGFzaWwgaW50ZWdyYWwgbWVuZGVrYXRpIGhhc2lsIGV4YWN0LW55YSBkZW5nYW4gdG9sZXJhbnNpICQwLjAwMDEkDQoNCmBgYHtyfQ0KZXhhY3RfdmFsdWU9OC4wOTENCnRvbCA8LSAgMC4wMDAxDQplcnIgPC0gMQ0KbiA9IDQNCg0Kd2hpbGUoZXJyPnRvbCl7DQogIHJlc19zaW1wIDwtIHNpbXBzb25fbihmMiwtMiwyLG4gPSBuKQ0KICANCiAgZXJyIDwtIGFicyhyZXNfc2ltcC1leGFjdF92YWx1ZSkNCiAgDQogIGNhdCgibj0iLG4sIiwgcmVzdWx0PSIscmVzX3NpbXAsIiwgZXJyb3I9IixlcnIsIlxuIixzZXAgPSAiIikNCiAgDQogIG49bisxDQogIGlmKG49PTEwMDApew0KICAgIGJyZWFrDQogIH0NCiAgDQp9DQpgYGANCg0KDQoNCiMjIyBTb2FsIDMNCg0KR3VuYWthbiBtZXRvZGUgZm91ci1wb2ludCBnYXVzc2lhbiBxdWFkcmF0dXIgdW50dWsgbWVuZ2ludGVncmFsa2FuIGZ1bmdzaSBiZXJpa3V0DQoNCiQkXGludF97MH1eezN9IFxleHAoLXheMikgZHggJCQNCg0KYS4gSGl0dW5nbGFoIHRhbnBhIG1lbmdndW5ha2FuIHNvZnR3YXJlDQpiLiBIaXR1bmdsYWggbWVuZ2d1bmFrYW4gUiBkZW5nYW4gZnVuZ3NpIGBnYXVzc0xlZ2VuZHJlYCBkZW5nYW4gbWVuZ2d1bmFrYW4gZG9tYWluICRbLTEsMV0kDQpjLiBIaXR1bmdsYWggbWVuZ2d1bmFrYW4gUiBkZW5nYW4gZnVuZ3NpIGBnYXVzc0xlZ2VuZHJlYCBkZW5nYW4gbWVuZ2d1bmFrYW4gZG9tYWluIGFzYWwNCmQuIEhpdHVuZ2xhaCBtZW5nZ3VuYWthbiBSIGhpbmdnYSBoYXNpbCBpbnRlZ3JhbCBtZW5kZWthdGkgaGFzaWwgZXhhY3QtbnlhIGRlbmdhbiB0b2xlcmFuc2kgJDAuMDAwMDEkDQoNCg0KDQphLiBIaXR1bmdsYWggdGFucGEgbWVuZ2d1bmFrYW4gc29mdHdhcmUNCg0KRGlrZXRhaHVpDQoNCiQkZih4KT1cZXhwKC14XjIpLCBhPTAsYj0zJCQNCkthcmVuYSBwYWRhIHNvYWwgeWFuZyBkaWluZ2lua2FuIGFkYWxhaCBtZXRvZGUgZm91ci1wb2ludCBnYXVzc2lhbiBxdWFkcmF0dXIsIGJlcmFydGkgbmlsYWkgJG49NCQuIEJlcmRhc2Fya2FuIHRhYmVsIGdhdXNzaWFuIHF1YWRyYXR1ciBuaWxhaS1uaWxhaSBrb2VmaXNpZW4gZGFuIHRpdGlrIGdhdXNzIGFkYWxhaCBzZWJhZ2FpIGJlcmlrdXQ6DQoNCmBgYHtyfQ0KZ3Q6Omd0KGRhdGEgPSBib2JvdF9nY1szLF0pDQpgYGANCg0KKipsYW5na2FoIDEqKg0KDQpTZWJlbHVtIGtpdGEgbWVuZ2d1bmFrYW4gbmlsYWktbmlsYWkga29lZmlzaWVuIGRhbiB0aXRpayBnYXVzcywgcGVybHUgZGlsYWt1a2FuIHRyYW5zZm9ybWFzaSBzZWhpbmdnYSBkb21haW4gaW50ZWdyYWwgbWVuamFkaSAkWy0xLDFdJC4NCg0KDQokJHg9XGZyYWN7MX17Mn1bdChiLWEpK2ErYl0kJA0KJCR4PVxmcmFjezF9ezJ9W3QoMy0wKSszKzBdJCQNCg0KJCR4PVxmcmFjezF9ezJ9WzN0KzNdPVxmcmFjezN9ezJ9W3QrMV0kJA0KDQoNCmRhbg0KDQoNCiQkZHg9XGZyYWN7MX17Mn0oYi1hKWR0JCQNCiQkZHg9XGZyYWN7MX17Mn0oMy0wKWR0PVxmcmFjezN9ezJ9ZHQkJA0KDQoNCg0KDQpTZWhpbmdnYSBpbnRlZ3JhbG55YSBtZW5qYWRpDQoNCiQkDQpcaW50X3swfV57M31cZXhwKC14XjIpZHggPSBcaW50X3stMX1eezF9XGV4cFxsZWZ0KC1cbGVmdFtcZnJhY3szfXsyfVt0KzFdXHJpZ2h0XV57Mn1ccmlnaHQpXGZyYWN7M317Mn1kdA0KJCQNCg0KDQoNCg0KKipsYW5na2FoIDIqKg0KDQoNCg0KS2VtdWRpYW4sIGtpdGEgbWVuZ2d1bmFrYW4gbmlsYWktbmlsYWkga29lZmlzaWVuIGRhbiB0aXRpayBnYXVzcyBzYWF0ICRuPTQkDQoNCiQkDQpcaW50X3stMX1eezF9XGZyYWN7M317Mn1cZXhwXGxlZnQoLVxsZWZ0W1xmcmFjezN9ezJ9W3QrMV1ccmlnaHRdXnsyfVxyaWdodClcYXBwcm94IEkgPSBDX3sxfWYodF97MX0pK0NfezJ9Zih0X3syfSkrQ197M31mKHRfezN9KStDX3s0fWYodF97NH0pDQokJA0KDQokJA0KSSA9IENfezF9Zih0X3sxfSkrQ197Mn1mKHRfezJ9KStDX3szfWYodF97M30pK0NfezR9Zih0X3s0fSkNCiQkDQoNCiQkDQpJPSAwLjM0Nzg1NDhmKC0wLjg2MTEzNjMpKzAuNjUyMTQ1MmYoLTAuMzM5OTgxMCkrMC42NTIxNDUyZigwLjMzOTk4MTApKzAuMzQ3ODU0OGYoMC44NjExMzYzKQ0KJCQNCk1lbmdoaXR1bmcgZnVuZ3NpICRmKHgpJCBwYWRhIHNldGlhcCAkeF97aX0kDQoNCiQkZigtMC44NjExMzYzKT1cZnJhY3szfXsyfVxleHBcbGVmdCgtXGxlZnRbXGZyYWN7M317Mn1bLTAuODYxMTM2MysxXVxyaWdodF1eezJ9XHJpZ2h0KT0xLjQzNjMxMSQkDQoNCiQkZigtMC4zMzk5ODEwKT1cZnJhY3szfXsyfVxleHBcbGVmdCgtXGxlZnRbXGZyYWN7M317Mn1bLTAuMzM5OTgxMCsxXVxyaWdodF1eezJ9XHJpZ2h0KT0wLjU2Mjg3ODckJA0KDQokJGYoMC4zMzk5ODEwKT1cZnJhY3szfXsyfVxleHBcbGVmdCgtXGxlZnRbXGZyYWN7M317Mn1bMC4zMzk5ODEwKzFdXHJpZ2h0XV57Mn1ccmlnaHQpPTAuMDI2Mzk2NTkkJA0KDQokJGYoMC44NjExMzYzKT1cZnJhY3szfXsyfVxleHBcbGVmdCgtXGxlZnRbXGZyYWN7M317Mn1bMC44NjExMzYzKzFdXHJpZ2h0XV57Mn1ccmlnaHQpPTAuMDAwNjE4NSQkDQoNCnNlaGluZ2dhDQoNCiQkDQpJID0gMC4zNDc4NTggXGNkb3QgMS40MzYzMTErMC42NTIxNDUyIFxjZG90IDAuNTYyODc4NyswLjY1MjE0NTIgXGNkb3QgMC4wMjYzOTY1OSsgMC4zNDc4NTggXGNkb3QgMC4wMDA2MTg1ID0gMC44ODQxMzU5DQokJA0KJCQNClxpbnRfezB9XnszfVxleHAoLXheMilkeCBcYXBwcm94IEkgPSAwLjg4NDEzNTkNCiQkDQpqaWthIGtpdGEgYmFuZGluZ2thbiBkZW5nYW4gaGFzaWwgeWFuZyBkaWRhcGF0a2FuIHNlY2FyYSBleGFjdCBhZGFsYWggc2ViYWdhaSBiZXJpa3V0Og0KDQoNCiQkDQpcaW50X3swfV57M31cZXhwKC14XjIpZHgNCiQkDQokJA0KPSBcZnJhY3tcc3FydFxwaX17Mn0gXGludF97MH1eezN9XGZyYWN7MlxleHAoLXheMil9e1xzcXJ0XHBpfWR4DQokJA0KYmVudHVrICRcaW50X3swfV57en1cZnJhY3syXGV4cCgteF4yKX17XHNxcnRccGl9ZHgkIG1lcnVwYWthbiBiZW50dWsgaW50ZWdyYWwga2h1c3VzIHlhbmcgYmVybmFtYSBHYXVzcyBlcnJvciBmdW5jdGlvbiAkXHRleHR7ZXJmfSh6KSQNCg0KJCQNCj1cZnJhY3tcc3FydFxwaX17Mn0gXHRleHR7ZXJmfSgzKSA9IDAuODg2MjA3DQokJA0KDQoNCg0KYi4gSGl0dW5nbGFoIG1lbmdndW5ha2FuIFIgZGVuZ2FuIGZ1bmdzaSBgZ2F1c3NMZWdlbmRyZWAgZGVuZ2FuIG1lbmdndW5ha2FuIGRvbWFpbiAkWy0xLDFdJA0KDQptZW5kZWZpbmlzaWthbiBmdW5nc2kgaGFzaWwgdHJhbnNmb3JtYXNpICRmKHQpJA0KDQpgYGB7cn0NCmZ0IDwtIGZ1bmN0aW9uKHQpew0KICAoMy8yKSpleHAoKC0oMy8yKih0KzEpKV4yKSkNCn0NCmBgYA0KDQpMZWdlbmRyZSBvcmRlciA0DQoNCmBgYHtyfQ0KZ0wgPC0gZ2F1c3NMZWdlbmRyZShuID0gNCxhID0gLTEsMSkNCg0KYGBgDQoNCm1lbmRlZmluaXNpa2FuIGtvZWZpc2llbiBkYW4gZ2F1c3MgcG9pbnQNCg0KYGBge3J9DQpDaSA8LSBnTCR3ICMga29lZmlzaWVuDQpDaQ0KeGkgPC0gZ0wkeCAjIGdhdXNzIHBvaW50DQp4aQ0KYGBgDQoNCk1lbmdoaXR1bmcgaW50ZWdyYWwgDQoNCmBgYHtyfQ0KSSA8LSBzdW0oQ2kgKiBmdCh4aSkpDQpJDQpgYGANCg0KYy4gSGl0dW5nbGFoIG1lbmdndW5ha2FuIFIgZGVuZ2FuIGZ1bmdzaSBgZ2F1c3NMZWdlbmRyZWAgZGVuZ2FuIG1lbmdndW5ha2FuIGRvbWFpbiBhc2FsDQoNCm1lbmRlZmluaXNpa2FuIGZ1bmdzaSAgJGYoeCkkDQoNCmBgYHtyfQ0KZjMgPC0gZnVuY3Rpb24oeCl7DQogIGV4cCgtKHheMikpDQp9DQpgYGANCg0KTGVnZW5kcmUgb3JkZXIgNCBkZW5nYW4gZG9tYWluICRbMCwzXSQNCg0KYGBge3J9DQpnTCA8LSBnYXVzc0xlZ2VuZHJlKG4gPSA0LGEgPSAwLDMpDQoNCmBgYA0KDQptZW5kZWZpbmlzaWthbiBrb2VmaXNpZW4gZGFuIGdhdXNzIHBvaW50DQoNCmBgYHtyfQ0KQ2kgPC0gZ0wkdyAjIGtvZWZpc2llbg0KQ2kNCnhpIDwtIGdMJHggIyBnYXVzcyBwb2ludA0KeGkNCmBgYA0KDQpNZW5naGl0dW5nIGludGVncmFsIA0KDQpgYGB7cn0NCkkgPC0gc3VtKENpICogZjMoeGkpKQ0KSQ0KYGBgDQoNCmQuIEhpdHVuZ2xhaCBtZW5nZ3VuYWthbiBSIGhpbmdnYSBoYXNpbCBpbnRlZ3JhbCBtZW5kZWthdGkgaGFzaWwgZXhhY3QtbnlhIGRlbmdhbiB0b2xlcmFuc2kgJDAuMDAwMDEkDQoNCmBgYHtyfQ0KZXhhY3RfdmFsdWU9MC44ODYyMDcNCnRvbCA8LSAgMC4wMDAwMQ0KZXJyIDwtIDENCm4gPSA0DQoNCndoaWxlKGVycj50b2wpew0KICANCiAgZ0wgPC0gZ2F1c3NMZWdlbmRyZShuID0gbixhID0gMCwzKQ0KDQogQ2kgPC0gZ0wkdyAjIGtvZWZpc2llbg0KIHhpIDwtIGdMJHggIyBnYXVzcyBwb2ludA0KICANCiAgcmVzX2dsIDwtIHN1bShDaSAqIGYzKHhpKSkNCg0KICBlcnIgPC0gYWJzKHJlc19nbC1leGFjdF92YWx1ZSkNCiAgDQogIGNhdCgibj0iLG4sIiwgcmVzdWx0PSIscmVzX2dsLCIsIGVycm9yPSIsZXJyLCJcbiIsc2VwID0gIiIpDQogIA0KICBuPW4rMQ0KICBpZihuPT0xMDAwKXsNCiAgICBicmVhaw0KICB9DQogIA0KfQ0KYGBgDQoNCiMjIyBTb2FsIDQNCg0KRGlrZXRhaHVpIHBkZiAocHJvYmFiaWxpdHkgZGVuc2l0eSBmdW5jdGlvbikgZGFyaSBkaXN0aXJidXNpIG5vcm1hbCAkTigzMCw1KSQgYWRhbGFoIHNlYmFnYWkgYmVyaWt1dA0KDQokJA0KZih4fDMwLDUpPSBcZnJhY3sxfXs1XHNxcnR7MlxwaX19IFxleHB7XGxlZnRbLVxmcmFjezF9ezJ9IFxsZWZ0KCBcZnJhY3t4LTMwfXs1fSBccmlnaHQpXnsyfVxyaWdodF19DQokJA0KQ2FyaWxhaCBjZGYgKGN1bXVsYXRpdmUgZGVuc2l0eSBmdW5jdGlvbikgZGFyaSBkaXN0cmlidXNpICROKDMwLDUpJCB1bnR1ayAkeD0zMiQgZGVuZ2FuIG1lbmdndW5ha2FuIG1ldG9kZSBNb250ZSBDYXJsbyBkZW5nYW4gYmFueWFrbnlhIHNhbXBsaW5nIDEwMDAuDQoNCkphd2FiYW46DQoNCkNERiBkYXJpIHN1YXR1IGRpc3RyaWJ1c2kgZGlkZWZpbmlzaWthbiBzZWJhZ2FpIGJlcmlrdXQNCg0KDQokJA0KRih4KSA9IFxpbnRfey1caW5mdHl9Xnt4fSBmKHQpIGR0DQokJA0KDQpzZWhpbmdnYSBjZGYgZGFyaSBkaXN0cmlidXNpICROKDMwLDUpJCB1bnR1ayAkeD0zMiQgYWRhbGFoDQoNCg0KJCQNCkYoeD0zMnwzMCw1KSA9IFxpbnRfey1caW5mdHl9XnszMn0gXGZyYWN7MX17NVxzcXJ0ezJccGl9fSBcZXhwe1xsZWZ0Wy1cZnJhY3sxfXsyfSBcbGVmdCggXGZyYWN7dC0zMH17NX0gXHJpZ2h0KV57Mn1ccmlnaHRdfSBkdA0KJCQNCg0Ka2FyZW5hIGJhdGFzIGJhd2FoIGludGVncmFsIHRlcnNlYnV0ICQtXGluZnR5JCwga2l0YSBoYXJ1cyBtZWxha3VrYW4gdHJhbnNmb3JtYXNpIHNlZGltaWtpYW4gc2VoaW5nZ2EgYmF0YXMgYmF3YWgtbnlhIHRlcmJhdGFzIGRpIG5pbGFpIHRlcnRlbnR1LiBNZW51cnV0ICoqQ2hhcHJhIGRhbiBDYW5hbGUgKDIwMTUpKiosIGppa2EgYmF0YXMgYXRhcyBkYW4gYmF3YWggaW50ZWdyYWwgbWVtaWxpa2kgdGFuZGEgYmVyYmVkYSAocG9zaXRpdmUvbmVnYXRpdmUpIG1ha2EgcGVybHUgZGlsYWt1a2FuIHBlbWJhZ2lhbiB0ZXJsZWJpaCBkYWh1bHUgYWdhciBiYXRhcyBhdGFzIGRhbiBiYXdhaCBpbnRlZ3JhbCBtZW1pbGlraSB0YW5kYSB5YW5nIHNhbWEgc2ViZWx1bSBkaWxha3VrYW4gdHJhbnNmb3JtYXNpDQoNCiQkDQpGKHg9MzJ8MzAsNSkgPSBcaW50X3stXGluZnR5fV57LTF9IFxmcmFjezF9ezVcc3FydHsyXHBpfX0gXGV4cHtcbGVmdFstXGZyYWN7MX17Mn0gXGxlZnQoIFxmcmFje3QtMzB9ezV9IFxyaWdodCleezJ9XHJpZ2h0XX0gZHQgKyBcaW50X3stMX1eezMyfSBcZnJhY3sxfXs1XHNxcnR7MlxwaX19IFxleHB7XGxlZnRbLVxmcmFjezF9ezJ9IFxsZWZ0KCBcZnJhY3t0LTMwfXs1fSBccmlnaHQpXnsyfVxyaWdodF19IGR0DQokJA0KDQpCYXRhcyAkLTEkIGJpc2EgZGlnYW50aSBkZW5nYW4gYmlsYW5nYW4gbmVnYXRpdmUgYXBhcHVuIChkaWFuanVya2FuIHVudHVrIG1lbmRla2F0aSAwKSAgDQoNCg0KS2VtdWRpYW4gaW50ZWdyYWwNCg0KDQokJA0KXGludF97LVxpbmZ0eX1eey0xfSBcZnJhY3sxfXs1XHNxcnR7MlxwaX19IFxleHB7XGxlZnRbLVxmcmFjezF9ezJ9IFxsZWZ0KCBcZnJhY3t0LTMwfXs1fSBccmlnaHQpXnsyfVxyaWdodF19IGR0DQokJA0KDQp5YW5nIGFrYW4ga2l0YSBsYWt1a2FuIHRyYW5zZm9ybWFzaS4NCg0KbWlzYWxrYW4gDQoNCiQkDQpzID0gXGZyYWN7MX17dH0NCiQkDQoNCg0KDQokJA0KZHMgPVxmcmFjey0xfXt0XnsyfX0gZHQNCiQkDQoNCg0KJCQNCmR0ID0tdF57Mn0gZHMNCiQkDQoNCg0KJCQNCmR0ID0tXGxlZnQoXGZyYWN7MX17c31ccmlnaHQpXnsyfSBkcw0KJCQNCiQkDQpkdCA9LVxmcmFjezF9e3NeezJ9fSBkcw0KJCQNCg0KDQpzZWhpbmdnYSBkb21haW4gaW50ZWdyYWxueWEgcHVuIGJlcnViYWgNCg0KDQokJHQ9LVxpbmZ0eSBccmlnaHRhcnJvdyBzPVxmcmFjezF9e3R9PVxmcmFjezF9ey1caW5mdHl9PTAgJCQNCiQkdD0tMSBccmlnaHRhcnJvdyBzPVxmcmFjezF9e3R9PVxmcmFjezF9ey0xfT0tMSAkJA0KamFkaSBpbnRlZ3JhbCB5YW5nIGFrYW4ga2l0YSBjYXJpIGFkYWxhaA0KDQokJA0KXGludF97MH1eey0xfSBcZnJhY3sxfXs1XHNxcnR7MlxwaX19IFxleHB7XGxlZnRbLVxmcmFjezF9ezJ9IFxsZWZ0KCBcZnJhY3tzLTMwfXs1fSBccmlnaHQpXnsyfVxyaWdodF19IFxsZWZ0KC1cZnJhY3sxfXtzXnsyfX1ccmlnaHQpIGRzDQokJA0KDQpiYXRhcyBhdGFzIGRhbiBiYXdhaCBpbnRlZ3JhbCBhdGFzIGJpc2EgZGlwZXJ0dWthcmthbiBkZW5nYW4gbWVuZ2FsaWthbiBkZW5nYW4gJC0xJCBhZ2FyIG1lbXVkYWhrYW4gcGVyaGl0dW5nYW4NCg0KDQokJA0KXGludF97LTF9XnswfSBcZnJhY3sxfXs1XHNxcnR7MlxwaX19IFxleHB7XGxlZnRbLVxmcmFjezF9ezJ9IFxsZWZ0KCBcZnJhY3tzLTMwfXs1fSBccmlnaHQpXnsyfVxyaWdodF19IFxsZWZ0KFxmcmFjezF9e3NeezJ9fVxyaWdodCkgZHMNCiQkDQoNCg0KDQpTZWxhbmp1dG55YSBraXRhIGFrYW4gbWVuZ2hpdHVuZyBjZGYgZGVuZ2FuIA0KDQoNCiQkDQpGKHg9MzJ8MzAsNSkgPSBcaW50X3stMX1eezB9IFxmcmFjezF9ezVcc3FydHsyXHBpfX0gXGV4cHtcbGVmdFstXGZyYWN7MX17Mn0gXGxlZnQoIFxmcmFje3MtMzB9ezV9IFxyaWdodCleezJ9XHJpZ2h0XX0gXGxlZnQoXGZyYWN7MX17c157Mn19XHJpZ2h0KSBkcyArIFxpbnRfey0xfV57MzJ9IFxmcmFjezF9ezVcc3FydHsyXHBpfX0gXGV4cHtcbGVmdFstXGZyYWN7MX17Mn0gXGxlZnQoIFxmcmFje3QtMzB9ezV9IFxyaWdodCleezJ9XHJpZ2h0XX0gZHQNCiQkDQoNCg0KTWVtYnVhdCBmdW5nc2kgZGkgUiBiZXJkYXNhcmthbiBoYXNpbCBkaWF0YXMNCg0KDQpgYGB7cn0NCmcxIDwtIGZ1bmN0aW9uKHMpIHsNCiAgKDEvKDUqc3FydCgyKnBpKSkpKmV4cCgtKDEvMikqKChzLTMwKS81KV4oMikpKigxLyhzXjIpKQ0KfQ0KYGBgDQoNCmBgYHtyfQ0KZzIgPC0gZnVuY3Rpb24oeCkgew0KICAoMS8oNSpzcXJ0KDIqcGkpKSkqZXhwKC0oMS8yKSooKHgtMzApLzUpXigyKSkNCn0NCg0KYGBgDQoNCg0KDQpgYGB7cn0NCnNldC5zZWVkKDEyMykNCmludF9nMSA8LSBtY19pbnRlZ3JhbChnMSxhPS0xLGI9MCxtID0gMTAwMCkNCmludF9nMQ0KYGBgDQoNCmBgYHtyfQ0Kc2V0LnNlZWQoMTIzKQ0KaW50X2cyIDwtIG1jX2ludGVncmFsKGcyLGE9LTEsYj0zMixtID0gMTAwMCkNCmludF9nMg0KYGBgDQoNCmBgYHtyfQ0KaW50X2cgPC0gaW50X2cxICsgaW50X2cyDQppbnRfZw0KYGBgDQoNCmphZGkgbmlsYWkgY2RmIGRhcmkgJE4oMzAsNSkkIHVudHVrICR4PTMyJCBhZGFsYWgNCg0KJCQNCkYoeD0zMnwzMCw1KSBcYXBwcm94IDAuNjQzNzcxNg0KJCQNCg0KIyMgUmVmZXJlbnNpDQoNCkdpbGF0LCBBbW9zIGFuZCBTdWJyYW1hbmlhbSxWaXNoLjIwMTMuTnVtZXJpY2FsIE1ldGhvZHMgZm9yIEVuZ2luZWVycyBhbmQgU2NpZW50aXN0czogQW4gSW50cm9kdWN0aW9uIHdpdGggQXBwbGljYXRpb25zIFVzaW5nIE1BVExBQiAzcmQgRWQuIFdpbGV5DQoNCkNoYXByYSxTdGV2ZW4gYW5kIENhbmFsZSxSYXltb25kLjIwMTUuTnVtZXJpY2FsIE1ldGhvZHMgZm9yIEVuZ2luZWVycyA3dGggRWQuIE1jR3Jhdy1IaWxsIEVkdWNhdGlvbjpOZXcgWW9yaw0KDQpodHRwczovL21hdGgyNC5uZXQvDQo=</div>
 
 
 
