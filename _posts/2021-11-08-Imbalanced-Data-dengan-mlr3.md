@@ -252,19 +252,6 @@ pre code {
 <li>Foreign worker (yes,no).</li>
 </ol>
 </div>
-<div id="airfoil-self-noise" class="section level3">
-<h3>Airfoil Self-Noise</h3>
-<p>Source:</p>
-<p>Provide the names, email addresses, institutions, and other contact information of the donors and creators of the data set. Donor: Dr Roberto Lopez robertolopez ‘@’ intelnics.com Intelnics</p>
-<p>Creators: Thomas F. Brooks, D. Stuart Pope and Michael A. Marcolini NASA</p>
-<p>Data Set Information:</p>
-<p>The NASA data set comprises different size NACA 0012 airfoils at various wind tunnel speeds and angles of attack. The span of the airfoil and the observer position were the same in all of the experiments.</p>
-<p>Attribute Information:</p>
-<p>This problem has the following inputs: 1. Frequency, in Hertzs. 2. Angle of attack, in degrees. 3. Chord length, in meters. 4. Free-stream velocity, in meters per second. 5. Suction side displacement thickness, in meters.</p>
-<p>The only output is: 6. Scaled sound pressure level, in decibels.</p>
-<p>Kedua data tersebut bisa didownload pada link berikut:</p>
-<p><a href="https://drive.google.com/drive/folders/1LC7j6BJQjxe_60HsaJ7tvlrwRMIsLMYv?usp=sharing">download data</a></p>
-</div>
 </div>
 <div id="package" class="section level2">
 <h2>Package</h2>
