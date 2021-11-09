@@ -337,7 +337,7 @@ task_credit$data() %&gt;% count(class)</code></pre>
 <!-- rnb-text-begin -->
 </div>
 <div id="menentukan-metode-imbalanced-yang-digunakan" class="section level2">
-<h2>Menentukan metode imbalanced yang digunakan</h2>
+<h2>Menentukan metode imbalanced</h2>
 <p>Dalam ekosistem <code>mlr3</code>, metode ini bisa diterapkan dengan menggunakan <strong>pipelines</strong> pada package <code>mlr3pipelines</code>. <strong>Pipeline</strong> pada <code>mlr3</code> memuat berbagai macam metode preprocessing data. Untuk menggunakan <strong>pipelines</strong>, kita perlu menjalankan fungsi <code>po</code> dengan argumen fungsi adalah nama <strong>pipelines</strong>-nya <code>po(&quot;namapipeline</code>). Argumen-argumen tambahan lain disesuaikan dengan nama <strong>pipelines</strong> yang dipilih. Daftar <strong>nama pipelines</strong> dapat dilihat pada web berikut:</p>
 <ol style="list-style-type: decimal">
 <li><a href="https://mlr3pipelines.mlr-org.com/reference/index.html" class="uri">https://mlr3pipelines.mlr-org.com/reference/index.html</a></li>
@@ -634,7 +634,7 @@ cwg_res$data() %&gt;%
 </div>
 </div>
 <div id="menentukan-model-yang-digunakan" class="section level2">
-<h2>Menentukan Model yang digunakan</h2>
+<h2>Menentukan Model</h2>
 <p>Kemudian kita akan menerapkan metode ini bersamaan dengan model-model berikut ini</p>
 <ol style="list-style-type: decimal">
 <li>Tree</li>
