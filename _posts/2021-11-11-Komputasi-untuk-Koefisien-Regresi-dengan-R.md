@@ -424,7 +424,7 @@ M_{n\times (p+1)} = \begin{pmatrix}
 <thead>
 <tr class="header">
 <th align="center">Tahap</th>
-<th align="center">Model</th>
+<th align="center">Persamaan</th>
 <th align="center">Koefisien</th>
 <th align="center">JKG</th>
 </tr>
@@ -1153,7 +1153,7 @@ coef_sweep_b2[4,4]</code></pre>
 <thead>
 <tr class="header">
 <th align="center">Tahap</th>
-<th align="center">Model</th>
+<th align="center">Persamaan</th>
 <th align="center">Koefisien</th>
 <th align="center">JKG</th>
 </tr>
