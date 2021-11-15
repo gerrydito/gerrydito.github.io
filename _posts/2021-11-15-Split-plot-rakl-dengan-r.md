@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Split Plot Rancangan Acak Kelompok Lengkap (RAL) dengan R
+title:  Split Plot Rancangan Acak Kelompok Lengkap (RAKL) dengan R
 categories: [R, Rancangan Percobaan]
 excerpt:
 ---
