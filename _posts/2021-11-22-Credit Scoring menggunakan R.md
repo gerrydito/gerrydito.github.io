@@ -244,7 +244,7 @@ library(ggpubr)</code></pre>
 <div id="data" class="section level2">
 <h2>Data</h2>
 <p>Data yang digunakan adalah data nasabah dummy yang bisa didownload pada link berikut</p>
-<p><a href="https://drive.google.com/drive/folders/1LC7j6BJQjxe_60HsaJ7tvlrwRMIsLMYv?usp=sharing">download data</a></p>
+<p><a href="https://drive.google.com/drive/folders/1BQovHeZMOYMzXRzNDm2-0LlW1T1w06HS?usp=sharing">download data</a></p>
 </div>
 <div id="import-data" class="section level2">
 <h2>Import Data</h2>
