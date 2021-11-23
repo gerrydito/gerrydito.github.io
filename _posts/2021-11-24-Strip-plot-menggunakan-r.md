@@ -386,7 +386,7 @@ ggplot(aes(x = varietas,
 <!-- rnb-plot-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Referensi</p>
+<h2>Referensi</h2>
 <p><a href="http://agroninfotech.blogspot.com/2018/06/strip-plot-analysis-using-r.html" class="uri">http://agroninfotech.blogspot.com/2018/06/strip-plot-analysis-using-r.html</a></p>
 <p>Gomez, Kwanchai A., Arturo A. Gomez, and Kwanchai A. Gomez. 1984. Statistical procedures for agricultural research. New York: Wiley.</p>
 <!-- rnb-text-end -->
