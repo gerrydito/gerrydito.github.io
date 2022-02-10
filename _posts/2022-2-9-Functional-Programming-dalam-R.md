@@ -214,8 +214,6 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">Functional Programming dalam R</h1>
-
 </div>
 
 
