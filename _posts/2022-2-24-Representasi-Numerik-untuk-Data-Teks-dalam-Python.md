@@ -4,6 +4,7 @@ title:  Reprenstasi Numerik untuk Data Teks dalam Python
 categories: [Natural Language Processing,Text Analytics,python]
 excerpt: 
 ---
+
 <html>
 <head><meta charset="utf-8" />
 
