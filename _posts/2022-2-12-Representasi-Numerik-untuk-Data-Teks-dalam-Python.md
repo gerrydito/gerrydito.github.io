@@ -12952,42 +12952,74 @@ ul.typeahead-list  > li > a.pull-right {
 /*# sourceMappingURL=style.min.css.map */
     </style>
 <style type="text/css">
-    .highlight .hll { background-color: #ffffcc }
-.highlight  { background: #ffffff; }
-.highlight .c { color: #008000 } /* Comment */
-.highlight .err { border: 1px solid #FF0000 } /* Error */
-.highlight .k { color: #0000ff } /* Keyword */
-.highlight .ch { color: #008000 } /* Comment.Hashbang */
-.highlight .cm { color: #008000 } /* Comment.Multiline */
-.highlight .cp { color: #0000ff } /* Comment.Preproc */
-.highlight .cpf { color: #008000 } /* Comment.PreprocFile */
-.highlight .c1 { color: #008000 } /* Comment.Single */
-.highlight .cs { color: #008000 } /* Comment.Special */
+    .highlight .hll { background-color: #4f424c }
+.highlight  { background: #2f1e2e; color: #e7e9db }
+.highlight .c { color: #776e71 } /* Comment */
+.highlight .err { color: #ef6155 } /* Error */
+.highlight .k { color: #815ba4 } /* Keyword */
+.highlight .l { color: #f99b15 } /* Literal */
+.highlight .n { color: #e7e9db } /* Name */
+.highlight .o { color: #5bc4bf } /* Operator */
+.highlight .p { color: #e7e9db } /* Punctuation */
+.highlight .ch { color: #776e71 } /* Comment.Hashbang */
+.highlight .cm { color: #776e71 } /* Comment.Multiline */
+.highlight .cp { color: #776e71 } /* Comment.Preproc */
+.highlight .cpf { color: #776e71 } /* Comment.PreprocFile */
+.highlight .c1 { color: #776e71 } /* Comment.Single */
+.highlight .cs { color: #776e71 } /* Comment.Special */
+.highlight .gd { color: #ef6155 } /* Generic.Deleted */
 .highlight .ge { font-style: italic } /* Generic.Emph */
-.highlight .gh { font-weight: bold } /* Generic.Heading */
-.highlight .gp { font-weight: bold } /* Generic.Prompt */
+.highlight .gh { color: #e7e9db; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #48b685 } /* Generic.Inserted */
+.highlight .gp { color: #776e71; font-weight: bold } /* Generic.Prompt */
 .highlight .gs { font-weight: bold } /* Generic.Strong */
-.highlight .gu { font-weight: bold } /* Generic.Subheading */
-.highlight .kc { color: #0000ff } /* Keyword.Constant */
-.highlight .kd { color: #0000ff } /* Keyword.Declaration */
-.highlight .kn { color: #0000ff } /* Keyword.Namespace */
-.highlight .kp { color: #0000ff } /* Keyword.Pseudo */
-.highlight .kr { color: #0000ff } /* Keyword.Reserved */
-.highlight .kt { color: #2b91af } /* Keyword.Type */
-.highlight .s { color: #a31515 } /* Literal.String */
-.highlight .nc { color: #2b91af } /* Name.Class */
-.highlight .ow { color: #0000ff } /* Operator.Word */
-.highlight .sb { color: #a31515 } /* Literal.String.Backtick */
-.highlight .sc { color: #a31515 } /* Literal.String.Char */
-.highlight .sd { color: #a31515 } /* Literal.String.Doc */
-.highlight .s2 { color: #a31515 } /* Literal.String.Double */
-.highlight .se { color: #a31515 } /* Literal.String.Escape */
-.highlight .sh { color: #a31515 } /* Literal.String.Heredoc */
-.highlight .si { color: #a31515 } /* Literal.String.Interpol */
-.highlight .sx { color: #a31515 } /* Literal.String.Other */
-.highlight .sr { color: #a31515 } /* Literal.String.Regex */
-.highlight .s1 { color: #a31515 } /* Literal.String.Single */
-.highlight .ss { color: #a31515 } /* Literal.String.Symbol */
+.highlight .gu { color: #5bc4bf; font-weight: bold } /* Generic.Subheading */
+.highlight .kc { color: #815ba4 } /* Keyword.Constant */
+.highlight .kd { color: #815ba4 } /* Keyword.Declaration */
+.highlight .kn { color: #5bc4bf } /* Keyword.Namespace */
+.highlight .kp { color: #815ba4 } /* Keyword.Pseudo */
+.highlight .kr { color: #815ba4 } /* Keyword.Reserved */
+.highlight .kt { color: #fec418 } /* Keyword.Type */
+.highlight .ld { color: #48b685 } /* Literal.Date */
+.highlight .m { color: #f99b15 } /* Literal.Number */
+.highlight .s { color: #48b685 } /* Literal.String */
+.highlight .na { color: #06b6ef } /* Name.Attribute */
+.highlight .nb { color: #e7e9db } /* Name.Builtin */
+.highlight .nc { color: #fec418 } /* Name.Class */
+.highlight .no { color: #ef6155 } /* Name.Constant */
+.highlight .nd { color: #5bc4bf } /* Name.Decorator */
+.highlight .ni { color: #e7e9db } /* Name.Entity */
+.highlight .ne { color: #ef6155 } /* Name.Exception */
+.highlight .nf { color: #06b6ef } /* Name.Function */
+.highlight .nl { color: #e7e9db } /* Name.Label */
+.highlight .nn { color: #fec418 } /* Name.Namespace */
+.highlight .nx { color: #06b6ef } /* Name.Other */
+.highlight .py { color: #e7e9db } /* Name.Property */
+.highlight .nt { color: #5bc4bf } /* Name.Tag */
+.highlight .nv { color: #ef6155 } /* Name.Variable */
+.highlight .ow { color: #5bc4bf } /* Operator.Word */
+.highlight .w { color: #e7e9db } /* Text.Whitespace */
+.highlight .mb { color: #f99b15 } /* Literal.Number.Bin */
+.highlight .mf { color: #f99b15 } /* Literal.Number.Float */
+.highlight .mh { color: #f99b15 } /* Literal.Number.Hex */
+.highlight .mi { color: #f99b15 } /* Literal.Number.Integer */
+.highlight .mo { color: #f99b15 } /* Literal.Number.Oct */
+.highlight .sb { color: #48b685 } /* Literal.String.Backtick */
+.highlight .sc { color: #e7e9db } /* Literal.String.Char */
+.highlight .sd { color: #776e71 } /* Literal.String.Doc */
+.highlight .s2 { color: #48b685 } /* Literal.String.Double */
+.highlight .se { color: #f99b15 } /* Literal.String.Escape */
+.highlight .sh { color: #48b685 } /* Literal.String.Heredoc */
+.highlight .si { color: #f99b15 } /* Literal.String.Interpol */
+.highlight .sx { color: #48b685 } /* Literal.String.Other */
+.highlight .sr { color: #48b685 } /* Literal.String.Regex */
+.highlight .s1 { color: #48b685 } /* Literal.String.Single */
+.highlight .ss { color: #48b685 } /* Literal.String.Symbol */
+.highlight .bp { color: #e7e9db } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #ef6155 } /* Name.Variable.Class */
+.highlight .vg { color: #ef6155 } /* Name.Variable.Global */
+.highlight .vi { color: #ef6155 } /* Name.Variable.Instance */
+.highlight .il { color: #f99b15 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
     
@@ -13088,7 +13120,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
+<h1 id="Representasi-Numerik-untuk-Data-Teks-dalam-Python">Representasi Numerik untuk Data Teks dalam Python<a class="anchor-link" href="#Representasi-Numerik-untuk-Data-Teks-dalam-Python">&#182;</a></h1>
 </div>
 </div>
 </div>
