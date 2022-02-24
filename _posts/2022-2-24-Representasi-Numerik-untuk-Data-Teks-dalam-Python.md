@@ -7,7 +7,7 @@ excerpt:
 <html>
 <head><meta charset="utf-8" />
 
-<title>Representasi_Numerik_Data_Teks_dalam_Python</title>
+<title>Representasi_Numerik_untuk_Data_Teks_dalam_Python</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13085,6 +13085,13 @@ div#notebook {
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Representasi-Numerik-untuk-Data-Teks-dalam-Python">Representasi Numerik untuk Data Teks dalam Python<a class="anchor-link" href="#Representasi-Numerik-untuk-Data-Teks-dalam-Python">&#182;</a></h1>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
