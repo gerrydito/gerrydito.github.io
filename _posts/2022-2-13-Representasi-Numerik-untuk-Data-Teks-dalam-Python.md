@@ -10547,7 +10547,7 @@ div.inner_cell {
 div.input_area {
   border: 1px solid #cfcfcf;
   border-radius: 2px;
-  background: #ffffff;
+  background: #a50000;
   line-height: 1.21429em;
 }
 /* This is needed so that empty prompt areas can collapse to zero height when there
