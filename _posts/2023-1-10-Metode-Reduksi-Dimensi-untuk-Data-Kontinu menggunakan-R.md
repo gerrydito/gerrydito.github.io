@@ -1746,8 +1746,7 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Metode Reduksi Dimensi untuk Data Kontinu
-menggunakan R</h1>
+
 
 </div>
 
