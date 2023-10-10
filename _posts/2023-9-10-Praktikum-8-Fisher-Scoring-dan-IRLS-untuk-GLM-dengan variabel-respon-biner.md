@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
@@ -130,9 +129,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Praktikum GLM 8 - Fisher Scoring dan IRLS untuk GLM dengan variabel respon biner</h1>
-</div>
 
 
 
