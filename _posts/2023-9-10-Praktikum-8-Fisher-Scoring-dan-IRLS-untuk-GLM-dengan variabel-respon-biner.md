@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+---
+layout: post
+title:  Praktikum GLM 8 - Fisher Scoring dan IRLS untuk GLM dengan variabel respon biner
+categories: [Generalized Linear Model]
+excerpt:
+---
+
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
