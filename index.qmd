@@ -1,5 +1,6 @@
 ---
 title: "Posts"
+image: "images/mylogo.png"
 listing: 
   contents: posts
   type: grid
@@ -9,6 +10,7 @@ listing:
   grid-columns: 3
   page-size: 18
   sort-ui: true
+  feed: true
   date-format: "D MMM YYYY"
   fields: [image, title, categories,author, reading-time,date]
 ---
