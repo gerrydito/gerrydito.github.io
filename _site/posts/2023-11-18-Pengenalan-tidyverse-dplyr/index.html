@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Gerry Alfa Dito">
+<meta name="dcterms.date" content="2023-11-18">
+
+<title>gerrydito - Pengenalan tidyverse Part1: dplyr</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/mylogo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+<script type="text/javascript">
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-189782190-2', 'auto');
+
+ga('send', {
+  hitType: 'pageview',
+  'anonymizeIp': true,
+});
+</script>
+<script type="application/json" class="js-hypothesis-config">
+{
+  "theme": "clean",
+  "openSidebar": false
+}
+</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="gerrydito - Pengenalan tidyverse Part1: dplyr">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://gerrydito.github.io/posts/2023-11-18-Pengenalan-tidyverse-dplyr/post-image.jpg">
+<meta property="og:site-name" content="gerrydito">
+<meta name="twitter:title" content="gerrydito - Pengenalan tidyverse Part1: dplyr">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="https://gerrydito.github.io/posts/2023-11-18-Pengenalan-tidyverse-dplyr/post-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/mylogo.png" alt="gerrydito logo." class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">gerrydito</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#menginstall-meta-package-tidyverse" id="toc-menginstall-meta-package-tidyverse" class="nav-link active" data-scroll-target="#menginstall-meta-package-tidyverse">Menginstall Meta-Package <code>tidyverse</code></a></li>
+  <li><a href="#memanggil-package" id="toc-memanggil-package" class="nav-link" data-scroll-target="#memanggil-package">Memanggil Package</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a>
+  <ul class="collapse">
+  <li><a href="#global-country-information-dataset-2023" id="toc-global-country-information-dataset-2023" class="nav-link" data-scroll-target="#global-country-information-dataset-2023">Global Country Information Dataset 2023</a></li>
+  </ul></li>
+  <li><a href="#import-data" id="toc-import-data" class="nav-link" data-scroll-target="#import-data">Import data</a></li>
+  <li><a href="#mengenal-dplyr" id="toc-mengenal-dplyr" class="nav-link" data-scroll-target="#mengenal-dplyr">Mengenal <code>dplyr</code></a>
+  <ul class="collapse">
+  <li><a href="#fungsi-glimpse" id="toc-fungsi-glimpse" class="nav-link" data-scroll-target="#fungsi-glimpse">Fungsi <code>glimpse</code></a></li>
+  <li><a href="#fungsi-select" id="toc-fungsi-select" class="nav-link" data-scroll-target="#fungsi-select">Fungsi <code>select</code></a></li>
+  <li><a href="#operator" id="toc-operator" class="nav-link" data-scroll-target="#operator">Operator <code>%&gt;%</code></a></li>
+  <li><a href="#fungsi-filter" id="toc-fungsi-filter" class="nav-link" data-scroll-target="#fungsi-filter">Fungsi <code>filter</code></a></li>
+  <li><a href="#fungsi-arrange" id="toc-fungsi-arrange" class="nav-link" data-scroll-target="#fungsi-arrange">Fungsi <code>arrange</code></a></li>
+  <li><a href="#fungsi-mutate" id="toc-fungsi-mutate" class="nav-link" data-scroll-target="#fungsi-mutate">Fungsi <code>mutate</code></a></li>
+  <li><a href="#agregasi-data-dengan-group_by-dan-summarize" id="toc-agregasi-data-dengan-group_by-dan-summarize" class="nav-link" data-scroll-target="#agregasi-data-dengan-group_by-dan-summarize">Agregasi data dengan <code>group_by</code> dan <code>summarize</code></a></li>
+  <li><a href="#fungsi-pivot_longer-dan-pivot_wider" id="toc-fungsi-pivot_longer-dan-pivot_wider" class="nav-link" data-scroll-target="#fungsi-pivot_longer-dan-pivot_wider">Fungsi <code>pivot_longer</code> dan <code>pivot_wider</code></a></li>
+  </ul></li>
+  <li><a href="#menyimpan-hasil-manipulasi-data-dalam-objek-r" id="toc-menyimpan-hasil-manipulasi-data-dalam-objek-r" class="nav-link" data-scroll-target="#menyimpan-hasil-manipulasi-data-dalam-objek-r">Menyimpan hasil manipulasi data dalam objek R</a></li>
+  <li><a href="#latihan-mandiri" id="toc-latihan-mandiri" class="nav-link" data-scroll-target="#latihan-mandiri">Latihan Mandiri</a></li>
+  <li><a href="#tugas-kelompok" id="toc-tugas-kelompok" class="nav-link" data-scroll-target="#tugas-kelompok">Tugas Kelompok</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Pengenalan <code>tidyverse</code> Part1: <code>dplyr</code></h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">R Programming</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Gerry Alfa Dito </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 18, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Materi ini akan membahas pengenalan meta-package <code>tidyverse</code> yang merupakan kumpulan dari 8 package inti, yaitu</p>
+<ol type="1">
+<li><code>readr</code> digunakan untuk membaca data tabular seperti csv,tsv dan fwf</li>
+<li><code>dplyr</code> digunakan untuk memanipulasi data</li>
+<li><code>ggplot2</code> digunakan untuk visualisasi data berbasiskan Grammar of Graphics</li>
+<li><code>tidyr</code> digunakan untuk merapihkan (tidying) data</li>
+<li><code>purrr</code> digunakan untuk functional programming</li>
+<li><code>tibble</code> digunakan sebagai alternatif <code>data.frame</code> yang lebih konsisten</li>
+<li><code>forcats</code> digunakan untuk memanipulasi data berupa yang bertipe <code>factor</code></li>
+<li><code>stringr</code> digunakan untuk memanipulasi data bertipe <code>string</code></li>
+</ol>
+<p><img src="data-science.png" class="img-fluid"></p>
+<section id="menginstall-meta-package-tidyverse" class="level2">
+<h2 class="anchored" data-anchor-id="menginstall-meta-package-tidyverse">Menginstall Meta-Package <code>tidyverse</code></h2>
+<p>Pada penggunaan pertama, silahkan install terlebih dulu package yang akan digunakan dengan cara menuliskan code berikut:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="memanggil-package" class="level2">
+<h2 class="anchored" data-anchor-id="memanggil-package">Memanggil Package</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+</div>
+</section>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
+<section id="global-country-information-dataset-2023" class="level3">
+<h3 class="anchored" data-anchor-id="global-country-information-dataset-2023">Global Country Information Dataset 2023</h3>
+<p>Dataset komprehensif ini menyediakan banyak informasi tentang semua negara di seluruh dunia, yang mencakup berbagai indikator dan atribut. Data ini mencakup statistik demografi, indikator ekonomi, faktor lingkungan, metrik perawatan kesehatan, statistik pendidikan, dan masih banyak lagi. Dengan setiap negara terwakili, dataset ini menawarkan perspektif global yang lengkap tentang berbagai aspek negara, memungkinkan analisis mendalam dan perbandingan lintas negara.</p>
+<p>Berikut adalah penjelasan kolom-kolom yang ada di dalam data:</p>
+<ol type="1">
+<li>Country: Name of the country.</li>
+<li>Density (P/Km2): Population density measured in persons per square kilometer.</li>
+<li>Abbreviation: Abbreviation or code representing the country.</li>
+<li>Agricultural Land (%): Percentage of land area used for agricultural purposes.</li>
+<li>Land Area (Km2): Total land area of the country in square kilometers.</li>
+<li>Armed Forces Size: Size of the armed forces in the country.</li>
+<li>Birth Rate: Number of births per 1,000 population per year.</li>
+<li>Calling Code: International calling code for the country.</li>
+<li>Capital/Major City: Name of the capital or major city.</li>
+<li>CO2 Emissions: Carbon dioxide emissions in tons.</li>
+<li>CPI: Consumer Price Index, a measure of inflation and purchasing power.</li>
+<li>CPI Change (%): Percentage change in the Consumer Price Index compared to the previous year.</li>
+<li>Currency_Code: Currency code used in the country.</li>
+<li>Fertility Rate: Average number of children born to a woman during her lifetime.</li>
+<li>Forested Area (%): Percentage of land area covered by forests.</li>
+<li>Gasoline_Price: Price of gasoline per liter in local currency.</li>
+<li>GDP: Gross Domestic Product, the total value of goods and services produced in the country.</li>
+<li>Gross Primary Education Enrollment (%): Gross enrollment ratio for primary education.</li>
+<li>Gross Tertiary Education Enrollment (%): Gross enrollment ratio for tertiary education.</li>
+<li>Infant Mortality: Number of deaths per 1,000 live births before reaching one year of age.</li>
+<li>Largest City: Name of the country’s largest city.</li>
+<li>Life Expectancy: Average number of years a newborn is expected to live.</li>
+<li>Maternal Mortality Ratio: Number of maternal deaths per 100,000 live births.</li>
+<li>Minimum Wage: Minimum wage level in local currency.</li>
+<li>Official Language: Official language(s) spoken in the country.</li>
+<li>Out of Pocket Health Expenditure (%): Percentage of total health expenditure paid out-of-pocket by individuals.</li>
+<li>Physicians per Thousand: Number of physicians per thousand people.</li>
+<li>Population: Total population of the country.</li>
+<li>Population: Labor Force Participation (%): Percentage of the population that is part of the labor force.</li>
+<li>Tax Revenue (%): Tax revenue as a percentage of GDP.</li>
+<li>Total Tax Rate: Overall tax burden as a percentage of commercial profits.</li>
+<li>Unemployment Rate: Percentage of the labor force that is unemployed.</li>
+<li>Urban Population: Percentage of the population living in urban areas.</li>
+<li>Latitude: Latitude coordinate of the country’s location.</li>
+<li>Longitude: Longitude coordinate of the country’s location.</li>
+</ol>
+<p>Data dapat diperoleh dengan mendownload link dibawah ini</p>
+<p><a href="https://drive.google.com/file/d/1e3Qeh2mRNeD6vnU8ebfnRU9j4Q-hhAF2/view?usp=sharing">Global Country Information Dataset 2023</a></p>
+</section>
+</section>
+<section id="import-data" class="level2">
+<h2 class="anchored" data-anchor-id="import-data">Import data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"world-data-2023.csv"</span>,<span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="mengenal-dplyr" class="level2">
+<h2 class="anchored" data-anchor-id="mengenal-dplyr">Mengenal <code>dplyr</code></h2>
+<p><code>dplyr</code> adalah package yang dapat digunakan untuk melakukan manipulasi data seperti melihat gambaran umum data, membuat kolom baru, menyeleksi kolom, menyaring baris (filtering), melakukan agregasi data dan masih banyak lagi.</p>
+<section id="fungsi-glimpse" class="level3">
+<h3 class="anchored" data-anchor-id="fungsi-glimpse">Fungsi <code>glimpse</code></h3>
+<p>Fungsi <code>glimpse</code> digunakan untuk mendapatkan gambaran umum data seperti tipe data (<code>dbl</code>,<code>int</code>,<code>chr</code>,<code>factor</code>,<code>lgl</code>), snapshoot amatan-amatan awal, banyaknya baris dan banyaknya kolom</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(country_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 195
+Columns: 35
+$ Country                                     &lt;chr&gt; "Afghanistan", "Albania", …
+$ `Density\n(P/Km2)`                          &lt;dbl&gt; 60, 105, 18, 164, 26, 223,…
+$ Abbreviation                                &lt;chr&gt; "AF", "AL", "DZ", "AD", "A…
+$ `Agricultural Land( %)`                     &lt;chr&gt; "58.10%", "43.10%", "17.40…
+$ `Land Area(Km2)`                            &lt;dbl&gt; 652230, 28748, 2381741, 46…
+$ `Armed Forces size`                         &lt;dbl&gt; 323000, 9000, 317000, NA, …
+$ `Birth Rate`                                &lt;dbl&gt; 32.49, 11.78, 24.28, 7.20,…
+$ `Calling Code`                              &lt;dbl&gt; 93, 355, 213, 376, 244, 1,…
+$ `Capital/Major City`                        &lt;chr&gt; "Kabul", "Tirana", "Algier…
+$ `Co2-Emissions`                             &lt;dbl&gt; 8672, 4536, 150006, 469, 3…
+$ CPI                                         &lt;dbl&gt; 149.90, 119.05, 151.36, NA…
+$ `CPI Change (%)`                            &lt;chr&gt; "2.30%", "1.40%", "2.00%",…
+$ `Currency-Code`                             &lt;chr&gt; "AFN", "ALL", "DZD", "EUR"…
+$ `Fertility Rate`                            &lt;dbl&gt; 4.47, 1.62, 3.02, 1.27, 5.…
+$ `Forested Area (%)`                         &lt;chr&gt; "2.10%", "28.10%", "0.80%"…
+$ `Gasoline Price`                            &lt;chr&gt; "$0.70", "$1.36", "$0.28",…
+$ GDP                                         &lt;chr&gt; "$19,101,353,833", "$15,27…
+$ `Gross primary education enrollment (%)`    &lt;chr&gt; "104.00%", "107.00%", "109…
+$ `Gross tertiary education enrollment (%)`   &lt;chr&gt; "9.70%", "55.00%", "51.40%…
+$ `Infant mortality`                          &lt;dbl&gt; 47.9, 7.8, 20.1, 2.7, 51.6…
+$ `Largest city`                              &lt;chr&gt; "Kabul", "Tirana", "Algier…
+$ `Life expectancy`                           &lt;dbl&gt; 64.5, 78.5, 76.7, NA, 60.8…
+$ `Maternal mortality ratio`                  &lt;dbl&gt; 638, 15, 112, NA, 241, 42,…
+$ `Minimum wage`                              &lt;chr&gt; "$0.43", "$1.12", "$0.95",…
+$ `Official language`                         &lt;chr&gt; "Pashto", "Albanian", "Ara…
+$ `Out of pocket health expenditure`          &lt;chr&gt; "78.40%", "56.90%", "28.10…
+$ `Physicians per thousand`                   &lt;dbl&gt; 0.28, 1.20, 1.72, 3.33, 0.…
+$ Population                                  &lt;dbl&gt; 38041754, 2854191, 4305305…
+$ `Population: Labor force participation (%)` &lt;chr&gt; "48.90%", "55.70%", "41.20…
+$ `Tax revenue (%)`                           &lt;chr&gt; "9.30%", "18.60%", "37.20%…
+$ `Total tax rate`                            &lt;chr&gt; "71.40%", "36.60%", "66.10…
+$ `Unemployment rate`                         &lt;chr&gt; "11.12%", "12.33%", "11.70…
+$ Urban_population                            &lt;dbl&gt; 9797273, 1747593, 31510100…
+$ Latitude                                    &lt;dbl&gt; 33.939110, 41.153332, 28.0…
+$ Longitude                                   &lt;dbl&gt; 67.709953, 20.168331, 1.65…</code></pre>
+</div>
+</div>
+</section>
+<section id="fungsi-select" class="level3">
+<h3 class="anchored" data-anchor-id="fungsi-select">Fungsi <code>select</code></h3>
+<p>Fungsi <code>select</code> digunakan untuk menyeleksi kolom dari dataset yang ada</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(<span class="at">.data =</span> country_data,Country,<span class="st">`</span><span class="at">Birth Rate</span><span class="st">`</span>,Urban_population,GDP, <span class="st">`</span><span class="at">Gasoline Price</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 195 × 5
+   Country             `Birth Rate` Urban_population GDP        `Gasoline Price`
+   &lt;chr&gt;                      &lt;dbl&gt;            &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;           
+ 1 Afghanistan                 32.5          9797273 $19,101,3… $0.70           
+ 2 Albania                     11.8          1747593 $15,278,0… $1.36           
+ 3 Algeria                     24.3         31510100 $169,988,… $0.28           
+ 4 Andorra                      7.2            67873 $3,154,05… $1.51           
+ 5 Angola                      40.7         21061025 $94,635,4… $0.97           
+ 6 Antigua and Barbuda         15.3            23800 $1,727,75… $0.99           
+ 7 Argentina                   17.0         41339571 $449,663,… $1.10           
+ 8 Armenia                     14.0          1869848 $13,672,8… $0.77           
+ 9 Australia                   12.6         21844756 $1,392,68… $0.93           
+10 Austria                      9.7          5194416 $446,314,… $1.20           
+# ℹ 185 more rows</code></pre>
+</div>
+</div>
+<p>sintaks diatas dapat ditulis dalam bentuk lain yaitu</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Country,<span class="st">`</span><span class="at">Birth Rate</span><span class="st">`</span>,Urban_population,GDP, <span class="st">`</span><span class="at">Gasoline Price</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 195 × 5
+   Country             `Birth Rate` Urban_population GDP        `Gasoline Price`
+   &lt;chr&gt;                      &lt;dbl&gt;            &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;           
+ 1 Afghanistan                 32.5          9797273 $19,101,3… $0.70           
+ 2 Albania                     11.8          1747593 $15,278,0… $1.36           
+ 3 Algeria                     24.3         31510100 $169,988,… $0.28           
+ 4 Andorra                      7.2            67873 $3,154,05… $1.51           
+ 5 Angola                      40.7         21061025 $94,635,4… $0.97           
+ 6 Antigua and Barbuda         15.3            23800 $1,727,75… $0.99           
+ 7 Argentina                   17.0         41339571 $449,663,… $1.10           
+ 8 Armenia                     14.0          1869848 $13,672,8… $0.77           
+ 9 Australia                   12.6         21844756 $1,392,68… $0.93           
+10 Austria                      9.7          5194416 $446,314,… $1.20           
+# ℹ 185 more rows</code></pre>
+</div>
+</div>
+<p>Hasil dari kedua sintaks tersebut sama. Simbol <code>%&gt;%</code> dinamakan <strong>pipe-operator</strong></p>
+</section>
+<section id="operator" class="level3">
+<h3 class="anchored" data-anchor-id="operator">Operator <code>%&gt;%</code></h3>
+<p>Operator <code>%&gt;%</code> digunakan untuk mengantarkan kita dari step satu ke step yang lainnya. Misalnya saja sintkas dibawah ini</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Country, Urban_population) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Urban_population <span class="sc">&lt;</span> <span class="dv">10000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  Country       Urban_population
+  &lt;chr&gt;                    &lt;dbl&gt;
+1 Liechtenstein             5464
+2 Tuvalu                    7362</code></pre>
+</div>
+</div>
+<p>Sintaks diatas dapat dibaca sebagai berikut: * Step 1 menyiapkan objek data yaitu <code>country_data</code> * Step 2 memilih kolom <code>Country</code> dan <code>Urban_population</code> berdasarkan step 1 * Step 3 menyaring <code>Urban_population &lt; 10000</code> berdasarkan objek data pada step 2</p>
+<p>Jika kita hilangkan step 3 maka sintaksnya akan menjadi seperti ini</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Country, Urban_population)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 195 × 2
+   Country             Urban_population
+   &lt;chr&gt;                          &lt;dbl&gt;
+ 1 Afghanistan                  9797273
+ 2 Albania                      1747593
+ 3 Algeria                     31510100
+ 4 Andorra                        67873
+ 5 Angola                      21061025
+ 6 Antigua and Barbuda            23800
+ 7 Argentina                   41339571
+ 8 Armenia                      1869848
+ 9 Australia                   21844756
+10 Austria                      5194416
+# ℹ 185 more rows</code></pre>
+</div>
+</div>
+<p>Operator <code>%&gt;%</code> juga memastikan bahwa objek data selalu berada di step 1. Kemudian, Operator <code>%&gt;%</code> bisa dikeluarkan dengan shortcut keyboard <code>ctrl+shift+m</code> pada windows (macos menyesuaikan).</p>
+</section>
+<section id="fungsi-filter" class="level3">
+<h3 class="anchored" data-anchor-id="fungsi-filter">Fungsi <code>filter</code></h3>
+<p>fungsi <code>filter</code> digunakan untuk menyaring baris berdasarkan pernyataan logika tertentu. Pernyataan logika adalah suatu pernyataan yang menghasilkan <code>TRUE</code> atau <code>FALSE</code> dan biasanya menggunakan <strong>operator logika</strong> seperti <code>&lt;</code>,<code>&gt;</code>,<code>&lt;=</code>,<code>&gt;=</code>,<code>!=</code>, <code>&amp;</code>,<code>|</code> dan <code>==</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Country, Urban_population) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Urban_population <span class="sc">==</span> <span class="dv">1747593</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  Country Urban_population
+  &lt;chr&gt;              &lt;dbl&gt;
+1 Albania          1747593</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Country, Urban_population) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Urban_population <span class="sc">&gt;</span> <span class="dv">1747593</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 132 × 2
+   Country     Urban_population
+   &lt;chr&gt;                  &lt;dbl&gt;
+ 1 Afghanistan          9797273
+ 2 Algeria             31510100
+ 3 Angola              21061025
+ 4 Argentina           41339571
+ 5 Armenia              1869848
+ 6 Australia           21844756
+ 7 Austria              5194416
+ 8 Azerbaijan           5616165
+ 9 Bangladesh          60987417
+10 Belarus              7482982
+# ℹ 122 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Country, Urban_population) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Country<span class="sc">==</span><span class="st">"Indonesia"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  Country   Urban_population
+  &lt;chr&gt;                &lt;dbl&gt;
+1 Indonesia        151509724</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Country, Urban_population) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Country<span class="sc">%in%</span><span class="fu">c</span>(<span class="st">"Indonesia"</span>,<span class="st">"Malaysia"</span>,<span class="st">"Thailand"</span>,<span class="st">"Singapore"</span>,<span class="st">"Papua"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 2
+  Country   Urban_population
+  &lt;chr&gt;                &lt;dbl&gt;
+1 Indonesia        151509724
+2 Malaysia          24475766
+3 Singapore          5703569
+4 Thailand          35294600</code></pre>
+</div>
+</div>
+<p>Selain menggunakan operator logika, kita bisa menggunakan fungsi <code>str_detect</code> dari package <code>stringr</code> untuk melakukan filtering jika kita tidak yakin dengan nama persis negaranya. Dalam sintaks sebelumnya dapat diperhatikan bahwa negara <code>Papua</code> tidak muncul karena mungkin nama <code>Papua</code> salah atau kurang lengkap. Berikut ilustrasi penggunaan <code>str_detect</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Country, Urban_population) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(Country,<span class="st">"Papua"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  Country          Urban_population
+  &lt;chr&gt;                       &lt;dbl&gt;
+1 Papua New Guinea          1162834</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Country, Urban_population) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(Country,<span class="st">"Papua"</span>)<span class="sc">|</span><span class="fu">str_detect</span>(Country,<span class="st">"Timor"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  Country          Urban_population
+  &lt;chr&gt;                       &lt;dbl&gt;
+1 Papua New Guinea          1162834
+2 East Timor                 400182</code></pre>
+</div>
+</div>
+</section>
+<section id="fungsi-arrange" class="level3">
+<h3 class="anchored" data-anchor-id="fungsi-arrange">Fungsi <code>arrange</code></h3>
+<p>Fungsi <code>arrange</code> digunakan untuk mengurutkan kolom besar ke kecil atau sebaliknya.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Country, Urban_population) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Urban_population <span class="sc">&gt;</span> <span class="dv">1747593</span> <span class="sc">&amp;</span> Urban_population <span class="sc">&lt;=</span> <span class="dv">6084994</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Urban_population)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 50 × 2
+   Country                  Urban_population
+   &lt;chr&gt;                               &lt;dbl&gt;
+ 1 Armenia                           1869848
+ 2 Lithuania                         1891013
+ 3 Gabon                             1949694
+ 4 Central African Republic          1982064
+ 5 Rwanda                            2186104
+ 6 Georgia                           2196476
+ 7 South Sudan                       2201250
+ 8 Mongolia                          2210626
+ 9 Croatia                           2328318
+10 Kyrgyzstan                        2362644
+# ℹ 40 more rows</code></pre>
+</div>
+</div>
+<p>jika ingin mengurutkan dari besar ke kecil cukup tambahkan <code>desc</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Country, Urban_population) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Urban_population <span class="sc">&gt;</span> <span class="dv">1747593</span> <span class="sc">&amp;</span> Urban_population <span class="sc">&lt;=</span> <span class="dv">6084994</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(Urban_population))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 50 × 2
+   Country    Urban_population
+   &lt;chr&gt;                 &lt;dbl&gt;
+ 1 Lebanon             6084994
+ 2 Nepal               5765513
+ 3 Singapore           5703569
+ 4 Benin               5648149
+ 5 Honduras            5626433
+ 6 Azerbaijan          5616165
+ 7 Libya               5448597
+ 8 Bulgaria            5256027
+ 9 Austria             5194416
+10 Denmark             5119978
+# ℹ 40 more rows</code></pre>
+</div>
+</div>
+<p>Mengurutkan berdasarkan abjad</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span> </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Country, Urban_population) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Urban_population <span class="sc">&gt;</span> <span class="dv">1747593</span> <span class="sc">&amp;</span> Urban_population <span class="sc">&lt;=</span> <span class="dv">6084994</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(Country))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 50 × 2
+   Country      Urban_population
+   &lt;chr&gt;                   &lt;dbl&gt;
+ 1 Zimbabwe              4717305
+ 2 Uruguay               3303394
+ 3 Turkmenistan          3092738
+ 4 Togo                  3414638
+ 5 Tajikistan            2545477
+ 6 Sri Lanka             4052088
+ 7 South Sudan           2201250
+ 8 Slovakia              2930419
+ 9 Singapore             5703569
+10 Sierra Leone          3319366
+# ℹ 40 more rows</code></pre>
+</div>
+</div>
+<p><code>arrange</code> juga bisa digunakan untuk melakukan pengurutan berdasarkan kriteria lebih dari satu kolom</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span> </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Country, Urban_population,<span class="st">`</span><span class="at">Official language</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Urban_population <span class="sc">&gt;</span> <span class="dv">1747593</span> <span class="sc">&amp;</span> Urban_population <span class="sc">&lt;=</span> <span class="dv">6084994</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="st">`</span><span class="at">Official language</span><span class="st">`</span>,<span class="fu">desc</span>(Urban_population))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 50 × 3
+   Country    Urban_population `Official language` 
+   &lt;chr&gt;                 &lt;dbl&gt; &lt;chr&gt;               
+ 1 Lebanon             6084994 Arabic              
+ 2 Libya               5448597 Arabic              
+ 3 Oman                4250777 Arabic              
+ 4 Qatar               2809071 Arabic              
+ 5 Mauritania          2466821 Arabic              
+ 6 Armenia             1869848 Armenian            
+ 7 Azerbaijan          5616165 Azerbaijani language
+ 8 Bulgaria            5256027 Bulgarian           
+ 9 Croatia             2328318 Croatian            
+10 Denmark             5119978 Danish              
+# ℹ 40 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="fungsi-mutate" class="level3">
+<h3 class="anchored" data-anchor-id="fungsi-mutate">Fungsi <code>mutate</code></h3>
+<p>Fungsi <code>mutate</code> digunakan untuk membuat, memodifikasi dan menghapus kolom dari dataset.</p>
+<p>Misal kita ingin membuat kolom baru yakni kolom bernama <code>Persentase_urban_pop</code> yang berasal dari rumus sebagai berikut</p>
+<p><span class="math display">\[
+\text{Persentase_urban_pop}= \left( \frac{\text{Urban_population}}{\text{Population}} \right) \times 100
+\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span> </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Persentase_urban_pop=</span> (Urban_population<span class="sc">*</span><span class="dv">100</span>) <span class="sc">/</span> Population)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 195 × 36
+   Country             `Density\n(P/Km2)` Abbreviation `Agricultural Land( %)`
+   &lt;chr&gt;                            &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                  
+ 1 Afghanistan                         60 AF           58.10%                 
+ 2 Albania                            105 AL           43.10%                 
+ 3 Algeria                             18 DZ           17.40%                 
+ 4 Andorra                            164 AD           40.00%                 
+ 5 Angola                              26 AO           47.50%                 
+ 6 Antigua and Barbuda                223 AG           20.50%                 
+ 7 Argentina                           17 AR           54.30%                 
+ 8 Armenia                            104 AM           58.90%                 
+ 9 Australia                            3 AU           48.20%                 
+10 Austria                            109 AT           32.40%                 
+# ℹ 185 more rows
+# ℹ 32 more variables: `Land Area(Km2)` &lt;dbl&gt;, `Armed Forces size` &lt;dbl&gt;,
+#   `Birth Rate` &lt;dbl&gt;, `Calling Code` &lt;dbl&gt;, `Capital/Major City` &lt;chr&gt;,
+#   `Co2-Emissions` &lt;dbl&gt;, CPI &lt;dbl&gt;, `CPI Change (%)` &lt;chr&gt;,
+#   `Currency-Code` &lt;chr&gt;, `Fertility Rate` &lt;dbl&gt;, `Forested Area (%)` &lt;chr&gt;,
+#   `Gasoline Price` &lt;chr&gt;, GDP &lt;chr&gt;,
+#   `Gross primary education enrollment (%)` &lt;chr&gt;, …</code></pre>
+</div>
+</div>
+<p>karena agak sulit mengakses kolom barunya <code>Persentase_urban_pop</code> kita akan menyeleksi kolom-kolom yang berkepentingan</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span> </span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Persentase_urban_pop=</span> (Urban_population<span class="sc">*</span><span class="dv">100</span>) <span class="sc">/</span> Population) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Country,Persentase_urban_pop,Population)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 195 × 3
+   Country             Persentase_urban_pop Population
+   &lt;chr&gt;                              &lt;dbl&gt;      &lt;dbl&gt;
+ 1 Afghanistan                         25.8   38041754
+ 2 Albania                             61.2    2854191
+ 3 Algeria                             73.2   43053054
+ 4 Andorra                             88.0      77142
+ 5 Angola                              66.2   31825295
+ 6 Antigua and Barbuda                 24.5      97118
+ 7 Argentina                           92.0   44938712
+ 8 Armenia                             63.2    2957731
+ 9 Australia                           84.8   25766605
+10 Austria                             58.5    8877067
+# ℹ 185 more rows</code></pre>
+</div>
+</div>
+<p>Kemudian kita bisa menghapus kolom dengan <code>mutate</code> dengan sintaks dibawah ini</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span> </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Persentase_urban_pop=</span> (Urban_population<span class="sc">*</span><span class="dv">100</span>) <span class="sc">/</span> Population) <span class="sc">%&gt;%</span> </span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Country,Persentase_urban_pop,Population) <span class="sc">%&gt;%</span> </span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Country=</span><span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 195 × 2
+   Persentase_urban_pop Population
+                  &lt;dbl&gt;      &lt;dbl&gt;
+ 1                 25.8   38041754
+ 2                 61.2    2854191
+ 3                 73.2   43053054
+ 4                 88.0      77142
+ 5                 66.2   31825295
+ 6                 24.5      97118
+ 7                 92.0   44938712
+ 8                 63.2    2957731
+ 9                 84.8   25766605
+10                 58.5    8877067
+# ℹ 185 more rows</code></pre>
+</div>
+</div>
+<p>Ilustrasi selanjutnya adalah kita akan memodifikasi kolom yang sudah ada. Kolom <code>Country</code> kita modifikasi sedemikian sehingga nama negaranya jadi huruf kapital semua</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span> </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Country=</span><span class="fu">str_to_upper</span>(Country))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 195 × 35
+   Country             `Density\n(P/Km2)` Abbreviation `Agricultural Land( %)`
+   &lt;chr&gt;                            &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;                  
+ 1 AFGHANISTAN                         60 AF           58.10%                 
+ 2 ALBANIA                            105 AL           43.10%                 
+ 3 ALGERIA                             18 DZ           17.40%                 
+ 4 ANDORRA                            164 AD           40.00%                 
+ 5 ANGOLA                              26 AO           47.50%                 
+ 6 ANTIGUA AND BARBUDA                223 AG           20.50%                 
+ 7 ARGENTINA                           17 AR           54.30%                 
+ 8 ARMENIA                            104 AM           58.90%                 
+ 9 AUSTRALIA                            3 AU           48.20%                 
+10 AUSTRIA                            109 AT           32.40%                 
+# ℹ 185 more rows
+# ℹ 31 more variables: `Land Area(Km2)` &lt;dbl&gt;, `Armed Forces size` &lt;dbl&gt;,
+#   `Birth Rate` &lt;dbl&gt;, `Calling Code` &lt;dbl&gt;, `Capital/Major City` &lt;chr&gt;,
+#   `Co2-Emissions` &lt;dbl&gt;, CPI &lt;dbl&gt;, `CPI Change (%)` &lt;chr&gt;,
+#   `Currency-Code` &lt;chr&gt;, `Fertility Rate` &lt;dbl&gt;, `Forested Area (%)` &lt;chr&gt;,
+#   `Gasoline Price` &lt;chr&gt;, GDP &lt;chr&gt;,
+#   `Gross primary education enrollment (%)` &lt;chr&gt;, …</code></pre>
+</div>
+</div>
+<p>fungsi <code>str_to_upper</code> berasal dari package <code>stringr</code> yang berguna untuk konversi semua abjad menjadi kapital.</p>
+</section>
+<section id="agregasi-data-dengan-group_by-dan-summarize" class="level3">
+<h3 class="anchored" data-anchor-id="agregasi-data-dengan-group_by-dan-summarize">Agregasi data dengan <code>group_by</code> dan <code>summarize</code></h3>
+<p>Fungsi <code>summerize</code> digunakan untuk merangkum banyak baris (amatan) menjadi satu baris, rangkuman ini bisa berupa <code>mean</code>, <code>median</code>,<code>variance</code>,<code>sd</code>(standar deviasi). Berikut illustrasinya</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_populasi =</span> <span class="fu">mean</span>(Population,<span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">median_urban_populasi =</span> <span class="fu">median</span>(Urban_population,<span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd_populasi =</span> <span class="fu">sd</span>(Population,<span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">q1_urban_populasi =</span> <span class="fu">quantile</span>(Urban_population,<span class="at">probs =</span> <span class="fl">0.25</span>,<span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>            )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 4
+  mean_populasi median_urban_populasi sd_populasi q1_urban_populasi
+          &lt;dbl&gt;                 &lt;dbl&gt;       &lt;dbl&gt;             &lt;dbl&gt;
+1     39381164.              4678104.  145092392.           1152961</code></pre>
+</div>
+</div>
+<p>Kemudian kita bisa menghitung <code>mean</code> dari setiap kolom numeric dengan memanfaatkan fungsi <code>across</code>, dan <code>where</code>. Dalam konteks ini, Fungsi <code>across</code> digunakan untuk menerapkan perhitungan <code>mean</code> setiap kolom numeric. Sementara itu, fungsi <code>where</code> digunakan untuk memastikan bahwa kolom yang kita terapkan perhitungan sesuai dengan kondisi yang kita inginkan.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>( <span class="fu">across</span>(<span class="fu">where</span>(is.numeric),mean) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 16
+  `Density\n(P/Km2)` `Land Area(Km2)` `Armed Forces size` `Birth Rate`
+               &lt;dbl&gt;            &lt;dbl&gt;               &lt;dbl&gt;        &lt;dbl&gt;
+1               357.               NA                  NA           NA
+# ℹ 12 more variables: `Calling Code` &lt;dbl&gt;, `Co2-Emissions` &lt;dbl&gt;, CPI &lt;dbl&gt;,
+#   `Fertility Rate` &lt;dbl&gt;, `Infant mortality` &lt;dbl&gt;, `Life expectancy` &lt;dbl&gt;,
+#   `Maternal mortality ratio` &lt;dbl&gt;, `Physicians per thousand` &lt;dbl&gt;,
+#   Population &lt;dbl&gt;, Urban_population &lt;dbl&gt;, Latitude &lt;dbl&gt;, Longitude &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>jika kita ingin mengexclude <code>NA</code> dari perhitungan, perlu membuat <strong>fungsi anonim</strong> terlebih dahulu</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric),<span class="cf">function</span>(x) <span class="fu">mean</span>(x,<span class="at">na.rm =</span> <span class="cn">TRUE</span>) ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 16
+  `Density\n(P/Km2)` `Land Area(Km2)` `Armed Forces size` `Birth Rate`
+               &lt;dbl&gt;            &lt;dbl&gt;               &lt;dbl&gt;        &lt;dbl&gt;
+1               357.          689624.             159275.         20.2
+# ℹ 12 more variables: `Calling Code` &lt;dbl&gt;, `Co2-Emissions` &lt;dbl&gt;, CPI &lt;dbl&gt;,
+#   `Fertility Rate` &lt;dbl&gt;, `Infant mortality` &lt;dbl&gt;, `Life expectancy` &lt;dbl&gt;,
+#   `Maternal mortality ratio` &lt;dbl&gt;, `Physicians per thousand` &lt;dbl&gt;,
+#   Population &lt;dbl&gt;, Urban_population &lt;dbl&gt;, Latitude &lt;dbl&gt;, Longitude &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>Selanjutnya, jika kita ingin menambah nama kolom dengan kata <code>mean</code>, kita bisa memanfaatkan fungsi <code>rename_with</code>. Penambahan nama kolom ini dapat menggunakan fungsi <code>str_c</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric),<span class="cf">function</span>(x) <span class="fu">mean</span>(x,<span class="at">na.rm =</span> <span class="cn">TRUE</span>) )) <span class="sc">%&gt;%</span> </span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_with</span>(<span class="at">.fn =</span> <span class="cf">function</span>(x) <span class="fu">str_c</span>(<span class="st">"mean_"</span>,x),<span class="at">.cols =</span> <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 16
+  `mean_Density\n(P/Km2)` `mean_Land Area(Km2)` `mean_Armed Forces size`
+                    &lt;dbl&gt;                 &lt;dbl&gt;                    &lt;dbl&gt;
+1                    357.               689624.                  159275.
+# ℹ 13 more variables: `mean_Birth Rate` &lt;dbl&gt;, `mean_Calling Code` &lt;dbl&gt;,
+#   `mean_Co2-Emissions` &lt;dbl&gt;, mean_CPI &lt;dbl&gt;, `mean_Fertility Rate` &lt;dbl&gt;,
+#   `mean_Infant mortality` &lt;dbl&gt;, `mean_Life expectancy` &lt;dbl&gt;,
+#   `mean_Maternal mortality ratio` &lt;dbl&gt;,
+#   `mean_Physicians per thousand` &lt;dbl&gt;, mean_Population &lt;dbl&gt;,
+#   mean_Urban_population &lt;dbl&gt;, mean_Latitude &lt;dbl&gt;, mean_Longitude &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>Fungsi <code>group_by</code> digunakan untuk melakukan manipulasi atau perhitungan pada dataset berdasarkan grup atau kelompok tertentu. Grup atau kelompok yang dimaksud biasanya berupa kategori-kategori yang tersimpan dalam satu kolom. Dalam penggunaannya, <code>group_by</code> ini dipasangkan dengan fungsi <code>summarize</code>. Berikut adalah ilustrasinya</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="st">`</span><span class="at">Official language</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 78 × 2
+   `Official language`  `n()`
+   &lt;chr&gt;                &lt;int&gt;
+ 1 Afrikaans                1
+ 2 Albanian                 1
+ 3 Amharic                  1
+ 4 Arabic                  18
+ 5 Armenian                 1
+ 6 Azerbaijani language     1
+ 7 Bengali                  1
+ 8 Bosnian                  1
+ 9 Bulgarian                1
+10 Burmese                  1
+# ℹ 68 more rows</code></pre>
+</div>
+</div>
+<p>Fungsi <code>n()</code> digunakan untuk menghitung frequensi dari suatu nilai atau kategori.</p>
+<p>Sintaks diatas bisa ditulis dengan bentuk lain seperti dibawah ini</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(<span class="st">`</span><span class="at">Official language</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 78 × 2
+   `Official language`      n
+   &lt;chr&gt;                &lt;int&gt;
+ 1 Afrikaans                1
+ 2 Albanian                 1
+ 3 Amharic                  1
+ 4 Arabic                  18
+ 5 Armenian                 1
+ 6 Azerbaijani language     1
+ 7 Bengali                  1
+ 8 Bosnian                  1
+ 9 Bulgarian                1
+10 Burmese                  1
+# ℹ 68 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span> </span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pop_status =</span> <span class="fu">case_when</span>(Population <span class="sc">&lt;</span> <span class="dv">15000000</span> <span class="sc">~</span> <span class="st">"small"</span>,</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>                                Population <span class="sc">&gt;=</span> <span class="dv">15000000</span> <span class="sc">&amp;</span> Population <span class="sc">&lt;</span> <span class="dv">39381164</span> <span class="sc">~</span> <span class="st">"medium"</span>,</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>                                Population <span class="sc">&gt;=</span> <span class="dv">39381164</span>  <span class="sc">~</span> <span class="st">"large"</span></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>                                )) <span class="sc">%&gt;%</span> </span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(pop_status,<span class="st">`</span><span class="at">Official language</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 100 × 3
+   pop_status `Official language`     n
+   &lt;chr&gt;      &lt;chr&gt;               &lt;int&gt;
+ 1 large      Afrikaans               1
+ 2 large      Amharic                 1
+ 3 large      Arabic                  2
+ 4 large      Bengali                 1
+ 5 large      Burmese                 1
+ 6 large      English                 3
+ 7 large      French                  2
+ 8 large      German                  1
+ 9 large      Hindi                   1
+10 large      Indonesian              1
+# ℹ 90 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="fungsi-pivot_longer-dan-pivot_wider" class="level3">
+<h3 class="anchored" data-anchor-id="fungsi-pivot_longer-dan-pivot_wider">Fungsi <code>pivot_longer</code> dan <code>pivot_wider</code></h3>
+<p>Fungsi <code>pivot_longer</code> digunakan untuk mentransformasi dataset yang berbentuk wide ke dataset yang berbentuk long. Sebaliknya <code>pivot_wider</code> digunakan untuk mentransformasi dataset yang berbentuk long ke dataset yang berbentuk wide. Kedua fungsi ini berasal dari package <code>tidyr</code>.</p>
+<p><img src="wideLongdata.png" class="img-fluid"></p>
+<p>Berikut adalah ilustrasinya</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="do">## bentuk wide</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric),<span class="cf">function</span>(x) <span class="fu">mean</span>(x,<span class="at">na.rm =</span> <span class="cn">TRUE</span>) )) <span class="sc">%&gt;%</span> </span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 10
+  `Density\n(P/Km2)` `Land Area(Km2)` `Armed Forces size` `Birth Rate`
+               &lt;dbl&gt;            &lt;dbl&gt;               &lt;dbl&gt;        &lt;dbl&gt;
+1               357.          689624.             159275.         20.2
+# ℹ 6 more variables: `Calling Code` &lt;dbl&gt;, `Co2-Emissions` &lt;dbl&gt;, CPI &lt;dbl&gt;,
+#   `Fertility Rate` &lt;dbl&gt;, `Infant mortality` &lt;dbl&gt;, `Life expectancy` &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric),<span class="cf">function</span>(x) <span class="fu">mean</span>(x,<span class="at">na.rm =</span> <span class="cn">TRUE</span>) )) <span class="sc">%&gt;%</span> </span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">everything</span>(),</span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"Variable"</span>,</span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"mean"</span>  </span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>               )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 2
+   Variable                 mean
+   &lt;chr&gt;                   &lt;dbl&gt;
+ 1 "Density\n(P/Km2)"     357.  
+ 2 "Land Area(Km2)"    689624.  
+ 3 "Armed Forces size" 159275.  
+ 4 "Birth Rate"            20.2 
+ 5 "Calling Code"         361.  
+ 6 "Co2-Emissions"     177799.  
+ 7 "CPI"                  190.  
+ 8 "Fertility Rate"         2.70
+ 9 "Infant mortality"      21.3 
+10 "Life expectancy"       72.3 </code></pre>
+</div>
+</div>
+<p>Argument <code>names_to</code> berguna untuk membuat kolom untuk menaruh nama-nama kolom sebelum transformasi, sementara <code>values_to</code> berguna untuk membuat kolom untuk menaruh nilai-nilai data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># bentuk long</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span> </span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pop_status =</span> <span class="fu">case_when</span>(Population <span class="sc">&lt;</span> <span class="dv">15000000</span> <span class="sc">~</span> <span class="st">"small"</span>,</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>                                Population <span class="sc">&gt;=</span> <span class="dv">15000000</span> <span class="sc">&amp;</span> Population <span class="sc">&lt;</span> <span class="dv">39381164</span> <span class="sc">~</span> <span class="st">"medium"</span>,</span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>                                Population <span class="sc">&gt;=</span> <span class="dv">39381164</span>  <span class="sc">~</span> <span class="st">"large"</span></span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>                                )) <span class="sc">%&gt;%</span> </span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(pop_status,<span class="st">`</span><span class="at">Official language</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 100 × 3
+   pop_status `Official language`     n
+   &lt;chr&gt;      &lt;chr&gt;               &lt;int&gt;
+ 1 large      Afrikaans               1
+ 2 large      Amharic                 1
+ 3 large      Arabic                  2
+ 4 large      Bengali                 1
+ 5 large      Burmese                 1
+ 6 large      English                 3
+ 7 large      French                  2
+ 8 large      German                  1
+ 9 large      Hindi                   1
+10 large      Indonesian              1
+# ℹ 90 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span> </span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pop_status =</span> <span class="fu">case_when</span>(Population <span class="sc">&lt;</span> <span class="dv">15000000</span> <span class="sc">~</span> <span class="st">"small"</span>,</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>                                Population <span class="sc">&gt;=</span> <span class="dv">15000000</span> <span class="sc">&amp;</span> Population <span class="sc">&lt;</span> <span class="dv">39381164</span> <span class="sc">~</span> <span class="st">"medium"</span>,</span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>                                Population <span class="sc">&gt;=</span> <span class="dv">39381164</span>  <span class="sc">~</span> <span class="st">"large"</span></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>                                )) <span class="sc">%&gt;%</span> </span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(pop_status,<span class="st">`</span><span class="at">Official language</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> <span class="st">`</span><span class="at">Official language</span><span class="st">`</span>,</span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_from =</span> pop_status,</span>
+<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> n</span>
+<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a>              )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 78 × 5
+   `Official language` large medium small  `NA`
+   &lt;chr&gt;               &lt;int&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;
+ 1 Afrikaans               1     NA    NA    NA
+ 2 Amharic                 1     NA    NA    NA
+ 3 Arabic                  2      6     9     1
+ 4 Bengali                 1     NA    NA    NA
+ 5 Burmese                 1     NA    NA    NA
+ 6 English                 3      3    25    NA
+ 7 French                  2      9    14    NA
+ 8 German                  1     NA     3    NA
+ 9 Hindi                   1     NA    NA    NA
+10 Indonesian              1     NA    NA    NA
+# ℹ 68 more rows</code></pre>
+</div>
+</div>
+<p>Argument <code>names_from</code> berguna untuk membuat kolom-kolom berdasarkan <strong>satu kolom</strong> sebelum transformasi, sementara <code>values_to</code> berguna untuk membuat menaruh nilai-nilai data. Argument <code>id_cols</code> berguna untuk medefinisikan kolom-kolom yang kita anggap sebagai id.</p>
+</section>
+</section>
+<section id="menyimpan-hasil-manipulasi-data-dalam-objek-r" class="level2">
+<h2 class="anchored" data-anchor-id="menyimpan-hasil-manipulasi-data-dalam-objek-r">Menyimpan hasil manipulasi data dalam objek R</h2>
+<p>Ilustrasi-ilustrasi sebelumnya tidak menyimpan data hasil manipulasi kita dalam objek R sehingga tidak bisa digunakan secara berulang.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># tidak disimpan</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>country_data <span class="sc">%&gt;%</span> </span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pop_status =</span> <span class="fu">case_when</span>(Population <span class="sc">&lt;</span> <span class="dv">15000000</span> <span class="sc">~</span> <span class="st">"small"</span>,</span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>                                Population <span class="sc">&gt;=</span> <span class="dv">15000000</span> <span class="sc">&amp;</span> Population <span class="sc">&lt;</span> <span class="dv">39381164</span> <span class="sc">~</span> <span class="st">"medium"</span>,</span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>                                Population <span class="sc">&gt;=</span> <span class="dv">39381164</span>  <span class="sc">~</span> <span class="st">"large"</span></span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>                                )) <span class="sc">%&gt;%</span> </span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(pop_status,<span class="st">`</span><span class="at">Official language</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> <span class="st">`</span><span class="at">Official language</span><span class="st">`</span>,</span>
+<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_from =</span> pop_status,</span>
+<span id="cb65-10"><a href="#cb65-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> n</span>
+<span id="cb65-11"><a href="#cb65-11" aria-hidden="true" tabindex="-1"></a>              )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 78 × 5
+   `Official language` large medium small  `NA`
+   &lt;chr&gt;               &lt;int&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;
+ 1 Afrikaans               1     NA    NA    NA
+ 2 Amharic                 1     NA    NA    NA
+ 3 Arabic                  2      6     9     1
+ 4 Bengali                 1     NA    NA    NA
+ 5 Burmese                 1     NA    NA    NA
+ 6 English                 3      3    25    NA
+ 7 French                  2      9    14    NA
+ 8 German                  1     NA     3    NA
+ 9 Hindi                   1     NA    NA    NA
+10 Indonesian              1     NA    NA    NA
+# ℹ 68 more rows</code></pre>
+</div>
+</div>
+<p>berikut ilustrasi menyimpan data hasil manipulasi ke objek R dengan nama <code>tabel_baru</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>tabel_baru <span class="ot">&lt;-</span> country_data <span class="sc">%&gt;%</span> </span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pop_status =</span> <span class="fu">case_when</span>(Population <span class="sc">&lt;</span> <span class="dv">15000000</span> <span class="sc">~</span> <span class="st">"small"</span>,</span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>                                Population <span class="sc">&gt;=</span> <span class="dv">15000000</span> <span class="sc">&amp;</span> Population <span class="sc">&lt;</span> <span class="dv">39381164</span> <span class="sc">~</span> <span class="st">"medium"</span>,</span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>                                Population <span class="sc">&gt;=</span> <span class="dv">39381164</span>  <span class="sc">~</span> <span class="st">"large"</span></span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>                                )) <span class="sc">%&gt;%</span> </span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(pop_status,<span class="st">`</span><span class="at">Official language</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> <span class="st">`</span><span class="at">Official language</span><span class="st">`</span>,</span>
+<span id="cb67-8"><a href="#cb67-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">names_from =</span> pop_status,</span>
+<span id="cb67-9"><a href="#cb67-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> n</span>
+<span id="cb67-10"><a href="#cb67-10" aria-hidden="true" tabindex="-1"></a>              )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>kemudian jika kita ingin mengeluarkan hasil manipulasi data, hanya perlu menuliskan nama objeknya.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>tabel_baru</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 78 × 5
+   `Official language` large medium small  `NA`
+   &lt;chr&gt;               &lt;int&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;
+ 1 Afrikaans               1     NA    NA    NA
+ 2 Amharic                 1     NA    NA    NA
+ 3 Arabic                  2      6     9     1
+ 4 Bengali                 1     NA    NA    NA
+ 5 Burmese                 1     NA    NA    NA
+ 6 English                 3      3    25    NA
+ 7 French                  2      9    14    NA
+ 8 German                  1     NA     3    NA
+ 9 Hindi                   1     NA    NA    NA
+10 Indonesian              1     NA    NA    NA
+# ℹ 68 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="latihan-mandiri" class="level2">
+<h2 class="anchored" data-anchor-id="latihan-mandiri">Latihan Mandiri</h2>
+<p>Soal-soal latihan mandiri ini didasarkan pada *<strong>Global Country Information Dataset</strong> dan sintaks yang digunakan <strong>harus</strong> mengutamakan sintaks yang berasal dari pacakge-package yang ada di dalam <code>tidyverse</code>.</p>
+<ol type="1">
+<li>Tampilkan 10 negara yang memiliki <code>Armed Forces size</code> terbesar didunia. Hasil tampilannya harus terdiri dari dua kolom saja. (hint: gunakan fungsi <code>slice_max</code>)</li>
+<li>Negara mana saja yang <code>Fertility Rate</code>-nya lebih kecil dibandingkan Indonesia? Urutkan dari <code>Fertility Rate</code> besar ke kecil. Hasil tampilannya harus terdiri dari dua kolom saja.</li>
+<li>Hitunglah Statistika 5 serangkai dari kolom <code>Armed Forces size</code> dan <code>Fertility Rate</code>. Tampilkan hasilnya dengan format data long.</li>
+<li>Tunjukkan 5 Nilai mata uang (<code>Currency-Code</code>) yang paling banyak digunakan di dunia!</li>
+<li>Diantara negara-negara yang tergabung dalam ASEAN, tunjukkan 3 negara yang miliki <code>Infant mortality</code> tertinggi dan 3 negara yang memiliki <code>Infant mortality</code> terendah.</li>
+</ol>
+</section>
+<section id="tugas-kelompok" class="level2">
+<h2 class="anchored" data-anchor-id="tugas-kelompok">Tugas Kelompok</h2>
+<p>Tugas kelompok ini didasarkan pada *<strong>Global Country Information Dataset</strong> dan sintaks yang digunakan <strong>harus</strong> mengutamakan sintaks yang berasal dari pacakge-package yang ada di dalam <code>tidyverse</code>.</p>
+<ol type="1">
+<li>Dalam R missing data biasanya ditandai dengan <code>NA</code>, hitung berapa banyak missing value yang ada pada dataset!</li>
+<li>Hapus semua missing data dan tunjukkan bahwa semua missing data sudah terhapus!</li>
+<li>Dalam dataset tersebut terdapat beberapa kolom yang berbentuk persentase dan nilai mata uang dollar US yang bertipe data <code>chr</code>. Gunakan fungsi <code>mutate</code> dan <code>across</code> untuk mengubah tipe data kolom tersebut menjadi <code>dbl</code>. Tunjukkan hasilnya dengan fungsi <code>glimpse</code>!</li>
+<li>Konversi nilai mata uang dalam bentuk dollar ke nilai mata uang Rupiah dengan tipe data <code>dbl</code>!</li>
+<li>Buatlah kolom <code>country_status</code> yang berisi kategori <code>"rich"</code>,<code>"developing"</code>, <code>"poor"</code>. Kategori ini didapatkan dengan kriteria sebagai berikut: jika <code>Unemployment rate</code> kurang dari 1% maka negara tersebut merupakan negara <code>"rich"</code>, jika <code>Unemployment rate</code> lebih besar dari 0.999999% dan kurang dari 5% maka negara tersebut merupakan negara <code>"developing"</code>. Kemudian jika <code>Unemployment rate</code> lebih besar dari 4.999999% maka negara tersebut merupakan negara<code>"poor"</code>.</li>
+<li>Hitunglah rata-rata dan nilai maximum <code>GDP</code> dan <code>CPI</code> berdasarkan <code>country status</code>! Kemudian hitung juga berapa banyak negara yang termasuk dalam kategori <code>"rich"</code>,<code>"developing"</code>, <code>"poor"</code>.</li>
+<li>Tampilkan hasil nomor 6 dalam format long!</li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,470 @@
+---
+title: "Pemeriksaan dan Pengujian Asumsi ANOVA dengan R"
+date: 11-19-2021
+author: Gerry Alfa Dito
+categories: 
+      - Compare Means
+      - Analysis of Experiments Data
+draft: false
+image: post-image.jpg
+---
+
+
+## Package
+
+Install package berikut jika belum ada
+
+```{r eval=FALSE}
+install.packages("tidyverse")
+install.packages("broom")
+install.packages("performance")
+install.packages("see")
+install.packages("car")
+install.packages("fbasics")
+install.packages("ggpubr")
+```
+
+
+```{r message=FALSE}
+library(tidyverse)
+library(performance)
+library(see)
+library(car)
+library(broom)
+library(fBasics)
+library(ggpubr)
+```
+
+
+## Data
+
+Sebuah percobaan dilakukan untuk menyelidiki efektivitas lima bahan isolasi (insulating materials). Bahan Isolasi merupakan bahan yang tidak dapat mengalirkan arus listrik atau panas. Empat sampel dari setiap bahan yang diuji padategangan tinggi untuk mempercepat waktu kegagalan (failure time).Waktu kegagalan menunjukkan waktu saat bahan isolasi tidak bisa lagi menghambat arus listrik atau panas. Waktu kegagalan (dalam menit) ditunjukkan di bawah ini: 
+
+![](Isolating Material Table.png)
+
+## Import Data ke dalam R
+
+Untuk import data ke R kita bisa langsung menuliskan data nya di R dengan sintaks seperti dibawah ini
+
+```{r}
+bahan_isolasi <- read.table(header = TRUE,
+                            text="Bahan WaktuKegagalan
+                                  A 110
+                                  A 157
+                                  A 194
+                                  A 178
+                                  B 1
+                                  B 2
+                                  B 4
+                                  B 18
+                                  C 880
+                                  C 1256
+                                  C 5276
+                                  C 4355
+                                  D 495
+                                  D 7040
+                                  D 5307
+                                  D 10050
+                                  E 7
+                                  E 5
+                                  E 29
+                                  E 2
+                                  ")
+bahan_isolasi
+```
+
+
+
+
+## Analysis of Variance (ANOVA)
+
+Hipotesis yang diuji pada kasus ini adalah
+
+$$
+\begin{aligned}
+H_{0} &: \text{rerata waktu kegagalan sama untuk semua jenis bahan} \\
+H_{1} &: \text{terdapat minimal sepasang jenis bahan yang memiliki rerata waktu kegagalan tidak sama}
+\end{aligned}
+$$
+
+
+
+```{r}
+anova1 <- aov(WaktuKegagalan ~ Bahan,data = bahan_isolasi)
+```
+
+```{r}
+tidy(anova1)
+```
+
+karena p-value yang dihasilkan dari uji ANOVA kurang dari 0.05 maka cukup bukti untuk mengakatakan bahwa $H_{0}$ ditolak atau dengan kata lain **terdapat minimal sepasang jenis bahan yang memiliki rata-rata waktu kegagalan tidak sama**
+
+## Pemeriksaan Asumsi ANOVA
+
+Pemeriksaan asumsi ANOVA dilakukan pada residual nya. Untuk mengeluarkan residualnya bisa menggunakan sintaks dibawah ini
+
+```{r warning=FALSE}
+aug1 <- augment(anova1)
+
+```
+
+```{r}
+aug1
+```
+
+
+### Normalitas (Residual Menyebar Normal)
+
+Pemeriksaan Normalitas bisa dilakukan dengan menggunakan grafik atau uji hipotesis.
+
+
+#### Grafik
+
+untuk menampilkan grafik dibawah ini terlebih dahulu harus memanggil package `performance` dan `see`
+
+
+
+
+```{r}
+plot(check_normality(x = anova1),type="qq")
+```
+
+Dari grafik ini, terdapat beberapa titik residual yang tidak mengikuti pola garis  maka diduga bahwa asumsi normalitas tidak dipenuhi.
+
+#### Uji Hipotesis
+
+Hipotesis yang diuji untuk pemeriksaan normalitas adalah
+
+$$
+\begin{aligned}
+H_{0} &: \text{galat menyebar normal} \\
+H_{1} &: \text{galat tidak menyebar normal}
+\end{aligned}
+$$
+
+Uji Normalitas bisa dilakukan dengan beberapa metode pengujian. Untuk itu, akan dibuat fungsi R agar dapat menjalankan metode-metode pengujian tersebut. Fungsi R ini tidak perlu dipahami secara serius karena dapat digunakan untuk berbagai kondisi data. Fungsi R buatan ini sangat bergantung pada package `fbasics`
+
+```{r}
+## fungsi R buatan
+
+normal_test <- function(data,variable){
+  ad_stat <- adTest(
+    data %>% 
+      pull(variable)
+    )@test$statistic
+  ks_stat <- ksnormTest(
+    data %>% 
+      pull(variable)
+    )@test$statistic
+  jb_stat <- jarqueberaTest(
+    data %>% 
+      pull(variable)
+    )@test$statistic
+  
+  shapiro_stat <- shapiroTest(
+    data %>% 
+      pull(variable)
+    )@test$statistic
+  
+  ad_p.value <- adTest(
+    data %>% 
+      pull(variable)
+    )@test$p.value
+  ks_p.value <- ksnormTest(
+    data %>% 
+      pull(variable)
+    )@test$p.value
+  jb_p.value <- jarqueberaTest(
+    data %>% 
+      pull(variable)
+    )@test$p.value
+  
+  shapiro_p.value <- shapiroTest(
+    data %>% 
+      pull(variable)
+    )@test$p.value
+  
+  all_stats <- data.frame(statistic=c(ad_stat,                                  ks_stat[1],
+                        jb_stat,
+                        shapiro_stat),
+                        p.value=c(
+                        ad_p.value,                              ks_p.value[1],
+                        jb_p.value,
+                        shapiro_p.value
+                        )) %>% 
+    mutate(across(where(is.numeric),~ round(.x,3))) %>% 
+    mutate(name=c("Anderson-Darling",
+                    "Kolmogorov-Smirnov",
+                    "Shapiro-Wilk",
+                    "Jarque-Bera")) %>% 
+    relocate(name) 
+    
+  
+  rownames(all_stats) <- NULL
+  return(all_stats)
+}
+
+```
+
+
+
+
+```{r}
+normal_test(data = aug1,
+            variable = ".resid")
+```
+
+
+karena p-value yang dihasilkan dari uji normalitas kurang dari 0.05 maka $H_{0}$ ditolak atau dengan kata lain **residual tidak menyebar normal**
+
+### Homogenitas
+
+Pemeriksaan Homogenitas bisa dilakukan dengan menggunakan grafik atau uji hipotesis.
+
+
+#### Grafik
+
+untuk menampilkan grafik dibawah ini menggunakan package `ggpubr` 
+
+
+
+```{r}
+ggscatter(data = aug1,
+                  x=".fitted",
+                  y=".resid")+
+  geom_hline(aes(yintercept=0)) +
+  theme_lucid()
+```
+
+
+Dari grafik ini, terdapat pola berbentuk corong (funnel shape) maka diduga bahwa asumsi homogenitas tidak dipenuhi.
+
+#### Uji Hipotesis
+
+Hipotesis yang diuji untuk pemeriksaan homogenitas adalah
+
+$$
+\begin{aligned}
+H_{0} &: \text{ragam homogen antar perlakukan} \\
+H_{1} &: \text{ragam tidak homogen antar perlakuan}
+\end{aligned}
+$$
+
+
+Uji Homogenitas bisa dilakukan dengan beberapa metode pengujian dibawah ini
+
+```{r}
+# Bartlett (asumsi residual menyebar normal)
+check_homogeneity(anova1,method="bartlett")
+# Fligner (merupakan uji nonparametrik)
+check_homogeneity(anova1,method="fligner")
+```
+
+karena p-value yang dihasilkan dari uji homogenitas kurang dari 0.05 maka $H_{0}$ ditolak atau dengan kata lain **ragam tidak homogen antar perlakukan**
+
+
+### Independent
+
+#### Grafik
+
+Pemeriksaan Independent bisa dilakukan dengan menggunakan grafik.
+
+untuk menampilkan grafik dibawah ini menggunakan package `ggpubr` 
+
+
+```{r}
+aug1 %>%                    
+  mutate(order=seq(nrow(aug1))) %>% 
+  ggscatter(x="order",y=".resid")+
+  theme_lucid()
+```
+Dari grafik ini, tidak terbentuk pola tertentu (misal pola linear) maka diduga bahwa asumsi Independent dipenuhi.
+
+
+## Penanganan Pelanggaran Asumsi
+
+### Transformasi Box-cox
+
+Transformasi Box-Cox didefinisikan sebagai
+
+$$
+\begin{equation}
+y^{(\lambda)} = 
+\begin{cases}
+  \frac{y^{\lambda}-1}{\lambda} & \text{untuk} \space \lambda\neq 0  \\
+  \ln{(y)} & \text{untuk} \space \lambda= 0  \\
+\end{cases}
+\end{equation}
+$$
+
+untuk mendapatkan nilai $\lambda$ optimal dapat digunakan pendugaan  MLE, yaitu dengan mendapatkan nilai $\lambda$ yang memaksimumkan fungsi log-likelihood. Hal ini bisa dilihat pada grafik yang diperoleh dari fungsi `boxCox` pada package `car`
+
+```{r}
+boxCox(anova1)
+```
+
+Berdasarkan gambar diketahui bahwa nilai lambda yang optimum ada disekitar nol. Oleh karena itu kita bisa langsung memakai $\lambda = 0$.
+
+Cara lain untuk mendapatkan nilai lambda optimum adalah dengan menggunakan fungsi `powerTransform` dari package `car` yang menampilkan hasil pendugaan titik (point estimate), selang kepercayaan dan uji hipotesis dengan Likelihood Ratio Test (LRT) dari $\lambda$
+
+```{r}
+boxcox_res <-powerTransform(anova1) 
+summary(boxcox_res)
+# pembulatan pada lambda
+boxcox_res$roundlam
+```
+
+Berdasarkan output nya didapatkan bahwa 
+
+1. penduga titik nya $\lambda=0.0101$ atau dibulatkan menjadi $\lambda=0$.
+2. selang kepercayaan $-0.094 \leq \lambda \leq 0.1141$
+3. Untuk uji hipotesis yang pertama (Log Transformation)
+
+$$
+\begin{aligned}
+H_{0} &: \lambda = 0 \space \\
+H_{1} &: \lambda \neq 0 
+\end{aligned}
+$$
+
+karena p-value dari uji yang pertama besar (lebih dari 0.05) maka tidak tolak $H_{0}$ atau dengan kata lain kita bisa menggunakan $\lambda=0$
+4. Untuk uji hipotesis yang kedua (no transformation)
+
+
+$$
+\begin{aligned}
+H_{0} &: \lambda = 1 \space \\
+H_{1} &: \lambda \neq 1
+\end{aligned}
+$$
+
+karena p-value dari uji yang pertama kecil (kurang dari 0.05) maka tolak $H_{0}$ atau dengan kata lain kita bisa menggunakan $\lambda \neq 1$. Nilai $\lambda \neq 1$ implikasinya ada transformasi dan nilai $\lambda = 1$ implikasinya tidak dibutuhkan transformasi.
+
+
+```{r}
+bahan_isolasi_trans <- bahan_isolasi %>% 
+                        mutate(WaktuKegagalan_Trans =bcPower(WaktuKegagalan,boxcox_res$roundlam))
+
+anova2 <- aov(WaktuKegagalan_Trans ~ Bahan,data = bahan_isolasi_trans)
+```
+
+```{r}
+tidy(anova2)
+```
+
+
+### Pemeriksaan kembali Asumsi ANOVA
+
+Pemeriksaan asumsi ANOVA dilakukan pada residual nya. Untuk mengeluarkan residualnya bisa menggunakan sintaks dibawah ini
+
+```{r warning=FALSE}
+aug2 <- augment(anova2)
+
+```
+
+```{r}
+aug2
+```
+
+
+### Normalitas (Galat Menyebar Normal)
+
+Pemeriksaan Normalitas bisa dilakukan dengan menggunakan grafik atau uji hipotesis.
+
+
+#### Grafik
+
+untuk menampilkan grafik dibawah ini terlebih dahulu harus memanggil package `performance` dan `see`
+
+
+
+
+```{r}
+plot(check_normality(x = anova2),type="qq")
+```
+
+Dari grafik ini, titik-titik residual yang engikuti pola garis dan berada di dalam daerah selang kepercayaan maka diduga bahwa asumsi normalitas terpenuhi.
+
+#### Uji Hipotesis
+
+Hipotesis yang diuji untuk pemeriksaan normalitas adalah
+
+$$
+\begin{aligned}
+H_{0} &: \text{galat menyebar normal} \\
+H_{1} &: \text{galat tidak menyebar normal}
+\end{aligned}
+$$
+
+Uji Normalitas bisa dilakukan dengan beberapa metode pengujian. 
+
+```{r}
+normal_test(data = aug2,
+            variable = ".resid")
+```
+
+
+karena p-value yang dihasilkan dari uji normalitas lebih besar dari 0.05 maka $H_{0}$ tidak ditolak atau dengan kata lain **galat menyebar normal**
+
+### Homogenitas
+
+Pemeriksaan Homogenitas bisa dilakukan dengan menggunakan grafik atau uji hipotesis.
+
+
+#### Grafik
+
+untuk menampilkan grafik dibawah ini menggunakan package `ggpubr` 
+
+
+
+```{r}
+ggscatter(data = aug2,
+                  x=".fitted",
+                  y=".resid")+
+  geom_hline(aes(yintercept=0)) +
+  theme_lucid()
+```
+
+
+Dari grafik ini, tidak terdapat pola berbentuk corong (funnel shape) maka diduga bahwa asumsi homogenitas terpenuhi.
+
+#### Uji Hipotesis
+
+Hipotesis yang diuji untuk pemeriksaan homogenitas adalah
+
+$$
+\begin{aligned}
+H_{0} &: \text{ragam homogen antar perlakukan} \\
+H_{1} &: \text{ragam tidak homogen antar perlakuan}
+\end{aligned}
+$$
+
+
+Uji Homogenitas bisa dilakukan dengan beberapa metode pengujian dibawah ini
+
+```{r}
+# Bartlett (asumsi residual menyebar normal)
+check_homogeneity(anova2,method="bartlett")
+# Fligner (merupakan uji nonparametrik)
+check_homogeneity(anova2,method="fligner")
+```
+
+karena p-value yang dihasilkan dari uji homogenitas lebih besar dari 0.05 maka $H_{0}$ tidak ditolak atau dengan kata lain **ragam homogen antar perlakukan**
+
+
+### Independent
+
+#### Grafik
+
+Pemeriksaan Independent bisa dilakukan dengan menggunakan grafik.
+
+untuk menampilkan grafik dibawah ini menggunakan package `ggpubr` 
+
+
+```{r}
+aug2 %>%                    
+  mutate(order=seq(nrow(aug1))) %>% 
+  ggscatter(x="order",y=".resid")+
+  theme_lucid()
+```
+Dari grafik ini, tidak terbentuk pola tertentu (misal pola linear) maka diduga bahwa asumsi Independent dipenuhi.

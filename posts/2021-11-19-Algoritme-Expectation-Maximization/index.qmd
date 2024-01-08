@@ -1,0 +1,888 @@
+---
+title: "Algoritme Expectation-Maximization (EM) menggunakan R"
+date: 11-19-2021
+author: Gerry Alfa Dito
+categories: 
+      - R Programming
+      - Computational Statistics
+draft: false
+image: post-image.jpg
+---
+
+
+## Algoritme EM
+
+**Algoritme EM** adalah cara untuk menghitung estimasi parameter model menggunakan Metode **MLE (Maksimum Likelihood Estimation)** ketika data yang kita **tidak lengkap**, memiliki **missing data**, atau memiliki variabel laten (latent variable) yang tak teramati. Secara singkat EM bisa diartikan sebagai metode untuk iteratif yang bisa mendekati Likelihood function. **Metode MLE** memiliki hanya bisa mengestimasi parameter dengan baik jika **data** yang kita miliki **tidak lengkap**. Algoritme EM bekerja dengan memilih **nilai acak** untuk titik data yang tidak lengkap, dan menggunakan **nilai acak** tersebut untuk mengestimasi data yang tidak lengkap. 
+
+
+Misalkan $X=(X_{1},X_{2},\ldots,X_{n_{1}})$ merupakan sampel yang teramati (observed) dan $Z=(Z_{1},Z_{2},\ldots,Z_{n_{2}})$ merupakan sampel yang tak teramati (unobserved) dengan $n=n_{1}+n_{2}$. Asumsikan bahwa $X_{i}$ i.i.d dengan pdf $f(x|\theta)$ dan $Z_{j}$ serta $X_{i}$ saling lepas. Misalkan $g(x|\theta)$ merupakan **joint pdf** dari $X$ dan $h(x,z|\theta)$ merupakan **joint pdf** antara **observed** dan **unobserved**. **Conditional pdf** dari **unobserved** adalah
+
+$$
+f(z|\theta,x)=\frac{h(x,z|\theta)}{g(x|\theta)}
+$$
+Fungsi observed likelihood didefinisikan $L(\theta|x)=g(x|\theta)$ dan fungsi complete likelihood didefinisikan $L^{c}(\theta|x,z)=h(x,z|\theta)$
+
+
+Tahap-tahap dalam Algoritme EM dapat ditulis sebagai berikut
+
+1. Isi data yang tak lengkap tersebut dengan suatu nilai estimasi yang didapatkan dari nilai Ekspetasi fungsi log-Likelihood
+
+$$
+Q(\theta|\hat{\theta}^{(m)})=\text{E}_{\hat{\theta}^{(m)}}\left[\log{L^{c}(\theta|x,z)}|\hat{\theta}^{(m)},x\right]=\int_{-\infty}^{\infty}\log{[h(x,z|\theta)]}f(z|\hat{\theta}^{(m)},x)
+$$
+
+Tahap 1 ini sering disebut dengan **Tahap Expectation** atau **Tahap-E**
+
+
+2. Dari tahap 1 kita sudah memperoleh **data lengkap**, selanjutnya **estimasi parameter** menggunakan data lengkap tersebut. Estimasi parameter dilakukan dengan menerapkan metode MLE pada fungsi $Q(\theta|\hat{\theta}^{(m)})$ sebagai berikut:
+
+$$
+\hat{\theta}^{(m+1)}= \arg \max{Q(\theta|\hat{\theta}^{(m)})}
+$$
+Tahap 2 ini sering disebut dengan **Tahap Maximization** atau **Tahap-M**
+
+3. Gunakan parameter hasil estimasi pada tahap 2 untuk mendapatkan nilai estimasi yang baru
+
+4. Gunakan nilai estimasi yang baru pada tahap 3 untuk mendapatkan estimasi parameter yang baru
+
+Lakukan langkah 3 dan 4 sampai konvergen
+
+
+## Penerapan Algoritme EM
+
+Berikut adalah beberapa penerapan EM-Algorithm
+
+1. Missing Data Problems
+2. Grouped Data Problems
+3. Truncated and Censored Data Problems
+4. Latent Variable Estimation
+5. Mixtures Model
+
+
+
+
+### Ilustrasi 1
+
+Rao (1973) melakukan pembagian secara acak 197 hewan menjadi 4 kategori berdasarkan phenotypes sedemikian sehingga:
+
+$$
+\boldsymbol{y} = (y_{1}, y_{2}, y_{3}, y_{4})^{T} = (100, 12, 18, 29)^{T}
+$$
+
+dengan peluang setiap kategori
+
+$$
+\left(p_{1}={\frac{1}{2}+\frac{\theta}{4},p_{2}=\frac{1-\theta}{4},p_{3}=\frac{1-\theta}{4},p_{4}=\frac{\theta}{4}}\right)
+$$
+
+sehingga $\boldsymbol{y}\sim \text{Multinomial}(p_{1},p_{2},p_{3},p_{4})$. Fungsi kepekatan peluang (fkp) atau probability density function (pdf) dari $\boldsymbol{y}$ adalah
+
+$$
+g(\boldsymbol{y}|\theta) = \frac{y_{1}+y_{2}+y_{3}+y_{4}}{y_{1}! y_{2}! y_{3}! y_{4}!} \left(\frac{1}{2}+\frac{\theta}{4} \right) ^{y_{1}} \left(\frac{1-\theta}{4}\right)^{y_{2}} \left(\frac{1-\theta}{4}\right)^{y_{3}} \left(\frac{\theta}{4}\right)^{y_{4}}
+$$
+
+
+Jika peneliti menambahkan satu kategori lagi dengan memecah kategori pertama menjadi 2 kategori sedemikian sehingga
+
+$$\boldsymbol{x} = (x_{1},x_{2},x_{3},x_{4},x_{5})^{T}$$
+
+dimana $x_{1}+x_{2}=y_{1},x_{3}=y_{2},x_{4}=y_{3},x_{5}=y_{4}$dengan peluang setiap kategori menjadi
+
+
+$$
+\left(\frac{1}{2},\frac{\theta}{4},\frac{1-\theta}{4},\frac{1-\theta}{4},\frac{\theta}{4}\right)
+$$
+
+
+sehingga $\boldsymbol{x}\sim \text{Multinomial}(p_{1},p_{2},p_{3},p_{4},p_{5})$. Fungsi kepekatan peluang (fkp) atau probability density function (pdf) dari $\boldsymbol{x}$ adalah
+
+
+$$
+f(\boldsymbol{x}|\theta) = \frac{x_{1}+x_{2}+x_{3}+x_{4}+x_{5}}{x_{1}! x_{2}! x_{3}! x_{4}! x_{5}!} \left(\frac{1}{2}\right) ^{x_{1}} \left(\frac{\theta}{4} \right) ^{x_{2}} \left(\frac{1-\theta}{4}\right)^{x_{3}} \left(\frac{1-\theta}{4}\right)^{x_{4}} \left(\frac{\theta}{4}\right)^{x_{5}}
+$$
+
+Jika diketahui fungsi log-likelihood bagi $y$ adalah
+
+$$
+\log{L(\theta|y)} = c+y_{1} \log{(2+\theta)} + (y_{2} + y_{3}) \log{(1-\theta)} + y_{4} \log{\theta}
+$$
+dan fungsi fungsi log-likelihood bagi $x$ adalah
+
+
+$$
+\log{L(\theta|x)} = c+x_{1}\log{\left(\frac{1}{2}\right)}+(x_2+ x_5)\log{\theta} + (x_3+x_4) \log{ (1-\theta)} 
+$$
+
+a. Tunjukkan cara memperoleh fungsi-loglikelihood bagi $y$
+b. Tunjukkan cara memperoleh fungsi-loglikelihood bagi $x$
+c. Hitunglah estimasi $x_1$,$x_2$ dan $\hat{\theta}$ menggunakan Algoritme EM dengan toleransi $10^{-7}$!
+
+### Pembahasan Ilustrasi 1
+
+
+a. Tunjukkan cara memperoleh fungsi-loglikelihood bagi $y$
+
+Fungsi Likelihood bagi $y$ 
+
+$$
+L(\theta|\boldsymbol{y}) = g(\boldsymbol{y}|\theta)
+$$
+$$
+L(\theta|\boldsymbol{y}) = \frac{y_{1}+y_{2}+y_{3}+y_{4}}{y_{1}! y_{2}! y_{3}! y_{4}!} \left(\frac{1}{2}+\frac{\theta}{4} \right) ^{y_{1}} \left(\frac{1-\theta}{4}\right)^{y_{2}} \left(\frac{1-\theta}{4}\right)^{y_{3}} \left(\frac{\theta}{4}\right)^{y_{4}}
+$$
+fungsi log-likelihood bagi $y$
+
+$$
+\log{L(\theta|y)} = \log{\left( \frac{y_{1}+y_{2}+y_{3}+y_{4}}{y_{1}! y_{2}! y_{3}! y_{4}!}\ \left(\frac{1}{2}+\frac{\theta}{4} \right) ^{y_{1}} \left(\frac{1-\theta}{4}\right)^{y_{2}} \left(\frac{1-\theta}{4}\right)^{y_{3}} \left(\frac{\theta}{4}\right)^{y_{4}} \right)}
+$$
+
+$$
+\log{L(\theta|y)} = \log{\left( \frac{y_{1}+y_{2}+y_{3}+y_{4}}{y_{1}! y_{2}! y_{3}! y_{4}!} \right)} + \log{\left(\left(\frac{1}{2}+\frac{\theta}{4} \right)  ^{y_{1}}\right)} + \log{\left(\left(\frac{1-\theta}{4}\right)^{y_{2}} \right)} + \log{\left(\left(\frac{1-\theta}{4}\right)^{y_{3}}\right)} + \log{\left(\left(\frac{\theta}{4}\right)^{y_{4}}\right)} 
+$$
+kita misalkan bagian yang tidak ada unsur $\theta$ sebagai $c$ atau konstanta
+
+
+$$
+\log{L(\theta|y)} = c + y_{1} \log{\left(\frac{1}{2}+\frac{\theta}{4} \right)} + y_{2} \log{\left(\frac{1-\theta}{4}\right)} + y_{3}\log{\left(\frac{1-\theta}{4}\right)} + y_{4}\log{\left(\frac{\theta}{4}\right)} 
+$$
+$$
+\log{L(\theta|y)} = c + y_{1} \log{\left(\frac{2+\theta}{4} \right)} + y_{2} \log{\left(\frac{1-\theta}{4}\right)} + y_{3}\log{\left(\frac{1-\theta}{4}\right)} + y_{4}\log{\left(\frac{\theta}{4}\right)} 
+$$
+
+
+$$
+\log{L(\theta|y)} = c + y_{1} \log{\left(2+\theta \right)}- y_{1} \log{\left(4 \right)} + y_{2} \log{\left(1-\theta\right)}-y_{2} \log{\left({4}\right)} + y_{3}\log{\left({1-\theta}\right)}-y_{3}\log{\left({4}\right)} + y_{4}\log{\left(\theta\right)} - y_{4}\log{\left(4\right)} 
+$$
+
+kemudian kita gabungan semua bagian yang tidak mengandung $\theta$ menjadi $c$ atau konstanta
+
+
+$$
+\log{L(\theta|y)} = c + y_{1} \log{\left(2+\theta \right)} + y_{2} \log{\left(1-\theta\right)} + y_{3}\log{\left({1-\theta}\right)} + y_{4}\log{\left(\theta\right)}  
+$$
+
+b. Tunjukkan cara memperoleh fungsi-loglikelihood bagi $x$
+
+Silahkan kerjakan sebagai latihan
+
+
+c. Hitunglah estimasi $x_1$,$x_2$ dan $\hat{\theta}$ menggunakan Algoritme EM dengan toleransi $10^{-7}$!
+
+1. Isi data yang tak lengkap tersebut dengan suatu nilai estimasi yang didapatkan dari nilai Ekspetasi fungsi log-Likelihood
+
+$$
+Q(\theta|\hat{\theta}^{(m)})=\text{E}_{\hat{\theta}^{(m)}}\left[\log{L^{c}(\theta|x,z)}|\hat{\theta}^{(m)},x\right]
+$$
+
+Tahap 1 ini sering disebut dengan **Tahap Expectation** atau **Tahap-E**
+
+
+Pada tahap 1 ini hal pertama yang kita lakukan adalah menentukan fungsi **complete log-likelihood** $\log{L^{c}(\theta|x,z)}$ yang bisa kita ambil dari fungsi **log-likelihood** bagi $x$
+
+$$
+\log{L(\theta|x)} = c+x_{1}\log{\left(\frac{1}{2}\right)}+(x_2+ x_5)\log{\theta} + (x_3+x_4) \log{ (1-\theta)} 
+$$
+karena di dalam fungsi ini terdapat data unobserved $x_{1}$ dan $x_{2}$ serta data observed $x_{3},x_{4},x_{5}$ sehingga jika digabungkan akan menjadi fungsi **complete log-likelihood**
+
+Untuk mempermudah perhitungan kita misalkan $z_{1}=x_{1}$ dan $z_{1}=x_{2}$, yang mana $x_{1}$ dan $x_{2}$ merupakan data unobserved. Sehingga $\boldsymbol{z}=(z_{1},z_{2})$. Kemudian, kita tahu bahwa $x_{3}=y_{2},x_{4}=y_{3},x_{5}=y_{4}$ sehingga kita rubah simbol $x$ menjadi $y$. Jadi fungsi **complete log-likelihood** adalah sebagai berikut
+
+$$
+\log{L^{c}(\theta|y,z}) = c+z_{1}\log{\left(\frac{1}{2}\right)}+(z_2+ y_4)\log{\theta} + (y_2+y_3) \log{ (1-\theta)}  
+$$
+
+kemudian kita hitung fungsi $Q(\theta|\hat{\theta}^{(0)}$
+
+$$
+Q(\theta|\hat{\theta}^{(0)})=\text{E}_{\hat{\theta}^{(0)}}[\log{L^{c}(\theta|y,z)}|\hat{\theta}^{(0)},y] 
+$$
+
+$$
+Q(\theta|\hat{\theta}^{(0)})= \text{E}_{\hat{\theta}^{(0)}}\left[c+z_{1}\log{\left(\frac{1}{2}\right)}+(z_2+ y_4)\log{\theta} + (y_2+y_3) \log{ (1-\theta)} |\hat{\theta}^{(0)},y \right]
+$$
+
+
+$$
+Q(\theta|\hat{\theta}^{(0)})= \text{E}_{\hat{\theta}^{(0)}}\left[c|\hat{\theta}^{(0)},y\right]+\text{E}_{\hat{\theta}^{(0)}}\left[z_{1}\log{\left(\frac{1}{2}\right)}|\hat{\theta}^{(0)},y\right]+\text{E}_{\hat{\theta}^{(0)}}\left[(z_2+ y_4)|\hat{\theta}^{(0)},y\right]\log{\theta} + \text{E}_{\hat{\theta}^{(0)}}\left[(y_2+ y_3)|\hat{\theta}^{(0)},y\right] \log{(1-\theta)} 
+$$
+$$
+Q(\theta|\hat{\theta}^{(0)})= 0+\log{\left(\frac{1}{2}\right)}\text{E}_{\hat{\theta}^{(0)}}\left[z_{1}|\hat{\theta}^{(0)},y \right]+\left(\text{E}_{\hat{\theta}^{(0)}}\left[z_2|\hat{\theta}^{(0)},y\right]+ y_4\right)\log{\theta} + (y_2+ y_3) \log{(1-\theta)} 
+$$
+$$
+Q(\theta|\hat{\theta}^{(0)})= \log{\left(\frac{1}{2}\right)}\text{E}_{\hat{\theta}^{(0)}}\left[z_{1}\right|\hat{\theta}^{(0)},y]+\left(\text{E}_{\hat{\theta}^{(0)}}\left[z_2|\hat{\theta}^{(0)},y\right]+ y_4\right)\log{\theta} + (y_2+ y_3) \log{(1-\theta)} 
+$$
+
+Untuk memperoleh nilai dari $\text{E}_{\hat{\theta}^{(0)}}\left[z_{1}\right|\hat{\theta}^{(0)},y]$ dan $\text{E}_{\hat{\theta}^{(0)}}\left[z_2|\hat{\theta}^{(0)},y\right]$, kita perlu tahu terlebih dahulu tentang distribusi dari $\boldsymbol{z}=(z_{1},z_{2})$. Karena $\boldsymbol{z}=(z_{1},z_{2})$ merupakan data unobserved maka kita bisa mendapatkan pdf dari $\boldsymbol{z}$ dengan
+
+$$
+f(\boldsymbol{z}|\theta,\boldsymbol{y})=\frac{h(\boldsymbol{y},\boldsymbol{z}|\theta)}{g(\boldsymbol{y}|\theta)}
+$$
+dengan 
+$$
+h(\boldsymbol{x},\boldsymbol{z}|\theta)=L^{c}(\theta|\boldsymbol{y},\boldsymbol{z} )=  \frac{z_{1}+z_{2}+y_{2}+y_{3}+y_{4}}{z_{1}! z_{2}! y_{2}! y_{3}! y_{4}!} \left(\frac{1}{2}\right) ^{z_{1}} \left(\frac{\theta}{4} \right) ^{z_{2}} \left(\frac{1-\theta}{4}\right)^{y_{2}} \left(\frac{1-\theta}{4}\right)^{y_{3}} \left(\frac{\theta}{4}\right)^{y_{4}}
+$$
+yang merupakan fungsi **complete likelihood**. Kemudian
+
+$$
+g(\boldsymbol{y}|\theta)=L(\theta|\boldsymbol{y})=\frac{y_{1}+y_{2}+y_{3}+y_{4}}{y_{1}! y_{2}! y_{3}! y_{4}!} \left(\frac{1}{2}+\frac{\theta}{4} \right) ^{y_{1}} \left(\frac{1-\theta}{4}\right)^{y_{2}} \left(\frac{1-\theta}{4}\right)^{y_{3}} \left(\frac{\theta}{4}\right)^{y_{4}}
+$$
+yang merupakan fungsi **observed likelihood**. Jadi diperoleh
+
+$$
+f(\boldsymbol{z}|\theta,\boldsymbol{y})=\frac{\frac{(z_{1}+z_{2}+y_{2}+y_{3}+y_{4})!}{z_{1}! z_{2}! y_{2}! y_{3}! y_{4}!} \left(\frac{1}{2}\right) ^{z_{1}} \left(\frac{\theta}{4} \right) ^{z_{2}} \left(\frac{1-\theta}{4}\right)^{y_{2}} \left(\frac{1-\theta}{4}\right)^{y_{3}} \left(\frac{\theta}{4}\right)^{y_{4}}}{\frac{(y_{1}+y_{2}+y_{3}+y_{4})!}{y_{1}! y_{2}! y_{3}! y_{4}!} \left(\frac{1}{2}+\frac{\theta}{4} \right) ^{y_{1}} \left(\frac{1-\theta}{4}\right)^{y_{2}} \left(\frac{1-\theta}{4}\right)^{y_{3}} \left(\frac{\theta}{4}\right)^{y_{4}}}
+$$
+
+$$
+f(\boldsymbol{z}|\theta,\boldsymbol{y})=\frac{\frac{n!}{z_{1}! z_{2}! y_{2}! y_{3}! y_{4}!}  \left(\frac{1}{2}\right) ^{z_{1}} \left(\frac{\theta}{4} \right) ^{z_{2}} \left(\frac{1-\theta}{4}\right)^{y_{2}} \left(\frac{1-\theta}{4}\right)^{y_{3}} \left(\frac{\theta}{4}\right)^{y_{4}}}{\frac{n!}{y_{1}! y_{2}! y_{3}! y_{4}!} \left(\frac{1}{2}+\frac{\theta}{4} \right) ^{y_{1}} \left(\frac{1-\theta}{4}\right)^{y_{2}} \left(\frac{1-\theta}{4}\right)^{y_{3}} \left(\frac{\theta}{4}\right)^{y_{4}}}
+$$
+
+
+$$
+f(\boldsymbol{z}|\theta,\boldsymbol{y})=\frac{\frac{1}{z_{1}! z_{2}! }  \left(\frac{1}{2}\right) ^{z_{1}} \left(\frac{\theta}{4} \right) ^{z_{2}} }{\frac{1}{y_{1}!} \left(\frac{1}{2}+\frac{\theta}{4} \right) ^{y_{1}}}
+$$
+
+karena $z_{1}+z_{2}=y_{1}$ maka
+
+$$
+f(\boldsymbol{z}|\theta,\boldsymbol{y})=\frac{\frac{y_{1}!}{z_{1}! z_{2}! }  \left(\frac{1}{2}\right) ^{z_{1}} \left(\frac{\theta}{4} \right) ^{z_{2}} }{ \left(\frac{1}{2}+\frac{\theta}{4} \right) ^{z_{1}+z_{2}}}
+$$
+
+$$
+f(\boldsymbol{z}|\theta,\boldsymbol{y})=\frac{\frac{y_{1}!}{z_{1}! z_{2}! }  \left(\frac{1}{2}\right) ^{z_{1}} \left(\frac{\theta}{4} \right) ^{z_{2}} }{ \left(\frac{1}{2}+\frac{\theta}{4} \right)^{z_{1}}  \left(\frac{1}{2}+\frac{\theta}{4} \right) ^{z_{2}}}
+$$
+
+$$
+f(\boldsymbol{z}|\theta,\boldsymbol{y})=\frac{y_{1}!}{z_{1}! z_{2}! } \left(\frac{  \frac{1}{2} }{\frac{1}{2}+\frac{\theta}{4} }\right)^{z_{1}} \left(\frac{\frac{\theta}{4}}{\frac{1}{2}+\frac{\theta}{4} }\right) ^{z_{2}}
+$$
+
+
+
+
+Berdasarkan hasil diatas, kita dapat memperoleh pdf dari $z_{1}$ dan $z_{2}$ dengan memanfaatkan $z_{1}+z_{2}=y_{1}$. 
+
+
+Untuk pdf $z_{1}$
+
+
+$$
+f(z_{1}|\theta,\boldsymbol{y})=\frac{y_{1}!}{z_{1}! (y_{1}-z_{1})! } \left(\frac{  \frac{1}{2} }{\frac{1}{2}+\frac{\theta}{4} }\right)^{z_{1}} \left(\frac{\frac{\theta}{4}+\frac{1}{2}-\frac{1}{2}}{\frac{1}{2}+\frac{\theta}{4} }\right) ^{y_{1}-z_{1}}
+$$
+$$
+f(z_{1}|\theta,\boldsymbol{y})=\frac{y_{1}!}{z_{1}! (y_{1}-z_{1})! } \left(\frac{  \frac{1}{2} }{\frac{1}{2}+\frac{\theta}{4} }\right)^{z_{1}} \left(\frac{\frac{1}{2}+\frac{\theta}{4}}{\frac{1}{2}+\frac{\theta}{4} }   -\frac{\frac{1}{2}}{\frac{1}{2}+\frac{\theta}{4} }\right) ^{y_{1}-z_{1}}
+$$
+$$
+f(z_{1}|\theta,\boldsymbol{y})=\frac{y_{1}!}{z_{1}! (y_{1}-z_{1})! } \left(\frac{  \frac{1}{2} }{\frac{1}{2}+\frac{\theta}{4} }\right)^{z_{1}} \left(1   -\frac{\frac{1}{2}}{\frac{1}{2}+\frac{\theta}{4} }\right) ^{y_{1}-z_{1}}
+$$
+
+sehingga $z_{1}$ memiliki distribusi $\text{Binomial}\left(y_{1},\frac{\frac{1}{2}}{\frac{1}{2}+\frac{\theta}{4} }\right)$
+
+
+Kemudian untuk pdf $z_{2}$
+
+$$
+f(z_2|\theta,\boldsymbol{y})=\frac{y_{1}!}{(y_{1}-z_{2})! z_{2}! } \left(\frac{  \frac{1}{2}+\frac{\theta}{4}-\frac{\theta}{4}  }{\frac{1}{2}+\frac{\theta}{4} }\right)^{y_{1}-z_{2}} \left(\frac{\frac{\theta}{4}}{\frac{1}{2}+\frac{\theta}{4} }\right) ^{z_{2}}
+$$
+$$
+f(z_2|\theta,\boldsymbol{y})=\frac{y_{1}!}{(y_{1}-z_{2})! z_{2}! } \left(\frac{  \frac{1}{2}+\frac{\theta}{4}}{\frac{1}{2}+\frac{\theta}{4} } - \frac{\frac{\theta}{4}  }{\frac{1}{2}+\frac{\theta}{4} }\right)^{y_{1}-z_{2}} \left(\frac{\frac{\theta}{4}}{\frac{1}{2}+\frac{\theta}{4} }\right) ^{z_{2}}
+$$
+
+$$
+f(z_2|\theta,\boldsymbol{y})=\frac{y_{1}!}{(y_{1}-z_{2})! z_{2}! } \left(1 - \frac{\frac{\theta}{4}  }{\frac{1}{2}+\frac{\theta}{4} }\right)^{y_{1}-z_{2}} \left(\frac{\frac{\theta}{4}}{\frac{1}{2}+\frac{\theta}{4} }\right) ^{z_{2}}
+$$
+sehingga $z_{2}$ memiliki distribusi $\text{Binomial}\left(y_{1},\frac{\frac{\theta}{4}}{\frac{1}{2}+\frac{\theta}{4} }\right)$
+
+
+**Ingat** bahwa jika $X \sim \text{Binomial}(n,p)$ maka nilai ekspetasinya adalah
+
+$$
+\text{E}(X)=np
+$$
+
+sehingga 
+
+$$
+\text{E}_{\hat{\theta}^{(0)}}\left[z_{1}\right|\hat{\theta}^{(0)},y] = y_{1}\left(\frac{\frac{1}{2}}{\frac{1}{2}+\frac{\hat{\theta}^{(0)}}{4} }\right)
+$$
+
+dan
+
+
+$$
+\text{E}_{\hat{\theta}^{(0)}}\left[z_2|\hat{\theta}^{(0)},y\right]=y_{1}\left(\frac{\frac{\hat{\theta}^{(0)}}{4}}{\frac{1}{2}+\frac{\hat{\theta}^{(0)}}{4} }\right)
+$$
+
+untuk memudahkan penulisan kita misalkan 
+
+$$
+\hat{z}_{1} = \text{E}_{\hat{\theta}^{(0)}}\left[z_{1}\right|\hat{\theta}^{(0)},y] = y_{1}\left(\frac{\frac{1}{2}}{\frac{1}{2}+\frac{\hat{\theta}^{(0)}}{4} }\right)
+$$
+karena $y_{1}=100$ maka
+
+$$
+\hat{z}_{1} = \text{E}_{\hat{\theta}^{(0)}}\left[z_{1}\right|\hat{\theta}^{(0)},y] = 100\left(\frac{\frac{1}{2}}{\frac{1}{2}+\frac{\hat{\theta}^{(0)}}{4} }\right)
+$$
+
+dan 
+
+$$
+\hat{z}_{2} = \text{E}_{\hat{\theta}^{(0)}}\left[z_2|\hat{\theta}^{(0)},y\right]=y_{1}\left(\frac{\frac{\hat{\theta}^{(0)}}{4}}{\frac{1}{2}+\frac{\hat{\theta}^{(0)}}{4} }\right)
+$$
+karena $y_{1}=100$ maka
+
+$$
+\hat{z}_{2} = \text{E}_{\hat{\theta}^{(0)}}\left[z_2|\hat{\theta}^{(0)},y\right]=100\left(\frac{\frac{\hat{\theta}^{(0)}}{4}}{\frac{1}{2}+\frac{\hat{\theta}^{(0)}}{4} }\right)
+$$
+
+jadi
+
+$$
+Q(\theta|\hat{\theta}^{(0)})=\log{\left(\frac{1}{2}\right)}\hat{z}_{1}+\left(\hat{z}_{2}+ y_4\right)\log{\theta} + (y_2+ y_3) \log{(1-\theta)} 
+$$
+
+
+2. Dari langkah 1 kita sudah memperoleh **data lengkap**, selanjutnya **estimasi parameter** menggunakan data lengkap tersebut. Estimasi parameter dilakukan dengan menerapkan metode MLE pada fungsi $Q(\theta|\hat{\theta}^{(m)})$ sebagai berikut:
+
+$$
+\hat{\theta}^{(m+1)}= \arg \max{Q(\theta|\hat{\theta}^{(m)})}
+$$
+Tahap 2 ini sering disebut dengan **Tahap Maximization** atau **Tahap-M**
+
+Berdasarkan Tahap 1 diperoleh
+
+$$
+Q(\theta|\hat{\theta}^{(0)})=\log{\left(\frac{1}{2}\right)}\hat{z}_{1}+\left(\hat{z}_{2}+ y_4\right)\log{\theta} + (y_2+ y_3) \log{(1-\theta)} 
+$$
+
+Kemudian, kita akan memperoleh $\hat{\theta}^{(m)}$ dengan memaksimumkan $Q(\theta|\hat{\theta}^{(0)})$ 
+
+$$
+\hat{\theta}^{(1)}= \arg \max{Q(\theta|\hat{\theta}^{(0)})}
+$$
+$$
+\arg \max{Q(\theta|\hat{\theta}^{(0)})} \iff \frac{d\space Q(\theta|\hat{\theta}^{(0)})}{d\space \theta}=0
+$$
+
+$$
+\arg \max{Q(\theta|\hat{\theta}^{(0)})} \iff \frac{d\space \log{\left(\frac{1}{2}\right)}\hat{z}_{1}+\left(\hat{z}_{2}+ y_4\right)\log{\theta} + (y_2+ y_3) \log{(1-\theta)} }{d\space \theta}=0
+$$
+
+$$
+\arg \max{Q(\theta|\hat{\theta}^{(0)})} \iff 0 +\frac{\left(\hat{z}_{2}+ y_4\right)}{{\theta}} + \frac{(y_2+ y_3)}{(1-\theta)} =0
+$$
+
+
+$$
+\arg \max{Q(\theta|\hat{\theta}^{(0)})} \iff \frac{\left(\hat{z}_{2}+ y_4\right)}{{\theta}} - \frac{(y_2+ y_3)}{(1-\theta)} =0
+$$
+
+
+
+$$
+\arg \max{Q(\theta|\hat{\theta}^{(0)})} \iff \frac{\left(\hat{z}_{2}+ y_4\right)}{{\theta}} = \frac{(y_2+ y_3)}{(1-\theta)}
+$$
+
+$$
+\arg \max{Q(\theta|\hat{\theta}^{(0)})} \iff \frac{{\theta}}{\left(\hat{z}_{2}+ y_4\right)} = \frac{(1-\theta)}{(y_2+ y_3)}
+$$
+$$
+\arg \max{Q(\theta|\hat{\theta}^{(0)})} \iff \frac{{\theta}}{(1-\theta)} = \frac{\left(\hat{z}_{2}+ y_4\right)}{(y_2+ y_3)}
+$$
+
+$$
+\arg \max{Q(\theta|\hat{\theta}^{(0)})} \iff \theta(y_2+ y_3)= \left(\hat{z}_{2}+ y_4\right)(1-\theta)
+$$
+
+$$
+\arg \max{Q(\theta|\hat{\theta}^{(0)})} \iff \theta(y_2+ y_3)= \left(\hat{z}_{2}+ y_4\right)-\theta\left(\hat{z}_{2}+ y_4\right)
+$$
+
+$$
+\arg \max{Q(\theta|\hat{\theta}^{(0)})} \iff \theta(y_2+ y_3)+\theta\left(\hat{z}_{2}+ y_4\right)= \left(\hat{z}_{2}+ y_4\right)
+$$
+$$
+\arg \max{Q(\theta|\hat{\theta}^{(0)})} \iff \theta(y_2+ y_3+\hat{z}_{2}+ y_4)= \left(\hat{z}_{2}+ y_4\right)
+$$
+$$
+\arg \max{Q(\theta|\hat{\theta}^{(0)})} \iff \hat{\theta}= \frac{\hat{z}_{2}+ y_4}{y_2+ y_3+\hat{z}_{2}+ y_4}
+$$
+jadi
+
+$$
+\hat{\theta}^{(1)}= \frac{\hat{z}_{2}+ y_4}{\hat{z}_{2}+ y_4+y_2+ y_3}
+$$
+atau kita bisa mengembalikan ke notasi $x$ seperti berikut
+
+$$
+\hat{\theta}^{(1)}= \frac{\hat{x}_{1}+ x_5}{\hat{x}_{2}+ x_5+x_3+ x_4}
+$$
+
+
+Tahap 3 dan 4 bisa kita terapkan langsung menggunakan R
+
+```{r}
+expectation <- function(theta){
+  100*( ( (1/4)*theta ) / ( (1/2) + (1/4)*theta) )
+}
+
+maximization <- function(z2){
+  (z2 + y4) / (z2 + y2 + y3 + y4)
+}
+z2=0
+y2<- 12
+y3<- 18
+y4<- 29
+
+niter <- 100
+theta0 <- 2
+save_iter <- data.frame("iter"=0,"theta"=theta0,"z2"=z2)
+for (i in 1:niter){
+  x2 <- expectation(theta0)
+  theta <- maximization(x2)
+  criteria <- abs(theta-theta0)
+  theta0 <- theta
+  save_iter <- rbind(save_iter,c(i,theta0,x2))
+  if (criteria<10^-7){
+    break
+  }
+}
+
+save_iter
+```
+jadi, untuk mendapatkan $x_{1}$ dan $x_{2}$ bisa menggunakan formula
+
+
+$$
+x_{1}=\hat{z}_{1}= 100\left(\frac{\frac{1}{2}}{\frac{1}{2}+\frac{\hat{\theta}^{(0)}}{4} }\right)
+$$
+
+dan 
+
+
+$$
+x_{1}=\hat{z}_{2} = 100\left(\frac{\frac{\hat{\theta}^{(0)}}{4}}{\frac{1}{2}+\frac{\hat{\theta}^{(0)}}{4} }\right)
+$$
+
+Berdasarkan formula tersebut diperoleh nilai estimasi untuk $x_{2}=24.23$, sedangkan $x_{1}$ tidak memiliki nilai estimasi tertentu karena tidak mempengaruhi nilai estimasi parameter $\hat{\theta}$. Sementara itu, nilai estimasi $\hat{\theta}=0.639$
+
+### Ilustrasi 2 
+
+Suatu percobaan memiliki suatu model linear sebagai berikut
+
+$$
+y_{ij} = \mu + \alpha_{i} + \beta_{j} +\epsilon_{ij}
+$$
+Dari percobaan tersebut dihasilkan data sebagai berikut
+
+<table cellspacing="0" border="0">
+	<colgroup span="5" width="64"></colgroup>
+	<tr>
+		<td style="border-bottom: 1px solid #000000" height="19" align="left" valign=bottom><font color="#000000"><br></font></td>
+		<td style="border-bottom: 1px solid #000000" align="left" valign=bottom><font color="#000000"><br></font></td>
+		<td style="border-bottom: 1px solid #000000" align="left" valign=bottom><font color="#000000"><br></font></td>
+		<td style="border-bottom: 1px solid #000000" align="left" valign=bottom><font color="#000000"><br></font></td>
+		<td style="border-bottom: 1px solid #000000" align="left" valign=bottom><font color="#000000"><br></font></td>
+	</tr>
+	<tr>
+		<td rowspan=2 height="39" align="center" valign=middle><font color="#000000">Tip</font></td>
+		<td style="border-bottom: 1px solid #000000" colspan=4 align="center" valign=bottom><font color="#000000">Coupon</font></td>
+		</tr>
+	<tr>
+		<td align="right" valign=bottom sdval="1" sdnum="1033;"><font color="#000000">1</font></td>
+		<td align="right" valign=bottom sdval="2" sdnum="1033;"><font color="#000000">2</font></td>
+		<td align="right" valign=bottom sdval="3" sdnum="1033;"><font color="#000000">3</font></td>
+		<td align="right" valign=bottom sdval="4" sdnum="1033;"><font color="#000000">4</font></td>
+	</tr>
+	<tr>
+		<td style="border-top: 1px solid #000000" height="19" align="right" valign=bottom sdval="1" sdnum="1033;"><font color="#000000">1</font></td>
+		<td style="border-top: 1px solid #000000" align="right" valign=bottom sdval="9.3" sdnum="1033;"><font color="#000000">9.3</font></td>
+		<td style="border-top: 1px solid #000000" align="right" valign=bottom sdval="9.4" sdnum="1033;"><font color="#000000">9.4</font></td>
+		<td style="border-top: 1px solid #000000" align="right" valign=bottom sdval="9.6" sdnum="1033;"><font color="#000000">9.6</font></td>
+		<td style="border-top: 1px solid #000000" align="right" valign=bottom sdval="10" sdnum="1033;"><font color="#000000">10</font></td>
+	</tr>
+	<tr>
+		<td height="19" align="right" valign=bottom sdval="2" sdnum="1033;"><font color="#000000">2</font></td>
+		<td align="right" valign=bottom sdval="9.4" sdnum="1033;"><font color="#000000">9.4</font></td>
+		<td align="right" valign=bottom sdval="9.3" sdnum="1033;"><font color="#000000">9.3</font></td>
+		<td align="right" valign=bottom sdval="9.8" sdnum="1033;"><font color="#000000">9.8</font></td>
+		<td align="right" valign=bottom sdval="9.9" sdnum="1033;"><font color="#000000">9.9</font></td>
+	</tr>
+	<tr>
+		<td height="19" align="right" valign=bottom sdval="3" sdnum="1033;"><font color="#000000">3</font></td>
+		<td align="right" valign=bottom sdval="9.2" sdnum="1033;"><font color="#000000"></font></td>
+		<td align="right" valign=bottom sdval="9.4" sdnum="1033;"><font color="#000000">9.4</font></td>
+		<td align="right" valign=bottom sdval="9.5" sdnum="1033;"><font color="#000000">9.5</font></td>
+		<td align="right" valign=bottom sdval="9.7" sdnum="1033;"><font color="#000000">9.7</font></td>
+	</tr>
+	<tr>
+		<td height="19" align="right" valign=bottom sdval="4" sdnum="1033;"><font color="#000000">4</font></td>
+		<td align="right" valign=bottom sdval="9.7" sdnum="1033;"><font color="#000000">9.7</font></td>
+		<td align="right" valign=bottom sdval="9.6" sdnum="1033;"><font color="#000000">9.6</font></td>
+		<td align="right" valign=bottom sdval="10" sdnum="1033;"><font color="#000000">10</font></td>
+		<td align="right" valign=bottom sdval="10.2" sdnum="1033;"><font color="#000000"></font></td>
+	</tr>
+	<tr>
+		<td style="border-top: 1px solid #000000" height="19" align="left" valign=bottom><font color="#000000"><br></font></td>
+		<td style="border-top: 1px solid #000000" align="left" valign=bottom><font color="#000000"><br></font></td>
+		<td style="border-top: 1px solid #000000" align="left" valign=bottom><font color="#000000"><br></font></td>
+		<td style="border-top: 1px solid #000000" align="left" valign=bottom><font color="#000000"><br></font></td>
+		<td style="border-top: 1px solid #000000" align="left" valign=bottom><font color="#000000"><br></font></td>
+	</tr>
+</table>
+
+Data hasil percobaan tersebut mengandung dua missing data. Jika diketahui bahwa estimasi parameter dari model linear percobaan adalah sebagai berikut
+
+$$
+\hat{\mu} = \bar{y} 
+$$
+$$
+\hat{\alpha} = \bar{y}_{i.}-\bar{y}=\frac{\Sigma_{j=1}^{b} y_{ij}}{b}-\frac{\Sigma_{j=1}^{n} y_{ij}}{n}
+$$
+$$
+\hat{\beta} = \bar{y}_{.j}-\bar{y}=\frac{\Sigma_{i=1}^{a} y_{ij}}{a}-\frac{\Sigma_{j=1}^{n} y_{ij}}{n}
+$$
+untuk $n=a+b$, maka hitung nilai estimasi dari dua missing data yang hilang tersebut dengan Algoritme EM menggunakan R!
+
+### Pembahasan Ilustrasi 2
+
+Data pada soal tersebut kita rubah ke dalam format `long` seperti berikut:
+
+```{r echo=FALSE}
+read.table(header = TRUE,
+           text ="Tip	Coupon	Response
+1	1	9.3
+2	1	9.4
+3	1	NA
+4	1	9.7
+1	2	9.4
+2	2	9.3
+3	2	9.4
+4	2	9.6
+1	3	9.6
+2	3	9.8
+3	3	9.5
+4	3	10
+1	4	10
+2	4	9.9
+3	4	9.7
+4	4	NA
+" )
+```
+package yang dipakai untuk menjawab soal ini adalah 
+
+```{r message=FALSE}
+library(tidyverse)
+```
+
+Kemudian kita input data dalam format long tersebut ke dalam R
+```{r}
+dta <- read.table(header = TRUE,
+           text ="Tip	Coupon	Response
+1	1	9.3
+2	1	9.4
+3	1	NA
+4	1	9.7
+1	2	9.4
+2	2	9.3
+3	2	9.4
+4	2	9.6
+1	3	9.6
+2	3	9.8
+3	3	9.5
+4	3	10
+1	4	10
+2	4	9.9
+3	4	9.7
+4	4	NA
+" )
+glimpse(dta)
+```
+
+Selanjutnya kita akan terapkan Algoritme EM
+
+
+1. Tahap-E
+
+Kita akan estimasi dua missing data tersebut dengan menggunakan nilai estimasi parameter dan juga persamaan model linear
+
+
+$$
+\hat{\mu} = \bar{y} 
+$$
+$$
+\hat{\alpha} = \bar{y}_{i.}-\bar{y}=\frac{\Sigma_{j=1}^{b} y_{ij}}{b}-\frac{\Sigma_{j=1}^{n} y_{ij}}{n}
+$$
+$$
+\hat{\beta} = \bar{y}_{.j}-\bar{y}=\frac{\Sigma_{i=1}^{a} y_{ij}}{a}-\frac{\Sigma_{j=1}^{n} y_{ij}}{n}
+$$
+$$
+y_{\text{miss}} = \hat{\mu} + \hat{\alpha_{i}} + \hat{\beta_{j}}
+$$
+
+$\epsilon_{ij}$ tidak kita masukan karena merupakan galat, sehingga tidak dibutuhkan untuk estimasi nilai missing data.
+
+Sebelum kita menghitung nilai estimasi bagi tiap-tiap parameter, kita buat dulu tambahan satu kolom untuk mengidentifikasi ada amatan hilang atau tidak
+
+
+```{r}
+dta <- dta %>%  mutate(is_miss = ifelse(is.na(Response),"miss","not")
+                       )
+glimpse(dta)
+```
+
+Selanjutnya kita hitung estimasi dua nilai estimasi masing-masing parameter
+
+
+```{r}
+mu_hat0 = dta %>% 
+  #na.rm=TRUE berarti kita menghitung mean
+  # dengan mengabaikan missing data
+  summarise(mean(Response,na.rm=TRUE)) %>% 
+  pull()
+mu_hat0
+
+alpha_hat0 <- dta %>% 
+  group_by(Tip) %>% 
+  summarise(mean(Response,na.rm=TRUE)) %>% 
+  pull() - mu_hat0
+alpha_hat0
+
+beta_hat0 <- dta %>% 
+  group_by(Coupon) %>% 
+  summarise(mean(Response,na.rm=TRUE)) %>% 
+  pull() - mu_hat0
+beta_hat0
+```
+
+selanjutnya kita masukan hasil estimasi parameter kita ke tabel `dta`
+
+```{r}
+dta_calc <- dta %>% 
+  mutate(mu_hat = mu_hat0) %>% 
+  group_by(Coupon) %>% 
+  mutate(alpha_hat = alpha_hat0) %>% 
+  ungroup() %>% 
+  group_by(Tip) %>% 
+  mutate(beta_hat = beta_hat0) %>% 
+  ungroup()
+dta_calc
+```
+
+
+kemudian kita hitung nilai estimasi untuk dua missing data
+
+```{r}
+ymiss <- dta_calc %>% 
+  filter(is_miss=="miss") %>%
+  mutate( ymiss = mu_hat+alpha_hat+beta_hat) %>% 
+  pull(ymiss)
+ymiss
+```
+
+
+
+2. Tahap-M
+
+Pada tahap ini kita akan menghitung nilai estimasi paramaeter berdasarkan hasil yang diperoleh pada tahap 1
+
+```{r}
+# input nilai estimasi missing data
+dta_calc <- dta_calc %>% 
+  mutate(Response = ifelse(is_miss=="miss",
+                           ymiss,
+                           Response)
+         )
+dta_calc %>% filter(is_miss=="miss")
+```
+
+Selanjutnya kita hitung estimasi dua nilai estimasi masing-masing parameter
+
+
+```{r}
+mu_hat0 = dta_calc %>% 
+  #na.rm=TRUE berarti kita menghitung mean
+  # dengan mengabaikan missing data
+  summarise(mean(Response,na.rm=TRUE)) %>% 
+  pull()
+mu_hat0
+
+alpha_hat <- dta_calc %>% 
+  group_by(Tip) %>% 
+  summarise(mean(Response,na.rm=TRUE)) %>% 
+  pull() - mu_hat0
+alpha_hat0
+
+beta_hat0<- dta_calc %>% 
+  group_by(Coupon) %>% 
+  summarise(mean(Response,na.rm=TRUE)) %>% 
+  pull() - mu_hat0
+beta_hat0
+```
+
+selanjutnya kita masukan hasil estimasi parameter kita ke tabel `dta`
+
+```{r}
+dta_calc <- dta_calc %>% 
+  mutate(mu_hat = mu_hat0) %>% 
+  group_by(Coupon) %>% 
+  mutate(alpha_hat = alpha_hat0) %>% 
+  ungroup() %>% 
+  group_by(Tip) %>% 
+  mutate(beta_hat = beta_hat0) %>% 
+  ungroup()
+dta_calc
+```
+3. Tahap 3 dan 4 akan kita buat dalam iterasi di R dengan memanfaatkan coding diatas
+
+
+```{r}
+## input data ke R
+dta <- read.table(header = TRUE,
+           text ="Tip	Coupon	Response
+1	1	9.3
+2	1	9.4
+3	1	NA
+4	1	9.7
+1	2	9.4
+2	2	9.3
+3	2	9.4
+4	2	9.6
+1	3	9.6
+2	3	9.8
+3	3	9.5
+4	3	10
+1	4	10
+2	4	9.9
+3	4	9.7
+4	4	NA
+" )
+glimpse(dta)
+```
+
+Berikutnya kita mulai EM-algorithm. 
+
+Pada bagian ini akan diilustrasikan missing data akan diganti dengan nilai awal dibandingkan dengan nilai estimasi yang didapatkan dari parameter seperti ilustrasi sebelumnya.
+
+```{r}
+# menambahkan kolom dengan informasi missing data
+dta <- dta %>%  mutate(is_miss = ifelse(is.na(Response),"miss","not")
+                       )
+
+## Menghitung estimasi parameter dengan nilai awal 2 
+
+ dta <- dta %>% 
+  mutate( Response = ifelse(is_miss=="miss",
+                            2,
+                            Response)
+  )
+
+mu_hat0 = dta %>% 
+  summarise(mean(Response)) %>% 
+  pull()
+
+alpha_hat0 <- dta %>% 
+  group_by(Tip) %>% 
+  summarise(mean(Response)) %>% 
+  pull() - mu_hat0
+
+
+beta_hat0 <- dta %>% 
+  group_by(Coupon) %>% 
+  summarise(mean(Response)) %>% 
+  pull() - mu_hat0
+
+
+# memasukan hasil estimasi paramater ke dalam data.frame
+dta_calc <- dta %>% 
+  mutate(mu_hat = mu_hat0) %>% 
+  group_by(Coupon) %>% 
+  mutate(alpha_hat = alpha_hat0) %>% 
+  ungroup() %>% 
+  group_by(Tip) %>% 
+  mutate(beta_hat = beta_hat0) %>% 
+  ungroup()
+
+# nilai estimasi missing data
+ymiss_rec <- dta_calc %>% 
+  filter(is_miss=="miss")
+
+# y_missing nilai awal 2
+ymiss =c(2,2)
+res_table <- data.frame(iter=0,
+           name_ymiss=c("y31","y44"),
+           ymiss=ymiss,
+           mu_hat = ymiss_rec %>% pull(mu_hat),
+           alpha_hat = ymiss_rec %>% pull(alpha_hat),
+           beta_hat = ymiss_rec %>% pull(beta_hat)
+           )
+tol <- 1e-7
+
+for (i in 1:100){
+  
+
+# input nilai estimasi missing data
+dta_calc <- dta_calc %>% 
+  mutate(Response = ifelse(is_miss=="miss",
+                           ymiss,
+                           Response)
+         )
+
+mu_hat0 = dta_calc %>% 
+  summarise(mean(Response)) %>% 
+  pull()
+
+
+alpha_hat0 <- dta_calc %>% 
+  group_by(Tip) %>% 
+  summarise(mean(Response)) %>% 
+  pull() - mu_hat0
+
+
+beta_hat0 <- dta_calc %>% 
+  group_by(Coupon) %>% 
+  summarise(mean(Response)) %>% 
+  pull() - mu_hat0
+
+dta_calc <- dta_calc %>% 
+  mutate(mu_hat = mu_hat0) %>% 
+  group_by(Coupon) %>% 
+  mutate(alpha_hat = alpha_hat0) %>% 
+  ungroup() %>% 
+  group_by(Tip) %>% 
+  mutate(beta_hat = beta_hat0) %>% 
+  ungroup()
+
+
+# nilai estimasi missing data
+ymiss_rec <- dta_calc %>% 
+  filter(is_miss=="miss") %>%
+  mutate( ymiss = mu_hat+alpha_hat+beta_hat)
+  
+ymiss_old <- ymiss
+ymiss <- ymiss_rec %>%  pull(ymiss)
+
+res_table <- rbind(res_table,data.frame(iter=i,
+           name_ymiss=c("y31","y44"),
+           ymiss=ymiss,
+           mu_hat = ymiss_rec %>% pull(mu_hat),
+           alpha_hat = ymiss_rec %>% pull(alpha_hat),
+           beta_hat = ymiss_rec %>% pull(beta_hat)
+           ))
+if(all(abs(ymiss_old-ymiss)<=tol)){
+  break
+}
+
+}
+```
+
+Hasil akhir yang diperoleh
+
+```{r}
+res_table
+```
+
+
+
+## Referensi
+
+Hogg, Robert V., Joseph W. McKean, and Allen T,Craig.2013. Introduction to Mathematical Statistics. 7th ed. Boston: Pearson.
+
+https://www.statisticshowto.com/em-algorithm-expectation-maximization/

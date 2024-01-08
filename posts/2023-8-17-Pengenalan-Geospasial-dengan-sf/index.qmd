@@ -1,0 +1,529 @@
+---
+title: "Pengenalan Geospasial dengan Simple Features `sf`"
+date: 8-17-2023
+author: Gerry Alfa Dito
+categories: 
+      - Geospatial
+      - R Programming
+      - Data Visualization
+draft: false
+image: post-image.jpg
+---
+
+## Pengantar Data Spasial
+
+Data spasial adalah data yang memberi informasi tentang di mana letak (lokasi) suatu objek. Informasi yang diberikan dapat berupa **lokasi geografis** atau **posisi** objek tertentu di permukaan Bumi. Data Spasial ini dapat berbentuk **titik-titik (points), garis-garis (lines), poligon-poligon (polygons), atau bahkan citra-citra (images)**. Dalam tulisan ini, kita akan hanya akan mengenalkan data spasial sebagai data yang berisi informasi lokasi geografis.
+
+Sebagai ilustrasi, Di peta, kita dapat melihat lokasi kota-kota, sungai-sungai, gunung-gunung, dan objek-objek lainnya. Setiap elemen ini mewakili data spasial. Namun, data spasial tidak hanya terbatas pada peta. Setiap informasi yang terhubung dengan suatu tempat tertentu bisa dianggap sebagai data spasial. Hal ini bisa mencakup hal-hal seperti pengukuran suhu di lokasi berbeda, distribusi pohon di hutan, atau jumlah penduduk di berbagai lingkungan.
+
+
+Data spasial sangat penting karena membantu kita memahami bagaimana objek-objek tersebar di suatu ruang dan bagaimana interaksi di antara objek-objek tersebut berdasarkan lokasi objek. Dengan menganalisis data spasial, kita dapat mengungkap pola dan hubungan yang mungkin tidak terlihat dari data biasa. Di sinilah statistik spasial berperan, yakni memberikan alat dan teknik untuk menganalisis dan memahami jenis data ini.
+
+
+## Coordinate Reference Systems (CRS)
+
+
+Coordinate Reference System, sering disingkat sebagai CRS, adalah cara untuk menentukan bagaimana koordinat yakni lintang (latitude) dan bujur (longitude) diberikan kepada lokasi objek di permukaan bumi. Kita dapat memandang CRS sebagai **kumpulan aturan matematis** yang memungkinkan kita untuk dengan tepat **mendefinisikan di mana lokasi suatu objek** terletak di **peta** atau dalam ruang geografis.
+
+Bumi itu bulat, seperti bola, tetapi **peta** yang digunakan berupa **permukaan datar**. Ketika kita merepresentasikan permukaan Bumi yang melengkung pada peta datar, terjadi sedikit distorsi. CRS membantu kita **mengelola distorsi** ini dan memastikan bahwa peta yang terbentuk mewakili lokasi-lokasi di dunia nyata secara akurat.
+
+CRS mencakup dua komponen utama: datum dan proyeksi. 
+
+1. datum adalah sebuah parameter atau sekumpulan parameter yang menentukan posisi
+asal, skala, dan orientasi sistem koordinat.
+2. Proyeksi adalah metode yang digunakan untuk **meratakan permukaan Bumi** ke **dalam peta 2D**. Proyeksi yang berbeda digunakan untuk tujuan yang berbeda, karena setiap proyeksi mengubah permukaan Bumi dengan cara yang unik.
+
+
+Ada dua jenis utama datum yaitu:
+
+1. Datum Geografis: Datum geografis mendefinisikan pusat, orientasi, dan skala bentuk elipsoid permukaan Bumi. Ini seperti sistem koordinat yang menempatkan titik-titik di permukaan Bumi. Datum ini membantu menentukan koordinat lintang dan bujur. Jenis-jenis datum Geografis antara lain:
+
+a. **WGS84 (World Geodetic System 1984)**: Ini adalah datum yang banyak digunakan untuk sistem GPS dan aplikasi pemetaan. Ini menyediakan kerangka referensi global dan umumnya digunakan untuk navigasi satelit.
+b. **NAD83 (North American Datum 1983)**: Datum ini digunakan di Amerika Utara dan menyediakan kerangka kerja untuk pemetaan dan survei di Amerika Serikat, Kanada, dan Meksiko.
+c. **ETRS89 (European Terrestrial Reference System 1989)**: ETRS89 adalah datum geosentris yang digunakan di Eropa untuk berbagai tujuan pemetaan dan penentuan posisi.
+d. **GDA94 (Geocentric Datum of Australia 1994)**: Datum ini digunakan untuk tujuan pemetaan dan survei di Australia dan wilayah-wilayahnya.
+e. **Tokyo Datum 2000**: Digunakan di Jepang, datum ini menyediakan kerangka referensi untuk pemetaan dan survei di kepulauan Jepang.
+f. **Indian 1975**: Digunakan di India, datum ini berfungsi sebagai referensi untuk pemetaan dan kegiatan geodetik di negara tersebut.
+g. **HARN (High Accuracy Reference Network)**: Ini adalah sekelompok datum yang digunakan di Amerika Serikat untuk meningkatkan akurasi pemetaan dan survei di wilayah-wilayah tertentu.
+h. **Beijing 1954**: Digunakan di Tiongkok, datum ini berfungsi sebagai referensi untuk pemetaan dan pekerjaan geodetik di negara tersebut.
+2. Datum Vertikal: Sementara datum geografis fokus pada permukaan Bumi, datum vertikal digunakan untuk mengukur ketinggian dan kedalaman, terutama dalam hubungannya dengan permukaan laut. Mereka mendefinisikan titik awal untuk mengukur elevasi. Jenis-jenis datum Vertikal antara lain:
+
+a. **NGVD29 (National Geodetic Vertical Datum of 1929)**: Datum ini banyak digunakan di Amerika Serikat dan menjadi acuan untuk mengukur ketinggian berdasarkan titik ukur pasang surut tertentu.
+b. **NAVD88 (North American Vertical Datum of 1988)**: Versi yang diperbarui dari NGVD29, NAVD88 adalah datum vertikal standar saat ini di Amerika Utara. Ini menggunakan jaringan titik ukur dan teknologi canggih untuk memberikan pengukuran ketinggian yang akurat.
+c. **EGM96 (Earth Gravitational Model 1996)**: Meskipun bukan datum vertikal tradisional, EGM96 adalah model matematika yang mendefinisikan medan gravitasi Bumi. Sering digunakan bersama dengan model geoid untuk menentukan ketinggian ortometrik.
+d. **AHD (Australian Height Datum)**: Digunakan di Australia, AHD memberikan acuan untuk mengukur ketinggian di berbagai lanskap yang beragam di negara tersebut.
+c. **GEOID12B**: Model geoid yang dikembangkan oleh National Geodetic Survey di Amerika Serikat untuk memberikan ketinggian ortometrik yang tepat menggunakan EGM96.
+d. **CVD2014 (Canadian Vertical Datum 2014)**: Datum ini digunakan di Kanada dan memberikan referensi yang diperbarui untuk pengukuran ketinggian.
+
+
+
+Transformasi antar datum dalam CRS ini dapat menggunakan PROJ4 dan WKT-4.
+
+
+## Objek Geometri data spasial
+
+| type         | description |    
+|--------------|-----------|
+| POINT | single point geometry     |
+| MULTIPOINT     | set of points  |
+| LINESTRING | single linestring (two or more points connected by straight
+lines)     |
+|MULTILINESTRING    | set of linestrings  |
+| POLYGON | exterior ring with zero or more inner rings, denoting holes
+ set of polygons  |
+| MULTIPOLYGON    | set of points  |  
+| GEOMETRYCOLLECTION    | set of the geometries above  |
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+![](Objek Geometri.png)
+
+
+
+
+## Data 
+
+Data yang digunakan untuk praktikum kali ini adalah  
+
+1. Cholera Death
+2. Peta Administratif tingkat kabupaten/kota seluruh indonesia (Update 2020)
+3. Jumlah tenaga kesehatan masyarakat di Jawa Barat Tahun 2016-2021
+
+Ketiga dataset ini dapat didownload melalui link berikut
+[Download Dataset](https://drive.google.com/file/d/13FkcOs2LSixpE61a55RVniUb6Bq4Ya-j/view?usp=sharing)
+
+Silahkan extract zip terlebih dahulu sebelum menggunakan data-data tersebut.
+
+
+### Cholera Death
+
+
+John Snow produced a famous map in 1854 showing the deaths caused by a cholera outbreak in Soho, London, and the locations of water pumps in the area. By doing this he found there was a significant clustering of the deaths around a certain pump – and removing the handle of the pump stopped the outbreak.
+
+
+
+
+## Package
+
+Silahkan install package berikut dari github.
+
+**Catatan:** jika saat menjalankan sintaks ada output
+
+>These packages have more recent versions available.
+It is recommended to update all of them.
+Which would you like to update?
+* 1: All                           
+* 2: CRAN packages only            
+* 3: None                          
+
+
+Silahkan pilih None
+
+
+
+```{r eval=FALSE}
+remotes::install_github("yutannihilation/ggsflabel")
+```
+
+Silahkan install package berikut tanpa perlu dipanggil
+
+```{r eval=FALSE}
+install.packages("viridis")
+install.packages("mapview")
+```
+
+
+```{r}
+library(sf)
+library(tidyverse)
+library(ggspatial)
+```
+
+
+## Data Spasial dalam R
+
+Di dalam R terdapat package-package yang tergabung dalam ekosistem untu menangani data spasial. Secara umum, package dasar yang dapat menangani data spasial adalah package `sp` dan `sf`. Dalam ilustrasi kali ini kita akan berfokus pada penggunaan package `sf`.
+
+
+### Package `sf`
+
+Package `sf` dimaksudkan untuk menggantikan package R `sp`, `rgeos` dan bagian vektor dari `rgdal`, package R `sf` (Pebesma 2018) dikembangkan untuk memindahkan analisis data spasial dalam R yang lebih dekat dengan pendekatan berbasis standar dalam industri dan proyek open-source, untuk membangun versi yang lebih modern dari software geospasial open-source, dan untuk memungkinkan integrasi software spasial R dengan `tidyverse` (Wickham dkk. 2019).
+
+
+Untuk melakukannya, package R `sf` menyediakan akses **simple features** (Herring et al. 2011), secara native, ke R. Package ini dapat dihubungkan ke beberapa package `tidyverse`, khususnya ke `ggplot2`, `dplyr`, dan `tidyr`. Package ini dapat membaca dan menyimpan data melalui `GDAL`, menjalankan operasi geometri menggunakan `GEOS` (untuk koordinat yang diproyeksikan) atau `s2geometry` (untuk koordinat ellipsoidal), dan menjalankan transformasi koordinat atau konversi menggunakan `PROJ`. Library C++ eksternal dihubungkan dengan package R `Rcpp` (Eddelbuettel 2013).
+
+
+Paket sf merepresentasikan kumpulan **simple features** dalam objek `sf`, sebuah sub-kelas dari `data.frame` atau `tibble`. Objek `sf` berisi setidaknya satu **geometri list-column** dari kelas `sfc`, yang mana untuk setiap elemennya berisi geometri sebagai objek R dari kelas `sfg`. **Geometri list-column** bertindak sebagai sebuah variabel dalam `data.frame` atau `tibble`, tetapi memiliki struktur yang lebih kompleks daripada vektor dasar seperti variabel numerik atau karakter. 
+
+Sebuah objek sf memiliki metadata sebagai berikut:
+- nama kolom geometri (aktif), yang disimpan dalam atribut `sf_column`
+- untuk setiap variabel non-geometri, hubungan atribut-geometri yang disimpan dalam atribut `agr`
+
+Suatu `sfc` **geometri list-column** diekstrak dari objek `sf` dengan `st_geometry` dan memiliki metadata sebagai berikut:
+- sistem referensi koordinat yang disimpan dalam atribut `crs`
+- kotak pembatas yang disimpan dalam atribut `bbox`
+- presisi disimpan dalam atribut presisi
+- jumlah geometri kosong yang disimpan dalam atribut `n_empty`
+
+Atribut-atribut ini paling mudah diakses atau diatur dengan menggunakan fungsi-fungsi seperti `st_bbox`, `st_crs`, `st_set_crs`, `st_agr`, `st_set_agr`, `st_precision`, dan `st_set_precision`.Kolom geometri pada objek `sf` dapat diatur atau diganti dengan menggunakan `st_geometry<-` atau `st_set_geometry`. 
+
+## Data Spasial dengan geometri titik
+
+### Import data spasial
+
+Data spasial dapat berupa ekstensi `.shp` atau `dbf`. Untuk mengimport data spasial bisa menggunakan fungsi `st_read` dari package `sf`.
+
+
+```{r}
+CholeraDeaths <- st_read(dsn = "SnowGIS_SHP",layer = "Cholera_Deaths")
+```
+
+argumen `layer` pada sintaks diatas adalah nama file `.shp` atau `.dbf` yang akan diimport. Sementara itu, `dsn` adalah nama folder tempat file `.shp` atau `.dbf` berada. Selain dengan cara diatas, cara lain untuk import data spasial menggunakan sintaks `st_read` langsung menuliskan direktori atau nama file `.shp` atau `.dbf`. Berikut ilustrasinya.
+
+
+```{r}
+CholeraDeaths <- st_read(dsn = "SnowGIS_SHP/Cholera_Deaths.shp")
+```
+
+
+Setelah proses import selesai, maka akan tampil beberapa informasi tentang data spasial yang diimport seperti
+
+* 250 Features dan 2 fields berarti terdapat 250 objek spasial dan 2 kolom data yang bersesuaian dengan objek spasial tersebut.
+* **Tipe Geometri** pada data ini adalah `POINT` yang berarti bahwa data spasial yang diimport berupa titik-titik amatan yang tersebar dalam ruang spasial.
+* **Bounding box** yang merupakan batas minimum dan maximum di latitude (sumbu $x$) atau longitude (sumbu $y$).
+* CRS yang digunakan dalam data ini adalah **British National Grid**
+
+
+Kemudian jika kita panggil objek `CholeraDeaths` akan muncul overview objek-objek spasial (baris) sebagai berikut:
+
+
+```{r}
+CholeraDeaths
+```
+
+### Visualisasi data spasial
+
+#### Visualisasi statis
+
+Kemudian kita bisa mevisualisasikan data spasial diatas dengan bantuan package `ggplot2`, secara khusus dengan memanfaatkan fungsi `geom_sf`.
+
+```{r}
+ggplot(data = CholeraDeaths)+
+  geom_sf()+
+  #mengubah tema
+  theme_bw()
+```
+
+
+Grafik diatas sulit diinterpretasikan karena hanya berupa titik-titik spasial saja. Kita dapat menambahkan peta yang bersesuaian dengan menambahkan fungsi `annotation_map_tile` dari package `ggspatial`. Fungsi `annotation_map_tile` mengcapture peta yang berasal dari OpenStreetMap sesuai dengan posisi objek spasial. Kita dapat mengontrol tingkat ``zoom``, serta `type`-nya. 
+
+`
+
+```{r}
+ggplot(CholeraDeaths) + 
+  annotation_map_tile(type = "osm", zoomin = 0) + 
+  geom_sf(aes(size = Count), alpha = 0.7)+
+  theme_bw()
+```
+
+
+Hal menarik lain yang terlihat dari map diatas adalah ada beberapa titik yang masuk dalam map tiles. Hal ini dikarenakan adanya perbedaan CRS pada data Cholera Death dan map tiles yang berasal dari **Open Street Map**. CRS pada data Cholera Death adalah OSGB36 / British National Grid. Semetara itu,  CRS pada **Open Street Map** atau maps yang lain adalah WGS84 atau sering juga dikenal sebagai EPSG:3857. Fungsi `st_crs()` akan menerjemahkan dari kode EPSG ke string PROJ.4 dan WKT. Berikut sintaks untuk menampilkan string PROJ.4 dan WKT
+
+
+
+```{r}
+st_crs(3857)$proj4string
+```
+
+
+```{r}
+st_crs(3857)$wkt
+```
+
+
+
+Jika kita bandingkan dengan  PROJ.4 dan WKT dari `CholeraDeaths`
+
+```{r}
+st_crs(CholeraDeaths)$proj4string
+```
+
+```{r}
+st_crs(CholeraDeaths)$wkt
+```
+
+
+
+
+
+Kemudian dengan `st_transform` kita melakukan proyeksi (transformasi) data `CholeraDeaths` dari CRS OSGB36 ke EPSG:3857
+
+
+```{r}
+cholera_latlong <- CholeraDeaths %>%
+  st_transform(3857)
+```
+
+karena WKT agak sulit untuk dibandingkan kita menggunakan Proj4 saja
+
+
+```{r}
+st_crs(cholera_latlong)$proj4string
+st_crs(3857)$proj4string
+```
+
+PROJ4 untuk data `CholeraDeaths` hasil transformasi sudah sama dengan  EPSG:3857.
+
+
+Kemudian jika kita buatkan kembali map, maka hasilnya adalah
+
+ 
+```{r}
+ggplot(cholera_latlong) + 
+  annotation_map_tile(type = "osm", zoomin = 0) + 
+  geom_sf(aes(size = Count),color="#0288D1", alpha = 0.7)+
+  theme_bw()
+```
+
+
+#### Visualisasi Interaktif
+
+
+Visualisasi spasial interaktif bisa dilakukan dengan menggunakan fungsi `mapview` package `mapview`.
+
+
+```{r}
+cholera_latlong %>% 
+  mapview::mapview(zcol = "Count")
+```
+
+
+argumen `zcol` digunakan untuk menampilkan informasi tertentu dalam bentuk warna.
+
+
+
+## Data Spasial dengan geometri poligon
+
+Untuk ilustrasi data spasial yang berbentuk poligon, kita akan mencoba melakukan visualisasi spasial Jumlah tenaga kesehatan masyarakat setiap Kabupaten/kota di Jawa Barat tahun 2021.
+
+
+### Import data spasial
+
+
+```{r}
+kab_indo <- st_read("Admin2Kabupaten/idn_admbnda_adm2_bps_20200401.shp")
+```
+
+
+Setelah proses import selesai, maka akan tampil beberapa informasi tentang data spasial yang diimport seperti
+
+* 522 Features dan 14 fields berarti terdapat 522 objek spasial (poligon) dan 14 kolom data yang bersesuaian dengan objek spasial tersebut. Dalam kasus ini banyaknya poligon adalah sebanyak kabupaten/kota di seluruh indonesia.
+* **Tipe Geometri** pada data ini adalah `MULTIPOLYGON`.
+* **Bounding box** yang merupakan batas minimum dan maximum di latitude (sumbu $x$) atau longitude (sumbu $y$).
+* CRS yang digunakan dalam data ini adalah **WGS-84**
+
+
+
+```{r}
+kab_indo
+```
+
+
+### Import data tabular
+
+
+
+```{r}
+jum_nakes <- read_csv("jml_tenaga_kesehatan_msyrkt__kabupatenkota.csv")
+glimpse(jum_nakes)
+```
+
+Data tabular yang kita import memliki informasi lebih dari satu tahun. Sehingga kita perlu `filter` terlebih dahulu untuk Tahun 2021.
+
+```{r}
+jum_nakes %>% 
+  count(tahun)
+```
+
+Berikut ilustrasi filternya:
+
+
+```{r}
+jum_nakes2021 <- jum_nakes %>% 
+                    filter(tahun==2021) %>%
+                    select(nama_kabupaten_kota,jumlah_nakesmas)
+jum_nakes2021
+```
+
+### Visualisasi Data Spasial
+
+#### Visualisasi Statis 
+
+Sama seperti sebelumnya, visualisasi data spasial juga menggunakan package `ggplot2` dan fungsi `geom_sf`.
+
+
+```{r}
+ggplot(data = kab_indo)+
+  geom_sf()+
+  theme_bw()
+```
+
+Hasil visualisasi diatas menujukkan peta Indonesia yang sudah terbagi menjadi poligon-poligon berdasarkan kabupaten/kota. 
+
+Untuk mendapatkan hanya provinsi Jawa Barat saja, maka kita bisa menggunakan fungsi `filter` dari package `dplyr` untuk menyaring kolom `ADM1_EN` yang berisi nama-nama provinsi di Indoneisa. 
+
+
+
+```{r}
+jabar_kabkot <- kab_indo %>%
+                    filter(ADM1_EN=="Jawa Barat")
+jabar_kabkot
+```
+
+
+Kemudian, peta Jawa Barat bisa kita dapatkan
+
+
+```{r}
+jabar_kabkot %>% 
+  ggplot()+
+  geom_sf()+
+  
+  ggsflabel::geom_sf_label_repel(aes(label=str_wrap(ADM2_EN,width = 1)),size=1.75)+
+  theme_bw()+
+  theme(axis.title = element_blank())
+```
+
+* Fungsi `geom_sf_label_repel` dari package `ggsflabel` berguna untuk memberikan label-label kabupaten/kota. Karena ada kata `repel` difungsi tersebut, menyebabkan label yang dihasilkan tidak akan tumpang tindih. Label yang berpotensi tumpang-tindih satu sama lain akan digeser kemudian diberi garis yang menandakan asal dari label tersebut.
+* Fungsi `str_wrap` digunakan untuk memindahkan kata ke baris baru jika kata-kata tersebut terdiri dari dua kata seperti `"Kota Bogor"`.
+
+
+
+
+kita juga bisa menambahkan peta "asli" dari **OpenStreetMap** dengan fungsi `annotation_map_tile`.
+
+
+```{r}
+jabar_kabkot %>% 
+  ggplot()+
+    annotation_map_tile(type = "osm", zoomin = 0)+
+    geom_sf()+
+    ggsflabel::geom_sf_label_repel(aes(label=str_wrap(ADM2_EN,width = 1)),size=1.75)+
+    theme_bw()
+```
+
+
+
+
+Kemudian, langkah selanjutnya kita akan memasukan informasi **jumlah tenaga kesehatan** tahun 2021 ke dalam peta diatas. Pertama kita harus memastikan bahwa nama-nama kabupaten/kota di data **jumlah tenaga kesehatan** dan di dalam data spasial kita (yang diimport dari `.shp`) itu sama. Berikut adalah hasilnya
+
+
+
+```{r}
+jum_nakes2021 %>% count(nama_kabupaten_kota)
+kab_indo %>% as_tibble() %>% count(ADM2_EN)
+```
+
+Berdasarkan output tersebut, dapat disimpulkan bahwa nama kabupaten/kota dari data spasial dan data **jumlah tenaga kesehatan** tidak sama, sehingga kita perlu memodifikasi terlebih dahulu supaya sama. Dalam kasus ini kita akan memodifikasi nama kabupaten/kota dari data **jumlah tenaga kesehatan**.
+
+
+```{r}
+jum_nakes2021fin <- jum_nakes2021 %>% 
+                    mutate(nama_kabupaten_kota= nama_kabupaten_kota %>% 
+                             #dibuang kata "KABUPATEN"
+                             str_remove(pattern = "KABUPATEN ") %>% 
+                             #diubah menjadi huruf kapital setiap awal kata
+                             str_to_title()
+                           )
+jum_nakes2021fin
+```
+
+Setelah nama kabupaten/kota sama, langkah selanjutnya adalah menggabungkan data spasial dan data **jumlah tenaga kesehatan**. Proses penggabungan ini bisa menggunakan `*_join` dari package `dplyr`. Dalam kasus ini kita coba menggunakan `full_join` untuk mengidentifikasi apakah nama kabupaten/kota di kedua sumber sudah sama.
+
+
+```{r}
+jabar_nakes <- jabar_kabkot %>% 
+                  full_join(y = jum_nakes2021fin,
+                            by = join_by(ADM2_EN==nama_kabupaten_kota))
+jabar_nakes
+```
+
+Karena banyaknya `features` (baris) sudah sama seperti sebelum digabung, maka hasil penggabungan sudah sesuai. Kemudian kita akan langsung membuat visualisasinya
+
+
+```{r}
+p0 <- jabar_nakes %>% 
+  ggplot()+
+  geom_sf(aes(fill=jumlah_nakesmas))+
+  ggsflabel::geom_sf_label_repel(aes(label=str_wrap(ADM2_EN,width = 1)),size=1.75)+
+  scale_fill_stepsn(colours = viridis::magma(n = 6,direction = -1),breaks=seq(0,300,50))+
+#colours =viridis::magma(n=10,direction = -1 ),nbreaks=5) +
+  theme_bw()+
+  theme(axis.title = element_blank())
+p0
+```
+
+* Argumen `fill=jumlah_nakesmas` dalam `geom_sf(aes(fill=jumlah_nakesmas))` menunjukkan bahwa informasi **banyaknya tenaga kesehatan masyarakat** akan ditampilkan dalam bentuk warna-warna.
+* fungsi `scale_fill_stepsn` akan memberi warna pada angka-angka pada yang ada dalam kolom `jumlah_nakesmas`. Sebelumnya angka-angka tersebut harus kita ubah ke dalam interval-interval. Dalam kasus ini intervalnya adalah
+
+```{r}
+seq(0,300,50)
+```
+
+* fungsi `magma()` dari package `viridis` merupakan fungsi untuk memanggil **color** pallete. Untuk keterangan lebih lanjut silahkan help dari fungsi magma `help(viridis::magma)`.
+* Argumen `axis.title = element_blank()` dari fungsi `theme` berarti kita ingin menghilangkan judul kolom dari plot.
+
+
+kita juga bisa menambahkan peta "asli" dari **OpenStreetMap** dengan fungsi `annotation_map_tile`.
+
+
+```{r}
+p1 <- jabar_nakes %>% 
+  ggplot()+
+  annotation_map_tile(type = "osm", zoomin = 0)+
+  geom_sf(aes(fill=jumlah_nakesmas))+
+  ggsflabel::geom_sf_label_repel(aes(label=str_wrap(ADM2_EN,width = 1)),size=1.75)+
+  scale_fill_stepsn(colours = viridis::magma(n = 6,direction = -1),breaks=seq(0,300,50))+
+#colours =viridis::magma(n=10,direction = -1 ),nbreaks=5) +
+  theme_bw()+
+  theme(axis.title = element_blank())
+p1
+```
+
+
+#### Visualisasi Interaktif
+
+
+
+
+```{r}
+jabar_nakes %>% 
+  mapview::mapview(zcol="jumlah_nakesmas",
+                   at = seq(0,300,50),
+                   col.regions=viridis::magma(n = 7,direction = -1))
+```
+
+
+* argumen `zcol` digunakan untuk menampilkan informasi tertentu dalam bentuk warna.
+* `at` digunakan untuk membagi angka-angka yang yang akan dimasukan ke argumen `zcol` ke dalam beberapa interval.
+
+
+
+
+
+
+
+
+
+

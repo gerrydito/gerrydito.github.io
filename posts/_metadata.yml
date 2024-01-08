@@ -1,0 +1,20 @@
+freeze: true
+comments: 
+    hypothesis:
+      theme: clean
+      openSidebar: false
+
+
+format: 
+  html:
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
+      embed-resources: true
+      toc: true
+      toc-depth: 6
+    page-layout: article
+    comments:
+      hypothesis:
+        theme: clean
+      

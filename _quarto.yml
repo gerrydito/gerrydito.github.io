@@ -1,0 +1,38 @@
+project:
+  type: website
+  preview: 
+    port: 4317
+    browser: true
+  output-dir: docs
+    
+
+website:
+  title: "gerrydito"
+  favicon : "images/mylogo.png"
+  image: "images/mylogo.png"
+  open-graph: true
+  twitter-card: true
+  google-analytics: "UA-189782190-2"
+  site-url: https://gerrydito.github.io/
+  navbar:
+    logo: "images/mylogo.png"
+    logo-alt: "gerrydito logo."
+    background: "#000000"
+    foreground: "#ffffff"
+    left:
+      - href: index.qmd
+        text: Home
+      - href: about.qmd
+        text: About
+
+
+
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    css: styles.css
+    toc: true
+    page-layout: full
+

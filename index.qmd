@@ -1,0 +1,17 @@
+---
+title: "Posts"
+listing: 
+  contents: posts
+  type: grid
+  sort: "date desc"
+  categories: unnumbered
+  filter-ui: true
+  grid-columns: 3
+  page-size: 18
+  sort-ui: true
+  date-format: "D MMM YYYY"
+  fields: [image, title, categories,author, reading-time,date]
+---
+
+
+

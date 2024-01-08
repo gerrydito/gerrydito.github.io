@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Gerry Alfa Dito">
+<meta name="dcterms.date" content="2021-11-19">
+
+<title>gerrydito - Algoritme Expectation-Maximization (EM) menggunakan R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/mylogo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+<script type="text/javascript">
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-189782190-2', 'auto');
+
+ga('send', {
+  hitType: 'pageview',
+  'anonymizeIp': true,
+});
+</script>
+<script type="application/json" class="js-hypothesis-config">
+{
+  "theme": "clean",
+  "openSidebar": false
+}
+</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="gerrydito - Algoritme Expectation-Maximization (EM) menggunakan R">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://gerrydito.github.io/posts/2021-11-19-Algoritme-Expectation-Maximization/post-image.jpg">
+<meta property="og:site-name" content="gerrydito">
+<meta name="twitter:title" content="gerrydito - Algoritme Expectation-Maximization (EM) menggunakan R">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="https://gerrydito.github.io/posts/2021-11-19-Algoritme-Expectation-Maximization/post-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/mylogo.png" alt="gerrydito logo." class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">gerrydito</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#algoritme-em" id="toc-algoritme-em" class="nav-link active" data-scroll-target="#algoritme-em">Algoritme EM</a></li>
+  <li><a href="#penerapan-algoritme-em" id="toc-penerapan-algoritme-em" class="nav-link" data-scroll-target="#penerapan-algoritme-em">Penerapan Algoritme EM</a>
+  <ul class="collapse">
+  <li><a href="#ilustrasi-1" id="toc-ilustrasi-1" class="nav-link" data-scroll-target="#ilustrasi-1">Ilustrasi 1</a></li>
+  <li><a href="#pembahasan-ilustrasi-1" id="toc-pembahasan-ilustrasi-1" class="nav-link" data-scroll-target="#pembahasan-ilustrasi-1">Pembahasan Ilustrasi 1</a></li>
+  <li><a href="#ilustrasi-2" id="toc-ilustrasi-2" class="nav-link" data-scroll-target="#ilustrasi-2">Ilustrasi 2</a></li>
+  <li><a href="#pembahasan-ilustrasi-2" id="toc-pembahasan-ilustrasi-2" class="nav-link" data-scroll-target="#pembahasan-ilustrasi-2">Pembahasan Ilustrasi 2</a></li>
+  </ul></li>
+  <li><a href="#referensi" id="toc-referensi" class="nav-link" data-scroll-target="#referensi">Referensi</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Algoritme Expectation-Maximization (EM) menggunakan R</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">R Programming</div>
+    <div class="quarto-category">Computational Statistics</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Gerry Alfa Dito </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 19, 2021</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="algoritme-em" class="level2">
+<h2 class="anchored" data-anchor-id="algoritme-em">Algoritme EM</h2>
+<p><strong>Algoritme EM</strong> adalah cara untuk menghitung estimasi parameter model menggunakan Metode <strong>MLE (Maksimum Likelihood Estimation)</strong> ketika data yang kita <strong>tidak lengkap</strong>, memiliki <strong>missing data</strong>, atau memiliki variabel laten (latent variable) yang tak teramati. Secara singkat EM bisa diartikan sebagai metode untuk iteratif yang bisa mendekati Likelihood function. <strong>Metode MLE</strong> memiliki hanya bisa mengestimasi parameter dengan baik jika <strong>data</strong> yang kita miliki <strong>tidak lengkap</strong>. Algoritme EM bekerja dengan memilih <strong>nilai acak</strong> untuk titik data yang tidak lengkap, dan menggunakan <strong>nilai acak</strong> tersebut untuk mengestimasi data yang tidak lengkap.</p>
+<p>Misalkan <span class="math inline">\(X=(X_{1},X_{2},\ldots,X_{n_{1}})\)</span> merupakan sampel yang teramati (observed) dan <span class="math inline">\(Z=(Z_{1},Z_{2},\ldots,Z_{n_{2}})\)</span> merupakan sampel yang tak teramati (unobserved) dengan <span class="math inline">\(n=n_{1}+n_{2}\)</span>. Asumsikan bahwa <span class="math inline">\(X_{i}\)</span> i.i.d dengan pdf <span class="math inline">\(f(x|\theta)\)</span> dan <span class="math inline">\(Z_{j}\)</span> serta <span class="math inline">\(X_{i}\)</span> saling lepas. Misalkan <span class="math inline">\(g(x|\theta)\)</span> merupakan <strong>joint pdf</strong> dari <span class="math inline">\(X\)</span> dan <span class="math inline">\(h(x,z|\theta)\)</span> merupakan <strong>joint pdf</strong> antara <strong>observed</strong> dan <strong>unobserved</strong>. <strong>Conditional pdf</strong> dari <strong>unobserved</strong> adalah</p>
+<p><span class="math display">\[
+f(z|\theta,x)=\frac{h(x,z|\theta)}{g(x|\theta)}
+\]</span> Fungsi observed likelihood didefinisikan <span class="math inline">\(L(\theta|x)=g(x|\theta)\)</span> dan fungsi complete likelihood didefinisikan <span class="math inline">\(L^{c}(\theta|x,z)=h(x,z|\theta)\)</span></p>
+<p>Tahap-tahap dalam Algoritme EM dapat ditulis sebagai berikut</p>
+<ol type="1">
+<li>Isi data yang tak lengkap tersebut dengan suatu nilai estimasi yang didapatkan dari nilai Ekspetasi fungsi log-Likelihood</li>
+</ol>
+<p><span class="math display">\[
+Q(\theta|\hat{\theta}^{(m)})=\text{E}_{\hat{\theta}^{(m)}}\left[\log{L^{c}(\theta|x,z)}|\hat{\theta}^{(m)},x\right]=\int_{-\infty}^{\infty}\log{[h(x,z|\theta)]}f(z|\hat{\theta}^{(m)},x)
+\]</span></p>
+<p>Tahap 1 ini sering disebut dengan <strong>Tahap Expectation</strong> atau <strong>Tahap-E</strong></p>
+<ol start="2" type="1">
+<li>Dari tahap 1 kita sudah memperoleh <strong>data lengkap</strong>, selanjutnya <strong>estimasi parameter</strong> menggunakan data lengkap tersebut. Estimasi parameter dilakukan dengan menerapkan metode MLE pada fungsi <span class="math inline">\(Q(\theta|\hat{\theta}^{(m)})\)</span> sebagai berikut:</li>
+</ol>
+<p><span class="math display">\[
+\hat{\theta}^{(m+1)}= \arg \max{Q(\theta|\hat{\theta}^{(m)})}
+\]</span> Tahap 2 ini sering disebut dengan <strong>Tahap Maximization</strong> atau <strong>Tahap-M</strong></p>
+<ol start="3" type="1">
+<li><p>Gunakan parameter hasil estimasi pada tahap 2 untuk mendapatkan nilai estimasi yang baru</p></li>
+<li><p>Gunakan nilai estimasi yang baru pada tahap 3 untuk mendapatkan estimasi parameter yang baru</p></li>
+</ol>
+<p>Lakukan langkah 3 dan 4 sampai konvergen</p>
+</section>
+<section id="penerapan-algoritme-em" class="level2">
+<h2 class="anchored" data-anchor-id="penerapan-algoritme-em">Penerapan Algoritme EM</h2>
+<p>Berikut adalah beberapa penerapan EM-Algorithm</p>
+<ol type="1">
+<li>Missing Data Problems</li>
+<li>Grouped Data Problems</li>
+<li>Truncated and Censored Data Problems</li>
+<li>Latent Variable Estimation</li>
+<li>Mixtures Model</li>
+</ol>
+<section id="ilustrasi-1" class="level3">
+<h3 class="anchored" data-anchor-id="ilustrasi-1">Ilustrasi 1</h3>
+<p>Rao (1973) melakukan pembagian secara acak 197 hewan menjadi 4 kategori berdasarkan phenotypes sedemikian sehingga:</p>
+<p><span class="math display">\[
+\boldsymbol{y} = (y_{1}, y_{2}, y_{3}, y_{4})^{T} = (100, 12, 18, 29)^{T}
+\]</span></p>
+<p>dengan peluang setiap kategori</p>
+<p><span class="math display">\[
+\left(p_{1}={\frac{1}{2}+\frac{\theta}{4},p_{2}=\frac{1-\theta}{4},p_{3}=\frac{1-\theta}{4},p_{4}=\frac{\theta}{4}}\right)
+\]</span></p>
+<p>sehingga <span class="math inline">\(\boldsymbol{y}\sim \text{Multinomial}(p_{1},p_{2},p_{3},p_{4})\)</span>. Fungsi kepekatan peluang (fkp) atau probability density function (pdf) dari <span class="math inline">\(\boldsymbol{y}\)</span> adalah</p>
+<p><span class="math display">\[
+g(\boldsymbol{y}|\theta) = \frac{y_{1}+y_{2}+y_{3}+y_{4}}{y_{1}! y_{2}! y_{3}! y_{4}!} \left(\frac{1}{2}+\frac{\theta}{4} \right) ^{y_{1}} \left(\frac{1-\theta}{4}\right)^{y_{2}} \left(\frac{1-\theta}{4}\right)^{y_{3}} \left(\frac{\theta}{4}\right)^{y_{4}}
+\]</span></p>
+<p>Jika peneliti menambahkan satu kategori lagi dengan memecah kategori pertama menjadi 2 kategori sedemikian sehingga</p>
+<p><span class="math display">\[\boldsymbol{x} = (x_{1},x_{2},x_{3},x_{4},x_{5})^{T}\]</span></p>
+<p>dimana <span class="math inline">\(x_{1}+x_{2}=y_{1},x_{3}=y_{2},x_{4}=y_{3},x_{5}=y_{4}\)</span>dengan peluang setiap kategori menjadi</p>
+<p><span class="math display">\[
+\left(\frac{1}{2},\frac{\theta}{4},\frac{1-\theta}{4},\frac{1-\theta}{4},\frac{\theta}{4}\right)
+\]</span></p>
+<p>sehingga <span class="math inline">\(\boldsymbol{x}\sim \text{Multinomial}(p_{1},p_{2},p_{3},p_{4},p_{5})\)</span>. Fungsi kepekatan peluang (fkp) atau probability density function (pdf) dari <span class="math inline">\(\boldsymbol{x}\)</span> adalah</p>
+<p><span class="math display">\[
+f(\boldsymbol{x}|\theta) = \frac{x_{1}+x_{2}+x_{3}+x_{4}+x_{5}}{x_{1}! x_{2}! x_{3}! x_{4}! x_{5}!} \left(\frac{1}{2}\right) ^{x_{1}} \left(\frac{\theta}{4} \right) ^{x_{2}} \left(\frac{1-\theta}{4}\right)^{x_{3}} \left(\frac{1-\theta}{4}\right)^{x_{4}} \left(\frac{\theta}{4}\right)^{x_{5}}
+\]</span></p>
+<p>Jika diketahui fungsi log-likelihood bagi <span class="math inline">\(y\)</span> adalah</p>
+<p><span class="math display">\[
+\log{L(\theta|y)} = c+y_{1} \log{(2+\theta)} + (y_{2} + y_{3}) \log{(1-\theta)} + y_{4} \log{\theta}
+\]</span> dan fungsi fungsi log-likelihood bagi <span class="math inline">\(x\)</span> adalah</p>
+<p><span class="math display">\[
+\log{L(\theta|x)} = c+x_{1}\log{\left(\frac{1}{2}\right)}+(x_2+ x_5)\log{\theta} + (x_3+x_4) \log{ (1-\theta)}
+\]</span></p>
+<ol type="a">
+<li>Tunjukkan cara memperoleh fungsi-loglikelihood bagi <span class="math inline">\(y\)</span></li>
+<li>Tunjukkan cara memperoleh fungsi-loglikelihood bagi <span class="math inline">\(x\)</span></li>
+<li>Hitunglah estimasi <span class="math inline">\(x_1\)</span>,<span class="math inline">\(x_2\)</span> dan <span class="math inline">\(\hat{\theta}\)</span> menggunakan Algoritme EM dengan toleransi <span class="math inline">\(10^{-7}\)</span>!</li>
+</ol>
+</section>
+<section id="pembahasan-ilustrasi-1" class="level3">
+<h3 class="anchored" data-anchor-id="pembahasan-ilustrasi-1">Pembahasan Ilustrasi 1</h3>
+<ol type="a">
+<li>Tunjukkan cara memperoleh fungsi-loglikelihood bagi <span class="math inline">\(y\)</span></li>
+</ol>
+<p>Fungsi Likelihood bagi <span class="math inline">\(y\)</span></p>
+<p><span class="math display">\[
+L(\theta|\boldsymbol{y}) = g(\boldsymbol{y}|\theta)
+\]</span> <span class="math display">\[
+L(\theta|\boldsymbol{y}) = \frac{y_{1}+y_{2}+y_{3}+y_{4}}{y_{1}! y_{2}! y_{3}! y_{4}!} \left(\frac{1}{2}+\frac{\theta}{4} \right) ^{y_{1}} \left(\frac{1-\theta}{4}\right)^{y_{2}} \left(\frac{1-\theta}{4}\right)^{y_{3}} \left(\frac{\theta}{4}\right)^{y_{4}}
+\]</span> fungsi log-likelihood bagi <span class="math inline">\(y\)</span></p>
+<p><span class="math display">\[
+\log{L(\theta|y)} = \log{\left( \frac{y_{1}+y_{2}+y_{3}+y_{4}}{y_{1}! y_{2}! y_{3}! y_{4}!}\ \left(\frac{1}{2}+\frac{\theta}{4} \right) ^{y_{1}} \left(\frac{1-\theta}{4}\right)^{y_{2}} \left(\frac{1-\theta}{4}\right)^{y_{3}} \left(\frac{\theta}{4}\right)^{y_{4}} \right)}
+\]</span></p>
+<p><span class="math display">\[
+\log{L(\theta|y)} = \log{\left( \frac{y_{1}+y_{2}+y_{3}+y_{4}}{y_{1}! y_{2}! y_{3}! y_{4}!} \right)} + \log{\left(\left(\frac{1}{2}+\frac{\theta}{4} \right)  ^{y_{1}}\right)} + \log{\left(\left(\frac{1-\theta}{4}\right)^{y_{2}} \right)} + \log{\left(\left(\frac{1-\theta}{4}\right)^{y_{3}}\right)} + \log{\left(\left(\frac{\theta}{4}\right)^{y_{4}}\right)}
+\]</span> kita misalkan bagian yang tidak ada unsur <span class="math inline">\(\theta\)</span> sebagai <span class="math inline">\(c\)</span> atau konstanta</p>
+<p><span class="math display">\[
+\log{L(\theta|y)} = c + y_{1} \log{\left(\frac{1}{2}+\frac{\theta}{4} \right)} + y_{2} \log{\left(\frac{1-\theta}{4}\right)} + y_{3}\log{\left(\frac{1-\theta}{4}\right)} + y_{4}\log{\left(\frac{\theta}{4}\right)}
+\]</span> <span class="math display">\[
+\log{L(\theta|y)} = c + y_{1} \log{\left(\frac{2+\theta}{4} \right)} + y_{2} \log{\left(\frac{1-\theta}{4}\right)} + y_{3}\log{\left(\frac{1-\theta}{4}\right)} + y_{4}\log{\left(\frac{\theta}{4}\right)}
+\]</span></p>
+<p><span class="math display">\[
+\log{L(\theta|y)} = c + y_{1} \log{\left(2+\theta \right)}- y_{1} \log{\left(4 \right)} + y_{2} \log{\left(1-\theta\right)}-y_{2} \log{\left({4}\right)} + y_{3}\log{\left({1-\theta}\right)}-y_{3}\log{\left({4}\right)} + y_{4}\log{\left(\theta\right)} - y_{4}\log{\left(4\right)}
+\]</span></p>
+<p>kemudian kita gabungan semua bagian yang tidak mengandung <span class="math inline">\(\theta\)</span> menjadi <span class="math inline">\(c\)</span> atau konstanta</p>
+<p><span class="math display">\[
+\log{L(\theta|y)} = c + y_{1} \log{\left(2+\theta \right)} + y_{2} \log{\left(1-\theta\right)} + y_{3}\log{\left({1-\theta}\right)} + y_{4}\log{\left(\theta\right)}  
+\]</span></p>
+<ol start="2" type="a">
+<li>Tunjukkan cara memperoleh fungsi-loglikelihood bagi <span class="math inline">\(x\)</span></li>
+</ol>
+<p>Silahkan kerjakan sebagai latihan</p>
+<ol start="3" type="a">
+<li>Hitunglah estimasi <span class="math inline">\(x_1\)</span>,<span class="math inline">\(x_2\)</span> dan <span class="math inline">\(\hat{\theta}\)</span> menggunakan Algoritme EM dengan toleransi <span class="math inline">\(10^{-7}\)</span>!</li>
+</ol>
+<ol type="1">
+<li>Isi data yang tak lengkap tersebut dengan suatu nilai estimasi yang didapatkan dari nilai Ekspetasi fungsi log-Likelihood</li>
+</ol>
+<p><span class="math display">\[
+Q(\theta|\hat{\theta}^{(m)})=\text{E}_{\hat{\theta}^{(m)}}\left[\log{L^{c}(\theta|x,z)}|\hat{\theta}^{(m)},x\right]
+\]</span></p>
+<p>Tahap 1 ini sering disebut dengan <strong>Tahap Expectation</strong> atau <strong>Tahap-E</strong></p>
+<p>Pada tahap 1 ini hal pertama yang kita lakukan adalah menentukan fungsi <strong>complete log-likelihood</strong> <span class="math inline">\(\log{L^{c}(\theta|x,z)}\)</span> yang bisa kita ambil dari fungsi <strong>log-likelihood</strong> bagi <span class="math inline">\(x\)</span></p>
+<p><span class="math display">\[
+\log{L(\theta|x)} = c+x_{1}\log{\left(\frac{1}{2}\right)}+(x_2+ x_5)\log{\theta} + (x_3+x_4) \log{ (1-\theta)}
+\]</span> karena di dalam fungsi ini terdapat data unobserved <span class="math inline">\(x_{1}\)</span> dan <span class="math inline">\(x_{2}\)</span> serta data observed <span class="math inline">\(x_{3},x_{4},x_{5}\)</span> sehingga jika digabungkan akan menjadi fungsi <strong>complete log-likelihood</strong></p>
+<p>Untuk mempermudah perhitungan kita misalkan <span class="math inline">\(z_{1}=x_{1}\)</span> dan <span class="math inline">\(z_{1}=x_{2}\)</span>, yang mana <span class="math inline">\(x_{1}\)</span> dan <span class="math inline">\(x_{2}\)</span> merupakan data unobserved. Sehingga <span class="math inline">\(\boldsymbol{z}=(z_{1},z_{2})\)</span>. Kemudian, kita tahu bahwa <span class="math inline">\(x_{3}=y_{2},x_{4}=y_{3},x_{5}=y_{4}\)</span> sehingga kita rubah simbol <span class="math inline">\(x\)</span> menjadi <span class="math inline">\(y\)</span>. Jadi fungsi <strong>complete log-likelihood</strong> adalah sebagai berikut</p>
+<p><span class="math display">\[
+\log{L^{c}(\theta|y,z}) = c+z_{1}\log{\left(\frac{1}{2}\right)}+(z_2+ y_4)\log{\theta} + (y_2+y_3) \log{ (1-\theta)}  
+\]</span></p>
+<p>kemudian kita hitung fungsi <span class="math inline">\(Q(\theta|\hat{\theta}^{(0)}\)</span></p>
+<p><span class="math display">\[
+Q(\theta|\hat{\theta}^{(0)})=\text{E}_{\hat{\theta}^{(0)}}[\log{L^{c}(\theta|y,z)}|\hat{\theta}^{(0)},y]
+\]</span></p>
+<p><span class="math display">\[
+Q(\theta|\hat{\theta}^{(0)})= \text{E}_{\hat{\theta}^{(0)}}\left[c+z_{1}\log{\left(\frac{1}{2}\right)}+(z_2+ y_4)\log{\theta} + (y_2+y_3) \log{ (1-\theta)} |\hat{\theta}^{(0)},y \right]
+\]</span></p>
+<p><span class="math display">\[
+Q(\theta|\hat{\theta}^{(0)})= \text{E}_{\hat{\theta}^{(0)}}\left[c|\hat{\theta}^{(0)},y\right]+\text{E}_{\hat{\theta}^{(0)}}\left[z_{1}\log{\left(\frac{1}{2}\right)}|\hat{\theta}^{(0)},y\right]+\text{E}_{\hat{\theta}^{(0)}}\left[(z_2+ y_4)|\hat{\theta}^{(0)},y\right]\log{\theta} + \text{E}_{\hat{\theta}^{(0)}}\left[(y_2+ y_3)|\hat{\theta}^{(0)},y\right] \log{(1-\theta)}
+\]</span> <span class="math display">\[
+Q(\theta|\hat{\theta}^{(0)})= 0+\log{\left(\frac{1}{2}\right)}\text{E}_{\hat{\theta}^{(0)}}\left[z_{1}|\hat{\theta}^{(0)},y \right]+\left(\text{E}_{\hat{\theta}^{(0)}}\left[z_2|\hat{\theta}^{(0)},y\right]+ y_4\right)\log{\theta} + (y_2+ y_3) \log{(1-\theta)}
+\]</span> <span class="math display">\[
+Q(\theta|\hat{\theta}^{(0)})= \log{\left(\frac{1}{2}\right)}\text{E}_{\hat{\theta}^{(0)}}\left[z_{1}\right|\hat{\theta}^{(0)},y]+\left(\text{E}_{\hat{\theta}^{(0)}}\left[z_2|\hat{\theta}^{(0)},y\right]+ y_4\right)\log{\theta} + (y_2+ y_3) \log{(1-\theta)}
+\]</span></p>
+<p>Untuk memperoleh nilai dari <span class="math inline">\(\text{E}_{\hat{\theta}^{(0)}}\left[z_{1}\right|\hat{\theta}^{(0)},y]\)</span> dan <span class="math inline">\(\text{E}_{\hat{\theta}^{(0)}}\left[z_2|\hat{\theta}^{(0)},y\right]\)</span>, kita perlu tahu terlebih dahulu tentang distribusi dari <span class="math inline">\(\boldsymbol{z}=(z_{1},z_{2})\)</span>. Karena <span class="math inline">\(\boldsymbol{z}=(z_{1},z_{2})\)</span> merupakan data unobserved maka kita bisa mendapatkan pdf dari <span class="math inline">\(\boldsymbol{z}\)</span> dengan</p>
+<p><span class="math display">\[
+f(\boldsymbol{z}|\theta,\boldsymbol{y})=\frac{h(\boldsymbol{y},\boldsymbol{z}|\theta)}{g(\boldsymbol{y}|\theta)}
+\]</span> dengan <span class="math display">\[
+h(\boldsymbol{x},\boldsymbol{z}|\theta)=L^{c}(\theta|\boldsymbol{y},\boldsymbol{z} )=  \frac{z_{1}+z_{2}+y_{2}+y_{3}+y_{4}}{z_{1}! z_{2}! y_{2}! y_{3}! y_{4}!} \left(\frac{1}{2}\right) ^{z_{1}} \left(\frac{\theta}{4} \right) ^{z_{2}} \left(\frac{1-\theta}{4}\right)^{y_{2}} \left(\frac{1-\theta}{4}\right)^{y_{3}} \left(\frac{\theta}{4}\right)^{y_{4}}
+\]</span> yang merupakan fungsi <strong>complete likelihood</strong>. Kemudian</p>
+<p><span class="math display">\[
+g(\boldsymbol{y}|\theta)=L(\theta|\boldsymbol{y})=\frac{y_{1}+y_{2}+y_{3}+y_{4}}{y_{1}! y_{2}! y_{3}! y_{4}!} \left(\frac{1}{2}+\frac{\theta}{4} \right) ^{y_{1}} \left(\frac{1-\theta}{4}\right)^{y_{2}} \left(\frac{1-\theta}{4}\right)^{y_{3}} \left(\frac{\theta}{4}\right)^{y_{4}}
+\]</span> yang merupakan fungsi <strong>observed likelihood</strong>. Jadi diperoleh</p>
+<p><span class="math display">\[
+f(\boldsymbol{z}|\theta,\boldsymbol{y})=\frac{\frac{(z_{1}+z_{2}+y_{2}+y_{3}+y_{4})!}{z_{1}! z_{2}! y_{2}! y_{3}! y_{4}!} \left(\frac{1}{2}\right) ^{z_{1}} \left(\frac{\theta}{4} \right) ^{z_{2}} \left(\frac{1-\theta}{4}\right)^{y_{2}} \left(\frac{1-\theta}{4}\right)^{y_{3}} \left(\frac{\theta}{4}\right)^{y_{4}}}{\frac{(y_{1}+y_{2}+y_{3}+y_{4})!}{y_{1}! y_{2}! y_{3}! y_{4}!} \left(\frac{1}{2}+\frac{\theta}{4} \right) ^{y_{1}} \left(\frac{1-\theta}{4}\right)^{y_{2}} \left(\frac{1-\theta}{4}\right)^{y_{3}} \left(\frac{\theta}{4}\right)^{y_{4}}}
+\]</span></p>
+<p><span class="math display">\[
+f(\boldsymbol{z}|\theta,\boldsymbol{y})=\frac{\frac{n!}{z_{1}! z_{2}! y_{2}! y_{3}! y_{4}!}  \left(\frac{1}{2}\right) ^{z_{1}} \left(\frac{\theta}{4} \right) ^{z_{2}} \left(\frac{1-\theta}{4}\right)^{y_{2}} \left(\frac{1-\theta}{4}\right)^{y_{3}} \left(\frac{\theta}{4}\right)^{y_{4}}}{\frac{n!}{y_{1}! y_{2}! y_{3}! y_{4}!} \left(\frac{1}{2}+\frac{\theta}{4} \right) ^{y_{1}} \left(\frac{1-\theta}{4}\right)^{y_{2}} \left(\frac{1-\theta}{4}\right)^{y_{3}} \left(\frac{\theta}{4}\right)^{y_{4}}}
+\]</span></p>
+<p><span class="math display">\[
+f(\boldsymbol{z}|\theta,\boldsymbol{y})=\frac{\frac{1}{z_{1}! z_{2}! }  \left(\frac{1}{2}\right) ^{z_{1}} \left(\frac{\theta}{4} \right) ^{z_{2}} }{\frac{1}{y_{1}!} \left(\frac{1}{2}+\frac{\theta}{4} \right) ^{y_{1}}}
+\]</span></p>
+<p>karena <span class="math inline">\(z_{1}+z_{2}=y_{1}\)</span> maka</p>
+<p><span class="math display">\[
+f(\boldsymbol{z}|\theta,\boldsymbol{y})=\frac{\frac{y_{1}!}{z_{1}! z_{2}! }  \left(\frac{1}{2}\right) ^{z_{1}} \left(\frac{\theta}{4} \right) ^{z_{2}} }{ \left(\frac{1}{2}+\frac{\theta}{4} \right) ^{z_{1}+z_{2}}}
+\]</span></p>
+<p><span class="math display">\[
+f(\boldsymbol{z}|\theta,\boldsymbol{y})=\frac{\frac{y_{1}!}{z_{1}! z_{2}! }  \left(\frac{1}{2}\right) ^{z_{1}} \left(\frac{\theta}{4} \right) ^{z_{2}} }{ \left(\frac{1}{2}+\frac{\theta}{4} \right)^{z_{1}}  \left(\frac{1}{2}+\frac{\theta}{4} \right) ^{z_{2}}}
+\]</span></p>
+<p><span class="math display">\[
+f(\boldsymbol{z}|\theta,\boldsymbol{y})=\frac{y_{1}!}{z_{1}! z_{2}! } \left(\frac{  \frac{1}{2} }{\frac{1}{2}+\frac{\theta}{4} }\right)^{z_{1}} \left(\frac{\frac{\theta}{4}}{\frac{1}{2}+\frac{\theta}{4} }\right) ^{z_{2}}
+\]</span></p>
+<p>Berdasarkan hasil diatas, kita dapat memperoleh pdf dari <span class="math inline">\(z_{1}\)</span> dan <span class="math inline">\(z_{2}\)</span> dengan memanfaatkan <span class="math inline">\(z_{1}+z_{2}=y_{1}\)</span>.</p>
+<p>Untuk pdf <span class="math inline">\(z_{1}\)</span></p>
+<p><span class="math display">\[
+f(z_{1}|\theta,\boldsymbol{y})=\frac{y_{1}!}{z_{1}! (y_{1}-z_{1})! } \left(\frac{  \frac{1}{2} }{\frac{1}{2}+\frac{\theta}{4} }\right)^{z_{1}} \left(\frac{\frac{\theta}{4}+\frac{1}{2}-\frac{1}{2}}{\frac{1}{2}+\frac{\theta}{4} }\right) ^{y_{1}-z_{1}}
+\]</span> <span class="math display">\[
+f(z_{1}|\theta,\boldsymbol{y})=\frac{y_{1}!}{z_{1}! (y_{1}-z_{1})! } \left(\frac{  \frac{1}{2} }{\frac{1}{2}+\frac{\theta}{4} }\right)^{z_{1}} \left(\frac{\frac{1}{2}+\frac{\theta}{4}}{\frac{1}{2}+\frac{\theta}{4} }   -\frac{\frac{1}{2}}{\frac{1}{2}+\frac{\theta}{4} }\right) ^{y_{1}-z_{1}}
+\]</span> <span class="math display">\[
+f(z_{1}|\theta,\boldsymbol{y})=\frac{y_{1}!}{z_{1}! (y_{1}-z_{1})! } \left(\frac{  \frac{1}{2} }{\frac{1}{2}+\frac{\theta}{4} }\right)^{z_{1}} \left(1   -\frac{\frac{1}{2}}{\frac{1}{2}+\frac{\theta}{4} }\right) ^{y_{1}-z_{1}}
+\]</span></p>
+<p>sehingga <span class="math inline">\(z_{1}\)</span> memiliki distribusi <span class="math inline">\(\text{Binomial}\left(y_{1},\frac{\frac{1}{2}}{\frac{1}{2}+\frac{\theta}{4} }\right)\)</span></p>
+<p>Kemudian untuk pdf <span class="math inline">\(z_{2}\)</span></p>
+<p><span class="math display">\[
+f(z_2|\theta,\boldsymbol{y})=\frac{y_{1}!}{(y_{1}-z_{2})! z_{2}! } \left(\frac{  \frac{1}{2}+\frac{\theta}{4}-\frac{\theta}{4}  }{\frac{1}{2}+\frac{\theta}{4} }\right)^{y_{1}-z_{2}} \left(\frac{\frac{\theta}{4}}{\frac{1}{2}+\frac{\theta}{4} }\right) ^{z_{2}}
+\]</span> <span class="math display">\[
+f(z_2|\theta,\boldsymbol{y})=\frac{y_{1}!}{(y_{1}-z_{2})! z_{2}! } \left(\frac{  \frac{1}{2}+\frac{\theta}{4}}{\frac{1}{2}+\frac{\theta}{4} } - \frac{\frac{\theta}{4}  }{\frac{1}{2}+\frac{\theta}{4} }\right)^{y_{1}-z_{2}} \left(\frac{\frac{\theta}{4}}{\frac{1}{2}+\frac{\theta}{4} }\right) ^{z_{2}}
+\]</span></p>
+<p><span class="math display">\[
+f(z_2|\theta,\boldsymbol{y})=\frac{y_{1}!}{(y_{1}-z_{2})! z_{2}! } \left(1 - \frac{\frac{\theta}{4}  }{\frac{1}{2}+\frac{\theta}{4} }\right)^{y_{1}-z_{2}} \left(\frac{\frac{\theta}{4}}{\frac{1}{2}+\frac{\theta}{4} }\right) ^{z_{2}}
+\]</span> sehingga <span class="math inline">\(z_{2}\)</span> memiliki distribusi <span class="math inline">\(\text{Binomial}\left(y_{1},\frac{\frac{\theta}{4}}{\frac{1}{2}+\frac{\theta}{4} }\right)\)</span></p>
+<p><strong>Ingat</strong> bahwa jika <span class="math inline">\(X \sim \text{Binomial}(n,p)\)</span> maka nilai ekspetasinya adalah</p>
+<p><span class="math display">\[
+\text{E}(X)=np
+\]</span></p>
+<p>sehingga</p>
+<p><span class="math display">\[
+\text{E}_{\hat{\theta}^{(0)}}\left[z_{1}\right|\hat{\theta}^{(0)},y] = y_{1}\left(\frac{\frac{1}{2}}{\frac{1}{2}+\frac{\hat{\theta}^{(0)}}{4} }\right)
+\]</span></p>
+<p>dan</p>
+<p><span class="math display">\[
+\text{E}_{\hat{\theta}^{(0)}}\left[z_2|\hat{\theta}^{(0)},y\right]=y_{1}\left(\frac{\frac{\hat{\theta}^{(0)}}{4}}{\frac{1}{2}+\frac{\hat{\theta}^{(0)}}{4} }\right)
+\]</span></p>
+<p>untuk memudahkan penulisan kita misalkan</p>
+<p><span class="math display">\[
+\hat{z}_{1} = \text{E}_{\hat{\theta}^{(0)}}\left[z_{1}\right|\hat{\theta}^{(0)},y] = y_{1}\left(\frac{\frac{1}{2}}{\frac{1}{2}+\frac{\hat{\theta}^{(0)}}{4} }\right)
+\]</span> karena <span class="math inline">\(y_{1}=100\)</span> maka</p>
+<p><span class="math display">\[
+\hat{z}_{1} = \text{E}_{\hat{\theta}^{(0)}}\left[z_{1}\right|\hat{\theta}^{(0)},y] = 100\left(\frac{\frac{1}{2}}{\frac{1}{2}+\frac{\hat{\theta}^{(0)}}{4} }\right)
+\]</span></p>
+<p>dan</p>
+<p><span class="math display">\[
+\hat{z}_{2} = \text{E}_{\hat{\theta}^{(0)}}\left[z_2|\hat{\theta}^{(0)},y\right]=y_{1}\left(\frac{\frac{\hat{\theta}^{(0)}}{4}}{\frac{1}{2}+\frac{\hat{\theta}^{(0)}}{4} }\right)
+\]</span> karena <span class="math inline">\(y_{1}=100\)</span> maka</p>
+<p><span class="math display">\[
+\hat{z}_{2} = \text{E}_{\hat{\theta}^{(0)}}\left[z_2|\hat{\theta}^{(0)},y\right]=100\left(\frac{\frac{\hat{\theta}^{(0)}}{4}}{\frac{1}{2}+\frac{\hat{\theta}^{(0)}}{4} }\right)
+\]</span></p>
+<p>jadi</p>
+<p><span class="math display">\[
+Q(\theta|\hat{\theta}^{(0)})=\log{\left(\frac{1}{2}\right)}\hat{z}_{1}+\left(\hat{z}_{2}+ y_4\right)\log{\theta} + (y_2+ y_3) \log{(1-\theta)}
+\]</span></p>
+<ol start="2" type="1">
+<li>Dari langkah 1 kita sudah memperoleh <strong>data lengkap</strong>, selanjutnya <strong>estimasi parameter</strong> menggunakan data lengkap tersebut. Estimasi parameter dilakukan dengan menerapkan metode MLE pada fungsi <span class="math inline">\(Q(\theta|\hat{\theta}^{(m)})\)</span> sebagai berikut:</li>
+</ol>
+<p><span class="math display">\[
+\hat{\theta}^{(m+1)}= \arg \max{Q(\theta|\hat{\theta}^{(m)})}
+\]</span> Tahap 2 ini sering disebut dengan <strong>Tahap Maximization</strong> atau <strong>Tahap-M</strong></p>
+<p>Berdasarkan Tahap 1 diperoleh</p>
+<p><span class="math display">\[
+Q(\theta|\hat{\theta}^{(0)})=\log{\left(\frac{1}{2}\right)}\hat{z}_{1}+\left(\hat{z}_{2}+ y_4\right)\log{\theta} + (y_2+ y_3) \log{(1-\theta)}
+\]</span></p>
+<p>Kemudian, kita akan memperoleh <span class="math inline">\(\hat{\theta}^{(m)}\)</span> dengan memaksimumkan <span class="math inline">\(Q(\theta|\hat{\theta}^{(0)})\)</span></p>
+<p><span class="math display">\[
+\hat{\theta}^{(1)}= \arg \max{Q(\theta|\hat{\theta}^{(0)})}
+\]</span> <span class="math display">\[
+\arg \max{Q(\theta|\hat{\theta}^{(0)})} \iff \frac{d\space Q(\theta|\hat{\theta}^{(0)})}{d\space \theta}=0
+\]</span></p>
+<p><span class="math display">\[
+\arg \max{Q(\theta|\hat{\theta}^{(0)})} \iff \frac{d\space \log{\left(\frac{1}{2}\right)}\hat{z}_{1}+\left(\hat{z}_{2}+ y_4\right)\log{\theta} + (y_2+ y_3) \log{(1-\theta)} }{d\space \theta}=0
+\]</span></p>
+<p><span class="math display">\[
+\arg \max{Q(\theta|\hat{\theta}^{(0)})} \iff 0 +\frac{\left(\hat{z}_{2}+ y_4\right)}{{\theta}} + \frac{(y_2+ y_3)}{(1-\theta)} =0
+\]</span></p>
+<p><span class="math display">\[
+\arg \max{Q(\theta|\hat{\theta}^{(0)})} \iff \frac{\left(\hat{z}_{2}+ y_4\right)}{{\theta}} - \frac{(y_2+ y_3)}{(1-\theta)} =0
+\]</span></p>
+<p><span class="math display">\[
+\arg \max{Q(\theta|\hat{\theta}^{(0)})} \iff \frac{\left(\hat{z}_{2}+ y_4\right)}{{\theta}} = \frac{(y_2+ y_3)}{(1-\theta)}
+\]</span></p>
+<p><span class="math display">\[
+\arg \max{Q(\theta|\hat{\theta}^{(0)})} \iff \frac{{\theta}}{\left(\hat{z}_{2}+ y_4\right)} = \frac{(1-\theta)}{(y_2+ y_3)}
+\]</span> <span class="math display">\[
+\arg \max{Q(\theta|\hat{\theta}^{(0)})} \iff \frac{{\theta}}{(1-\theta)} = \frac{\left(\hat{z}_{2}+ y_4\right)}{(y_2+ y_3)}
+\]</span></p>
+<p><span class="math display">\[
+\arg \max{Q(\theta|\hat{\theta}^{(0)})} \iff \theta(y_2+ y_3)= \left(\hat{z}_{2}+ y_4\right)(1-\theta)
+\]</span></p>
+<p><span class="math display">\[
+\arg \max{Q(\theta|\hat{\theta}^{(0)})} \iff \theta(y_2+ y_3)= \left(\hat{z}_{2}+ y_4\right)-\theta\left(\hat{z}_{2}+ y_4\right)
+\]</span></p>
+<p><span class="math display">\[
+\arg \max{Q(\theta|\hat{\theta}^{(0)})} \iff \theta(y_2+ y_3)+\theta\left(\hat{z}_{2}+ y_4\right)= \left(\hat{z}_{2}+ y_4\right)
+\]</span> <span class="math display">\[
+\arg \max{Q(\theta|\hat{\theta}^{(0)})} \iff \theta(y_2+ y_3+\hat{z}_{2}+ y_4)= \left(\hat{z}_{2}+ y_4\right)
+\]</span> <span class="math display">\[
+\arg \max{Q(\theta|\hat{\theta}^{(0)})} \iff \hat{\theta}= \frac{\hat{z}_{2}+ y_4}{y_2+ y_3+\hat{z}_{2}+ y_4}
+\]</span> jadi</p>
+<p><span class="math display">\[
+\hat{\theta}^{(1)}= \frac{\hat{z}_{2}+ y_4}{\hat{z}_{2}+ y_4+y_2+ y_3}
+\]</span> atau kita bisa mengembalikan ke notasi <span class="math inline">\(x\)</span> seperti berikut</p>
+<p><span class="math display">\[
+\hat{\theta}^{(1)}= \frac{\hat{x}_{1}+ x_5}{\hat{x}_{2}+ x_5+x_3+ x_4}
+\]</span></p>
+<p>Tahap 3 dan 4 bisa kita terapkan langsung menggunakan R</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>expectation <span class="ot">&lt;-</span> <span class="cf">function</span>(theta){</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dv">100</span><span class="sc">*</span>( ( (<span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>)<span class="sc">*</span>theta ) <span class="sc">/</span> ( (<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>)<span class="sc">*</span>theta) )</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>maximization <span class="ot">&lt;-</span> <span class="cf">function</span>(z2){</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  (z2 <span class="sc">+</span> y4) <span class="sc">/</span> (z2 <span class="sc">+</span> y2 <span class="sc">+</span> y3 <span class="sc">+</span> y4)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>z2<span class="ot">=</span><span class="dv">0</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>y2<span class="ot">&lt;-</span> <span class="dv">12</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>y3<span class="ot">&lt;-</span> <span class="dv">18</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>y4<span class="ot">&lt;-</span> <span class="dv">29</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>niter <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>theta0 <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>save_iter <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">"iter"</span><span class="ot">=</span><span class="dv">0</span>,<span class="st">"theta"</span><span class="ot">=</span>theta0,<span class="st">"z2"</span><span class="ot">=</span>z2)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>niter){</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  x2 <span class="ot">&lt;-</span> <span class="fu">expectation</span>(theta0)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  theta <span class="ot">&lt;-</span> <span class="fu">maximization</span>(x2)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  criteria <span class="ot">&lt;-</span> <span class="fu">abs</span>(theta<span class="sc">-</span>theta0)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  theta0 <span class="ot">&lt;-</span> theta</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  save_iter <span class="ot">&lt;-</span> <span class="fu">rbind</span>(save_iter,<span class="fu">c</span>(i,theta0,x2))</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (criteria<span class="sc">&lt;</span><span class="dv">10</span><span class="sc">^-</span><span class="dv">7</span>){</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>save_iter</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   iter     theta       z2
+1     0 2.0000000  0.00000
+2     1 0.7247706 50.00000
+3     2 0.6495300 26.59933
+4     3 0.6407827 24.51491
+5     4 0.6397040 24.26488
+6     5 0.6395701 24.23393
+7     6 0.6395534 24.23008
+8     7 0.6395513 24.22961
+9     8 0.6395511 24.22955
+10    9 0.6395511 24.22954</code></pre>
+</div>
+</div>
+<p>jadi, untuk mendapatkan <span class="math inline">\(x_{1}\)</span> dan <span class="math inline">\(x_{2}\)</span> bisa menggunakan formula</p>
+<p><span class="math display">\[
+x_{1}=\hat{z}_{1}= 100\left(\frac{\frac{1}{2}}{\frac{1}{2}+\frac{\hat{\theta}^{(0)}}{4} }\right)
+\]</span></p>
+<p>dan</p>
+<p><span class="math display">\[
+x_{1}=\hat{z}_{2} = 100\left(\frac{\frac{\hat{\theta}^{(0)}}{4}}{\frac{1}{2}+\frac{\hat{\theta}^{(0)}}{4} }\right)
+\]</span></p>
+<p>Berdasarkan formula tersebut diperoleh nilai estimasi untuk <span class="math inline">\(x_{2}=24.23\)</span>, sedangkan <span class="math inline">\(x_{1}\)</span> tidak memiliki nilai estimasi tertentu karena tidak mempengaruhi nilai estimasi parameter <span class="math inline">\(\hat{\theta}\)</span>. Sementara itu, nilai estimasi <span class="math inline">\(\hat{\theta}=0.639\)</span></p>
+</section>
+<section id="ilustrasi-2" class="level3">
+<h3 class="anchored" data-anchor-id="ilustrasi-2">Ilustrasi 2</h3>
+<p>Suatu percobaan memiliki suatu model linear sebagai berikut</p>
+<p><span class="math display">\[
+y_{ij} = \mu + \alpha_{i} + \beta_{j} +\epsilon_{ij}
+\]</span> Dari percobaan tersebut dihasilkan data sebagai berikut</p>
+
+<table cellspacing="0" border="0">
+<colgroup span="5" width="64">
+</colgroup>
+<tbody><tr>
+<td style="border-bottom: 1px solid #000000" height="19" align="left" valign="bottom">
+<font color="#000000"><br></font>
+</td>
+<td style="border-bottom: 1px solid #000000" align="left" valign="bottom">
+<font color="#000000"><br></font>
+</td>
+<td style="border-bottom: 1px solid #000000" align="left" valign="bottom">
+<font color="#000000"><br></font>
+</td>
+<td style="border-bottom: 1px solid #000000" align="left" valign="bottom">
+<font color="#000000"><br></font>
+</td>
+<td style="border-bottom: 1px solid #000000" align="left" valign="bottom">
+<font color="#000000"><br></font>
+</td>
+</tr>
+<tr>
+<td rowspan="2" height="39" align="center" valign="middle">
+<font color="#000000">Tip</font>
+</td>
+<td style="border-bottom: 1px solid #000000" colspan="4" align="center" valign="bottom">
+<font color="#000000">Coupon</font>
+</td>
+</tr>
+<tr>
+<td align="right" valign="bottom" sdval="1" sdnum="1033;">
+<font color="#000000">1</font>
+</td>
+<td align="right" valign="bottom" sdval="2" sdnum="1033;">
+<font color="#000000">2</font>
+</td>
+<td align="right" valign="bottom" sdval="3" sdnum="1033;">
+<font color="#000000">3</font>
+</td>
+<td align="right" valign="bottom" sdval="4" sdnum="1033;">
+<font color="#000000">4</font>
+</td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000" height="19" align="right" valign="bottom" sdval="1" sdnum="1033;">
+<font color="#000000">1</font>
+</td>
+<td style="border-top: 1px solid #000000" align="right" valign="bottom" sdval="9.3" sdnum="1033;">
+<font color="#000000">9.3</font>
+</td>
+<td style="border-top: 1px solid #000000" align="right" valign="bottom" sdval="9.4" sdnum="1033;">
+<font color="#000000">9.4</font>
+</td>
+<td style="border-top: 1px solid #000000" align="right" valign="bottom" sdval="9.6" sdnum="1033;">
+<font color="#000000">9.6</font>
+</td>
+<td style="border-top: 1px solid #000000" align="right" valign="bottom" sdval="10" sdnum="1033;">
+<font color="#000000">10</font>
+</td>
+</tr>
+<tr>
+<td height="19" align="right" valign="bottom" sdval="2" sdnum="1033;">
+<font color="#000000">2</font>
+</td>
+<td align="right" valign="bottom" sdval="9.4" sdnum="1033;">
+<font color="#000000">9.4</font>
+</td>
+<td align="right" valign="bottom" sdval="9.3" sdnum="1033;">
+<font color="#000000">9.3</font>
+</td>
+<td align="right" valign="bottom" sdval="9.8" sdnum="1033;">
+<font color="#000000">9.8</font>
+</td>
+<td align="right" valign="bottom" sdval="9.9" sdnum="1033;">
+<font color="#000000">9.9</font>
+</td>
+</tr>
+<tr>
+<td height="19" align="right" valign="bottom" sdval="3" sdnum="1033;">
+<font color="#000000">3</font>
+</td>
+<td align="right" valign="bottom" sdval="9.2" sdnum="1033;">
+<font color="#000000"></font>
+</td>
+<td align="right" valign="bottom" sdval="9.4" sdnum="1033;">
+<font color="#000000">9.4</font>
+</td>
+<td align="right" valign="bottom" sdval="9.5" sdnum="1033;">
+<font color="#000000">9.5</font>
+</td>
+<td align="right" valign="bottom" sdval="9.7" sdnum="1033;">
+<font color="#000000">9.7</font>
+</td>
+</tr>
+<tr>
+<td height="19" align="right" valign="bottom" sdval="4" sdnum="1033;">
+<font color="#000000">4</font>
+</td>
+<td align="right" valign="bottom" sdval="9.7" sdnum="1033;">
+<font color="#000000">9.7</font>
+</td>
+<td align="right" valign="bottom" sdval="9.6" sdnum="1033;">
+<font color="#000000">9.6</font>
+</td>
+<td align="right" valign="bottom" sdval="10" sdnum="1033;">
+<font color="#000000">10</font>
+</td>
+<td align="right" valign="bottom" sdval="10.2" sdnum="1033;">
+<font color="#000000"></font>
+</td>
+</tr>
+<tr>
+<td style="border-top: 1px solid #000000" height="19" align="left" valign="bottom">
+<font color="#000000"><br></font>
+</td>
+<td style="border-top: 1px solid #000000" align="left" valign="bottom">
+<font color="#000000"><br></font>
+</td>
+<td style="border-top: 1px solid #000000" align="left" valign="bottom">
+<font color="#000000"><br></font>
+</td>
+<td style="border-top: 1px solid #000000" align="left" valign="bottom">
+<font color="#000000"><br></font>
+</td>
+<td style="border-top: 1px solid #000000" align="left" valign="bottom">
+<font color="#000000"><br></font>
+</td>
+</tr>
+
+</tbody></table>
+<p>Data hasil percobaan tersebut mengandung dua missing data. Jika diketahui bahwa estimasi parameter dari model linear percobaan adalah sebagai berikut</p>
+<p><span class="math display">\[
+\hat{\mu} = \bar{y}
+\]</span> <span class="math display">\[
+\hat{\alpha} = \bar{y}_{i.}-\bar{y}=\frac{\Sigma_{j=1}^{b} y_{ij}}{b}-\frac{\Sigma_{j=1}^{n} y_{ij}}{n}
+\]</span> <span class="math display">\[
+\hat{\beta} = \bar{y}_{.j}-\bar{y}=\frac{\Sigma_{i=1}^{a} y_{ij}}{a}-\frac{\Sigma_{j=1}^{n} y_{ij}}{n}
+\]</span> untuk <span class="math inline">\(n=a+b\)</span>, maka hitung nilai estimasi dari dua missing data yang hilang tersebut dengan Algoritme EM menggunakan R!</p>
+</section>
+<section id="pembahasan-ilustrasi-2" class="level3">
+<h3 class="anchored" data-anchor-id="pembahasan-ilustrasi-2">Pembahasan Ilustrasi 2</h3>
+<p>Data pada soal tersebut kita rubah ke dalam format <code>long</code> seperti berikut:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>   Tip Coupon Response
+1    1      1      9.3
+2    2      1      9.4
+3    3      1       NA
+4    4      1      9.7
+5    1      2      9.4
+6    2      2      9.3
+7    3      2      9.4
+8    4      2      9.6
+9    1      3      9.6
+10   2      3      9.8
+11   3      3      9.5
+12   4      3     10.0
+13   1      4     10.0
+14   2      4      9.9
+15   3      4      9.7
+16   4      4       NA</code></pre>
+</div>
+</div>
+<p>package yang dipakai untuk menjawab soal ini adalah</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Kemudian kita input data dalam format long tersebut ke dalam R</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dta <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">text =</span><span class="st">"Tip   Coupon  Response</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="st">1   1   9.3</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="st">2   1   9.4</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="st">3   1   NA</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="st">4   1   9.7</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="st">1   2   9.4</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="st">2   2   9.3</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="st">3   2   9.4</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="st">4   2   9.6</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="st">1   3   9.6</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="st">2   3   9.8</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="st">3   3   9.5</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="st">4   3   10</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="st">1   4   10</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="st">2   4   9.9</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="st">3   4   9.7</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="st">4   4   NA</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="st">"</span> )</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 16
+Columns: 3
+$ Tip      &lt;int&gt; 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4
+$ Coupon   &lt;int&gt; 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4
+$ Response &lt;dbl&gt; 9.3, 9.4, NA, 9.7, 9.4, 9.3, 9.4, 9.6, 9.6, 9.8, 9.5, 10.0, 1…</code></pre>
+</div>
+</div>
+<p>Selanjutnya kita akan terapkan Algoritme EM</p>
+<ol type="1">
+<li>Tahap-E</li>
+</ol>
+<p>Kita akan estimasi dua missing data tersebut dengan menggunakan nilai estimasi parameter dan juga persamaan model linear</p>
+<p><span class="math display">\[
+\hat{\mu} = \bar{y}
+\]</span> <span class="math display">\[
+\hat{\alpha} = \bar{y}_{i.}-\bar{y}=\frac{\Sigma_{j=1}^{b} y_{ij}}{b}-\frac{\Sigma_{j=1}^{n} y_{ij}}{n}
+\]</span> <span class="math display">\[
+\hat{\beta} = \bar{y}_{.j}-\bar{y}=\frac{\Sigma_{i=1}^{a} y_{ij}}{a}-\frac{\Sigma_{j=1}^{n} y_{ij}}{n}
+\]</span> <span class="math display">\[
+y_{\text{miss}} = \hat{\mu} + \hat{\alpha_{i}} + \hat{\beta_{j}}
+\]</span></p>
+<p><span class="math inline">\(\epsilon_{ij}\)</span> tidak kita masukan karena merupakan galat, sehingga tidak dibutuhkan untuk estimasi nilai missing data.</p>
+<p>Sebelum kita menghitung nilai estimasi bagi tiap-tiap parameter, kita buat dulu tambahan satu kolom untuk mengidentifikasi ada amatan hilang atau tidak</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dta <span class="ot">&lt;-</span> dta <span class="sc">%&gt;%</span>  <span class="fu">mutate</span>(<span class="at">is_miss =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(Response),<span class="st">"miss"</span>,<span class="st">"not"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                       )</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 16
+Columns: 4
+$ Tip      &lt;int&gt; 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4
+$ Coupon   &lt;int&gt; 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4
+$ Response &lt;dbl&gt; 9.3, 9.4, NA, 9.7, 9.4, 9.3, 9.4, 9.6, 9.6, 9.8, 9.5, 10.0, 1…
+$ is_miss  &lt;chr&gt; "not", "not", "miss", "not", "not", "not", "not", "not", "not…</code></pre>
+</div>
+</div>
+<p>Selanjutnya kita hitung estimasi dua nilai estimasi masing-masing parameter</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mu_hat0 <span class="ot">=</span> dta <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#na.rm=TRUE berarti kita menghitung mean</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># dengan mengabaikan missing data</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(Response,<span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>()</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>mu_hat0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9.614286</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>alpha_hat0 <span class="ot">&lt;-</span> dta <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Tip) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(Response,<span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>() <span class="sc">-</span> mu_hat0</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>alpha_hat0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.03928571 -0.01428571 -0.08095238  0.15238095</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>beta_hat0 <span class="ot">&lt;-</span> dta <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Coupon) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(Response,<span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>() <span class="sc">-</span> mu_hat0</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>beta_hat0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.1476190 -0.1892857  0.1107143  0.2523810</code></pre>
+</div>
+</div>
+<p>selanjutnya kita masukan hasil estimasi parameter kita ke tabel <code>dta</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>dta_calc <span class="ot">&lt;-</span> dta <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mu_hat =</span> mu_hat0) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Coupon) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">alpha_hat =</span> alpha_hat0) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Tip) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">beta_hat =</span> beta_hat0) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>dta_calc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 16 × 7
+     Tip Coupon Response is_miss mu_hat alpha_hat beta_hat
+   &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+ 1     1      1      9.3 not       9.61   -0.0393   -0.148
+ 2     2      1      9.4 not       9.61   -0.0143   -0.148
+ 3     3      1     NA   miss      9.61   -0.0810   -0.148
+ 4     4      1      9.7 not       9.61    0.152    -0.148
+ 5     1      2      9.4 not       9.61   -0.0393   -0.189
+ 6     2      2      9.3 not       9.61   -0.0143   -0.189
+ 7     3      2      9.4 not       9.61   -0.0810   -0.189
+ 8     4      2      9.6 not       9.61    0.152    -0.189
+ 9     1      3      9.6 not       9.61   -0.0393    0.111
+10     2      3      9.8 not       9.61   -0.0143    0.111
+11     3      3      9.5 not       9.61   -0.0810    0.111
+12     4      3     10   not       9.61    0.152     0.111
+13     1      4     10   not       9.61   -0.0393    0.252
+14     2      4      9.9 not       9.61   -0.0143    0.252
+15     3      4      9.7 not       9.61   -0.0810    0.252
+16     4      4     NA   miss      9.61    0.152     0.252</code></pre>
+</div>
+</div>
+<p>kemudian kita hitung nilai estimasi untuk dua missing data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ymiss <span class="ot">&lt;-</span> dta_calc <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(is_miss<span class="sc">==</span><span class="st">"miss"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="at">ymiss =</span> mu_hat<span class="sc">+</span>alpha_hat<span class="sc">+</span>beta_hat) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(ymiss)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>ymiss</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  9.385714 10.019048</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Tahap-M</li>
+</ol>
+<p>Pada tahap ini kita akan menghitung nilai estimasi paramaeter berdasarkan hasil yang diperoleh pada tahap 1</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># input nilai estimasi missing data</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>dta_calc <span class="ot">&lt;-</span> dta_calc <span class="sc">%&gt;%</span> </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Response =</span> <span class="fu">ifelse</span>(is_miss<span class="sc">==</span><span class="st">"miss"</span>,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>                           ymiss,</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>                           Response)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>         )</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>dta_calc <span class="sc">%&gt;%</span> <span class="fu">filter</span>(is_miss<span class="sc">==</span><span class="st">"miss"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 7
+    Tip Coupon Response is_miss mu_hat alpha_hat beta_hat
+  &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1     3      1     9.39 miss      9.61   -0.0810   -0.148
+2     4      4    10.0  miss      9.61    0.152     0.252</code></pre>
+</div>
+</div>
+<p>Selanjutnya kita hitung estimasi dua nilai estimasi masing-masing parameter</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>mu_hat0 <span class="ot">=</span> dta_calc <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#na.rm=TRUE berarti kita menghitung mean</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># dengan mengabaikan missing data</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(Response,<span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>()</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>mu_hat0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9.625298</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>alpha_hat <span class="ot">&lt;-</span> dta_calc <span class="sc">%&gt;%</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Tip) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(Response,<span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>() <span class="sc">-</span> mu_hat0</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>alpha_hat0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.03928571 -0.01428571 -0.08095238  0.15238095</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>beta_hat0<span class="ot">&lt;-</span> dta_calc <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Coupon) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(Response,<span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>() <span class="sc">-</span> mu_hat0</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>beta_hat0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.17886905 -0.20029762  0.09970238  0.27946429</code></pre>
+</div>
+</div>
+<p>selanjutnya kita masukan hasil estimasi parameter kita ke tabel <code>dta</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>dta_calc <span class="ot">&lt;-</span> dta_calc <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mu_hat =</span> mu_hat0) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Coupon) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">alpha_hat =</span> alpha_hat0) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Tip) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">beta_hat =</span> beta_hat0) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>dta_calc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 16 × 7
+     Tip Coupon Response is_miss mu_hat alpha_hat beta_hat
+   &lt;int&gt;  &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+ 1     1      1     9.3  not       9.63   -0.0393  -0.179 
+ 2     2      1     9.4  not       9.63   -0.0143  -0.179 
+ 3     3      1     9.39 miss      9.63   -0.0810  -0.179 
+ 4     4      1     9.7  not       9.63    0.152   -0.179 
+ 5     1      2     9.4  not       9.63   -0.0393  -0.200 
+ 6     2      2     9.3  not       9.63   -0.0143  -0.200 
+ 7     3      2     9.4  not       9.63   -0.0810  -0.200 
+ 8     4      2     9.6  not       9.63    0.152   -0.200 
+ 9     1      3     9.6  not       9.63   -0.0393   0.0997
+10     2      3     9.8  not       9.63   -0.0143   0.0997
+11     3      3     9.5  not       9.63   -0.0810   0.0997
+12     4      3    10    not       9.63    0.152    0.0997
+13     1      4    10    not       9.63   -0.0393   0.279 
+14     2      4     9.9  not       9.63   -0.0143   0.279 
+15     3      4     9.7  not       9.63   -0.0810   0.279 
+16     4      4    10.0  miss      9.63    0.152    0.279 </code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Tahap 3 dan 4 akan kita buat dalam iterasi di R dengan memanfaatkan coding diatas</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="do">## input data ke R</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>dta <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">text =</span><span class="st">"Tip   Coupon  Response</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="st">1   1   9.3</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="st">2   1   9.4</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="st">3   1   NA</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="st">4   1   9.7</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="st">1   2   9.4</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="st">2   2   9.3</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="st">3   2   9.4</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="st">4   2   9.6</span></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="st">1   3   9.6</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="st">2   3   9.8</span></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="st">3   3   9.5</span></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a><span class="st">4   3   10</span></span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a><span class="st">1   4   10</span></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a><span class="st">2   4   9.9</span></span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a><span class="st">3   4   9.7</span></span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a><span class="st">4   4   NA</span></span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a><span class="st">"</span> )</span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(dta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 16
+Columns: 3
+$ Tip      &lt;int&gt; 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4
+$ Coupon   &lt;int&gt; 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4
+$ Response &lt;dbl&gt; 9.3, 9.4, NA, 9.7, 9.4, 9.3, 9.4, 9.6, 9.6, 9.8, 9.5, 10.0, 1…</code></pre>
+</div>
+</div>
+<p>Berikutnya kita mulai EM-algorithm.</p>
+<p>Pada bagian ini akan diilustrasikan missing data akan diganti dengan nilai awal dibandingkan dengan nilai estimasi yang didapatkan dari parameter seperti ilustrasi sebelumnya.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># menambahkan kolom dengan informasi missing data</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>dta <span class="ot">&lt;-</span> dta <span class="sc">%&gt;%</span>  <span class="fu">mutate</span>(<span class="at">is_miss =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(Response),<span class="st">"miss"</span>,<span class="st">"not"</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>                       )</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Menghitung estimasi parameter dengan nilai awal 2 </span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a> dta <span class="ot">&lt;-</span> dta <span class="sc">%&gt;%</span> </span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="at">Response =</span> <span class="fu">ifelse</span>(is_miss<span class="sc">==</span><span class="st">"miss"</span>,</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">2</span>,</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>                            Response)</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>mu_hat0 <span class="ot">=</span> dta <span class="sc">%&gt;%</span> </span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(Response)) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>()</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>alpha_hat0 <span class="ot">&lt;-</span> dta <span class="sc">%&gt;%</span> </span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Tip) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(Response)) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>() <span class="sc">-</span> mu_hat0</span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>beta_hat0 <span class="ot">&lt;-</span> dta <span class="sc">%&gt;%</span> </span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Coupon) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(Response)) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>() <span class="sc">-</span> mu_hat0</span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a><span class="co"># memasukan hasil estimasi paramater ke dalam data.frame</span></span>
+<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a>dta_calc <span class="ot">&lt;-</span> dta <span class="sc">%&gt;%</span> </span>
+<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mu_hat =</span> mu_hat0) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Coupon) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-33"><a href="#cb31-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">alpha_hat =</span> alpha_hat0) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-34"><a href="#cb31-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb31-35"><a href="#cb31-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Tip) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-36"><a href="#cb31-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">beta_hat =</span> beta_hat0) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-37"><a href="#cb31-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb31-38"><a href="#cb31-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-39"><a href="#cb31-39" aria-hidden="true" tabindex="-1"></a><span class="co"># nilai estimasi missing data</span></span>
+<span id="cb31-40"><a href="#cb31-40" aria-hidden="true" tabindex="-1"></a>ymiss_rec <span class="ot">&lt;-</span> dta_calc <span class="sc">%&gt;%</span> </span>
+<span id="cb31-41"><a href="#cb31-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(is_miss<span class="sc">==</span><span class="st">"miss"</span>)</span>
+<span id="cb31-42"><a href="#cb31-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-43"><a href="#cb31-43" aria-hidden="true" tabindex="-1"></a><span class="co"># y_missing nilai awal 2</span></span>
+<span id="cb31-44"><a href="#cb31-44" aria-hidden="true" tabindex="-1"></a>ymiss <span class="ot">=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb31-45"><a href="#cb31-45" aria-hidden="true" tabindex="-1"></a>res_table <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">iter=</span><span class="dv">0</span>,</span>
+<span id="cb31-46"><a href="#cb31-46" aria-hidden="true" tabindex="-1"></a>           <span class="at">name_ymiss=</span><span class="fu">c</span>(<span class="st">"y31"</span>,<span class="st">"y44"</span>),</span>
+<span id="cb31-47"><a href="#cb31-47" aria-hidden="true" tabindex="-1"></a>           <span class="at">ymiss=</span>ymiss,</span>
+<span id="cb31-48"><a href="#cb31-48" aria-hidden="true" tabindex="-1"></a>           <span class="at">mu_hat =</span> ymiss_rec <span class="sc">%&gt;%</span> <span class="fu">pull</span>(mu_hat),</span>
+<span id="cb31-49"><a href="#cb31-49" aria-hidden="true" tabindex="-1"></a>           <span class="at">alpha_hat =</span> ymiss_rec <span class="sc">%&gt;%</span> <span class="fu">pull</span>(alpha_hat),</span>
+<span id="cb31-50"><a href="#cb31-50" aria-hidden="true" tabindex="-1"></a>           <span class="at">beta_hat =</span> ymiss_rec <span class="sc">%&gt;%</span> <span class="fu">pull</span>(beta_hat)</span>
+<span id="cb31-51"><a href="#cb31-51" aria-hidden="true" tabindex="-1"></a>           )</span>
+<span id="cb31-52"><a href="#cb31-52" aria-hidden="true" tabindex="-1"></a>tol <span class="ot">&lt;-</span> <span class="fl">1e-7</span></span>
+<span id="cb31-53"><a href="#cb31-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-54"><a href="#cb31-54" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb31-55"><a href="#cb31-55" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb31-56"><a href="#cb31-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-57"><a href="#cb31-57" aria-hidden="true" tabindex="-1"></a><span class="co"># input nilai estimasi missing data</span></span>
+<span id="cb31-58"><a href="#cb31-58" aria-hidden="true" tabindex="-1"></a>dta_calc <span class="ot">&lt;-</span> dta_calc <span class="sc">%&gt;%</span> </span>
+<span id="cb31-59"><a href="#cb31-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Response =</span> <span class="fu">ifelse</span>(is_miss<span class="sc">==</span><span class="st">"miss"</span>,</span>
+<span id="cb31-60"><a href="#cb31-60" aria-hidden="true" tabindex="-1"></a>                           ymiss,</span>
+<span id="cb31-61"><a href="#cb31-61" aria-hidden="true" tabindex="-1"></a>                           Response)</span>
+<span id="cb31-62"><a href="#cb31-62" aria-hidden="true" tabindex="-1"></a>         )</span>
+<span id="cb31-63"><a href="#cb31-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-64"><a href="#cb31-64" aria-hidden="true" tabindex="-1"></a>mu_hat0 <span class="ot">=</span> dta_calc <span class="sc">%&gt;%</span> </span>
+<span id="cb31-65"><a href="#cb31-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(Response)) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-66"><a href="#cb31-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>()</span>
+<span id="cb31-67"><a href="#cb31-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-68"><a href="#cb31-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-69"><a href="#cb31-69" aria-hidden="true" tabindex="-1"></a>alpha_hat0 <span class="ot">&lt;-</span> dta_calc <span class="sc">%&gt;%</span> </span>
+<span id="cb31-70"><a href="#cb31-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Tip) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-71"><a href="#cb31-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(Response)) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-72"><a href="#cb31-72" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>() <span class="sc">-</span> mu_hat0</span>
+<span id="cb31-73"><a href="#cb31-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-74"><a href="#cb31-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-75"><a href="#cb31-75" aria-hidden="true" tabindex="-1"></a>beta_hat0 <span class="ot">&lt;-</span> dta_calc <span class="sc">%&gt;%</span> </span>
+<span id="cb31-76"><a href="#cb31-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Coupon) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-77"><a href="#cb31-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(Response)) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-78"><a href="#cb31-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>() <span class="sc">-</span> mu_hat0</span>
+<span id="cb31-79"><a href="#cb31-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-80"><a href="#cb31-80" aria-hidden="true" tabindex="-1"></a>dta_calc <span class="ot">&lt;-</span> dta_calc <span class="sc">%&gt;%</span> </span>
+<span id="cb31-81"><a href="#cb31-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mu_hat =</span> mu_hat0) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-82"><a href="#cb31-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Coupon) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-83"><a href="#cb31-83" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">alpha_hat =</span> alpha_hat0) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-84"><a href="#cb31-84" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb31-85"><a href="#cb31-85" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Tip) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-86"><a href="#cb31-86" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">beta_hat =</span> beta_hat0) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-87"><a href="#cb31-87" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb31-88"><a href="#cb31-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-89"><a href="#cb31-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-90"><a href="#cb31-90" aria-hidden="true" tabindex="-1"></a><span class="co"># nilai estimasi missing data</span></span>
+<span id="cb31-91"><a href="#cb31-91" aria-hidden="true" tabindex="-1"></a>ymiss_rec <span class="ot">&lt;-</span> dta_calc <span class="sc">%&gt;%</span> </span>
+<span id="cb31-92"><a href="#cb31-92" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(is_miss<span class="sc">==</span><span class="st">"miss"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb31-93"><a href="#cb31-93" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="at">ymiss =</span> mu_hat<span class="sc">+</span>alpha_hat<span class="sc">+</span>beta_hat)</span>
+<span id="cb31-94"><a href="#cb31-94" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb31-95"><a href="#cb31-95" aria-hidden="true" tabindex="-1"></a>ymiss_old <span class="ot">&lt;-</span> ymiss</span>
+<span id="cb31-96"><a href="#cb31-96" aria-hidden="true" tabindex="-1"></a>ymiss <span class="ot">&lt;-</span> ymiss_rec <span class="sc">%&gt;%</span>  <span class="fu">pull</span>(ymiss)</span>
+<span id="cb31-97"><a href="#cb31-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-98"><a href="#cb31-98" aria-hidden="true" tabindex="-1"></a>res_table <span class="ot">&lt;-</span> <span class="fu">rbind</span>(res_table,<span class="fu">data.frame</span>(<span class="at">iter=</span>i,</span>
+<span id="cb31-99"><a href="#cb31-99" aria-hidden="true" tabindex="-1"></a>           <span class="at">name_ymiss=</span><span class="fu">c</span>(<span class="st">"y31"</span>,<span class="st">"y44"</span>),</span>
+<span id="cb31-100"><a href="#cb31-100" aria-hidden="true" tabindex="-1"></a>           <span class="at">ymiss=</span>ymiss,</span>
+<span id="cb31-101"><a href="#cb31-101" aria-hidden="true" tabindex="-1"></a>           <span class="at">mu_hat =</span> ymiss_rec <span class="sc">%&gt;%</span> <span class="fu">pull</span>(mu_hat),</span>
+<span id="cb31-102"><a href="#cb31-102" aria-hidden="true" tabindex="-1"></a>           <span class="at">alpha_hat =</span> ymiss_rec <span class="sc">%&gt;%</span> <span class="fu">pull</span>(alpha_hat),</span>
+<span id="cb31-103"><a href="#cb31-103" aria-hidden="true" tabindex="-1"></a>           <span class="at">beta_hat =</span> ymiss_rec <span class="sc">%&gt;%</span> <span class="fu">pull</span>(beta_hat)</span>
+<span id="cb31-104"><a href="#cb31-104" aria-hidden="true" tabindex="-1"></a>           ))</span>
+<span id="cb31-105"><a href="#cb31-105" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">all</span>(<span class="fu">abs</span>(ymiss_old<span class="sc">-</span>ymiss)<span class="sc">&lt;=</span>tol)){</span>
+<span id="cb31-106"><a href="#cb31-106" aria-hidden="true" tabindex="-1"></a>  <span class="cf">break</span></span>
+<span id="cb31-107"><a href="#cb31-107" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb31-108"><a href="#cb31-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-109"><a href="#cb31-109" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Hasil akhir yang diperoleh</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>res_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   iter name_ymiss     ymiss   mu_hat   alpha_hat   beta_hat
+1     0        y31  2.000000 8.662500 -1.01250000 -1.0625000
+2     0        y44  2.000000 8.662500 -0.83750000 -0.7625000
+3     1        y31  6.587500 8.662500 -1.01250000 -1.0625000
+4     1        y44  7.062500 8.662500 -0.83750000 -0.7625000
+5     2        y31  8.278125 9.265625 -0.46875000 -0.5187500
+6     2        y44  8.990625 9.265625 -0.17500000 -0.1000000
+7     3        y31  8.897266 9.491797 -0.27226563 -0.3222656
+8     3        y44  9.728516 9.491797  0.08085937  0.1558594
+9     4        y31  9.122021 9.576611 -0.20229492 -0.2522949
+10    4        y44 10.012646 9.576611  0.18051758  0.2555176
+11    5        y31  9.202594 9.608417 -0.17791138 -0.2279114
+12    5        y44 10.122906 9.608417  0.21974487  0.2947449
+13    6        y31  9.230953 9.620344 -0.16969528 -0.2196953
+14    6        y44 10.166109 9.620344  0.23538284  0.3103828
+15    7        y31  9.240660 9.624816 -0.16707811 -0.2170781
+16    7        y44 10.183238 9.624816  0.24171095  0.3167109
+17    8        y31  9.243836 9.626494 -0.16632861 -0.2163286
+18    8        y44 10.190126 9.626494  0.24431592  0.3193159
+19    9        y31  9.244796 9.627123 -0.16616351 -0.2161635
+20    9        y44 10.192940 9.627123  0.24540875  0.3204088
+21   10        y31  9.245039 9.627358 -0.16615958 -0.2161596
+22   10        y44 10.194112 9.627358  0.24587655  0.3208765
+23   11        y31  9.245073 9.627447 -0.16618710 -0.2161871
+24   11        y44 10.194609 9.627447  0.24608096  0.3210810
+25   12        y31  9.245056 9.627480 -0.16621192 -0.2162119
+26   12        y44 10.194824 9.627480  0.24617212  0.3211721
+27   13        y31  9.245036 9.627493 -0.16622847 -0.2162285
+28   13        y44 10.194920 9.627493  0.24621355  0.3212135
+29   14        y31  9.245021 9.627497 -0.16623830 -0.2162383
+30   14        y44 10.194963 9.627497  0.24623271  0.3212327
+31   15        y31  9.245011 9.627499 -0.16624380 -0.2162438
+32   15        y44 10.194982 9.627499  0.24624170  0.3212417
+33   16        y31  9.245006 9.627500 -0.16624677 -0.2162468
+34   16        y44 10.194992 9.627500  0.24624598  0.3212460
+35   17        y31  9.245003 9.627500 -0.16624834 -0.2162483
+36   17        y44 10.194996 9.627500  0.24624804  0.3212480
+37   18        y31  9.245002 9.627500 -0.16624915 -0.2162491
+38   18        y44 10.194998 9.627500  0.24624904  0.3212490
+39   19        y31  9.245001 9.627500 -0.16624957 -0.2162496
+40   19        y44 10.194999 9.627500  0.24624953  0.3212495
+41   20        y31  9.245000 9.627500 -0.16624978 -0.2162498
+42   20        y44 10.195000 9.627500  0.24624977  0.3212498
+43   21        y31  9.245000 9.627500 -0.16624989 -0.2162499
+44   21        y44 10.195000 9.627500  0.24624988  0.3212499
+45   22        y31  9.245000 9.627500 -0.16624994 -0.2162499
+46   22        y44 10.195000 9.627500  0.24624994  0.3212499
+47   23        y31  9.245000 9.627500 -0.16624997 -0.2162500
+48   23        y44 10.195000 9.627500  0.24624997  0.3212500</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="referensi" class="level2">
+<h2 class="anchored" data-anchor-id="referensi">Referensi</h2>
+<p>Hogg, Robert V., Joseph W. McKean, and Allen T,Craig.2013. Introduction to Mathematical Statistics. 7th ed.&nbsp;Boston: Pearson.</p>
+<p>https://www.statisticshowto.com/em-algorithm-expectation-maximization/</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

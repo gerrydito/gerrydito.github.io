@@ -1,0 +1,77 @@
+---
+title: "Gerry Alfa Dito"
+about:
+  id: hero-heading
+  template: trestles
+  image: /images/myself.png
+  image-shape: rounded
+  links:
+    - icon: envelope
+      text: email
+      href: mailto:gerryalfadito@gmail.com
+    - icon: linkedin
+      text: linkedin
+      href: https://www.linkedin.com/in/gerrydito/
+    - icon: github
+      text: github
+      href: https://github.com/gerrydito
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com/gerrydito
+page-layout: full
+---
+
+
+
+
+
+:::{.panel-tabset}
+
+## Introduction
+
+Hi! I am a lecturer of Department of Statistics at IPB University.
+My research interests broadly include topics in machine learning, such as deep learning, Probabilistic Machine Learning, optimization, and high-dimensional statistics.
+
+## Papers
+
+>Dito GA, Safitri A, Afendi FM, Anisa R, Salim A, Sartono B.
+2019.
+Graphical user interface (GUI) for the least absolute shrinkage and selection operator (LASSO) regression.*IOP Conf. Ser.: Earth Environ. Sci.* 299(1):012031.doi:[10.1088/1755-1315/299/1/012031](https://doi.org/10.1088/1755-1315/299/1/012031).
+
+>Dito GA, Sartono B, Annisa A.
+2020.
+Super Learner for Predicting Stock Market Trends: A Case Study of Jakarta Islamic Index Stock Exchange.
+Di dalam: *Proceedings of the Proceedings of the 1st International Conference on Statistics and Analytics, ICSA 2019, 2-3 August 2019, Bogor, Indonesia*.
+\[internet\] *Proceedings of the 1st International Conference on Statistics and Analytics, ICSA 2019, 2-3 August 2019, Bogor, Indonesia*;.
+Bogor, Indonesia.
+Bogor, Indonesia: EAI. Tersedia pada: <http://eudl.eu/doi/10.4108/eai.2-8-2019.2290523>
+  
+> Warsono W, Dito GA, Kurniasari D, Usman M. Neural Network Fuzzy Learning Vector Quantization (FLVQ) to Identify Probability Distributions.
+*IJCSNS*.
+16(10):16–19.Tersedia pada: <http://paper.ijcsns.org/07_book/201610/20161003.pdf>
+  
+  >Yanti Y, Rahardiantoro S, Dito GA. 2023.
+Spatio-temporal Clustering Analysis of Dengue Hemorrhagic Fever Cases in West Java 2016 – 2021: Analisis Penggerombolan Spasio-temporal Kasus DBD di Jawa Barat Tahun 2016 – 2021.
+*IJSA*.
+7(1):56–63.doi:[10.29244/ijsa.v7i1p56-63](https://doi.org/10.29244/ijsa.v7i1p56-63).
+
+## Books
+
+>Dito GA, Sartono B, Annisa A, Kurnia A.
+2020.
+Kajian Pengembangan Super Learner dengan Cuckoo Search untuk Peningkatan Performa Klasifikasi \[Master’s Thesis\].
+Bogor-Jawa Barat: IPB University.
+Tersedia pada: <http://repository.ipb.ac.id/handle/123456789/102924>
+  
+>Dito GA, Warsono W, Kurniasari D, Usman M.
+2016.
+Jaringan Syaraf Tiruan Fuzzy Learning Vector Quantization (FLVQ) untuk Mengidentifikasi Beberapa Distribusi Peluang \[Bachelor’s Thesis\].
+Bandar Lampung, Lampung: Lampung University.
+Tersedia pada: <https://digilib.unila.ac.id/22337/>
+  
+>Sartono B, Bodro DK, Dito GA. 2020.
+*Teknik eksplorasi data yang harus dikuasai data scientist*.
+IPB Press.
+Tersedia pada: <https://ipbpress.com/product/520-teknik-eksplorasi-data-yang-harus-dikuasai-data-scientist>
+
+:::

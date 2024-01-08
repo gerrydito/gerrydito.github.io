@@ -1,0 +1,765 @@
+---
+title: "Statistical Machine Learning dengan `tidymodels`"
+date: 12-1-2023
+author: Gerry Alfa Dito
+categories: 
+      - R Programming
+      - Statistical Machine Learning
+      - tidymodels
+draft: false
+image: post-image.jpg
+---
+
+
+R memiliki beberapa ekosistem yang bisa digunakan untuk menerapkan statistical machine learning, seperti
+
+a. `tidymodels` | [read more](https://www.tidymodels.org/)
+b. `mlr3` | [read more](https://mlr3.mlr-org.com/)
+c. `caret` | [read more](http://topepo.github.io/caret/index.html)
+
+Manfaat dari ekosistem-ekosistem ini adalah menggabungkan model-model statistical machine lerning yang berasal dari berbagai macam package sehingga mudah untuk digunakan karena sintaksnya yang seragam. 
+
+Pada tulisan ini kita akan menggunakan ekosistem `tidymodels` untuk menerapkan statistical machine learning. Jika tertarik belajar lebih lanjut tentang `tidymodels` bisa membuka sumber-sumber berikut
+
+a. Buku [Tidy Modeling with R](https://www.tmwr.org/)
+b. Website [Learning tidymodels](https://www.tidymodels.org/learn/)
+c. Youtube Playlist [TidyX - tidymodels](https://youtube.com/playlist?list=PLdb0LTjA9iQyCgTd8MmRS38vYrRIzdx2j&si=w28XqdooRLMTq9s-)
+
+
+## Machine learning Workflow
+
+![](Machine Learning Pipeline.png)
+
+## Data
+
+This dataset classifies people described by a set of attributes as good or bad credit risks.
+
+Author: Dr. Hans Hofmann Source: UCI - 1994 Please cite: Dua, D. and Graff, C. (2019). UCI Machine Learning Repository [http://archive.ics.uci.edu/ml]. Irvine, CA: University of California, School of Information and Computer Science.
+
+Attribute description
+
+- Status of existing checking account, in Deutsche Mark.
+- Credit history (credits taken, paid back duly, delays, critical accounts)
+- Purpose of the credit (car, television,…)
+- Credit amount
+- Status of savings account/bonds, in Deutsche Mark.
+- Present employment, in number of years.
+- Installment rate in percentage of disposable income
+- Personal status (married, single,…) and sex
+- Other debtors / guarantors
+- Present residence since X years
+- Property (e.g. real estate)
+- Age in years
+- Other installment plans (banks, stores)
+- Housing (rent, own,…)
+- Number of existing credits at this bank
+- Job
+- Number of people being liable to provide maintenance for
+- Telephone (yes,no)
+- Foreign worker (yes,no)
+- Duration in months
+
+data bisa didownload pada link berikut:
+
+[download data](https://drive.google.com/file/d/1NzVo6uhpUVuccRCUyTAN6RTAmp8YkAaw/view?usp=share_link)
+
+
+## Package
+
+
+ 
+```{r eval=FALSE}
+install.packages("rpart")
+install.packages("ranger")
+```
+
+Package diatas harus dinstall tapi tidak perlu dipanggil menggunakan `library`
+
+```{r message=FALSE, warning=FALSE}
+library(skimr)
+library(DataExplorer)
+library(tidyverse)
+library(tidymodels)
+library(rpart.plot)
+```
+
+
+
+## Import Data
+
+
+```{r}
+df <- read.csv("german_credit.csv",stringsAsFactors = TRUE)
+glimpse(df)
+```
+
+
+## Eksplorasi Data
+
+
+
+```{r}
+plot_intro(df,ggtheme = theme_classic())
+```
+
+
+
+### Eksploarasi Variabel Respon
+
+
+```{r}
+df %>% 
+count(class) %>% 
+mutate(percent=n*100/sum(n),label=str_c(round(percent,2),"%")) %>% 
+ggplot(aes(x="",y=n,fill=class))+
+  geom_col()+
+  geom_text(aes(label = label),
+            position = position_stack(vjust = 0.5)) +
+  coord_polar(theta = "y")+
+  theme_void()
+```
+
+
+
+### Eksplorasi Secara Numerik
+
+
+```{r}
+skim_without_charts(df)
+```
+
+
+### Eksplorasi Hubungan prediktor kategorik dengan respon
+
+
+```{r}
+plot_bar(data = df,by = "class",
+         ggtheme = theme_classic(),
+         ncol = 2)
+```
+
+
+
+### Eksplorasi Hubungan prediktor kontinu dengan respon
+
+
+```{r}
+plot_boxplot(data = df,by = "class",
+         ggtheme = theme_classic(),
+         geom_boxplot_args = list(fill="#03A9F4"))
+```
+
+
+### Eksploarsi Hubungan antar Prediktor Kontinu
+
+
+```{r}
+plot_correlation(data = df,
+                 type = "continuous",
+                 cor_args = list(method="spearman"),
+                 ggtheme = theme_classic(),
+                 theme_config = list(legend.position = "none",
+                                     axis.text.x=element_text(angle = 90)))
+```
+
+
+
+## Praproses Data
+
+
+Dalam ekosistem `tidymodels`, praproses data dapat dilakukan dengan package `recipe`([read more](https://recipes.tidymodels.org/)) dan juga turunannya seperti:
+
+* package [`themis`](https://themis.tidymodels.org/) untuk menangani masalah class imbalanced
+* package [`embed`](https://embed.tidymodels.org/) untuk predictors transformation (encoding)
+* package [`textrecipes`](https://textrecipes.tidymodels.org/) untuk praproses text data
+
+Tahap praproses data terdiri dari
+
+* **Data Cleaning**. Menangani Missing Value, outlier, duplikasi data dan kesalahan input data.
+* **Feature Engineering**. **Feature Engineering** adalah proses transformasi data mentah menjadi suatu fitur yang lebih baik dalam merepresentasikan pola yang terkandung di dalam data, sehingga dapat meningkatkan performa model.
+
+Berikut adalah ilustrasi penggunaan package recipe untuk **Feature Engineering**. 
+
+> Disclaimer: praproses di bawah hanya diperuntukan untuk ilustrasi penggunaan package `recipe` saja sehingga tidak memiliki alasan khusus kenapa di terapan tahapan praproses dibawah ini.
+
+
+### Tanpa Praproses
+
+Kita hanya perlu menuliskan fungsi `recipe` dari package `recipe` dengan argumen `formula` dan `data`.
+
+```{r}
+no_preproc <- recipe(formula=class~.,data = df)
+```
+
+
+### Dengan Praproses
+
+
+Kita perlu menambahkan fungsi `step_*` setelah fungsi `recipe`. Dalam ilustrasi ini, kita akan mereduksi dimensi seluruh variabel prediktor kontinu ke 3 dimensi saja dengan metode **PCA**. Hal ini dapat dicapai dengan menggunakan fungsi `step_pca`.
+
+
+```{r}
+basic_prepoc <- recipe(class~.,data = df) %>% 
+  step_pca(all_numeric_predictors(),
+           num_comp = 3,
+           options = list(center = TRUE,
+                          scale. = TRUE))
+```
+
+
+* fungsi `all_numeric_predictors()` menandakan bahwa variabel yang akan direduksi adalah semua variabel prediktor kontinu
+* `num_comp=3` berarti kita akan mereduksi dimensi menjadi 3 dimensi
+* `options = list(center = TRUE,scale. = TRUE)` berarti sebelum direduksi dimensi variabel asalnya kita rubah menjadi variabel-variabel yang memiliki rata-rata yang mendekati 0 dan standar deviasi mendekati 1.
+
+
+
+Kemudian, kita bisa memeriksa bagaimana hasi praproses dengan menggunakan fungsi `prep` dan `bake` seperti dibawah ini
+
+```{r}
+## memeriksa hasil praproses
+basic_prepoc %>% 
+  prep() %>% 
+  bake(new_data = NULL)
+```
+
+
+```{r}
+## memeriksa hasil praproses
+basic_prepoc %>% 
+  prep() %>% 
+  bake(new_data = NULL) %>% 
+  glimpse()
+```
+
+
+Selanjutnya kita dapat menambahkan tahap praproses lain dengan menuliskan fungsi `step_*` lainnya. Sebagai ilustrasi kita akan mereduksi banyaknya kategori di variabel `purpose` dengan menyatukan beberapa kategori yang memiliki frekuensi sedikit
+
+
+```{r}
+df %>% 
+  count(purpose) %>% 
+  arrange(n)
+```
+
+Misal kita akan menggabungkan kategori yang memiliki frekuensi dibawah 50. Berdasarkan output diatas, maka kategori yang akan digabungkan adalah kategori `retraining`,`domestic appliance`, `other` dan `repairs`.
+
+
+Kita bisa mereduksi banyaknya kategori dalam suatu variabel kategorik dengan fungsi `step_other`.
+
+```{r}
+basic_prepoc <- basic_prepoc %>% 
+                step_other(purpose,threshold = 50)
+```
+
+* `threshold = 50` berarti kategori yang memiliki frekuensi dibawah 50 akan digabung.
+
+
+Berikut adalah hasil praprosesnya
+
+
+```{r}
+## memeriksa hasil praproses
+basic_prepoc %>% 
+  prep() %>% 
+  bake(new_data = NULL) %>% 
+  glimpse()
+```
+
+
+
+```{r}
+## memeriksa hasil praproses
+basic_prepoc %>% 
+  prep() %>% 
+  bake(new_data = NULL) %>% 
+  count(purpose) %>% 
+  arrange(n)
+```
+
+
+atau kita bisa menuliskan sintaksnya secara langsung
+ 
+ 
+```{r}
+basic_prepoc <- recipe(class~.,data = df) %>% 
+  step_pca(all_numeric_predictors(),
+           num_comp = 3,
+           options = list(center = TRUE,
+                          scale. = TRUE)) %>% 
+  step_other(purpose,threshold = 50)
+```
+
+
+```{r}
+## memeriksa hasil praproses
+basic_prepoc %>% 
+  prep() %>% 
+  bake(new_data = NULL) %>% 
+  glimpse()
+
+basic_prepoc %>% 
+  prep() %>% 
+  bake(new_data = NULL) %>% 
+  count(purpose)
+```
+
+Fungsi `step_*` lainnya bisa diakses pada [website `recipe` berikut ini](https://recipes.tidymodels.org/reference/index.html)
+
+## Model Training and Evaluation
+
+Tahap ini harusnya berada di dalam Tahap Model Selection. Namun diletakan sebelum Model Selection hanya untuk ilustrasi saja. Pada Praktiknya bisa langsung ke Model Selection.
+
+
+### Mendefinisikan model
+
+Model-model yang bisa digunakan dalam ekosistem `tidymodels` ada di dalam pacakge `parsnip`([read more](https://parsnip.tidymodels.org/)).Selain itu package turunan dari `parsnip`  seperti [`brulee`](https://brulee.tidymodels.org/) dan [`bonsai`](https://bonsai.tidymodels.org/) juga bisa digunakan.
+
+Package `parsnip` menggunakan istilah `engine` untuk mengakses package asal dari model. Misalkan saja untuk model `decision_tree` kita bisa menggunakan package/engine `rpart` dan `C5.0` (dengan catatan kita harus menginstall package tersebut). Daftar lengkap package/engine yang bisa digunakan untuk `decision_tree` ada di [website `parsnip`](https://recipes.tidymodels.org). 
+
+Berikut adalah ilustrasi penggunaanya
+
+
+```{r}
+tree_mod <- decision_tree() %>% 
+            set_engine(engine = "rpart") %>% 
+            set_mode(mode = "classification")
+```
+
+* fungsi `decision_tree` berarti kita ingin menggunakan model decision tree
+* fungsi `set_engine` digunakan untuk mengakses package/engine yang digunakan untuk model
+* fungsi `set_mode` digunakan untuk menentukan apakah problem yang dihadapi merupakan `classification` atau `regression`
+
+
+### Pembagian Data
+
+Tahap pembagian data ini sangat bergantung pada package `rsample`([read more](https://rsample.tidymodels.org/index.html)). Metode-metode yang ada di dalam `rsample` adalah
+
+a. Holdout Sample dengan fungsi `initial_split`
+b. Cross Validation dengan fungsi `vfold_cv`
+c. Group Cross Validation dengan fungsi `group_vfold_cv`
+d. Leave-One-Out Cross-Validation dengan fungsi `loo_cv`
+
+
+```{r}
+basic_split <- initial_split(data = df,
+                             prop = 0.8,
+                             strata = "class")
+```
+
+* `data = df` untuk menentukan data yang akan dilakukan pembagian
+* `prop=0.8` proporsi pembagian yang dialokasikan ke data training
+* `strata = "class"` teknik sampling yang digunakan untuk melakukan pembagian adalah Stratified Random Sampling dengan didasarkan stratifikasi pada peubah respon `class`.
+
+
+Berikut adalah hasil pembagianya
+
+```{r}
+tidy(basic_split) %>% 
+  count(Data)
+```
+
+
+Training (Analysis) data yang kita dapatkan adalah 800 amatan atau $0.8 \times 1000$, sedangkan Testing (Assessment) data yang didapatkan adalah 200 amatan atau $(1-0.8)*1000$.
+
+
+Berikut adalah sintaks untuk memesiahkan training data dan testing data.
+
+```{r}
+train_df <- training(basic_split)
+dim(train_df)
+test_df <- testing(basic_split)
+dim(test_df)
+```
+
+
+* fungsi `training` berguna memisahkan training data dari data awal
+* fungsi `testing` berguna memisahkan testing data dari data awal
+
+
+### Model Training
+
+Model training bisa dilakukan dengan memanfaatkan fungsi `workflow` seperti dibawah ini:
+
+
+```{r}
+tree_mod_trained <- workflow() %>% 
+                    add_recipe(recipe = no_preproc) %>% 
+                    add_model(spec = tree_mod) %>% 
+                    fit(data=train_df)
+```
+
+* fungsi `add_recipe` digunakan untuk menambahkan tahap praproses data menggunakan package `recipe`
+* fungsi `add_model` digunakan untuk menambahkan model yang akan dilakukan training.
+* fungsi `fit` digunakan untuk menjalankan training.
+
+
+### Model Evaluation
+
+
+
+#### Prediksi Testing Data
+
+
+Berikut adalah sintaks mendapatkan prediksi testing data dalam bentuk kategori (`factor`)
+
+
+```{r}
+pred_tree_mod <- tree_mod_trained %>% 
+                  predict(new_data = test_df,type = "class")
+                  
+pred_tree_mod 
+```
+
+* `type = "class"` argumen untuk mendapatkan prediksi dalam bentuk kategori (`factor`)
+* Pada dasarnya hasil prediksi dari tree berbentuk peluang, secara otomatis diubah menjadi kategori variabel respon dengan threshold=0.5
+
+
+Berikut adalah sintaks mendapatkan prediksi testing data dalam bentuk peluang
+
+
+```{r}
+prob_tree_mod <- tree_mod_trained %>% 
+                  predict(new_data = test_df,type = "prob")
+prob_tree_mod
+```
+* `type = "prob"` argumen untuk mendapatkan prediksi dalam bentuk [kategori (`factor`) peluang
+
+#### Confussion Matrix
+
+
+Berikut adalah sintaks untuk menambahkan kolom variabel respon dari testing data
+
+```{r}
+pred_tree_mod <- pred_tree_mod %>% 
+                 #menambahkan kolom truth
+                 mutate(truth=test_df$class)
+pred_tree_mod
+```
+
+Selanjutnya, kita akan mengeluarkan confussion matriks 
+
+```{r}
+confussion_matrix <- pred_tree_mod %>%
+                      conf_mat(truth=truth,estimate=.pred_class)
+```
+
+Confusion matriks dapat ditampilkan dalam bentuk chart sebagai berikut:
+
+```{r}
+autoplot(confussion_matrix,type = "heatmap")+
+  scale_fill_gradient(low = "#F4AFAB",high = "#EE847E")
+```
+
+
+* fungsi `autoplot` digunakan untuk mennampilkan confussion matrix
+* fungsi `scale_fill_gradient` digunakan untuk memberi warna pada confussion matrix
+* Berdasarkan output confussion matrix, terlihat bahwa sebagai hasil prediksi dari kategori `bad` banyak yang salah prediksi dibandingkan dengan hasil prediksi dari kategori `good`.
+
+
+#### Evaluasi model dengan metric 
+
+Pertama-tama, kita harus definsikan terlebih dahulu metrics yang kita gunakan. Metrics-metrics ini didapatkan dengan menggunakan package `yardstick`([read more](https://yardstick.tidymodels.org/)).
+
+
+```{r}
+multi_metric <- metric_set(accuracy,
+                           sensitivity,
+                           specificity,
+                           bal_accuracy,
+                           f_meas)
+```
+
+* fungsi `metric_set` digunakan untuk menyatukan beberapa metrik evaluasi.
+* `f_meas` adalah metrik f1-score
+
+
+Berikut adalah hasil evaluasi prediksi pada testing data menggunakan 5 metrik yang sudah didefinisikan
+
+
+```{r}
+pred_tree_mod %>%
+  #menambahkan kolom truth
+  mutate(truth=test_df$class) %>% 
+  # evaluasi prediksi berdasarkan metrik
+  multi_metric(truth = truth,estimate = .pred_class)
+```
+
+Kemudian, metrik `auc` dibawah ini digunakan untuk mengevaluasi prediksi dalam bentuk peluang.
+
+
+```{r}
+prob_tree_mod %>%
+  mutate(truth=test_df$class) %>% 
+  roc_auc(truth = truth,.pred_bad)
+```
+
+## Model Selection
+
+
+Pada tahap ini kita bisa memilih model yang terbaik untuk kasus data kita. Beberapa langkah di tahap **Model Selection** sudah dijelaskan di **Model Training and Evaluation**. Sebagai ilustrasi kita akan membandingkan hasil model pohon, random forest dan regresi logistik.
+
+
+### Mendefinisikan model
+
+
+Seperti yang dijelaskan sebelumnya, model-model yang ada di package `parsnip` berasal dari package-package yang berbeda, berikut rinciannya:
+
+* Decision tree menggunakan package `rpart`
+* Random Forest menggunakan package `ranger`
+* Regresi Logistik menggunakan fungsi `glm` dari package `stats`
+
+
+Berikut adalah sintaks untuk mendefinsikan model, penjelasan detailnya sama seperti yang sebelumnya:
+
+
+```{r}
+tree_mod <- decision_tree() %>%
+              set_engine(engine = "rpart") %>% 
+              set_mode(mode = "classification")
+```
+
+
+```{r}
+rf_mod <- rand_forest() %>% 
+          set_engine(engine = "ranger",importance="impurity") %>% 
+          set_mode(mode = "classification")
+```
+
+* `importance="impurity"` digunakan untuk mengekstrak variable importance dari random forest
+
+
+
+```{r}
+lr_mod <- logistic_reg() %>% 
+          set_engine(engine = "glm") %>% 
+          set_mode(mode = "classification")
+```
+
+
+### Pembagian Data
+
+
+Pembagian data dilakukan dengan menggunakan metode **Cross Validation** dengan fungsi `vfold_cv`. Berikut sintaksnya:
+
+
+```{r}
+folds <- vfold_cv(data = df,v = 10,strata = "class")
+```
+
+
+* `v = 10` untuk menentukan banyaknya fold yang digunakan dalam **Cross Validation** adalah 10.
+* `strata = "class"` metode sampling yang digunakan adalah Stratified Random Sampling dengan stratifikasi berdasarkan kolom `class` yang berperan sebagai variabel respon.
+
+
+### Model Training and Evaluation
+
+
+Model Training and Evaluation akan dilakukan dengan bantuan fungsi `workflow_set` dan `workflow_map`. Kedua fungsi ini memungkinkan kita untuk melakukan pemilihan model terbaik berdasarkan metrik-metrik tertentu.
+
+Fungsi `workflow_set` digunakan untuk menginput tahap praproses data dan model apa  yang digunakan. Sementara itu, fungsi `workflow_map` digunakan untuk menginputkan metode pembagian data dan metrik sekaligus **melakukan model training and evaluation**. Berikut adalah sintaksnya:
+
+
+```{r}
+mod_selection_trained <- workflow_set(preproc = list(no=no_preproc,basic=basic_prepoc),
+                                      models = list(tree_mod,rf_mod,lr_mod),
+                                      cross = TRUE ) %>%
+                         workflow_map(fn = "fit_resamples",
+                                       resamples= folds,
+                                       metrics = multi_metric,
+                                       control = control_resamples(save_workflow = TRUE),
+                                       seed = 2045)
+```
+
+* argumen `preproc` digunakan untuk menginputkan tahap praproses data
+* sintaks `no=` dan `basic=` digunakan untuk memberi nama pada tahap praproses data
+* argumen `models` digunakan untuk menginputkan model
+* argumen `cross=TRUE` menandakan bahwa tahap praproses data dan model dipasangkan secara kombinasi. Sebagai ilustrasi tahap praproses data `basic` akan dipasangkan dengan model decision tree, random forest dan regresi logistik.
+* argumen `cross=TRUE` menandakan bahwa tahap praproses data dan model dipasangkan sesuai dengan urutanyan. Sebgai ilustrasi tahap praproses data `no` dipasangkan dengan decision. tree dan tahap praproses data `basic` akan dipasangkan dengan random forest. Semetara model regresi logistik tidak punya tahap praproses data sehingga akan menyebabkan `error`.
+* argumen `fn` digunakan untuk menentukan fungsi tidymodels yang akan digunakan.
+* argumen `resamples` digunakan untuk menginputkan metode pembagian data
+* argumen `metrics` digunakan untuk menginputkan metrik-metrik.
+* untuk argumen `control` bisa melihat help untuk lebih jelas.
+
+
+Hasil training and evaluation pada sintaks sebelumnya disimpan dalam objek `mod_selection_trained`. Selanjutnya kita akan menampilkan hasilnya dengan menggunakan ranking.
+
+
+```{r}
+custom_output <- function(data){
+  data %>% 
+  mutate(method = map_chr(wflow_id, ~ str_split(.x, "_",simplify = TRUE)[1])) %>% 
+                        select(method,model,.metric,mean,std_err,rank)
+}
+
+mod_selection_result <- rank_results(mod_selection_trained,
+                                     rank_metric = "bal_accuracy") %>% 
+                        custom_output()
+                        
+```
+
+* argumen `rank_metric` digunakan untuk menentukan metrik apa yang digunakan sebagai ranking. Dalam hal ini metrik yang digunakan adalah **balanced accuracy**
+* fungsi `custom_output` digunakan untuk mengkustomisasi output yang dihasilkan. Fungsi ini bisa tidak perlu dirubah-rubah.
+
+
+```{r}
+mod_selection_result
+```
+
+
+```{r}
+mod_selection_result %>% 
+  ggplot(aes(x = rank, y = mean, pch = method, col = model)) + 
+  geom_point(cex = 3)+
+  facet_wrap(~.metric)+
+  theme_bw()
+```
+
+
+Berdasarkan output diatas, kombinasi praproses data dan model yang menempati ranking 1 berdasarkan metrik **balanced accuracy** adalah `no`+`logistic_regression`. Sehingga model terbaik yang kita peroleh adalah `no`+`logistic_regression`.
+
+
+
+
+
+Setelah mendapatkan model terbaik kita bisa mengekstraknya model tersebut kemudian melakukan training ulang dengan seluruh data yang dimiliki menggunakan fungsi `fit_best` berikut ini
+
+```{r}
+best_mod <- fit_best(x = mod_selection_trained,
+                     metric="bal_accuracy")
+best_mod
+```
+
+untuk memastikan training data yang digunakan adalah seluruh data yang kita miliki, kita bisa menggunakan fungsi dibawah ini:
+
+
+```{r}
+extract_recipe(best_mod)
+```
+
+
+
+## Model Interpretability (Explainability)
+
+
+Tahap ini meruapakan tahap untuk mengerti bagaimana variabel-variabel prediktor berpengaruh terhadap prediksi berdasarkan **model terbaik** yang diperoleh pada tahap model selection.
+
+
+## Model Terbaik
+
+Karena model terbaik adalah regresi logistik maka kita bisa menggunakan nilai koefisien dari regresi logistik untuk memahami bagaimana variabel-variabel prediktor berpengaruh terhadap prediksi.
+
+
+```{r}
+tidy(best_mod,exponentiate=TRUE) %>% 
+  mutate(across(where(is.numeric),~round(.x,3)))
+```
+
+
+### Tambahan
+
+Dibawah ini adalah ilustrasi tambahan model interpretability untuk decision tree dan random forest.
+
+
+```{r}
+# Retraining decision tree dengan seluruh data
+tree_mod_trained <- workflow() %>% 
+                    add_recipe(recipe = no_preproc) %>% 
+                    add_model(spec = tree_mod) %>% 
+                    fit(data=df)
+```
+
+
+```{r}
+extract_fit_engine(tree_mod_trained) %>% 
+    rpart.plot(type = 2,extra = 106,
+               faclen = -1,
+               box.palette =blues9[-8:-9] ,
+               tweak = 1.4)
+```
+
+
+
+
+
+```{r}
+# Retraining Random Forest dengan seluruh data
+rf_mod_trained <- workflow() %>% 
+                    add_recipe(recipe = no_preproc) %>% 
+                    add_model(spec = rf_mod) %>% 
+                    fit(data=df)
+```
+
+
+fungsi `plot_importance` merupakan fungsi bantuan yang tidak perlu dirubah-rubah.
+
+```{r}
+plot_importance<- function(rf){
+  rf %>% 
+  ranger::importance() %>% 
+  as.data.frame() %>% 
+  rownames_to_column("Variables") %>% 
+  rename("impurity"=".") %>% 
+  arrange(impurity) %>% 
+  mutate(Variables=factor(Variables,levels=Variables)) %>% 
+  ggplot(aes(Variables,impurity))+
+  geom_col(fill="#03A9F4")+
+  coord_flip()+
+  theme_classic()+
+  theme(axis.line.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.title.y = element_blank() )+
+  scale_y_continuous(expand = c(0,0))
+}
+```
+
+
+```{r}
+extract_fit_engine(rf_mod_trained) %>% 
+  plot_importance()
+```
+
+
+
+
+## Model Deployment
+
+
+Pada tahap ini kita akan menggunakan model untuk keperluan prediksi data baru. Hal pertama yang mungkin kita bisa lakukan adalah menyimpan model terbaik ke file berbentuk `rds` sehingga kita bisa menggunakanya tanpa perlu running sintaks dari awal. Tahap penyimpanan ini **tidak wajib** untuk dilakukan
+
+```{r}
+saveRDS(best_mod,file = "credit_model.rds")
+```
+
+Sintaks diatas berarti kita menyimpan model terbaik dalam file bernama `credit_model.rds`.
+
+
+
+### Prediksi Data Baru
+
+
+
+```{r}
+set.seed(2045)
+data_baru_dummy <- df %>% 
+                   slice_sample(n=7) %>% 
+                   select(-class)
+data_baru_dummy
+```
+
+
+
+```{r}
+new_pred <- readRDS("credit_model.rds") %>% 
+              predict(new_data = data_baru_dummy,type = "class")
+new_pred
+```
+
+sintaks `readRDS("credit_model.rds")` untuk meload model terbaik yang sudah kita simpan.
+
+
+```{r}
+write.csv(x = new_pred,file = "submission.csv",row.names = F)
+```
+
+
+
