@@ -215,7 +215,7 @@ normal_test(data = aug1,
 ```
 
 
-karena p-value yang dihasilkan dari uji normalitas kurang dari 0.05 maka $H_{0}$ ditolak atau dengan kata lain **residual tidak menyebar normal**
+karena p-value yang dihasilkan dari uji normalitas kurang dari 0.05 maka $H_{0}$ ditolak atau dengan kata lain **galat tidak menyebar normal**
 
 ### Homogenitas
 

@@ -1,0 +1,537 @@
+---
+title: "Analisis Faktorial RAL dengan R"
+author: Gerry Alfa Dito
+date: 11-25-2021
+categories: 
+      - Compare Means
+      - Analysis of Experiments Data
+draft: false
+image: post-image.jpg
+---
+
+
+Install package berikut jika belum ada
+
+```{r eval=FALSE}
+install.packages("tidyverse")
+install.packages("broom")
+install.packages("performance")
+install.packages("see")
+install.packages("fbasics")
+install.packages("sjplot")
+install.packages("ggpubr")
+install.packages("DescTools")
+```
+
+
+```{r message=FALSE}
+library(tidyverse)
+library(performance)
+library(see)
+library(sjPlot)
+library(broom)
+library(ggpubr)
+library(DescTools)
+library(fBasics)
+```
+
+## Data
+
+Dari percobaan ini ingin diketahui apakah jenis material dan suhu mempengaruhi daya tahan baterai (dalam jam) ? Apakah jenis material tertentu cocok untuk suhu tertentu? Dari percobaan tersebut diperoleh data daya tahan baterai sebagai berikut:
+
+
+```{r echo=FALSE}
+read.table(header = T,stringsAsFactors = T,text = 
+                        "Material	Suhu	DayaTahan
+A	15	130
+A	70	34
+A	125	20
+A	15	74
+A	70	80
+A	125	82
+A	15	155
+A	70	40
+A	125	70
+A	15	180
+A	70	75
+A	125	58
+B	15	150
+B	70	136
+B	125	25
+B	15	159
+B	70	106
+B	125	70
+B	15	188
+B	70	122
+B	125	58
+B	15	126
+B	70	115
+B	125	45
+C	15	138
+C	70	174
+C	125	96
+C	15	168
+C	70	150
+C	125	82
+C	15	110
+C	70	120
+C	125	104
+C 15 160
+C 70 139
+C 125 60
+") %>% gt::gt()
+```
+
+
+
+## Import Data ke dalam R
+
+Untuk import data ke R kita bisa langsung menuliskan data nya di R dengan sintaks seperti dibawah ini
+
+
+```{r}
+baterai <- read.table(header = T,stringsAsFactors = T,text = 
+                        "Material	Suhu	DayaTahan
+A	15	130
+A	70	34
+A	125	20
+A	15	74
+A	70	80
+A	125	82
+A	15	155
+A	70	40
+A	125	70
+A	15	180
+A	70	75
+A	125	58
+B	15	150
+B	70	136
+B	125	25
+B	15	159
+B	70	106
+B	125	70
+B	15	188
+B	70	122
+B	125	58
+B	15	126
+B	70	115
+B	125	45
+C	15	138
+C	70	174
+C	125	96
+C	15	168
+C	70	150
+C	125	82
+C	15	110
+C	70	120
+C	125	104
+C 15 160
+C 70 139
+C 125 60
+")
+```
+
+Melihat data sekilas dengan fungsi `glimpse` dari package `dplyr`
+
+```{r}
+glimpse(baterai)
+```
+
+```{r}
+baterai <- baterai %>% 
+            #merubah kolom suhu menjadi factor(kategorik)
+            mutate(Suhu=as.factor(Suhu))
+glimpse(baterai)
+```
+
+
+## Analysis of Variance (ANOVA)
+
+Hipotesis untuk material baterai
+
+$$
+\begin{aligned}
+H_{0} &: \text{jenis material baterai tidak mempengaruhi Daya Tahan Baterai} \\
+H_{1} &: \text{terdapat minimal satu jenis material baterai yang mempengaruhi Daya Tahan Baterai}
+\end{aligned}
+$$
+
+
+
+Hipotesis untuk Suhu Baterai
+
+$$
+\begin{aligned}
+H_{0} &: \text{jenis material baterai tidak mempengaruhi Daya Tahan Baterai} \\
+H_{1} &: \text{terdapat minimal satu jenis material baterai yang mempengaruhi Daya Tahan Baterai}
+\end{aligned}
+$$
+
+
+
+
+Hipotesis untuk Interaksi Daya Tahan dan Suhu Baterai
+
+
+$$
+\begin{aligned}
+H_{0} &: \text{interaksi antara material dan suhu tidak berpengaruh terhadap daya tahan baterai} \\
+H_{1} &: \text{interaksi antara material dan suhu berpengaruh terhadap daya tahan baterai}
+\end{aligned}
+$$
+
+
+```{r}
+anova_bat <- aov(DayaTahan~Material+Suhu+Material:Suhu,data=baterai)
+```
+
+
+Catatan:
+
+1. `Material:Suhu` menandakan interaksi antara suhu dan material
+
+
+```{r}
+tidy(anova_bat) %>% 
+  mutate(p.value=round(p.value,3))
+```
+
+
+### Saat $\alpha=0.05$
+
+#### Interaksi antara Material dan Suhu
+
+karena p-value yang dihasilkan dari uji ANOVA kurang dari 0.05 maka $H_{0}$ ditolak atau dengan kata lain cukup bukti untuk mengatakan bahwa **interaksi antara material dan suhu berpengaruh terhadap daya tahan baterai**
+
+
+Karena Interaksi antara faktor material dan suhu signifikan ($H_{0}$ ditolak) maka kita bisa mengabaikan pengujian hipotesis untuk masing-masing faktor material dan suhu baterai.
+
+Langkah selajutnya kita bisa melihat plot interaksi sebagai berikut:
+
+
+
+##### Grafik Interaksi
+
+```{r}
+plot_model(anova_bat,type = "int")+
+  geom_line()+
+  theme_lucid()
+```
+
+
+### Saat $\alpha=0.01$
+
+#### Interaksi antara Material dan Suhu
+
+karena p-value yang dihasilkan dari uji ANOVA lebih dari 0.01 maka $H_{0}$ tidak ditolak atau dengan kata lain **Interaksi antara material dan suhu tidak berpengaruh terhadap daya tahan baterai**
+
+
+Karena Interaksi antara faktor material dan suhu tidak signifikan ($H_{0}$ tidak ditolak) pada $\alpha=0.01$ maka kita melakukan pengujian hipotesis untuk masing-masing faktor material dan suhu baterai.
+
+
+#### Material
+
+karena p-value yang dihasilkan dari uji ANOVA kurang dari 0.01 maka $H_{0}$ ditolak atau dengan kata lain **terdapat minimal satu jenis material baterai yang mempengaruhi Daya Tahan Baterai**
+
+
+#### Suhu
+
+karena p-value yang dihasilkan dari uji ANOVA kurang dari 0.01 maka $H_{0}$ ditolak atau dengan kata lain **terdapat minimal satu temperatur suhu baterai yang mempengaruhi Daya Tahan Baterai**
+
+
+
+
+#### Uji Lanjut (Multiple Comparison)
+
+
+Faktor Material dan Suhu material signifikan pada $\alpha=0.01$ sehingga kita bisa menggunakan Uji lanjut untuk menyelidiki lebih lanjut.
+
+
+Sebelum melakukan uji lanjut, kita akan membuat objek baru (`anova_bat2`) di R untuk menyimpan hasil ANOVA tanpa interaksi. 
+
+
+```{r}
+anova_bat2 <- aov(DayaTahan~Material+Suhu,data=baterai)
+```
+
+
+Hipotesis Uji lanjut
+
+$$
+\begin{aligned}
+H_{0} &: \mu_{i}-\mu_{j}=0 \space \text{untuk} \space i \neq j \\
+H_{1} &: \mu_{i}-\mu_{j} \neq 0 \space \text{untuk} \space i \neq j
+\end{aligned}
+$$
+
+
+
+atau 
+
+
+$$
+\begin{aligned}
+H_{0} &: \text{tidak ada perbedaan rata-rata Daya Tahan Baterai material/suhu ke-i dan ke-j} \\
+H_{1} &: \text{Ada perbedaan rata-rata Daya Tahan Baterai material/suhu ke-i dan ke-j}
+\end{aligned}
+$$
+
+dengan $\mu_{i}$ adalah rata-rata material/suhu baterai ke-i untuk $i=1,2,3$
+
+
+
+##### Honest Significant Difference (HSD) atau Tukey Test
+
+
+```{r}
+PostHocTest(anova_bat2,method="hsd")
+```
+
+
+###### Material
+
+Berdasarkan HSD test, p-value B-A dan C-B lebih besar dari 0.05, artinya tidak ada perbedaan rata-rata Daya Tahan Baterai material A dan B; B dan C. Sementara itu, p-value C-A lebih kecil dari 0.05, artinya ada perbedaan rata-rata Daya Tahan Baterai material A dan C.
+
+
+
+###### Suhu
+
+
+Berdasarkan HSD test, p-value 70-15, 125-15 dan 125-70 lebih kecil dari 0.05, artinya ada perbedaan rata-rata Daya Tahan Baterai Suhu 15 dan 70; 15 dan 125;70 dan 125. 
+
+
+
+##### Fisher Least Significant Difference (LSD)
+
+```{r}
+PostHocTest(anova_bat2,method="lsd")
+```
+###### Material
+
+Berdasarkan LSD test, p-value B-A dan C-A  lebih kecil dari 0.05, artinya ada perbedaan rata-rata Daya Tahan Baterai material A dan B; a dan C. Sementara itu, p-value C-B lebih besar dari 0.05, artinya tidak ada perbedaan rata-rata Daya Tahan Baterai material B dan C.
+
+
+
+###### Suhu
+
+
+Berdasarkan LSD test, p-value 70-15, 125-15 dan 125-70 lebih kecil dari 0.05, artinya ada perbedaan rata-rata Daya Tahan Baterai Suhu 15 dan 70; 15 dan 125;70 dan 125. 
+
+
+##### Bonferroni Test
+
+```{r}
+PostHocTest(anova_bat2,method="bonf")
+```
+
+###### Material
+
+Berdasarkan Bonferroni test, p-value B-A dan C-B lebih besar dari 0.05, artinya tidak ada perbedaan rata-rata Daya Tahan Baterai material A dan B; B dan C. Sementara itu, p-value C-A lebih kecil dari 0.05, artinya ada perbedaan rata-rata Daya Tahan Baterai material A dan C.
+
+
+
+###### Suhu
+
+
+Berdasarkan Bonferroni test, p-value 70-15, 125-15 dan 125-70 lebih kecil dari 0.05, artinya ada perbedaan rata-rata Daya Tahan Baterai Suhu 15 dan 70; 15 dan 125;70 dan 125. 
+
+
+##### Duncan Test
+
+```{r}
+PostHocTest(anova_bat2,method="duncan")
+```
+
+
+
+###### Material
+
+Berdasarkan Duncan test, p-value B-A dan C-A lebih kecil dari 0.05, artinya ada perbedaan rata-rata Daya Tahan Baterai material A dan B; A dan C. Sementara itu, p-value C-B lebih besar dari 0.05, artinya tidak ada perbedaan rata-rata Daya Tahan Baterai material B dan C.
+
+
+
+###### Suhu
+
+
+Berdasarkan Duncan test, p-value 70-15, 125-15 dan 125-70 lebih kecil dari 0.05, artinya ada perbedaan rata-rata Daya Tahan Baterai Suhu 15 dan 70; 15 dan 125;70 dan 125. 
+
+
+
+## Pemeriksaan Asumsi ANOVA
+
+Pemeriksaan asumsi ANOVA dilakukan pada residual nya. Untuk mengeluarkan residualnya bisa menggunakan sintaks dibawah ini
+
+```{r warning=FALSE}
+aug1 <- augment(anova_bat)
+aug1
+```
+
+
+
+### Normalitas (Residual Menyebar Normal)
+
+Pemeriksaan Normalitas bisa dilakukan dengan menggunakan grafik atau uji hipotesis.
+
+
+#### Grafik
+
+untuk menampilkan grafik dibawah ini terlebih dahulu harus memanggil package `performance` dan `see`
+
+
+
+
+```{r}
+plot(check_normality(x = anova_bat),type="qq")
+```
+
+Dari grafik ini, titik-titik residual yang mengikuti pola garis dan berada di dalam daerah selang kepercayaan  maka diduga bahwa asumsi normalitas dipenuhi.
+
+#### Uji Hipotesis
+
+Hipotesis yang diuji untuk pemeriksaan normalitas adalah
+
+$$
+\begin{aligned}
+H_{0} &: \text{galat menyebar normal} \\
+H_{1} &: \text{galat tidak menyebar normal}
+\end{aligned}
+$$
+
+Uji Normalitas bisa dilakukan dengan beberapa metode pengujian. Untuk itu, akan dibuat fungsi R agar dapat menjalankan metode-metode pengujian tersebut. Fungsi R ini tidak perlu dipahami secara serius karena dapat digunakan untuk berbagai kondisi data. Fungsi R buatan ini sangat bergantung pada package `fbasics`
+
+```{r}
+## fungsi R buatan
+
+normal_test <- function(data,variable){
+  ad_stat <- adTest(
+    data %>% 
+      pull(variable)
+    )@test$statistic
+  ks_stat <- ksnormTest(
+    data %>% 
+      pull(variable)
+    )@test$statistic
+  jb_stat <- jarqueberaTest(
+    data %>% 
+      pull(variable)
+    )@test$statistic
+  
+  shapiro_stat <- shapiroTest(
+    data %>% 
+      pull(variable)
+    )@test$statistic
+  
+  ad_p.value <- adTest(
+    data %>% 
+      pull(variable)
+    )@test$p.value
+  ks_p.value <- ksnormTest(
+    data %>% 
+      pull(variable)
+    )@test$p.value
+  jb_p.value <- jarqueberaTest(
+    data %>% 
+      pull(variable)
+    )@test$p.value
+  
+  shapiro_p.value <- shapiroTest(
+    data %>% 
+      pull(variable)
+    )@test$p.value
+  
+  all_stats <- data.frame(statistic=c(ad_stat,                                  ks_stat[1],
+                        jb_stat,
+                        shapiro_stat),
+                        p.value=c(
+                        ad_p.value,                              ks_p.value[1],
+                        jb_p.value,
+                        shapiro_p.value
+                        )) %>% 
+    mutate(across(where(is.numeric),~ round(.x,3))) %>% 
+    mutate(name=c("Anderson-Darling",
+                    "Kolmogorov-Smirnov",
+                    "Shapiro-Wilk",
+                    "Jarque-Bera")) %>% 
+    relocate(name) 
+    
+  
+  rownames(all_stats) <- NULL
+  return(all_stats)
+}
+
+```
+
+
+
+
+```{r}
+normal_test(data = aug1,
+            variable = ".resid")
+```
+
+
+karena p-value yang dihasilkan dari 3 uji normalitas lebih dari 0.05 maka $H_{0}$ tidak ditolak atau dengan kata lain **galat menyebar normal**
+
+### Homogenitas
+
+Pemeriksaan Homogenitas bisa dilakukan dengan menggunakan grafik atau uji hipotesis.
+
+
+#### Grafik
+
+untuk menampilkan grafik dibawah ini menggunakan package `ggpubr` 
+
+
+
+```{r}
+ggscatter(data = aug1,
+                  x=".fitted",
+                  y=".resid")+
+  geom_hline(aes(yintercept=0)) +
+  theme_lucid()
+```
+
+
+Dari grafik ini, tidak terdapat pola berbentuk corong (funnel shape) maka diduga bahwa asumsi homogenitas terpenuhi.
+
+#### Uji Hipotesis
+
+Hipotesis yang diuji untuk pemeriksaan homogenitas adalah
+
+$$
+\begin{aligned}
+H_{0} &: \text{ragam homogen antar perlakukan} \\
+H_{1} &: \text{ragam tidak homogen antar perlakuan}
+\end{aligned}
+$$
+
+
+Uji Homogenitas bisa dilakukan dengan beberapa metode pengujian dibawah ini
+
+```{r}
+# Bartlett (asumsi residual menyebar normal)
+check_homogeneity(anova_bat,method="bartlett")
+# Fligner (merupakan uji nonparametrik)
+check_homogeneity(anova_bat,method="fligner")
+```
+
+karena p-value yang dihasilkan dari uji homogenitas lebih dari 0.05 maka $H_{0}$ tidak ditolak atau dengan kata lain **ragam homogen antar perlakukan**
+
+
+### Independent
+
+#### Grafik
+
+Pemeriksaan Independent bisa dilakukan dengan menggunakan grafik.
+
+untuk menampilkan grafik dibawah ini menggunakan package `ggpubr` 
+
+
+```{r}
+aug1 %>%                    
+  mutate(order=seq(nrow(aug1))) %>% 
+  ggscatter(x="order",y=".resid")+
+  theme_lucid()
+```
+
+Dari grafik ini, tidak terbentuk pola tertentu (misal pola linear) maka diduga bahwa asumsi Independent dipenuhi.
